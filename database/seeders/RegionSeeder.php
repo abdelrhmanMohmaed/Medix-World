@@ -1171,10 +1171,10 @@ class RegionSeeder extends Seeder
             ],
         ];
 
-        foreach ($regions as $region) {
+        foreach ($regions as $item) {
             DB::table('regions')->insert([
-                'city_id' => $region['city_id'],
-                'name' => json_encode($region['name']),
+                'city_id' => $item['city_id'],
+                'name' => json_encode($item['name']),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

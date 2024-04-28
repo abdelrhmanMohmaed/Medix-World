@@ -127,15 +127,23 @@ return [
     'uuid'                 => 'حقل :attribute يجب أن يكون بصيغة UUID سليمة.',
 
 
+
+    
+    'attributes' => [
+        'name.ar' => 'الاسم بالغة العربية',
+        'name.en' => 'الاسم بالغة الأنجليزية',
+        'city_id' => 'المدينة',
+    ],
+
     'custom' => [
         'name.ar' => [
-            'required' => 'حقل الاسم بالعربية مطلوب.',
-            'unique_translation' => 'الاسم بالعربية موجود مسبقاً.',
-        ],
+            'required' => 'حقل :attribute مطلوب.',
+            'unique_translation' => ':attribute مستخدم من قبل',
+        ],        
         'name.en' => [
-            'required' => 'حقل الاسم بالأنجليزية مطلوب.',
-            'unique_translation' => 'الاسم بالأنجليزية موجود مسبقاً.',
+            'required' => 'حقل :attribute مطلوب.',
+            'unique_translation' => ':attribute مستخدم من قبل',
         ],
+        'city_id' => 'حقل :attribute مطلوب.',
     ],
-    
 ];

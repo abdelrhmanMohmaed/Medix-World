@@ -20,21 +20,21 @@ class UserSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => 123456789,
         ]);
-        
         $admin->assignRole('Admin');
- 
-        $serviceProvider = User::create([
-            'name' => 'Service Provider',
-            'email' => 'service@provider.com',
-            'password' => 123456789,
-        ]);
-        $serviceProvider->assignRole('Service Providers');
- 
+
         $user = User::create([
             'name' => 'User',
             'email' => 'user@user.com',
             'password' => 123456789,
         ]);
         $user->assignRole('User');
+
+
+        $serviceProvider = User::create([
+            'name' => 'Service Provider',
+            'email' => 'service@provider.com',
+            'password' => 123456789,
+        ]);
+        $serviceProvider->assignRole('Service Providers');
     }
 }

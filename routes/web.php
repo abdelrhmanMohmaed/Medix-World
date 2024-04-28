@@ -1,8 +1,14 @@
 <?php
 
-use App\Http\Controllers\Dashboard\Pages\CityController;
-use App\Http\Controllers\Dashboard\Pages\RegionController;
-use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Web\Auth\{
+    
+    AuthenticatedSessionController,
+    RegisteredUserController
+};
+use App\Http\Controllers\Web\Pages\{
+    ProfileController,
+    HomeController
+};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,19 +22,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['set.locale'])->group(function () {
 
-    Route::get('/{locale}', function () {
+// Landing page
+Route::get('/',[HomeController::class, 'index'])->name('welcome');
 
-        return view('welcome');
-    });
 
-    
-    Route::get('/{locale}/cities', [CityController::class, 'index'])->name('cities.index');
-    Route::get('/{locale}/cities/create', [CityController::class, 'create'])->name('cities.create');
-    Route::post('/{locale}/cities', [CityController::class, 'store'])->name('cities.store');
-    
-    Route::get('/{locale}/regions', [RegionController::class, 'index'])->name('regions.index');
-    Route::get('/{locale}/regions/create', [RegionController::class, 'create'])->name('regions.create');
-    Route::post('/{locale}/regions', [RegionController::class, 'store'])->name('regions.store');
+// lang (en, ar)/
+// User Routes 
+Route::middleware('guest')->group(function () {
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
+    Route::post('register', [RegisteredUserController::class, 'store']);
+
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
 });
+
+
+// (authentication is required)
+Route::middleware('auth:web')->group(function () {
+
+    Route::prefix('profile')->name('profile.')->group(function () {
+
+        Route::get('/', [ProfileController::class, 'index'])->name('index');
+    });    
+
+
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+});    

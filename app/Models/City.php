@@ -10,13 +10,11 @@ use Spatie\Translatable\HasTranslations;
 class City extends Model
 {
     use HasFactory, HasTranslations;
-
     public $translatable = ['name'];
-    public $fillable = ['name'];
- 
+    public $fillable = ['name','active'];
+    protected $table = 'cities';
     public function regions(): HasMany
     {
         return $this->hasMany(Region::class);
     }
-
 }

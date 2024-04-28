@@ -130,29 +130,22 @@ return [
     |
     */
 
-    'custom' => [
-        'name.ar' => [
-            'required' => 'The Name field in Arabic is required.',
-            'unique_translation' => 'The Name in Arabic has already been taken.',
-        ],
-        'name.en' => [
-            'required' => 'The Name field in English is required.',
-            'unique_translation' => 'The Name in English has already been taken.',
-        ],
+    'attributes' => [
+        'name.ar' => 'Name in Arabic',
+        'name.en' => 'Name in English',
+        'city_id' => 'City',
     ],
     
-
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Attributes
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used to swap our attribute placeholder
-    | with something more reader friendly such as "E-Mail Address" instead
-    | of "email". This simply helps us make our message more expressive.
-    |
-    */
-
-    'attributes' => [],
+    'custom' => [
+        'name.ar' => [
+            'required' => 'The :attribute field in Arabic is required.',
+            'unique_translation' => 'The :attribute in Arabic has already been taken.',
+        ],
+        'name.en' => [
+            'required' => 'The :attribute field in English is required.',
+            'unique_translation' => 'The :attribute in English has already been taken.',
+        ],
+        'city_id' => 'The :attribute field is required.',
+    ],
 
 ];

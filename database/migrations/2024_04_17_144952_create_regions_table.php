@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id(); 
-            $table->foreignId('city_id')->constrained()->onUpdate('cascade')->onDelete('cascade'); 
+            $table->foreignId('city_id')->constrained(); 
             $table->json('name');
             $table->boolean('active')->default(false);
             $table->timestamps();

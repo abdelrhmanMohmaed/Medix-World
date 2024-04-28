@@ -45,7 +45,7 @@ class CitySeeder extends Seeder
 
     foreach ($cities as $item) {
         DB::table('cities')->insert([
-            'name' => json_encode($item), // Encode each city's name as JSON
+            'name' => json_encode($item),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
