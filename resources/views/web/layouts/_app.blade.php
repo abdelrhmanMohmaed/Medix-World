@@ -1,8 +1,6 @@
 @include('web.partials.header')
 
-@include('web.partials.navbar')
-
-@include('web.partials.sidebar')
+@include('web.partials.navbar') 
 
 
 @yield('main')

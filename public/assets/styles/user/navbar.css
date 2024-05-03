@@ -1,0 +1,92 @@
+/* Start navbar */
+.navbar {
+    background-color: #5459CE;
+    height: 80px;
+    margin: 20px;
+    border-radius: 16px;
+    padding: 0.5rem;
+    transition: opacity 0.8s;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    color: #FFF;
+    font-size: 24px;
+    transition: 0.3s color;
+}
+
+.navbar-scrolled {
+    opacity: 0;
+    transition: opacity 0.8s;
+}
+
+.navbar-scrolled.visible {
+    opacity: 1;
+}
+
+.login-button,
+.signUp-button {
+    background-color: #5459CE;
+    color: #FFF;
+    font-size: 14px;
+    padding: 8px 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.login-button:hover,
+.signUp-button:hover {
+    background-color: #FFF;
+    color: #5459CE;
+}
+
+.navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus,
+.btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.nav-link {
+    color: #FFF;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #000;
+}
+
+/* navbar in small screen */
+.offcanvas {
+    background-color: #eeeeee;
+}
+
+/* navbar in small screen */
+@media (min-width: 991px) {
+    .nav-link::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0%;
+        height: 1px;
+        background-color: #5459CE;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+        width: 100%;
+        visibility: visible;
+    }
+}
+/* End navbar */
