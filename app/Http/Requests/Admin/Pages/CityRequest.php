@@ -22,7 +22,7 @@ class CityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name.*' => ['required', "unique_translation:cities,name,{$this->id}"]
+            'name.*' => ['required', "unique_translation:cities,name,{$this->city?->id}"]
         ];
     }
 
