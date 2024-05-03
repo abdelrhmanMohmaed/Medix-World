@@ -131,6 +131,10 @@ return [
     */
 
     'attributes' => [
+        'password' => 'Password',
+        'fullName'=> 'Full Name',
+        'email'=> 'Email',
+        'message' => 'Message',
         'name.ar' => 'Name in Arabic',
         'name.en' => 'Name in English',
         'city_id' => 'City',
