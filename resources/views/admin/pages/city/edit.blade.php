@@ -9,7 +9,7 @@
 @section('content')
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">{{ __('dashboard.city-index')}} </a></li>
+    <li class="breadcrumb-item"><a href="{{route ('admins.cities.index') }}">{{ __('dashboard.city-index')}} </a></li>
     <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.city-edit')}}</li>
   </ol>
 </nav>

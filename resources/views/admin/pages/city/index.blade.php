@@ -9,8 +9,8 @@
 @section('content')
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">{{ __('dashboard.city-index')}} </a></li>
-    <li class="breadcrumb-item active" aria-current="page"></li>
+    <li class="breadcrumb-item"><a href="{{route ('admins.cities.index') }}">{{ __('dashboard.city-index')}} </a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.city-index')}}  </li>
   </ol>
 </nav>
 
@@ -18,12 +18,18 @@
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
+        <div class="d-flex justify-content-end mb-5">
+
+
+        <a href="{{ route('admins.cities.create') }}" class="btn btn-primary btn-icon-text"> <i class="link-arrow" data-feather="plus"></i> Add City
+                  </a>
+          <!-- <button type="button" class="btn btn-inverse-primary"></button> -->
+        </div>
         <div class="table-responsive">
           <table id="dataTableExample" class="table">
+
             <thead>
               <tr>
-
-
                 <th>{{ __('dashboard.name-city-en') }}</th>
                 <th>{{ __('dashboard.name-city-ar') }}</th>
                 <th>{{ __('dashboard.status') }}</th>
@@ -50,19 +56,21 @@
                   @endif
                 </td>
                 <td colspan="3">
-                  <a href="{{ route('admins.cities.edit', $item->id) }}"> <i class="link-arrow" data-feather="edit"></i> edit
+
+                  <a href="{{ route('admins.cities.edit', $item->id) }}" class="btn btn-primary btn-icon-text"> <i class="link-arrow" data-feather="edit"></i> edit
                   </a>
 
-                  <!-- <a href="{{ route('admins.cities.destroy', $item->id) }}"> <i class="link-arrow" data-feather="trash" ></i> Delete
-                  </a> -->
-                  
-                  <form method="POST" action="{{ route('admins.cities.destroy', $item->id) }}" onsubmit="return confirm('Are You sure?')">
+
+                  <a href="{{ route('admins.cities.destroy', $item->id) }}" class="btn btn-danger btn-icon-text"> <i class="link-arrow" data-feather="trash"></i> Delete
+                  </a>
+
+                  <!-- <form method="POST" action="{{ route('admins.cities.destroy', $item->id) }}" onsubmit="return confirm('Are You sure?')">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="btn bg-gradient-danger btn-sm">
                       <i class="link-arrow" data-feather="trash"></i> Delete
                     </button>
-                  </form>
+                  </form> -->
 
                 </td>
               </tr>
