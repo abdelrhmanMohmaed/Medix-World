@@ -11,6 +11,7 @@ class Region extends Model
 {
     use HasFactory, HasTranslations;
     public $translatable = ['name'];
+    public $fillable = ['city_id','name','active'];
 
     public function city()
     {

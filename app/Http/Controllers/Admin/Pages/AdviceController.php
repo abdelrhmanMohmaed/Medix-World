@@ -1,0 +1,112 @@
+<?php
+
+namespace App\Http\Controllers\Admin\Pages;
+
+use App\Http\Controllers\Controller;
+use App\Models\Advice;
+use App\Traits\UploadTrait;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+use App\Http\Requests\Admin\Pages\AdviceRequest;
+use Exception;
+
+class AdviceController extends Controller
+{
+    use UploadTrait;
+    
+    public function index() : View  
+    {
+        $advices  = Advice::get(); 
+
+        return view('admin.pages.advice.index',compact('advices'));
+    } 
+
+    public function create(): View 
+    {    
+        return view('admin.pages.advice.create');
+    }
+
+    public function store(AdviceRequest $request): RedirectResponse
+    { 
+        try {
+            
+            if ($request->hasFile('img')) 
+            {
+                $path = 'assets/images/advices';
+                $fileName = $this->handleFileUpload($request->file('img'),$path);
+            }
+
+            Advice::create([ 
+                'user_id' => Auth::id() ?? 1,  
+                'title' => [
+                    'en' => $request->title['en'],
+                    'ar' => $request->title['ar'],
+                    ],
+                'description' => [
+                    'en' => $request->description['en'],
+                    'ar' => $request->description['ar'],
+                    ],
+                'img' => ($fileName)? $fileName : 'assets/images/advices/default.png',
+            ]);
+
+            return redirect()->route('admins.advices.create');
+        } catch (Exception $e) {
+            dd($e->getMessage());
+            return redirect()->back();//message
+        }
+    }
+
+    public function edit(Advice $advice)
+    {
+        return view('admin.pages.advice.edit',compact('advice'));
+    }
+
+    public function update(AdviceRequest $request, Advice $advice) : RedirectResponse
+    {
+        try {
+            $advice->update([
+                'title' => [
+                    'en' => $request->input("title.en"),
+                    'ar' => $request->input("title.ar")
+                ],
+                'description' => [
+                    'en' => $request->input("description.en"),
+                    'ar' => $request->input("description.ar"),
+                ],
+                'img' => $request->has('img') ? $request->img : 'assets/images/advices/default.png',
+            ]);
+
+            return redirect()->route('admin.advice.index');
+        } catch (Exception $e) {
+            dd($e->getMessage());
+            return redirect()->back();//message
+        }
+    }
+
+    public function destroy(Advice $advice) : RedirectResponse 
+    {
+        try {
+            $advice->delete();
+
+            return redirect()->route('admins.advices.index');
+        } catch (Exception $e) {
+            dd($e->getMessage());
+            return redirect()->back();//message
+        }
+    }
+
+    public function stauts(Advice $advice) : RedirectResponse 
+    {
+        try {
+            $advice->update([   
+                'active' => !$advice->active
+            ]);
+
+            return redirect()->route('admins.advices.index');
+        } catch (Exception $e) {
+            dd($e->getMessage());
+            return redirect()->back();//message
+        }
+    }
+}

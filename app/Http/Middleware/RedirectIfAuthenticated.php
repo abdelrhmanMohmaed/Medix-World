@@ -21,7 +21,13 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                $url = match ($guard) {
+                    'admin' => route('admins.dashboard.index',app()->getLocale()),
+                    'service_provider' => route('services.dashboard',app()->getLocale()),
+                    default => route('website.welcome'),
+                };
+
+                return redirect($url);
             }
         }
 
