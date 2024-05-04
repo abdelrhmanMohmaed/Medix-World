@@ -1,0 +1,12 @@
+body {
+    background: #EEF0F2;
+}
+
+.box-area {
+    margin-top: 80px !important;
+    width: 790px;
+}
+
+.right-box {
+    padding: 40px 30px 40px 40px;
+}

@@ -4,6 +4,23 @@ return [
     "medix-title" => "Medix",
     "medix-welcome" => "The best ways to care",
 
+    // register section
+    "register" => "Join Now",
+    "register-hello"=>"Join Our Healthcare Community.",
+    "register-happy" => "Register Your Medical Account Here.",
+    "register-password" => "Password*",
+    "register-confirm-password" => "Confirm Password*",
+    "register-already-registered" => "Already registered?",
+    "register-terms" => "By signing up you agree to our ",
+    "register-terms-condations" => "Terms of use",
+    "register-tel" => "Mobile Number",
+    "register-gender" => "Gender",
+    "register-menu"=>"Open this menu",
+    "register-male" => "Male",
+    "register-female" => "Female",
+    "register-date" => "Birth Date",
+    // register section
+
     // login section
     "login-login" => "Login",
     "login-hello" => "Hello,Again in Medix", 
@@ -45,8 +62,8 @@ return [
 
     //contact us section
     'contact-sub-title' => 'We will be happy to receive your inquiries and suggestions.',
-    'full-name' => 'Full Name*',
-    'email-address' => 'Email Address*',
+    'full-name' => 'Full Name',
+    'email-address' => 'Email Address',
     'subject' => 'Subject',
     'message' => 'Message*',
     'send-now' => 'Send Now',
