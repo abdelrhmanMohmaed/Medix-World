@@ -10,7 +10,7 @@
 
 @section('main')
     <!-- Login Container -->
-    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <section class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="row border rounded-5 p-3 bg-white shadow box-area">
             <!-- Left Box -->
             <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
@@ -18,7 +18,7 @@
                 <div class="featured-image mb-3">
                     <img src="{{ asset('assets/images/user/login/1.png') }}" class="img-fluid" style="width: 250px;">
                 </div>
-                <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace; font-weight: 600;">
+                <p class="text-white fs-2" style="font-weight: 600;">
                     {{ __('website/web.login-be-verified') }}
                 </p>
                 <small class="text-white text-wrap text-center"
@@ -32,13 +32,13 @@
             <div class="col-md-6 right-box">
                 <div class="row align-items-center">
                     <div class="header-text mb-4">
-                        <h3>{{ __('website/web.login-hello') }}</h3>
-                        <p>{{ __('website/web.login-happy') }}</p>
+                        <h1 class="h3">{{ __('website/web.login-hello') }}</h3>
+                        <p class="text-black-50">{{ __('website/web.login-happy') }}</p>
                     </div>
                     <form method="POST" action="{{ route('website.login') }}">
                         @csrf
                         <div class="input-group mb-2">
-                            <input type="email" name="email" autofocus autocomplete="username"
+                            <input type="email" name="email" autofocus autocomplete="username" required
                                 @class([
                                     'form-control form-control-lg bg-light fs-6',
                                     'is-invalid' => $errors->has('email'),
@@ -51,7 +51,7 @@
                         @enderror
 
                         <div class="input-group mb-1">
-                            <input type="password" name="password" autocomplete="current-password"
+                            <input type="password" name="password" autocomplete="current-password" required
                                 @class([
                                     'form-control form-control-lg bg-light fs-6',
                                     'is-invalid' => $errors->has('password'),
@@ -92,10 +92,10 @@
             </div>
             <!-- End Right Box -->
         </div>
-    </div>
+    </section>
     <!-- End Login Container -->
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('assets/js/user/login.js') }}"></script>
+    <script src="{{ asset('assets/js/user/OAuth.js') }}"></script>
 @endsection

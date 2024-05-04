@@ -4,6 +4,24 @@
 return [
     "medix-title" => "ميدكس",
     "medix-welcome" => "أفضل الطرق للعناية",
+
+    // register section
+    "register" => "أشترك الان",
+    "register-hello"=>"أنضم إلى مجتمع الرعاية الطبية.",
+    "register-happy" => "سجل حسابك الطبي هنا.",
+    "register-password" => "كلمة المرور*",
+    "register-confirm-password" => "تاكيد كلمة المرور*",
+    "register-already-registered" => "مسجلة بالفعل؟",
+    "register-terms" => "بقيامك بالتسجيل فانت توافق على ",
+    "register-terms-condations" => "الشروط و القوانين",
+    "register-tel" => "رقم الموبايل",
+    "register-menu"=>"افتح هذه القائمة",
+    "register-gender" => "النوع",
+    "register-male" => "ذكر",
+    "register-female" => "أنثى",
+    "register-date" => "تاريخ الميلاد",
+    // register section
+
     //login section
     "login-login" => "تسجيل الدخول",
     "login-hello" => "مرحبا، مرة أخرى في ميديكس",
@@ -46,8 +64,8 @@ return [
 
     //contact us section
     'contact-sub-title' => '.نحن سعداء لتلقي استفساراتكم واقتراحاتكم',
-    'full-name' => 'الإسم بالكامل*',
-    'email-address' => 'البريد الالكتروني*',
+    'full-name' => 'الإسم بالكامل',
+    'email-address' => 'البريد الالكتروني',
     'subject' => 'الموضوع',
     'message' => 'تعليقات*',
     'send-now' => 'أرسال الان',

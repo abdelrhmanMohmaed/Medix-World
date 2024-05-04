@@ -107,8 +107,52 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <p class="card-text">
-                            </p>
+                            <!-- Example single danger button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Action
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Action
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Action
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -154,7 +198,7 @@
                             <i class="icon fa-solid fa-hand-holding-medical fa-3x"></i>
                         </div>
                         <div class="icon-line"
-                            style="{{ $dir == 'rtl' ? 'margin-right: 25px; width: 55px;' : 'margin-left: 25px;' }}"></div>
+                            style="{{ $dir == 'rtl' ? 'margin-right: 25px; width: 55px;' : 'margin-left: 25px; width: 53px;' }}"></div>
 
                         <div class="card-body">
                             <h5 class="card-title">{{ __('website/web.general-idea-healthcare') }}</h5>
@@ -199,7 +243,7 @@
                             <i class="icon fa-solid fa-user-shield fa-3x"></i>
                         </div>
                         <div class="icon-line"
-                            style="{{ $dir == 'rtl' ? 'margin-right: 25px; width: 62px;' : 'margin-left: 25px;' }}"></div>
+                            style="{{ $dir == 'rtl' ? 'margin-right: 25px; width: 62px;' : 'margin-left: 25px;width: 58px;' }}"></div>
 
                         <div class="card-body">
                             <h5 class="card-title">{{ __('website/web.general-idea-pay') }}</h5>
@@ -223,7 +267,7 @@
                         @csrf
                         <div class="mb-1">
                             <label for="full_name" class="form-label">{{ __('website/web.full-name') }}</label>
-                            <input type="name" name="fullName" value="{{ old('fullName') }}"
+                            <input type="name" name="fullName" value="{{ old('fullName') }}" required
                                 @class(['form-control', 'is-invalid' => $errors->has('fullName')]) id="full_name">
                             @error('fullName')
                                 <small class="text-danger">
@@ -233,8 +277,8 @@
                         </div>
                         <div class="mb-1">
                             <label for="email" class="form-label">{{ __('website/web.email-address') }}</label>
-                            <input type="email" name="email" value="{{ old('email') }}" @class(['form-control', 'is-invalid' => $errors->has('email')])
-                                id="email">
+                            <input type="email" name="email" value="{{ old('email') }}" required
+                                @class(['form-control', 'is-invalid' => $errors->has('email')]) id="email">
                             @error('email')
                                 <small class="text-danger">
                                     &#x2022; {{ $message }}
@@ -243,8 +287,8 @@
                         </div>
                         <div class="mb-1">
                             <label for="subject" class="form-label">{{ __('website/web.subject') }}</label>
-                            <input type="text" name="subject" value="{{ old('subject') }}" @class(['form-control', 'is-invalid' => $errors->has('subject')])
-                                id="subject">
+                            <input type="text" name="subject" value="{{ old('subject') }}" required
+                                @class(['form-control', 'is-invalid' => $errors->has('subject')]) id="subject">
                             @error('subject')
                                 <small class="text-danger">
                                     &#x2022; {{ $message }}
@@ -253,7 +297,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="message" class="form-label">{{ __('website/web.message') }}</label>
-                            <textarea name="message" id="message" cols="30" rows="10" @class(['form-control', 'is-invalid' => $errors->has('message')])>
+                            <textarea required name="message" id="message" cols="30" rows="10" @class(['form-control', 'is-invalid' => $errors->has('message')])>
                                         {{ old('message') }}
                             </textarea>
                             @error('message')
@@ -276,30 +320,5 @@
 @endsection
 
 @section('scripts')
-    <script>
-        // Start check the dir page to use in sider show condation
-        var isRTL = $('html').attr('dir') === 'rtl';
-        $(".owl-carousel").owlCarousel({
-            rtl: isRTL,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            loop: true,
-            margin: 30,
-            responsiveClass: true,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                768: {
-                    items: 2,
-                },
-                1200: {
-                    items: 3,
-                }
-            }
-        });
-        // End check the dir page to use in sider show condation
-    </script>
+    <script src="{{ asset('assets/js/user/landing.js') }}"></script>
 @endsection
