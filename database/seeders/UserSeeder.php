@@ -18,14 +18,18 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
-            'password' => 123456789,
+            'password' => 123456789, 
+            'dateOfBirth' => '1992-12-12',
+            'gender' => 1,
         ]);
         $admin->assignRole('Admin');
 
         $user = User::create([
             'name' => 'User',
             'email' => 'user@user.com',
-            'password' => 123456789,
+            'password' => 123456789, 
+            'dateOfBirth' => '1992-12-12',
+            'gender' => 1,
         ]);
         $user->assignRole('User');
 
@@ -34,6 +38,8 @@ class UserSeeder extends Seeder
             'name' => 'Service Provider',
             'email' => 'service@provider.com',
             'password' => 123456789,
+            'dateOfBirth' => '1992-12-12',
+            'gender' => 1,
         ]);
         $serviceProvider->assignRole('Service Providers');
     }

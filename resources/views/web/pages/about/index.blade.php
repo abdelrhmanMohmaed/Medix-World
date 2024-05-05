@@ -1,67 +1,157 @@
 @extends('web.layouts._app')
 
+@section('title', __('website/web.about-us'))
+
+@section('styles')
+    <!-- Navbar -->
+    <link rel="stylesheet" href="{{ asset('assets/styles/user/navbar.css') }}">
+    <style>
+        body {
+            background: #EEF0F2;
+        }
+
+        #about {
+            margin: 70px 0 30px 0;
+        }
+        .icon {
+            color: #5459CE;
+        }
+    </style>
+@endsection
 
 @section('main')
-    <!-- Start Contact us Section -->
-<section id="contact-us" class="contact-us-section" style="margin-top: 60px">
-    <div class="container py-5">
-        <h2 class="text-center">{{ __('website/web.contact-us') }}</h2>
-        <p class="text-center">{{ __('website/web.contact-sub-title') }}</p>
-        <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-            <div class="col-md-12">
+    @php
+        $dir = 'ltr';
+        if (str_replace('_', '-', app()->getLocale()) == 'ar') {
+            $dir = 'rtl';
+        }
+    @endphp
+    <!-- Start About Section -->
+    <section id="about" class="py-3 py-md-5 py-xl-8">
+        <div class="container">
+            <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
 
-                <form method="post" action="{{ route('website.contact.store') }}">
-                    @csrf
-                    <div class="mb-1">
-                        <label for="full_name" class="form-label">{{ __('website/web.full-name') }}</label>
-                        <input type="name" name="fullName" value="{{ old('fullName') }}"
-                            @class(['form-control', 'is-invalid' => $errors->has('fullName')]) id="full_name">
-                        @error('fullName')
-                            <small class="text-danger">
-                                &#x2022; {{ $message }}
-                            </small>
-                        @enderror
+                <div class="col-12 col-lg-6 col-xl-5 pt-3  ">
+                    <img style="width: 100%" class="rounded" loading="lazy" src="{{ asset('assets/images/user/about/default3.jpg') }}"
+                        height="700"  alt="">
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-7">
+                    <div class="row justify-content-xl-center">
+                        <div class="col-12 col-xl-11">
+                            <h1 class="h1 mb-3">{{ __('website/web.about-us') }}</h1>
+                            <p class="lead fs-4 text-secondary mb-3">
+                                {{ __('website/web.about-us-description') }}
+                            </p>
+                            <h4 class="mb-3">{{ __('website/web.about-us-our-vision') }}</h4>
+                            <p class="mb-5">
+                                {{ __('website/web.about-us-our-vision-description') }}
+                            </p>
+                            <h4 class="mb-3">{{ __('website/web.about-us-what-we-offer') }} :</h4>
+
+                            <ul class="list-unstyled mb-5"
+                             {{--   style="{{ $dir == 'rtl' ? 'margin-right: -45px;' : '' }}" --}}
+                             >
+                                <li class="mb-4">
+                                    <div class="d-flex">
+                                        <div class="me-4 icon">
+                                            <i class="fas fa-stethoscope fa-2x ms-4"
+                                                {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }}" --}}
+                                                ></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-3">{{ __('website/web.about-us-what-we-offer-find-doctors') }}
+                                            </h4>
+                                            <p class="text-secondary mb-0">
+                                                {{ __('website/web.about-us-what-we-offer-find-doctors-description') }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="mb-4">
+                                    <div class="d-flex">
+                                        <div class="me-4 icon">
+                                            <i class="fas fa-calendar-plus fa-2x ms-4"
+                                                {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }}"  --}}
+                                                ></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-3">
+                                                {{ __('website/web.about-us-what-we-offer-book-appointments') }}</h4>
+                                            <p class="text-secondary mb-0">
+                                                {{ __('website/web.about-us-what-we-offer-book-appointments-description') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="mb-4">
+                                    <div class="d-flex">
+                                        <div class="me-4 icon">
+                                            <i class="fas fa-file-medical fa-2x ms-4"
+                                                {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }}" --}}
+                                                ></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-3">
+                                                {{ __('website/web.about-us-what-we-offer-store-medical-history') }}
+                                            </h4>
+                                            <p class="text-secondary mb-0">
+                                                {{ __('website/web.about-us-what-we-offer-store-medical-history-description') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="mb-4">
+                                    <div class="d-flex">
+                                        <div class="me-4 icon">
+                                            <i class="fas fa-star fa-2x ms-4"
+                                                {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }}" --}}
+                                                ></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-3">
+                                                {{ __('website/web.about-us-what-we-offer-rate-doctors') }}</h4>
+                                            <p class="text-secondary mb-0">
+                                                {{ __('website/web.about-us-what-we-offer-rate-doctors-description') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="mb-4">
+                                    <div class="d-flex">
+                                        <div class="me-4 icon">
+                                            <i class="fas fa-user-md fa-2x ms-4"
+                                                {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }} --}}
+                                                "></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="mb-3">
+                                                {{ __('website/web.about-us-what-we-offer-enhance-doctor-experience') }}
+                                            </h4>
+                                            <p class="text-secondary mb-0">
+                                                {{ __('website/web.about-us-what-we-offer-enhance-doctor-experience-description') }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <p class="mb-0">{{ __('website/web.about-us-what-we-offer-for-further-information') }}
+                                <a href="mailto:medix@world.com">medix@world.com</a>
+                            </p>
+                            <!-- Contact Information Goes Here -->
+                        </div>
                     </div>
-                    <div class="mb-1">
-                        <label for="email" class="form-label">{{ __('website/web.email-address') }}</label>
-                        <input type="email" name="email" value="{{ old('email') }}" @class(['form-control', 'is-invalid' => $errors->has('email')])
-                            id="email">
-                        @error('email')
-                            <small class="text-danger">
-                                &#x2022; {{ $message }}
-                            </small>
-                        @enderror
-                    </div>
-                    <div class="mb-1">
-                        <label for="subject" class="form-label">{{ __('website/web.subject') }}</label>
-                        <input type="text" name="subject" value="{{ old('subject') }}" @class(['form-control', 'is-invalid' => $errors->has('subject')])
-                            id="subject">
-                        @error('subject')
-                            <small class="text-danger">
-                                &#x2022; {{ $message }}
-                            </small>
-                        @enderror
-                    </div>
-                    <div class="mb-4">
-                        <label for="message" class="form-label">{{ __('website/web.message') }}</label>
-                        <textarea name="message" id="message" cols="30" rows="10" @class(['form-control', 'is-invalid' => $errors->has('message')])>
-                                        {{ old('message') }}
-                            </textarea>
-                        @error('message')
-                            <small class="text-danger">
-                                &#x2022; {{ $message }}
-                            </small>
-                        @enderror
-                    </div>
-                    <button type="submit" class="btn form-control text-white"
-                        style="background-color: rgb(239, 15, 15)">
-                        {{ __('website/web.send-now') }}
-                    </button>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-</section>
-<!-- End Contact us Section -->
+    </section>
+    <!-- End About Section -->
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('assets/js/user/OAuth.js') }}"></script>
 @endsection

@@ -12,8 +12,7 @@
                 <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
                     <li class="nav-item">
 
-                        <a class="nav-link mx-lg-2" aria-current="page"
-                            href="{{ route('website.welcome') }}">
+                        <a class="nav-link mx-lg-2" aria-current="page" href="{{ route('website.welcome') }}">
                             {{ __('website/web.home') }}
                         </a>
                     </li>
@@ -25,11 +24,14 @@
                     @endif
 
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="#advice">{{ __('website/web.advice') }}</a>
+                        <a class="nav-link mx-lg-2" href="{{ route('services.login') }}">
+                            {{ __('website/web.Join') }}
+                        </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="#contact-us">{{ __('website/web.contact-us') }}</a>
+                        <a class="nav-link mx-lg-2"
+                            href="{{ route('website.welcome') }}#contact-us">{{ __('website/web.contact-us') }}</a>
                     </li>
 
                     @if (app()->getLocale() == 'en')
@@ -53,9 +55,9 @@
             </a>
         @else
             <a class="login-button" href="{{ route('website.login') }}">{{ __('website/web.login') }}</a>
-            <button type="button" class="signUp-button border-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a class="signUp-button" href="{{ route('website.register') }}">
                 {{ __('website/web.sign-up') }}
-            </button>
+            </a>
         @endif
     </div>
 

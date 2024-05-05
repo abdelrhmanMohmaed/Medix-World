@@ -131,9 +131,15 @@ return [
     */
 
     'attributes' => [
-        'password' => 'Password',
         'fullName'=> 'Full Name',
         'email'=> 'Email',
+        'password' => 'Password',
+        'tel' => 'Mobile Number',
+        'dateOfBirth' => 'Birth Date',
+        'gender' => "Gender",
+        'term' => "Terms of use",
+
+
         'message' => 'Message',
         'name.ar' => 'Name in Arabic',
         'name.en' => 'Name in English',

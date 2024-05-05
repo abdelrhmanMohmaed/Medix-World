@@ -1,4 +1,9 @@
+body {
+    background: #EEF0F2;
+}
+
 .box-area {
+    margin-top: 55px;
     width: 1580px;
 }
 

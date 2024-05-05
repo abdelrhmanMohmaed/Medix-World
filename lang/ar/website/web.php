@@ -4,6 +4,24 @@
 return [
     "medix-title" => "ميدكس",
     "medix-welcome" => "أفضل الطرق للعناية",
+
+    // register section
+    "register" => "أشترك الان",
+    "register-hello"=>"أنضم إلى مجتمع الرعاية الطبية.",
+    "register-happy" => "سجل حسابك الطبي هنا.",
+    "register-password" => "كلمة المرور*",
+    "register-confirm-password" => "تاكيد كلمة المرور*",
+    "register-already-registered" => "مسجلة بالفعل؟",
+    "register-terms" => "بقيامك بالتسجيل فانت توافق على ",
+    "register-terms-condations" => "الشروط و القوانين",
+    "register-tel" => "رقم الموبايل",
+    "register-menu"=>"افتح هذه القائمة",
+    "register-gender" => "النوع",
+    "register-male" => "ذكر",
+    "register-female" => "أنثى",
+    "register-date" => "تاريخ الميلاد",
+    // register section
+
     //login section
     "login-login" => "تسجيل الدخول",
     "login-hello" => "مرحبا، مرة أخرى في ميديكس",
@@ -22,10 +40,35 @@ return [
     "home" => "الرئيسية",
     "profile" => "الصفحة الشخصية",
     "contact-us" => "أتصل بينا",
+    "Join" => "انضم إلى مقدمي خدمات",
     "login" => "دخول",
     "logout" => "خروج",
     "sign-up" => "انضم الأن",
     // navbar section
+
+     // About Us section
+    "about-us" => "من نحن",
+    "about-us-description" => "ميدكس هو مشروع مبتكر في مجال الرعاية الصحية الإلكترونية، حيث نسعى إلى تبسيط وتعزيز الوصول إلى الخدمات الطبية عبر الإنترنت بطريقة موثوقة.",
+    "about-us-our-vision" => "رؤيتنا",
+    "about-us-our-vision-description" => "رؤيتنا هي تقديم منصة شاملة تربط بين المرضى والأطباء بشكل فعّال، مما يجعل التواصل وجدولة المواعيد الطبية سهلة ومريحة.",
+    
+    "about-us-what-we-offer" => "ماذا نقدم",
+    "about-us-what-we-offer-find-doctors" => "البحث عن الأطباء:",
+    "about-us-what-we-offer-find-doctors-description" => "يمكن للمرضى بسهولة البحث والعثور على الأطباء المناسبين لاحتياجاتهم الصحية.",
+    "about-us-what-we-offer-book-appointments" => "حجز المواعيد:",
+    "about-us-what-we-offer-book-appointments-description" => "تبسيط عملية جدولة المواعيد الطبية مع الأطباء بنقرة واحدة.",
+    "about-us-what-we-offer-store-medical-history" => "تخزين التاريخ الطبي:",
+    "about-us-what-we-offer-store-medical-history-description" => "يمكن للمرضى الوصول إلى تاريخهم الطبي وتخزين المستندات الطبية بشكل آمن.",
+    "about-us-what-we-offer-rate-doctors" => "تقييم الأطباء:",
+    "about-us-what-we-offer-rate-doctors-description" => "تمكين المرضى من تقييم الأطباء ومشاركة تجاربهم.",
+    "about-us-what-we-offer-enhance-doctor-experience" => "تعزيز تجربة الأطباء:",
+    "about-us-what-we-offer-enhance-doctor-experience-description" => "توفير أدوات تنظيمية فعّالة للأطباء لإدارة جداول مواعيدهم وتسجيل بيانات المرضى بسهولة.",
+    "about-us-what-we-offer-for-further-information" => "لمزيد من المعلومات أو لأية استفسارات، لا تتردد في الاتصال بنا على:",
+    // About Us section
+
+    // Terms of Use
+    "terms-of-use" => "شروط استخدام الموقع",
+    // Terms of Use
 
     //Start General Idea section
     "general-idea-healthcare" => 'جميع احتياجات الرعاية الصحية الخاصة بك على ميدكس',
@@ -46,8 +89,8 @@ return [
 
     //contact us section
     'contact-sub-title' => '.نحن سعداء لتلقي استفساراتكم واقتراحاتكم',
-    'full-name' => 'الإسم بالكامل*',
-    'email-address' => 'البريد الالكتروني*',
+    'full-name' => 'الإسم بالكامل',
+    'email-address' => 'البريد الالكتروني',
     'subject' => 'الموضوع',
     'message' => 'تعليقات*',
     'send-now' => 'أرسال الان',

@@ -127,6 +127,7 @@ class AdviceSeeder extends Seeder
                 'title' => json_encode($item['title']),
                 'description' => json_encode($item['description']),
                 'img' => $item['image'],
+                'active' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
