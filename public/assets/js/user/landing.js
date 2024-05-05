@@ -1,4 +1,28 @@
 $(document).ready(function () {
+    // function search(ul) {
+        
+    const ul = document.querySelector('#dropdown-menu-major')
+        const search = ul.querySelector('#search')
+        const li = ul.querySelectorAll('li')
+
+        search.addEventListener("input", function () {
+            li.forEach(el => {
+                if (el.textContent.includes(search.value)) {
+                    el.classList.remove("d-none")
+                } else {
+                    el.classList.add("d-none")
+                }
+            })
+        })
+    // }
+
+
+
+
+
+
+
+
     // Start To switch a class css in navbar visible and hidden
     const navEl = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {

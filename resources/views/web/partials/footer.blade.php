@@ -1,28 +1,38 @@
 <!-- Start footer Section -->
-<footer class="text-white pt-5 pb-4" style="background-color: #5459CE">
+<footer class="text-white pt-3 pb-2" style="background-color: #5459CE">
     <div class="container-fluid text-md-left">
         <div class="row text-md-left">
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold">Medix World</h5>
                 <p>
-                    <a href="{{ route('website.about.index') }}" class="text-white" style="text-decoration: none;">
+                    <a href="{{ route('website.about.index') }}" class="text-white">
                         {{ __('website/web.footer-about-us') }}
+                    </a>
+                </p>
+                <p>
+                    <a href="{{ route('website.welcome') }}#contact-us" class="text-white">
+                        {{ __('website/web.footer-contactUs') }}
+                    </a>
+                </p>
+                <p>
+                    <a href="{{ route('website.terms.index') }}" class="text-white">
+                        {{ __('website/web.terms-of-use') }}
                     </a>
                 </p>
             </div>
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold ">Production</h5>
                 <p>
-                    <a href="#" class="text-white" style="text-decoration: none;">test</a>
+                    <a href="#" class="text-white">test</a>
                 </p>
                 <p>
-                    <a href="#" class="text-white" style="text-decoration: none;">test</a>
+                    <a href="#" class="text-white">test</a>
                 </p>
                 <p>
-                    <a href="#" class="text-white" style="text-decoration: none;">test</a>
+                    <a href="#" class="text-white">test</a>
                 </p>
                 <p>
-                    <a href="#" class="text-white" style="text-decoration: none;">test</a>
+                    <a href="#" class="text-white">test</a>
                 </p>
             </div>
 
@@ -30,7 +40,7 @@
                 <h5 class="text-uppercase mb-4 font-weight-bold ">{{ __('website/web.footer-service-provider') }}
                 </h5>
                 <p>
-                    <a href="{{ route('services.login') }}" class="text-white" style="text-decoration: none;">
+                    <a href="{{ route('services.login') }}" class="text-white">
                         {{ __('website/web.footer-sign-up') }}
                     </a>
                 </p>
@@ -42,7 +52,8 @@
                     <i class="fas fa-home mr-3"></i> &nbsp; {{ __('website/web.footer-address') }}
                 </p>
                 <p>
-                    <i class="fas fa-envelope mr-3"></i> &nbsp; medix-wold@hotmail.com
+                    <i class="fas fa-envelope mr-3"></i> &nbsp; <a class="text-white"
+                        href="mailto:medix@world.com">medix@world.com</a>
                 </p>
                 <p>
                     <i class="fas fa-phone mr-3"></i> &nbsp; +20123456878
@@ -53,11 +64,11 @@
             </div>
         </div>
     </div>
-    <hr class="mb-4">
+    <hr class="mb-2">
 
     <div class="container text-md-left">
-        <div class="row align-items-center ">
-            <div class="col-md-7 col-lg-8 ">
+        <div class="row align-items-center">
+            <div class="col-md-7 col-lg-8">
                 <p>
                     {{ __('website/web.footer-copyright') }}
                     <a href="#" style="text-decoration: none">

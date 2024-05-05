@@ -1175,6 +1175,7 @@ class RegionSeeder extends Seeder
             DB::table('regions')->insert([
                 'city_id' => $item['city_id'],
                 'name' => json_encode($item['name']),
+                'active' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

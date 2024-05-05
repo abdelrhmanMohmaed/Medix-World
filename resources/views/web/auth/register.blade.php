@@ -3,12 +3,10 @@
 @section('title', __('website/web.register'))
 
 @section('styles')
+    <!-- Register -->
     <link rel="stylesheet" href="{{ asset('assets/styles/user/register.css') }}">
     <!-- Navbar -->
     <link rel="stylesheet" href="{{ asset('assets/styles/user/navbar.css') }}">
-    <style>
-
-    </style>
 @endsection
 
 @section('main')

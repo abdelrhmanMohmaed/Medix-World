@@ -10,7 +10,7 @@
 
 @section('main')
     <!-- Login Container -->
-    <section class="container d-flex justify-content-center align-items-center min-vh-100">
+    <section class="container py-5 d-flex justify-content-center align-items-center min-vh-100">
         <div class="row border rounded-5 p-3 bg-white shadow box-area">
             <!-- Left Box -->
             <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
