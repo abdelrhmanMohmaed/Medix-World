@@ -63,6 +63,7 @@ class MajorSeeder extends Seeder
         foreach ($majors as $item) {
             DB::table('majors')->insert([
                 'name' => json_encode($item),
+                'active' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

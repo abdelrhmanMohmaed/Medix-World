@@ -34,21 +34,45 @@ return [
     'login-be-verified-summary' => 'Join skilled Healthcare Professionals on this platform.',
     // login section
 
-    // navbar section
+    // Navbar section
     "home" => "Home",
     "profile"=> "Profile",
     "contact-us" => "Contact Us",
+    "Join" => "Join Service Providers",
     "login" => "Login",
     "logout" => "Logout",
     "sign-up" => "Sign Up",
-    // navbar section
+    // Navbar section
 
-    // advice section
+    // About Us section
+    "about-us" => "About Us",
+    "about-us-description" => "Medix is an innovative project in the field of e-healthcare, aiming to simplify and enhance access to medical services online in a reliable manner.",
+    "about-us-our-vision" => "Our Vision",   
+    "about-us-our-vision-description" => "Our vision is to provide a comprehensive platform that effectively connects patients and doctors, making communication and scheduling medical appointments effortless and convenient.",
+    "about-us-what-we-offer" => "What We Offer",   
+    "about-us-what-we-offer-find-doctors" => "Find Doctors:",   
+    "about-us-what-we-offer-find-doctors-description" => "Patients can easily search and find suitable doctors for their healthcare needs.",
+    "about-us-what-we-offer-book-appointments" => "Book Appointments:",   
+    "about-us-what-we-offer-book-appointments-description" => "Simplify the process of scheduling medical appointments with doctors with just a click.",
+    "about-us-what-we-offer-store-medical-history" => "Store Medical History:",   
+    "about-us-what-we-offer-store-medical-history-description" => "Patients can access their medical history and securely store medical documents.",
+    "about-us-what-we-offer-rate-doctors" => "Rate Doctors:",   
+    "about-us-what-we-offer-rate-doctors-description" => "Empower patients to rate doctors and share their experiences.",
+    "about-us-what-we-offer-enhance-doctor-experience" => "Enhance Doctor Experience:",   
+    "about-us-what-we-offer-enhance-doctor-experience-description" => "Provide doctors with efficient organizational tools to manage their schedules and record patient data easily.",
+    "about-us-what-we-offer-for-further-information" => "For further information or any inquiries, feel free to reach out to us at:",
+    // About Us section
+
+    // Terms of Use
+    "terms-of-use" => "Website Terms Of Use",
+    // Terms of Use
+
+    // Advice section
     "advice" => "Advices",
     "advice-sub-title" => "Medix: Your Guide to a Better and More Fulfilling Life",
-    // advice section
+    // Advice section
     
-    //Start General Idea section
+    // General Idea section
     "general-idea-healthcare" => 'All your healthcare needs on Medix',
     "general-idea-healthcare-description" => "Search and book a clinic visit, home visit, or a teleconsultation. Order your medicine and book a service or operation.",
     "general-idea-reviews" => 'Verified patient reviews',
@@ -57,19 +81,19 @@ return [
     "general-idea-booking-description" => 'Your booking is automatically confirmed, as the doctor specifies his working hours and is notified of the booking details',
     "general-idea-pay" => 'Book for free, and pay in the clinic',
     "general-idea-pay-description" => 'The consultation fees stated on Vezeeta are the actual doctor\'s fees with no extra charges.',
-    //End General Idea section
+    // General Idea section
     
 
-    //contact us section
+    // Contact us section
     'contact-sub-title' => 'We will be happy to receive your inquiries and suggestions.',
     'full-name' => 'Full Name',
     'email-address' => 'Email Address',
     'subject' => 'Subject',
     'message' => 'Message*',
     'send-now' => 'Send Now',
-    //contact us section
+    // Contact us section
 
-    //footer section
+    // footer section
     "footer-project-summary" =>"Our web application aims to address these issues by enhancing the visibility of doctors to patients, providing comprehensive information about available healthcare providers, and facilitating seamless appointment scheduling. Additionally, the application helps patients manage their medical history by storing reports, prescriptions, and other pertinent data digitally, thus improving diagnostic accuracy and reducing costs associated with repeated tests. By offering a paperless solution, our platform streamlines healthcare processes, benefiting both patients and healthcare providers alike.",
     "footer-service-provider" => "Are You A Service Provider ?",
     "footer-contactUs" => "Contact Us",
@@ -78,6 +102,6 @@ return [
     'footer-address' => "Giza",
     'footer-copyright' => "Copyright © 2024 All rights reserved by: ",
     'footer-owners' => "Owners of Medix",
-    //footer section
+    // footer section
 
 ];

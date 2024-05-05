@@ -9,7 +9,8 @@ use App\Http\Controllers\Web\Pages\{
     AboutController,
     ProfileController,
     HomeController,
-    ContactUsController
+    ContactUsController,
+    TermsController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +46,13 @@ Route::middleware('guest')->group(function () {
     // About Routes
     Route::prefix('about')->name('about.')->group(function () {
 
-        Route::get('/', [AboutController::class, 'index'])->name('index');
+        // Route::get('/', [AboutController::class, 'index'])->name('index');
+        Route::view('/', 'web.pages.about.index')->name('index');
+    });    
+    // Terms Routes
+    Route::prefix('terms-of-use')->name('terms.')->group(function () {
+
+        Route::get('/', [TermsController::class, 'index'])->name('index');
     });   
 });
 

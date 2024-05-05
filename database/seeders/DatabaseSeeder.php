@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             RegionSeeder::class,
             MajorSeeder::class,
             AdviceSeeder::class,
+            TermsCondationSeeder::class,
         ]);
     }
 }
