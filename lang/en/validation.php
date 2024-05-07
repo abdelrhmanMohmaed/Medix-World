@@ -151,7 +151,7 @@ return [
         'summary.ar' => 'Summary in Arabic',
         'address.en' => 'Address in English',
         'address.ar' => 'Address in Arabic',
-        'clinicTels.0'=>'Clinic Tel',
+        'clinicTels.0' => 'Clinic Tel',
         'city_id' => 'City',
         'region_id'=> 'Region',
         'address' => 'Address',
@@ -161,6 +161,7 @@ return [
     ],
     
     'custom' => [
+        'failed' => 'These credentials do not match our records.',
         'name.ar' => [
             'required' => 'The :attribute field in Arabic is required.',
             'unique_translation' => 'The :attribute in Arabic has already been taken.',

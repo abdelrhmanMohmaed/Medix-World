@@ -103,7 +103,14 @@
                                 <h4 class="card-title">{{ __('services/services.register-services') }}</h4>
                                 <p class="text-muted mb-3">
                                     {{ __('services/services.register-services-hello') }}
+                                    <br>
+                                    <small>{{ __('website/web.register-already-registered') }}
+                                        <a href="{{ route('services.login') }}">
+                                            {{ __('website/web.login') }}
+                                        </a>
+                                    </small>
                                 </p>
+
 
                                 <form id="form" action="{{ route('services.register') }}" method="post"
                                     enctype="multipart/form-data" class="h-100">

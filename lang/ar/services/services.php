@@ -36,23 +36,24 @@ return [
     'register-services-clinic-tel' => 'هاتف العيادة',
     'register-services-booking-price' => 'سعر الحجز',
     'register-services-egp' => 'جنية',
-
-
-
-
     "register-services-already-registered" => "مسجلة بالفعل؟",
     "register-services-terms" => "بقيامك بالتسجيل فانت توافق على ",
     "register-services-terms-condations" => "الشروط و القوانين",
     "register-services-menu"=>"افتح هذه القائمة",
     // register section
 
+
     //login section
-    "login-login" => "تسجيل دخول مقدمي الخدمة",
-    // "login-hello" => "مرحبا، مرة أخرى في ميديكس",
+    "login-services-hello" => "مرحبًا بك! الرجاء تسجيل الدخول للمتابعة",
+    "login-services-login" => "تسجيل دخول مقدمي الخدمة", 
+    'login-services-remember-me' => 'تذكرنى',
+    "login-services" => "دخول",
+
+
+    
     // "login-happy" => "نحن سعداء بعودتك.", 
     // 'login-email-address' => 'البريد الالكترونى',
     // 'login-password' => 'كلمة المرور',
-    // 'login-remember-me' => 'تذكرنى',
     // 'login-forgot-password' => 'هل نسيت كلمة السر؟',
     // 'login-have-account' => 'ليس لديك حساب؟',
     // 'login-be-verified' => 'كن موثقًا:',
@@ -65,7 +66,6 @@ return [
     // "profile" => "الصفحة الشخصية",
     // "contact-us" => "أتصل بينا",
     // "Join" => "انضم إلى مقدمي خدمات",
-    // "login" => "دخول",
     // "logout" => "خروج",
     // "sign-up" => "انضم الأن",
     // // navbar section

@@ -160,6 +160,7 @@ return [
     ],
 
     'custom' => [
+        "failed" => "هذه البيانات الاعتمادية لا تتطابق مع سجلاتنا.",
         'name.ar' => [
             'required' => 'حقل :attribute مطلوب.',
             'unique_translation' => ':attribute مستخدم من قبل',
