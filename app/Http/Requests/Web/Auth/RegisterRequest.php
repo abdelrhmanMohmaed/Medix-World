@@ -25,12 +25,12 @@ class RegisterRequest extends FormRequest
     {
         return [
             'fullName' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase','email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'tel' => ['required',  ],
+            'tel' => ['required', 'string', 'regex:/^\+[0-9]{12}$/'],
             'dateOfBirth' => ['required', 'date'],
-            'gender' => ['required','in:1,2'],
-            "term" => ['required', 'accepted']
+            'gender' => ['required', 'in:1,2'],
+            'term' => ['required', 'accepted']
         ];
     }
 }

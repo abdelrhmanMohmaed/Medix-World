@@ -40,7 +40,7 @@
                 <h5 class="text-uppercase mb-4 font-weight-bold ">{{ __('website/web.footer-service-provider') }}
                 </h5>
                 <p>
-                    <a href="{{ route('services.login') }}" class="text-white">
+                    <a href="{{ route('services.register') }}" class="text-white">
                         {{ __('website/web.footer-sign-up') }}
                     </a>
                 </p>

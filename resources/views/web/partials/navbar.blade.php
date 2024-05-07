@@ -24,7 +24,7 @@
                     @endif
 
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="{{ route('services.login') }}">
+                        <a class="nav-link mx-lg-2" href="{{ route('services.register') }}">
                             {{ __('website/web.Join') }}
                         </a>
                     </li>

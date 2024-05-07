@@ -14,12 +14,17 @@ return new class extends Migration
         Schema::create('service_provider_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained(); 
+            $table->foreignId('city_id')->constrained(); 
+            $table->foreignId('region_id')->constrained(); 
+            $table->foreignId('title_id')->constrained(); 
             $table->foreignId('major_id')->constrained(); 
-            $table->string('img');
-            // ->default('assets/images/services/avatars/default.png');
+            $table->json('name');
             $table->json('summary');
             $table->json('address');
-            $table->json('price');
+            $table->float('price',8,2);
+            $table->string('img');
+            $table->string('medical_card');
+            $table->enum('status',['Pending','Approval','Reject'])->default('Pending');
             $table->timestamps();
         });
     }

@@ -138,12 +138,25 @@ return [
         'dateOfBirth' => 'تاريخ الميلاد',
         'gender' => "النوع",
         'term' => "شروط الاستخدام",
-
+        'profileImage' => 'صورة الملف الشخصي',
+        'major_id' => "التخصص",
+        'title_id' => 'اللقب',
+        'medical_association_card' => "بطاقة نقابة الأطباء",
 
         'message'=> 'التعليقات',
         'name.ar' => 'الاسم بالغة العربية',
         'name.en' => 'الاسم بالغة الأنجليزية',
+        'summary.ar' => 'الملخص بالغة العربية',
+        'summary.en' => 'الملخص بالغة الأنجليزية',
+        'address.ar' => 'العنوان بالغة العربية',
+        'clinicTels.0'=>'هاتف العيادة',
+        'address.en' => 'العنوان بالغة الأنجليزية',
         'city_id' => 'المدينة',
+        'region_id'=> 'المناطق',
+        'address' => 'العنوان',
+        'clinicTel' => 'هاتف العيادة',
+        'clinicTelTwo' => 'هاتف العيادة',
+        'bookingPrice' => 'سعر الحجز',
     ],
 
     'custom' => [
@@ -154,6 +167,12 @@ return [
         'name.en' => [
             'required' => 'حقل :attribute مطلوب.',
             'unique_translation' => ':attribute مستخدم من قبل',
+        ],
+        'summary.ar' => [
+            'required' => 'حقل :attribute مطلوب.',
+        ],        
+        'summary.en' => [
+            'required' => 'حقل :attribute مطلوب.',
         ],
         'city_id' => 'حقل :attribute مطلوب.',
     ],

@@ -26,9 +26,12 @@ use App\Http\Controllers\Services\Pages\{
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::get('axios/region/{id}', [RegisteredUserController::class, 'axiosRegion'])->name('axios.region');
+
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
 });
 
 // (authentication is required)
