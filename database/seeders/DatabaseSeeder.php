@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             RegionSeeder::class,
             MajorSeeder::class,
+            TitleSeeder::class,
             AdviceSeeder::class,
             TermsCondationSeeder::class,
         ]);

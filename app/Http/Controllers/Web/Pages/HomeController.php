@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index() : View 
     {
-        $advices = Advice::get();
+        $advices = Advice::active()->get();
 
         return view('welcome',
     compact(['advices']));    

@@ -134,16 +134,30 @@ return [
         'fullName'=> 'Full Name',
         'email'=> 'Email',
         'password' => 'Password',
-        'tel' => 'Mobile Number',
+        'tel' => 'Tel Number',
         'dateOfBirth' => 'Birth Date',
         'gender' => "Gender",
         'term' => "Terms of use",
+        'profileImage' => 'Profile Image',
+        'major_id' => "Specialization",
+        'title_id' => 'Title',
+        'medical_association_card' => 'Medical Association Card',
 
-
+        
         'message' => 'Message',
-        'name.ar' => 'Name in Arabic',
         'name.en' => 'Name in English',
+        'name.ar' => 'Name in Arabic',
+        'summary.en' => 'Summary in English',
+        'summary.ar' => 'Summary in Arabic',
+        'address.en' => 'Address in English',
+        'address.ar' => 'Address in Arabic',
+        'clinicTels.0'=>'Clinic Tel',
         'city_id' => 'City',
+        'region_id'=> 'Region',
+        'address' => 'Address',
+        'clinicTel' => 'clinic Tel',
+        'clinicTelTwo' => 'clinic Tel',
+        'bookingPrice' => 'Booking Price',
     ],
     
     'custom' => [
@@ -154,6 +168,12 @@ return [
         'name.en' => [
             'required' => 'The :attribute field in English is required.',
             'unique_translation' => 'The :attribute in English has already been taken.',
+        ],
+        'summary.ar' => [
+            'required' => 'The :attribute field in Arabic is required.', 
+        ],
+        'summary.en' => [
+            'required' => 'The :attribute field in English is required.', 
         ],
         'city_id' => 'The :attribute field is required.',
     ],

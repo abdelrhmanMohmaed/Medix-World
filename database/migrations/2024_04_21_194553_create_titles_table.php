@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service_provider_certificates', function (Blueprint $table) {
+        Schema::create('titles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained(); 
-            $table->string('certificate'); 
+            $table->string('title');
+            $table->boolean('active')->default(false);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service_provider_certificates');
+        Schema::dropIfExists('titles');
     }
 };
