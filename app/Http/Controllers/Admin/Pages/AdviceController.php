@@ -33,20 +33,22 @@ class AdviceController extends Controller
             
             if ($request->hasFile('img')) 
             {
-                $path = 'assets/images/advices';
+                $path = 'assets/images/advices/';
                 $fileName = $this->handleFileUpload($request->file('img'),$path);
             }
 
             Advice::create([ 
                 'user_id' => Auth::id() ?? 1,  
                 'title' => [
-                    'en' => $request->title['en'],
-                    'ar' => $request->title['ar'],
-                    ],
+                    'en' => $request->input('title.en'),
+                    'ar' => $request->input('title.ar'),
+                ],
                 'description' => [
-                    'en' => $request->description['en'],
-                    'ar' => $request->description['ar'],
+                    'title' => [
+                        'en' => $request->input('description.en'),
+                        'ar' => $request->input('description.ar'),
                     ],
+                ],
                 'img' => ($fileName)? $fileName : 'assets/images/advices/default.png',
             ]);
 

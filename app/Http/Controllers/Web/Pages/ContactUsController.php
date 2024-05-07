@@ -14,10 +14,10 @@ class ContactUsController extends Controller
     {
         try {
             ContactUs::create([   
-                "name" => $request->fullName,
-                "email" => $request->email,
-                "subject" => $request->subject,
-                "message" => $request->message,
+                "name" => $request->input("fullName"),
+                "email" => $request->input("email"),
+                "subject" => $request->input("subject"),
+                "message" => $request->input("message"),
             ]);
 
             return redirect()->back();

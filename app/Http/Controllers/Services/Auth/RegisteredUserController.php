@@ -55,9 +55,9 @@ class RegisteredUserController extends Controller
                 'gender' => $request->input("gender"),
             ]); 
 
-            $avatarPath = 'services/avatars';
+            $avatarPath = 'assets/images/services/avatars/';
             $avatarName =$this->handleFileUpload($request->file("profileImage"), $avatarPath);
-            $medicalCardPath = 'services/medicalCard';
+            $medicalCardPath = 'assets/images/services/medicalCard/';
             $medicalCardName =$this->handleFileUpload($request->file("medical_association_card"), $medicalCardPath);
 
             ServiceProviderDetails::create([

@@ -37,20 +37,21 @@ return [
     'register-services-booking-price' => 'Booking Price',
     'register-services-egp' => 'EGP',
 
-
-
     "register-services-already-registered" => "Already registered?",
     "register-services-terms" => "By signing up you agree to our ",
     "register-services-terms-condations" => "Terms of use",
     // register section
 
     // login section
-    "login-login" => "Service Providers Login",
+    "login-services-login" => "Service Providers Login",
+    'login-services-remember-me' => 'Remember Me',
+    "login-services" => "Login",
+    "login-services-hello" => "Welcome! Please log in to continue",
+
     // "login-hello" => "Hello,Again in Medix", 
     // "login-happy" => "We are happy to have you back.", 
     // 'login-email-address' => 'Email Address',
     // 'login-password' => 'Password',
-    // 'login-remember-me' => 'Remember Me',
     // 'login-forgot-password' => 'Forgot Password?',
     // 'login-have-account' => 'Don\'t have account?',
     // 'login-be-verified' => 'Be Verified:',
