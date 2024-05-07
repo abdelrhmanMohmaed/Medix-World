@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Phone extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','tel'];
+    protected $fillable = ['user_id','tel','active'];
 }

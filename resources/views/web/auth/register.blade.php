@@ -11,7 +11,7 @@
 
 @section('main')
     <!-- register Container -->
-    <section id="register" class="container d-flex justify-content-center align-items-center min-vh-100 p-5">
+    <section id="register" class="container d-flex justify-content-center align-items-center min-vh-100 pt-3 pb-5">
         <div class="row border rounded-5 p-3 bg-white shadow box-area">
             <!-- Right Box -->
             <div class="col-md-12 right-box">
@@ -71,8 +71,8 @@
 
                         <label for="date_of_birth">{{ __('website/web.register-date') }}*</label>
                         <div class="input-group my-2">
-                            <input type="date" id="date_of_birth" required name="dateOfBirth" autofocus autocomplete="bday-day"
-                                value="{{ old('dateOfBirth') }}" @class([
+                            <input type="date" id="date_of_birth" required name="dateOfBirth" autofocus
+                                autocomplete="bday-day" value="{{ old('dateOfBirth') }}" @class([
                                     'form-control form-control-lg bg-light fs-6',
                                     'is-invalid' => $errors->has('dateOfBirth'),
                                 ])>

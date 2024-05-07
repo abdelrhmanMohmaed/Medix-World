@@ -3,50 +3,113 @@
 namespace App\Http\Controllers\Services\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Services\Auth\RegisterRequest;
+use App\Models\City;
+use App\Models\Major;
+use App\Models\Phone;
+use App\Models\Region;
+use App\Models\ServiceProviderDetails;
+use App\Models\Title;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Traits\UploadTrait;
+use Exception;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
+    use UploadTrait;
     public function create(): View
     {
-        return view('service.auth.register');
+        $majors = Major::active()->get();
+        $titles = Title::active()->get();
+        $cities = City::active()->get();
+
+        return view('service.auth.register',
+        compact(['majors','titles','cities'])
+            );
     }
-
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(Request $request): RedirectResponse
+    public function axiosRegion($id) 
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        $regions = Region::whereCityId($id)->get();
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]); 
+        return view('service.auth.partials.regions',compact('regions'));
+    }
+    
+    public function store(RegisterRequest $request): RedirectResponse
+    {
+        try {
+            // dd($request->all());
+            DB::beginTransaction();
+            $user = User::create([
+                'name' => $request->input("name.en"),
+                'email' => $request->input("email"),
+                'password' => $request->input("password"),
+                'dateOfBirth' => $request->input("dateOfBirth"),
+                'gender' => $request->input("gender"),
+            ]); 
 
-        $user->assignRole('Service Providers');
-        event(new Registered($user));
-        
-        Auth::guard('service_provider')->login($user);
+            $avatarPath = 'services/avatars';
+            $avatarName =$this->handleFileUpload($request->file("profileImage"), $avatarPath);
+            $medicalCardPath = 'services/medicalCard';
+            $medicalCardName =$this->handleFileUpload($request->file("medical_association_card"), $medicalCardPath);
 
-        return redirect()->intended(route('services.dashboard.index',app()->getLocale()));
+            ServiceProviderDetails::create([
+                'user_id' => $user->id,
+                'city_id' => $request->input("city_id"),
+                'region_id' => $request->input("region_id"),
+                'title_id' => $request->input("title_id"),
+                'major_id' => $request->input("major_id"),
+
+                'name' => [
+                        'en' => $request->input("name.en"),
+                        'ar' => $request->input("name.ar")
+                    ],
+                'summary' => [
+                        'en' => $request->input("summary.en"),
+                        'ar' => $request->input("summary.ar")
+                    ],
+                'address' => [
+                    'en' => $request->input("address.en"),
+                    'ar' => $request->input("address.ar")
+                ],
+                'price' => $request->input("bookingPrice"),
+
+                'img' => $avatarName,
+                'medical_card' => $medicalCardName,
+            ]);
+            
+            if ($request->has('clinicTels')) {
+                foreach ($request->input("clinicTels") as $item) {
+                    if (!empty($item)) {
+                        Phone::create([
+                            'user_id' => $user->id,
+                            'tel' => $item,
+                            'active' => 1,
+                        ]);
+                    }
+                }
+            }
+            
+            
+
+            $user->assignRole('Service Providers');
+            event(new Registered($user));
+            Auth::guard('service_provider')->login($user);
+
+            DB::commit();
+
+            return redirect()->intended(route('services.dashboard.index',app()->getLocale()));
+        } catch (Exception $e) {
+            DB::rollback();
+            dd($e->getMessage());  
+            return redirect()->back();  
+        }
     }
 }
