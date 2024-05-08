@@ -66,12 +66,12 @@
             }
 
             /*  open this condation after finish */
-            /* @if ($dir == 'rtl')
+            @if ($dir == 'rtl')
             .wizard>.actions {
                 text-align: left;
             }
             @endif
-            */
+           
         </style>
     </head>
 
@@ -245,7 +245,7 @@
 
                                                 <div class="col-md-9">
                                                     <input type="email" class="form-control  form-control-sm"
-                                                        name="email" required id="email" required autofocus
+                                                        name="email" id="email" required autofocus old('email')
                                                         autocomplete="username" placeholder="example@domin.com">
                                                     @error('email')
                                                         <small class="text-danger">
@@ -494,10 +494,10 @@
                                                     class="col-md-3 col-form-label">{{ __('services/services.register-services-clinic-tel') }}*</label>
                                                 <div class="col-md-9">
                                                     <input type="tel" id="clinic_tel" required
-                                                        value="{{ old('clinicTels.0') }}" name="clinicTels[0]"
+                                                        value="{{ old('clinicTel') }}" name="clinicTel"
                                                         placeholder="+2001123549745" autocomplete="tel"
-                                                        class="form-control form-control-sm bg-light fs-6 @error('clinicTels.0') is-invalid @enderror">
-                                                    @error('clinicTels.0')
+                                                        class="form-control form-control-sm bg-light fs-6 @error('clinicTel') is-invalid @enderror">
+                                                    @error('clinicTel')
                                                         <small class="text-danger">&#x2022; {{ $message }}</small>
                                                     @enderror
                                                 </div>
@@ -508,10 +508,10 @@
                                                     class="col-md-3 col-form-label">{{ __('services/services.register-services-clinic-tel') }}</label>
                                                 <div class="col-md-9">
                                                     <input type="tel" id="clinic_tel_two"
-                                                        value="{{ old('clinicTels.1') }}" name="clinicTels[1]"
+                                                        value="{{ old('clinicTelTwo') }}" name="clinicTelTwo"
                                                         placeholder="+2001123549745" autocomplete="tel"
-                                                        class="form-control form-control-sm bg-light fs-6 @error('clinicTels.1') is-invalid @enderror">
-                                                    @error('clinicTels.1')
+                                                        class="form-control form-control-sm bg-light fs-6 @error('clinicTelTwo') is-invalid @enderror">
+                                                    @error('clinicTelTwo')
                                                         <small class="text-danger">&#x2022; {{ $message }}</small>
                                                     @enderror
                                                 </div>
@@ -524,9 +524,9 @@
                                                     class="col-md-3 col-form-label">{{ __('services/services.register-services-booking-price') }}({{ __('services/services.register-services-egp') }})*</label>
 
                                                 <div class="col-md-9">
-                                                    <input type="number" id="booking_price" required
+                                                    <input type="number" id="booking_price" required step="0.01" min="0.00"
                                                         name="bookingPrice" required placeholder="250"
-                                                        value="{{ old('bookingPrice') }}" autocomplete="tel"
+                                                        value="{{ old('bookingPrice') }}"
                                                         @class(['form-control form-control-sm bg-light fs-6'])>
                                                     @error('bookingPrice')
                                                         <small class="text-danger">

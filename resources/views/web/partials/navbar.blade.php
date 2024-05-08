@@ -23,11 +23,19 @@
                         </li>
                     @endif
 
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="{{ route('services.register') }}">
-                            {{ __('website/web.Join') }}
-                        </a>
-                    </li>
+                    @if (auth()->guard('service_provider')->check())
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="{{ route('services.dashboard.index') }}">
+                                {{ __('website/web.profile') }}
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="{{ route('services.register') }}">
+                                {{ __('website/web.Join') }}
+                            </a>
+                        </li>
+                    @endif
 
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2"
@@ -36,7 +44,8 @@
 
                     @if (app()->getLocale() == 'en')
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="{{ LaravelLocalization::getLocalizedURL('ar') }}">عربي</a>
+                            <a class="nav-link mx-lg-2"
+                                href="{{ LaravelLocalization::getLocalizedURL('ar') }}">عربي</a>
                         </li>
                     @else
                         <li class="nav-item">
@@ -50,6 +59,10 @@
         </div>
 
         @if (auth()->guard('web')->check())
+            <a class="login-button" href="{{ route('website.logout') }}">
+                {{ __('website/web.logout') }}
+            </a>
+        @elseif (auth()->guard('service_provider')->check())
             <a class="login-button" href="{{ route('website.logout') }}">
                 {{ __('website/web.logout') }}
             </a>
