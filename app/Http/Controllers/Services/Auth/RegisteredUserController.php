@@ -84,20 +84,23 @@ class RegisteredUserController extends Controller
                 'img' => $avatarName,
                 'medical_card' => $medicalCardName,
             ]);
-            
-            if ($request->has('clinicTels')) {
-                foreach ($request->input("clinicTels") as $item) {
-                    if (!empty($item)) {
-                        Phone::create([
-                            'user_id' => $user->id,
-                            'tel' => $item,
-                            'active' => 1,
-                        ]);
-                    }
+
+            Phone::create([
+                'user_id' => $user->id,
+                'tel' => $request->input("clinicTel"),
+                'active' => 1,
+            ]);
+
+            if ($request->has('clinicTelTwo')) { 
+                if (!empty($request->input('clinicTelTwo'))) { 
+                    
+                    Phone::create([
+                        'user_id' => $user->id,
+                        'tel' => $request->input('clinicTelTwo'),
+                        'active' => 1,
+                    ]);
                 }
             }
-            
-            
 
             $user->assignRole('Service Providers');
             event(new Registered($user));

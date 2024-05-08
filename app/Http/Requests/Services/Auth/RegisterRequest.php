@@ -39,8 +39,8 @@ class RegisterRequest extends FormRequest
             'bookingPrice' => ['required', 'numeric', 'min:0'],
             'profileImage'=>['required','image','max:2048'],
             'medical_association_card' => ['required','image','max:2048' ],
-            'clinicTels.0' => ['required', 'array', 'string', 'regex:/^\+[0-9]/'],
-            'clinicTels.1' => ['nullable', 'string', 'regex:/^\+[0-9]/'],
+            'clinicTel' => ['required', 'string', 'regex:/^\+[0-9]/'],
+            'clinicTelTwo' => ['nullable', 'string', 'regex:/^\+[0-9]/'],
             'term' => ['required', 'accepted'],
         ];
     }
