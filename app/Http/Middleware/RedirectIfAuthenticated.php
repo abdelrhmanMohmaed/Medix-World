@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 $url = match ($guard) {
                     'admin' => route('admins.dashboard.index',app()->getLocale()),
-                    'service_provider' => route('services.dashboard',app()->getLocale()),
+                    'service_provider' => route('services.dashboard.index',app()->getLocale()),
                     default => route('website.welcome'),
                 };
 

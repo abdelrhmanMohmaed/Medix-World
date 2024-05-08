@@ -23,7 +23,7 @@ use App\Http\Controllers\Services\Pages\{
 
 
 // lang (en, ar)/ services
-Route::middleware('guest')->group(function () {
+Route::middleware('guest:service_provider')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
     Route::post('register', [RegisteredUserController::class, 'store']);
     Route::get('axios/region/{id}', [RegisteredUserController::class, 'axiosRegion'])->name('axios.region');
