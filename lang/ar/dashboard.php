@@ -31,9 +31,21 @@ return [
     'title-advice-ar'=>  '(ar) عنوان النصيحة',
     'description-advice-en'=>  '(en) وصف النصيحة',
     'description-advice-ar'=>  '(ar) وصف النصيحة',
+
+    // service provider
+
+    'service-provider' => 'مقدمي الخدمة',
+    'service-provider-requests' => 'طلبات مقدمي الخدمة',
+    'name-service-provider-en'=>  '(ar) أسم مقدم الخدمة',
+    'name-service-provider-ar'=>  '(en) أسم مقدم الخدمة',
+    'service-provider-view-request' => 'عرض الطلب',
+
     // end label
 
+
+    
     'submit'=>  'حفظ',
     'select-city'=>  'أختار المدينة',
-    'actions'=>  'أجراءات'
+    'actions'=>  'أجراءات',
+    'status' => 'الحالة'
 ];
