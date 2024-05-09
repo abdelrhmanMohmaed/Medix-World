@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\ServiceProviderDetails;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -31,6 +34,8 @@ class DatabaseSeeder extends Seeder
             TitleSeeder::class,
             AdviceSeeder::class,
             TermsCondationSeeder::class,
+            ServiceProviderDetailsSeeder::class
         ]);
+
     }
 }
