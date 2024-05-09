@@ -1,21 +1,21 @@
 $(document).ready(function () {
     // function search(ul) {
 
-    $('.select2').select2();
+    // $('.select2').select2();
 
-    const ul = document.querySelector('#dropdown-menu-major')
-    const search = ul.querySelector('#search')
-    const li = ul.querySelectorAll('li')
+    // const ul = document.querySelector('#dropdown-menu-major')
+    // const search = ul.querySelector('#search')
+    // const li = ul.querySelectorAll('li')
 
-    search.addEventListener("input", function () {
-        li.forEach(el => {
-            if (el.textContent.includes(search.value)) {
-                el.classList.remove("d-none")
-            } else {
-                el.classList.add("d-none")
-            }
-        })
-    })
+    // search.addEventListener("input", function () {
+    //     li.forEach(el => {
+    //         if (el.textContent.includes(search.value)) {
+    //             el.classList.remove("d-none")
+    //         } else {
+    //             el.classList.add("d-none")
+    //         }
+    //     })
+    // })
     // }
 
 

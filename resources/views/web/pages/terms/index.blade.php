@@ -10,10 +10,6 @@
             background: #EEF0F2;
         }
 
-        #terms {
-            margin: 70px 0 30px 0;
-        }
-
         h1 {
             color: #5459CE;
         }
@@ -21,8 +17,13 @@
 @endsection
 
 @section('main')
+
+    <!-- Start Search Navbar -->
+    @include('web.partials.navbarSearch')
+    <!-- End Search Navbar -->
+
     <!-- Start About Section -->
-    <section id="terms" class="py-3 py-md-5 py-xl-8">
+    <section id="terms" class="mb-5">
         <div class="container">
             <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
                 <div class="col-12 col-lg-12 col-xl-12">
@@ -33,7 +34,7 @@
                                 <h2 class="h3 mb-3">{{ @$item->getTranslation('title', app()->getLocale()) }}</h2>
                                 <p class="text-secondary mb-3">
                                     {{ $item->getTranslation('description', app()->getLocale()) }}
-                                </p> 
+                                </p>
                                 <p class="text-secondary" style="margin: 0 30px 20px 30px">
                                     {{ $item->getTranslation('sub_description', app()->getLocale()) }}
                                 </p>

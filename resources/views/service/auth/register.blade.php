@@ -67,11 +67,10 @@
 
             /*  open this condation after finish */
             @if ($dir == 'rtl')
-            .wizard>.actions {
-                text-align: left;
-            }
+                .wizard>.actions {
+                    text-align: left;
+                }
             @endif
-           
         </style>
     </head>
 
@@ -80,10 +79,11 @@
     <section class="container py-3 d-flex justify-content-center align-items-center min-vh-100 ">
         <div class="row border rounded-5 p-3 bg-white shadow box-area w-100 h-100">
             <!-- Left Box -->
-            <div class="col-md-3 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-                style="background: #5459CE;">
+            <div class="col-md-3 my-2 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+                style="background: #96BBC5;">
                 <div class="featured-image mb-3">
-                    <img src="{{ asset('assets/images/user/login/1.png') }}" class="img-fluid" style="width: 250px;">
+                    <img src="{{ asset('assets/images/user/register/default.jpg') }}" class="img-fluid"
+                        style="width: 250px;">
                 </div>
                 <p class="text-white fs-2" style="font-weight: 600;">
                     {{ __('website/web.login-be-verified') }}
@@ -97,7 +97,7 @@
             <!-- Right Box -->
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 my-2">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">{{ __('services/services.register-services') }}</h4>
@@ -410,8 +410,8 @@
                                                     class="col-md-3 col-form-label">{{ __('services/services.register-services-cities') }}*</label>
 
                                                 <div class="col-md-9">
-                                                    <select name="city_id" id="city" required
-                                                        class="form-control  form-control-sm form-control-sm bg-light fs-6 select2 city">
+                                                    <select name="city_id" required
+                                                        class="city form-control form-control-sm form-control-sm bg-light fs-6 select2 city">
                                                         <option selected disabled>
                                                             {{ __('services/services.register-services-menu') }}
                                                         </option>
@@ -524,8 +524,8 @@
                                                     class="col-md-3 col-form-label">{{ __('services/services.register-services-booking-price') }}({{ __('services/services.register-services-egp') }})*</label>
 
                                                 <div class="col-md-9">
-                                                    <input type="number" id="booking_price" required step="0.01" min="0.00"
-                                                        name="bookingPrice" required placeholder="250"
+                                                    <input type="number" id="booking_price" required step="0.01"
+                                                        min="0.00" name="bookingPrice" required placeholder="250"
                                                         value="{{ old('bookingPrice') }}"
                                                         @class(['form-control form-control-sm bg-light fs-6'])>
                                                     @error('bookingPrice')
@@ -580,7 +580,7 @@
         $(document).ready(function() {
             $('.select2').select2();
 
-            $('#city').change(function() {
+            $('.city').change(function() {
                 var cityId = $(this).val();
 
                 var axiosUrl = "{{ route('services.axios.region', ':cityId') }}";

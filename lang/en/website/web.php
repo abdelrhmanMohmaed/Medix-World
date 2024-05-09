@@ -30,7 +30,7 @@ return [
     'login-remember-me' => 'Remember Me',
     'login-forgot-password' => 'Forgot Password?',
     'login-have-account' => 'Don\'t have account?',
-    'login-be-verified' => 'Be Verified:',
+    'login-be-verified' => 'Be Verified',
     'login-be-verified-summary' => 'Join skilled Healthcare Professionals on this platform.',
     // login section
 
@@ -42,6 +42,12 @@ return [
     "login" => "Login",
     "logout" => "Logout",
     "sign-up" => "Sign Up",
+    "choose-specialty" => "Choose Specialty",
+    'website/web.choose-specialty-all' => 'All Cities',
+    "choose-city" => "Choose City",
+    'website/web.choose-area-all' => 'All Areas',
+    "choose-area" => "Choose Area",
+    "choose-search" => "Search",
     // Navbar section
 
     // About Us section
