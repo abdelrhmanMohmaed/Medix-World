@@ -12,7 +12,8 @@ trait UploadTrait
     {
         $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path($path), $fileName);
+        $filePath = $path.$fileName;
 
-        return $fileName; 
+        return $filePath; 
     }
 }

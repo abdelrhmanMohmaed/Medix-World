@@ -4,6 +4,24 @@ return [
     "medix-title" => "Medix",
     "medix-welcome" => "The best ways to care",
 
+    // Page after search
+    'provider-male' => 'Doctor',
+    'provider-female' => 'Doctor',
+    'provider-read-more' => 'Read More',
+    'provider-read-less' => 'Read Less',
+    'provider-all-specialty' => 'All Specialities',
+    'provider-booking-price' => 'Cost of regular call',
+
+    // Page after search
+
+
+
+
+
+
+
+
+
     // register section
     "register" => "Join Now",
     "register-hello"=>"Join Our Healthcare Community.",
@@ -101,9 +119,10 @@ return [
 
     // footer section
     "footer-project-summary" =>"Our web application aims to address these issues by enhancing the visibility of doctors to patients, providing comprehensive information about available healthcare providers, and facilitating seamless appointment scheduling. Additionally, the application helps patients manage their medical history by storing reports, prescriptions, and other pertinent data digitally, thus improving diagnostic accuracy and reducing costs associated with repeated tests. By offering a paperless solution, our platform streamlines healthcare processes, benefiting both patients and healthcare providers alike.",
-    "footer-service-provider" => "Are You A Service Provider ?",
+    "footer-service-provider" => "Don't have an account yet ?",
     "footer-contactUs" => "Contact Us",
     "footer-sign-up" => "Join Medix Service Provider",
+    "footer-user-sign-up" => "Register a new account",
     'footer-about-us' => "About Us",
     'footer-address' => "Giza",
     'footer-copyright' => "Copyright © 2024 All rights reserved by: ",

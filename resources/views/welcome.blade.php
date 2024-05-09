@@ -86,6 +86,7 @@
         #advice {
             background: #EEF0F2;
         }
+
         /* End Contact Us */
     </style>
 @endsection
@@ -168,8 +169,7 @@
                             <div class="card">
                                 <img src="{{ asset($item->img) }}" loading="lazy" class="card-img-top" alt="advices">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $item->getTranslation('title', app()->getLocale()) }}
-                                    </h5>
+                                    <h5 class="card-title">{{ $item->getTranslation('title', app()->getLocale()) }}</h5>
                                     <p class="card-text">
                                         {{ $item->getTranslation('description', app()->getLocale()) }}
                                     </p>

@@ -29,7 +29,8 @@ use Illuminate\Support\Facades\Route;
 // Landing page 
 Route::get('/',[HomeController::class, 'index'])->name('welcome');
 Route::get('axios/region/{id}', [HomeController::class, 'axiosRegion'])->name('axios.region');
-Route::post('search/service-provider', [HomeController::class, 'search'])->name('search.service-provider');
+Route::get('search/service-provider', [HomeController::class, 'search'])->name('search.service-provider');
+Route::get('search/service-provider/{serviceProvider}', [HomeController::class, 'show'])->name('search.service-provider.show');
 
 
 
