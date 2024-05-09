@@ -1,4 +1,4 @@
-<section style="padding-top: 1.5rem;">
+<section id="nav_search" style="padding-top: 1.5rem;">
     <div class="w-100 contad-flex d-flex align-items-center justify-content-center fs-1 text-white flex-column">
         <div class="row row-cols-1 row-cols-md-3 g-4 py-5 w-100">
             <div class="col-md-12">
@@ -8,16 +8,15 @@
                             <img src="{{ asset('assets/images/user/landing/default.jpg') }}" loading="lazy" class="img-fluid"
                                 style="width: 100%; height: 180px; background-size:cover">
                         </div>
-                        <form action="{{ route('website.search.service-provider') }}" method="post">
-                            @csrf
+                        <form action="{{ route('website.search.service-provider') }}" method="get">
                             
                             <div class="button-container position-absolute top- start-50 translate-middle"
                                 style="z-index: 2;">
                                 <div class="btn-custom btn-group w-25">
-                                    <select class="form-select select2 w-100" name="major_id">
+                                    <select class="form-select select2 w-100" name="major">
                                         <option selected disabled>{{ __('website/web.choose-specialty') }}</option>
                                         @foreach ($allMajors as $item)
-                                            <option value="{{ $item->id }}" >
+                                            <option value="{{ $item->id }}">
                                                 {{ $item->getTranslation('name', app()->getLocale()) }}
                                             </option>
                                         @endforeach
@@ -25,7 +24,7 @@
                                 </div>
 
                                 <div class="btn-custom btn-group w-25">
-                                    <select class="city form-select select2 w-100" name="city_id">
+                                    <select class="city form-select select2 w-100" name="city">
                                         <option selected disabled>{{ __('website/web.choose-city') }}</option>
                                         <option value="allCities">
                                             {{ __('website/web.website/web.choose-specialty-all') }}
@@ -39,7 +38,7 @@
                                 </div>
 
                                 <div class="btn-custom btn-group w-25">
-                                    <select class="region form-select select2 w-100" name="area_id">
+                                    <select class="region form-select select2 w-100" name="area">
                                         <option selected disabled>{{ __('website/web.choose-area') }}</option>
                                         <option value="allAreas">
                                             {{ __('website/web.website/web.choose-area-all') }}

@@ -14,8 +14,6 @@
         h1 {
             color: #5459CE;
         }
-
-        
     </style>
 @endsection
 
@@ -118,32 +116,32 @@
                                     <div class="d-flex">
                                         <div class="me-4 icon">
                                             <i class="fas fa-user-md fa-2x ms-4" {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }} --}} "></i>
-                                                </div>
-                                                <div>
-                                                    <h4 class="mb-3">
-                                                        {{ __('website/web.about-us-what-we-offer-enhance-doctor-experience') }}
-                                                    </h4>
-                                                    <p class="text-secondary mb-0">
-                                                        {{ __('website/web.about-us-what-we-offer-enhance-doctor-experience-description') }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                    </div>
+                                                    <div>
+                                                        <h4 class="mb-3">
+                                                            {{ __('website/web.about-us-what-we-offer-enhance-doctor-experience') }}
+                                                        </h4>
+                                                        <p class="text-secondary mb-0">
+                                                            {{ __('website/web.about-us-what-we-offer-enhance-doctor-experience-description') }}
+                                                        </p>
+                                            </li>
+                                        </ul>
 
-                                    <p class="mb-0">{{ __('website/web.about-us-what-we-offer-for-further-information') }}
-                                        <a href="mailto:medix@world.com">medix@world.com</a>
-                                    </p>
-                                    <!-- Contact Information Goes Here -->
+                                        <p class="mb-0">{{ __('website/web.about-us-what-we-offer-for-further-information') }}
+                                            <a href="mailto:medix@world.com">medix@world.com</a>
+                                        </p>
+                                        <!-- Contact Information Goes Here -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- End About Section -->
+            </div>
+        </section>
+                <!-- End About Section -->
 @endsection
 
 @section('scripts')
-            <script src="{{ asset('assets/js/user/OAuth.js') }}"></script>
+                <script src="{{ asset('assets/js/user/OAuth.js') }}"></script>
 @endsection

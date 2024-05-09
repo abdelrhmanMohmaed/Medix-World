@@ -35,7 +35,7 @@
 
     <style>
         /* search navbar */
-        .button-container {
+        #nav_search .button-container {
             top: 75%;
             left: 50%;
             width: 75%;
@@ -44,11 +44,11 @@
             justify-content: center;
         }
 
-        .btn-custom {
+        #nav_search .btn-custom {
             margin: 2px;
         }
 
-        .card-bady-search::after {
+        #nav_search .card-bady-search::after {
             content: "";
             position: absolute;
             top: 0;
@@ -60,20 +60,20 @@
             z-index: 1;
         }
 
-        .btn-custom button {
+        #nav_search .btn-custom button {
             text-align: start;
         }
 
-        .btn-custom button::after {
+        #nav_search .btn-custom button::after {
             display: none
         }
 
-        .select2-selection__rendered {
+        #nav_search .select2-selection__rendered {
             font-size: 16px !important;
         }
 
         /* Style for the custom select */
-        .select2-container .select2-selection--single {
+        #nav_search .select2-container .select2-selection--single {
             background-color: #dc293b;
             border-radius: 5px;
             padding: 0.375rem 0.75rem;
@@ -83,17 +83,17 @@
             height: auto !important;
         }
 
-        .select2-container--default .select2-selection--single .select2-selection__arrow {
+        #nav_search .select2-container--default .select2-selection--single .select2-selection__arrow {
             color: white;
             height: calc(1.5em + .75rem);
             background-color: #dc293b;
         }
 
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
+        #nav_search .select2-container--default .select2-selection--single .select2-selection__rendered {
             color: white
         }
 
-        .select2 .select2-container .select2-container--default {
+        #nav_search .select2 .select2-container .select2-container--default {
             width: 100% !important;
         }
 

@@ -66,11 +66,11 @@
             }
 
             /*  open this condation after finish */
-            @if ($dir == 'rtl')
+            /* @if ($dir == 'rtl')
                 .wizard>.actions {
                     text-align: left;
                 }
-            @endif
+            @endif */
         </style>
     </head>
 
@@ -80,7 +80,7 @@
         <div class="row border rounded-5 p-3 bg-white shadow box-area w-100 h-100">
             <!-- Left Box -->
             <div class="col-md-3 my-2 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
-                style="background: #96BBC5;">
+                style="background: #9EBFC8;">
                 <div class="featured-image mb-3">
                     <img src="{{ asset('assets/images/user/register/default.jpg') }}" class="img-fluid"
                         style="width: 250px;">

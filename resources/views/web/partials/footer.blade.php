@@ -1,6 +1,6 @@
 <!-- Start footer Section -->
 <footer class="text-white pt-3 pb-2" style="background-color: #5459CE">
-    <div class="container-fluid text-md-left">
+    <div class="container text-md-left">
         <div class="row text-md-left">
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold">Medix World</h5>
@@ -20,30 +20,13 @@
                     </a>
                 </p>
             </div>
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold ">Production</h5>
-                <p>
-                    <a href="#" class="text-white">test</a>
-                </p>
-                <p>
-                    <a href="#" class="text-white">test</a>
-                </p>
-                <p>
-                    <a href="#" class="text-white">test</a>
-                </p>
-                <p>
-                    <a href="#" class="text-white">test</a>
-                </p>
-            </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold ">{{ __('website/web.footer-service-provider') }}
-                </h5>
-                <p>
-                    <a href="{{ route('services.register') }}" class="text-white">
-                        {{ __('website/web.footer-sign-up') }}
-                    </a>
-                </p>
+                <h5 class="text-uppercase mb-4 font-weight-bold ">{{ __('website/web.footer-service-provider') }}</h5>
+                <p><a href="{{ route('services.register') }}"
+                        class="text-white">{{ __('website/web.footer-sign-up') }}</a></p>
+                <p><a href="{{ route('website.register') }}"
+                        class="text-white">{{ __('website/web.footer-user-sign-up') }}</a></p>
             </div>
 
             <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mt-3">
@@ -137,7 +120,7 @@
     $(document).ready(function() {
         $('.select2').select2();
     });
-    
+
     $('.city').change(function() {
         var cityId = $(this).val();
 
