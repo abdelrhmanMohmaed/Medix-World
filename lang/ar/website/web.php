@@ -31,8 +31,15 @@ return [
     'login-remember-me' => 'تذكرنى',
     'login-forgot-password' => 'هل نسيت كلمة السر؟',
     'login-have-account' => 'ليس لديك حساب؟',
-    'login-be-verified' => 'كن موثقًا:',
+    'login-be-verified' => 'كن موثقًا',
     'login-be-verified-summary' => 'انضم إلى متخصصي الرعاية الصحية المهرة على هذه المنصة.',
+    
+    "choose-specialty" => "اختر التخصص",
+    "choose-city" => "اختر مدينة",
+    'website/web.choose-specialty-all' => 'كل المحافظات',
+    "choose-area" => "اختيار المنطقة",
+    'website/web.choose-area-all' => 'كل المناطق',
+    "choose-search" => "بحث",
     //login section
 
 

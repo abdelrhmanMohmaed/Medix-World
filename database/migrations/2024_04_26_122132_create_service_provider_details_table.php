@@ -22,6 +22,7 @@ return new class extends Migration
             $table->json('summary');
             $table->json('address');
             $table->float('price',8,2);
+            $table->string('tel');
             $table->string('img');
             $table->string('medical_card');
             $table->enum('status',['Pending','Approval','Reject'])->default('Pending');

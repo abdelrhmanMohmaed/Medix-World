@@ -116,6 +116,12 @@
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- Select 2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+    integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- Fonts Awesome -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
     integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
@@ -126,10 +132,31 @@
 </script>
 <!-- OwlCarousel2 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<!-- Navbar -->
-<script src="{{ asset('assets/js/user/navbar.js') }}"></script>
 
+<script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+    
+    $('.city').change(function() {
+        var cityId = $(this).val();
 
+        if (cityId != 'allCities') {
+            var axiosUrl = "{{ route('website.axios.region', ':cityId') }}";
+            axiosUrl = axiosUrl.replace(':cityId', cityId);
+
+            axios.get(axiosUrl)
+                .then(function(response) {
+                    var regionsHtml = response.data;
+
+                    $('.region').html(regionsHtml);
+                })
+                .catch(function(error) {
+                    console.error('Error fetching regions: ' + error);
+                });
+        }
+    });
+</script>
 @yield('scripts')
 </body>
 

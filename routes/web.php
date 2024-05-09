@@ -26,8 +26,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-    // Landing page 
-    Route::get('/',[HomeController::class, 'index'])->name('welcome');
+// Landing page 
+Route::get('/',[HomeController::class, 'index'])->name('welcome');
+Route::get('axios/region/{id}', [HomeController::class, 'axiosRegion'])->name('axios.region');
+Route::post('search/service-provider', [HomeController::class, 'search'])->name('search.service-provider');
+
+
+
 
 // User Routes 
 Route::middleware('guest:web')->group(function () {
@@ -43,17 +48,20 @@ Route::middleware('guest:web')->group(function () {
 
         Route::post('/', [ContactUsController::class, 'store'])->name('store');
     });  
+
     // About Routes
     Route::prefix('about')->name('about.')->group(function () {
 
         // Route::get('/', [AboutController::class, 'index'])->name('index');
         Route::view('/', 'web.pages.about.index')->name('index');
     });    
+
     // Terms Routes
     Route::prefix('terms-of-use')->name('terms.')->group(function () {
 
         Route::get('/', [TermsController::class, 'index'])->name('index');
     });   
+
 });
 
 
