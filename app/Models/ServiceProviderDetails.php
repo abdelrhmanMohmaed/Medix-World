@@ -22,6 +22,7 @@ class ServiceProviderDetails extends Model
         'summary',
         'address',
         'price',
+        'tel',
         'img',
         'medical_card',
         'status'
