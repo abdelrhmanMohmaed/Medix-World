@@ -26,10 +26,79 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- Select 2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Navbar -->
     <link rel="stylesheet" href="{{ asset('assets/styles/user/navbar.css') }}">
 
     <style>
+        /* search navbar */
+        .button-container {
+            top: 75%;
+            left: 50%;
+            width: 75%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-custom {
+            margin: 2px;
+        }
+
+        .card-bady-search::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .btn-custom button {
+            text-align: start;
+        }
+
+        .btn-custom button::after {
+            display: none
+        }
+
+        .select2-selection__rendered {
+            font-size: 16px !important;
+        }
+
+        /* Style for the custom select */
+        .select2-container .select2-selection--single {
+            background-color: #dc293b;
+            border-radius: 5px;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            cursor: pointer;
+            height: auto !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            color: white;
+            height: calc(1.5em + .75rem);
+            background-color: #dc293b;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: white
+        }
+
+        .select2 .select2-container .select2-container--default {
+            width: 100% !important;
+        }
+
+        /* Focus style for the custom select */
+
         footer a {
             text-decoration: none;
         }

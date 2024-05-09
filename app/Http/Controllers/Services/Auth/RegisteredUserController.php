@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
         compact(['majors','titles','cities'])
             );
     }
-    public function axiosRegion($id) 
+    public function axiosRegion($id): View
     {
         $regions = Region::whereCityId($id)->get();
 
@@ -80,7 +80,8 @@ class RegisteredUserController extends Controller
                     'ar' => $request->input("address.ar")
                 ],
                 'price' => $request->input("bookingPrice"),
-
+                'tel' => $request->input("tel"),
+                
                 'img' => $avatarName,
                 'medical_card' => $medicalCardName,
             ]);
