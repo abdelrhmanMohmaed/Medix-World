@@ -67,6 +67,7 @@ License: For each use you must have a valid license purchased only from above li
 
     <!-- plugin js -->
     @stack('plugin-scripts')
+    <script src="https://kit.fontawesome.com/d9b4ea247c.js" crossorigin="anonymous"></script>
     <!-- end plugin js -->
 
     <!-- common js -->
