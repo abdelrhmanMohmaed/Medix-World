@@ -7,7 +7,8 @@ use App\Http\Controllers\Admin\Pages\{
     CityController,
     DashboardController,
     MajorsController,
-    RegionController
+    RegionController,
+    ServiceProviderController
 };
 
 
@@ -78,6 +79,23 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::patch('{advice}', 'update')->name('update'); 
             Route::delete('{advice}', 'destroy')->name('destroy'); 
             Route::get('{advice}', 'stauts')->name('status');  
+        });
+
+
+
+        Route::prefix('service_provider')->name('service_provider.')->controller(ServiceProviderController::class)
+        ->group(function () {
+        
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::patch('{service_provider}', 'update')->name('update'); 
+            Route::delete('{service_provider}', 'destroy')->name('destroy'); 
+            Route::get('{service_provider}/view', 'show')->name('show'); 
+            Route::get('{service_provider}/view-request', 'showRequest')->name('show_request'); 
+
+            Route::get('/requests', 'getRequest')->name('requests');
+
         });
 
 
