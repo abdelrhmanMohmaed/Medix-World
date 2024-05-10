@@ -35,6 +35,7 @@ License: For each use you must have a valid license purchased only from above li
   <link href="{{ asset('assets/plugins/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
   <!-- end plugin css -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   @stack('plugin-styles')
 
@@ -63,6 +64,7 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('assets/plugins/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+
     <!-- end base js -->
 
     <!-- plugin js -->
@@ -72,6 +74,7 @@ License: For each use you must have a valid license purchased only from above li
 
     <!-- common js -->
     <script src="{{ asset('assets/js/template.js') }}"></script>
+
     <!-- end common js -->
 
     @stack('custom-scripts')
