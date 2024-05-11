@@ -77,7 +77,7 @@ class CityController extends Controller
     }
 
     public function stauts(City $city) : RedirectResponse 
-    {
+    {dd('ddddd');
         try {
             $city->update([   
                 'active' => !$city->active
