@@ -33,7 +33,7 @@
               <a href="{{ route('admins.cities.index') }}" class="nav-link {{ active_class(['ui-components/accordion']) }}">City</a>
             </li>
             <li class="nav-item">
-              <a href="{{ url('/ui-components/alerts') }}" class="nav-link {{ active_class(['ui-components/alerts']) }}">Region</a>
+              <a href="{{ route('admins.regions.index') }}" class="nav-link {{ active_class(['ui-components/alerts']) }}">Region</a>
             </li>
 
           </ul>
