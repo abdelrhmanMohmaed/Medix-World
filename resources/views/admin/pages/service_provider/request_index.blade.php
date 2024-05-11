@@ -19,11 +19,12 @@
     <div class="card">
       <div class="card-body">
         <div class="d-flex justify-content-end mb-5">
+        @include('admin.layout.flash')
 
 
-          <!-- <a href="{{ route('admins.cities.create') }}" class="btn btn-primary btn-icon-text"> <i class="link-arrow" data-feather="plus"></i> Add City
-          </a> -->
-          <!-- <button type="button" class="btn btn-inverse-primary"></button> -->
+        <a href="{{ route('admins.service_provider.create') }}" class="btn-sm btn-primary btn-icon-text"> <i class="fa-solid fa-plus"></i> Add New Service Provider
+          </a>
+          
         </div>
         <div class="table-responsive">
           <table id="dataTableExample" class="table">

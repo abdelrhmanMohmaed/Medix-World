@@ -13,6 +13,7 @@ class Region extends Model
     use HasFactory, HasTranslations;
     public $translatable = ['name'];
     public $fillable = ['city_id','name','active'];
+    
     public function scopeActive($query): Builder
     {
         return $query->where('active', 1);

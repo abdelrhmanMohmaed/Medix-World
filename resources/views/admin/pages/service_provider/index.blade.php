@@ -14,6 +14,7 @@
   </ol>
 </nav>
 
+@include('admin.layout.flash')
 <div class="row">
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
@@ -21,8 +22,8 @@
         <div class="d-flex justify-content-end mb-5">
 
 
-          <!-- <a href="{{ route('admins.cities.create') }}" class="btn btn-primary btn-icon-text"> <i class="link-arrow" data-feather="plus"></i> Add City
-          </a> -->
+          <a href="{{ route('admins.service_provider.create') }}" class="btn-sm btn-primary btn-icon-text"> <i class="fa-solid fa-plus"></i> Add New Service Provider
+          </a>
           <!-- <button type="button" class="btn btn-inverse-primary"></button> -->
         </div>
         <div class="table-responsive">

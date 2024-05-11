@@ -43,6 +43,8 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::patch('{city}', 'update')->name('update'); 
             Route::delete('{city}', 'destroy')->name('destroy'); 
             Route::get('{city}', 'stauts')->name('status'); 
+            Route::get('/{city}/regions', 'getRejions')->name('regions');
+
         });
 
         Route::prefix('regions')->name('regions.')->controller(RegionController::class)

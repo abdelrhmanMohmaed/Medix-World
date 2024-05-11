@@ -36,6 +36,7 @@ License: For each use you must have a valid license purchased only from above li
   <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
   <!-- end plugin css -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
 
   @stack('plugin-styles')
 
@@ -70,6 +71,8 @@ License: For each use you must have a valid license purchased only from above li
     <!-- plugin js -->
     @stack('plugin-scripts')
     <script src="https://kit.fontawesome.com/d9b4ea247c.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     <!-- end plugin js -->
 
     <!-- common js -->
