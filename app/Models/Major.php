@@ -12,6 +12,7 @@ class Major extends Model
     use HasFactory, HasTranslations;
     public $translatable = ['name'];
     public $fillable = ['name','active'];
+    
     public function scopeActive($query): Builder
     {
         return $query->where('active', 1);
