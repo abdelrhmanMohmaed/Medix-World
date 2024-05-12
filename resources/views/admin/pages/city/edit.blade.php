@@ -13,6 +13,7 @@
     <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.city-edit')}}</li>
   </ol>
 </nav>
+@include('admin.layout.flash')
 
 <form class="forms-sample" action="{{ route('admins.cities.update', $city->id) }}" method="post">
   @csrf @method('PATCH')

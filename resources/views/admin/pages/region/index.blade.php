@@ -13,6 +13,7 @@
     <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.region-index')}} </li>
   </ol>
 </nav>
+@include('admin.layout.flash')
 
 <div class="row">
   <div class="col-md-12 grid-margin stretch-card">
