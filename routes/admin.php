@@ -81,6 +81,8 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::patch('{advice}', 'update')->name('update'); 
             Route::delete('{advice}', 'destroy')->name('destroy'); 
             Route::get('{advice}', 'stauts')->name('status');  
+            Route::get('{advice}/view', 'show')->name('show'); 
+
         });
 
 

@@ -27,35 +27,57 @@
           <span class="link-title">Location</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
-        <div class="collapse {{ show_class(['ui-components/*']) }}" id="uiComponents">
-          <ul class="nav sub-menu">
-            <li class="nav-item">
-              <a href="{{ route('admins.cities.index') }}" class="nav-link {{ active_class(['ui-components/accordion']) }}">City</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('admins.regions.index') }}" class="nav-link {{ active_class(['ui-components/alerts']) }}">Region</a>
-            </li>
+      </li>
+      <div class="collapse {{ show_class(['ui-components/*']) }}" id="uiComponents">
+        <ul class="nav sub-menu">
+          <li class="nav-item">
+            <a href="{{ route('admins.cities.index') }}" class="nav-link {{ active_class(['ui-components/accordion']) }}">City</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admins.regions.index') }}" class="nav-link {{ active_class(['ui-components/alerts']) }}">Region</a>
+          </li>
 
-          </ul>
-        </div>
+        </ul>
+      </div>
 
-<!-- service provider -->
-        <li class="nav-item nav-category">Service Providers</li>
+
+      <!-- service provider -->
+      <li class="nav-item nav-category">Service Providers</li>
       <li class="nav-item {{ active_class(['serviceProvider/*']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#serviceProvider" role="button" aria-expanded="{{ is_active_route(['userviceProvider/*']) }}" aria-controls="uiComponents">
           <i class="fa-solid fa-user-nurse"></i>
           <span class="link-title">Service Providers</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
-        <div class="collapse {{ show_class(['serviceProvider/*']) }}" id="serviceProvider">
-          <ul class="nav sub-menu">
-            <li class="nav-item">
-              <a href="{{ route('admins.service_provider.requests') }}" class="nav-link {{ active_class(['serviceProvider/accordion']) }}">Service Provider Requests</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('admins.service_provider.index') }}" class="nav-link {{ active_class(['serviceProvider/alerts']) }}">Active Service Provider</a>
-            </li>
+      </li>
+      <div class="collapse {{ show_class(['serviceProvider/*']) }}" id="serviceProvider">
+        <ul class="nav sub-menu">
+          <li class="nav-item">
+            <a href="{{ route('admins.service_provider.requests') }}" class="nav-link {{ active_class(['serviceProvider/accordion']) }}">Service Provider Requests</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admins.service_provider.index') }}" class="nav-link {{ active_class(['serviceProvider/alerts']) }}">Active Service Provider</a>
+          </li>
 
-          </ul>
-        </div>
+        </ul>
+      </div>
+
+
+      <!-- Pages -->
+      <li class="nav-item nav-category">Pages</li>
+      <li class="nav-item {{ active_class(['pages/*']) }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#pages" role="button" aria-expanded="{{ is_active_route(['pages*']) }}" aria-controls="uiComponents">
+          <i class="fa-solid fa-window-restore"></i> <span class="link-title">Pages</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+      </li>
+      <div class="collapse {{ show_class(['pages/*']) }}" id="pages">
+        <ul class="nav sub-menu">
+          <li class="nav-item">
+            <a href="{{ route('admins.advices.index') }}" class="nav-link {{ active_class(['pages/accordion']) }}">Advice</a>
+          </li>
+
+
+        </ul>
+      </div>
 </nav>
