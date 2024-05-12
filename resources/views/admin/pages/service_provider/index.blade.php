@@ -31,6 +31,7 @@
 
             <thead>
               <tr>
+                <th>#</th>
                 <th>{{ __('dashboard.name-service-provider-en') }}</th>
                 <th>{{ __('dashboard.name-service-provider-ar') }}</th>
                 <th>{{ __('dashboard.status') }}</th>
@@ -41,6 +42,7 @@
             <tbody>
               @foreach ($service_providers as $item)
               <tr>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->getTranslation('name', 'en') }}</td>
                 <td>{{ $item->getTranslation('name', 'ar') }}</td>
                 <td>
@@ -54,18 +56,18 @@
                   @endif
                 </td>
                 <td>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-middle">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-middle">
 
-                  <a href="{{ route('admins.service_provider.show', $item->id) }}" class="btn-sm btn-secondary btn-icon-text"> <i class="fa-solid fa-eye p-1"></i>view
-                  </a>
+                    <a href="{{ route('admins.service_provider.show', $item->id) }}" class="btn-sm btn-secondary btn-icon-text"> <i class="fa-solid fa-eye p-1"></i>view
+                    </a>
 
-                  <form method="POST" action="{{ route('admins.service_provider.destroy', $item->id) }}">
-                    @csrf
-                    @method('delete')
-                    <button type="submit" class="btn btn-danger btn-sm btn-icon-text "><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
-                  </form>
+                    <form method="POST" action="{{ route('admins.service_provider.destroy', $item->id) }}">
+                      @csrf
+                      @method('delete')
+                      <button type="submit" class="btn btn-danger btn-sm btn-icon-text "><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
+                    </form>
 
-                </div>
+                  </div>
                 </td>
               </tr>
               @endforeach

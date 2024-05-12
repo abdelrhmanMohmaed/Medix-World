@@ -13,6 +13,7 @@
     <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.region-index')}} </li>
   </ol>
 </nav>
+@include('admin.layout.flash')
 
 <div class="row">
   <div class="col-md-12 grid-margin stretch-card">
@@ -30,6 +31,7 @@
 
             <thead>
               <tr>
+                <th>#</th>
                 <th>{{ __('dashboard.name-region-en') }}</th>
                 <th>{{ __('dashboard.name-region-ar') }}</th>
                 <th>{{ __('dashboard.name-city-en') }}</th>
@@ -42,6 +44,7 @@
             <tbody>
               @foreach ($regions as $item)
               <tr>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->getTranslation('name', 'en') }}</td>
                 <td>{{ $item->getTranslation('name', 'ar') }}</td>
                 <td>{{ $item->city->getTranslation('name', 'ar') }}</td>
@@ -50,7 +53,7 @@
                   <input type="hidden" id="region" value="{{ $item->id }}">
                   @if ($item->active == 0)
                   <!-- <form action="{{ route('admins.cities.status', $item->id) }}"> -->
-                  <div class="form-check form-switch mb-2" id ="status">
+                  <div class="form-check form-switch mb-2" id="status">
                     <input type="checkbox" class="form-check-input" id="active_status" name="active" value="1" checked>
                     <label class="form-check-label" for="formSwitch1">Active</label>
                     <!-- </form> -->
@@ -108,20 +111,20 @@
   $(document).ready(function() {
 
     $("#city").on('change', function() {
-            var region_id = $("#region").val();
+      var region_id = $("#region").val();
 
-            route = '{{route("admins.regions.status", "region")}}';
-            url = route.replace('region', region_id);
-            $.ajax({
-                type: 'get',
-                url: url,
+      route = '{{route("admins.regions.status", "region")}}';
+      url = route.replace('region', region_id);
+      $.ajax({
+        type: 'get',
+        url: url,
 
-                success: function(data) {
-                  
-                }
-            })
+        success: function(data) {
 
-   
+        }
+      })
+
+
     })
   });
 </script>

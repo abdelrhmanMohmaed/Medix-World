@@ -13,6 +13,7 @@
     <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.region-edit')}}</li>
   </ol>
 </nav>
+@include('admin.layout.flash')
 
 <form class="forms-sample" action="{{ route('admins.regions.update') }}" method="post">
   @csrf
