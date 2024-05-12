@@ -1,30 +1,39 @@
-@extends('admin.layouts._app')
+@extends('admin.layout.master')
+
+@section('title', __('dashboard.major-edit'))
+
+@push('plugin-styles')
+<link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
+@endpush
+
+@section('content')
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route ('admins.majors.index') }}">{{ __('dashboard.major-index')}} </a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.major-edit')}}</li>
+  </ol>
+</nav>
+@include('admin.layout.flash')
+
+<form class="forms-sample" action="{{ route('admins.majors.update', $major->id) }}" method="post">
+  @csrf @method('PATCH')
+  <div class="row mb-3">
+    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">{{ __('dashboard.name-major-en') }}</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="name[en]" id="name_en" value="{{ $major->getTranslation('name', 'en') }}">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.name-major-ar') }}</label>
+    <div class="col-sm-9">
+    <input type="text" class="form-control" name="name[ar]" id="name_ar" value="{{ $major->getTranslation('name', 'ar') }}" >
 
 
-@section('title', __('dashboard.city-create'))
+      <!-- <input type="email" class="form-control" id="exampleInputEmail2" autocomplete="off" placeholder="Email"> -->
+    </div>
+  </div>
 
-@section('main')
-    <form action="{{ route('admins.majors.update', $major->id) }}" method="post">
-        @csrf @method('PATCH')
-
-        <label for="name_en">{{ __('dashboard.name-major-en') }}</label>
-        <input type="text" name="name[en]" id="name_en" value="{{ $major->getTranslation('name', 'en') }}"
-        @class(['form-control', 'is-invalid' => $errors->has('name.en')])>
-        @error('name.en')
-            <span>{{ $message }}</span>
-        @enderror
-
-        <label for="name_ar">{{ __('dashboard.name-major-ar') }}</label>
-        <input type="text" name="name[ar]" id="name_ar" value="{{ $major->getTranslation('name', 'ar') }}"
-        @class(['form-control', 'is-invalid' => $errors->has('name.ar')])>
-        @error('name.ar')
-            <span>{{ $message }}</span>
-        @enderror
-
-        <button type="submit">{{ __('dashboard.submit') }}</button>
-    </form>
-
-    @if ($errors->any())
-        {{ implode('', $errors->all('<div>:message</div>')) }}
-    @endif
+  <button type="submit" class="btn btn-primary me-2">Submit</button>
+  <button class="btn btn-secondary">Cancel</button>
+</form>
 @endsection

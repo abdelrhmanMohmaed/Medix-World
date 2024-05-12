@@ -39,7 +39,12 @@
 
         </ul>
       </div>
-
+      <li class="nav-item {{ active_class(['/']) }}">
+        <a href="{{ route('admins.majors.index') }}" class="nav-link">
+        <i class="fa-solid fa-capsules"></i>
+          <span class="link-title">Majors</span>
+        </a>
+      </li>
 
       <!-- service provider -->
       <li class="nav-item nav-category">Service Providers</li>
@@ -66,18 +71,8 @@
       <!-- Pages -->
       <li class="nav-item nav-category">Pages</li>
       <li class="nav-item {{ active_class(['pages/*']) }}">
-        <a class="nav-link" data-bs-toggle="collapse" href="#pages" role="button" aria-expanded="{{ is_active_route(['pages*']) }}" aria-controls="uiComponents">
-          <i class="fa-solid fa-window-restore"></i> <span class="link-title">Pages</span>
-          <i class="link-arrow" data-feather="chevron-down"></i>
-        </a>
+        <a href="{{ route('admins.advices.index') }}" class="nav-link"> <i class="fa-solid fa-window-restore"></i> <span class="link-title">Advice </span></a>
       </li>
-      <div class="collapse {{ show_class(['pages/*']) }}" id="pages">
-        <ul class="nav sub-menu">
-          <li class="nav-item">
-            <a href="{{ route('admins.advices.index') }}" class="nav-link {{ active_class(['pages/accordion']) }}">Advice</a>
-          </li>
 
-
-        </ul>
-      </div>
+  </div>
 </nav>
