@@ -31,6 +31,7 @@
 
             <thead>
               <tr>
+                <th>#</th>
                 <th>{{ __('dashboard.name-city-en') }}</th>
                 <th>{{ __('dashboard.name-city-ar') }}</th>
                 <th>{{ __('dashboard.status') }}</th>
@@ -41,6 +42,7 @@
             <tbody>
               @foreach ($cities as $item)
               <tr>
+              <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->getTranslation('name', 'en') }}</td>
                 <td>{{ $item->getTranslation('name', 'ar') }}</td>
                 <td>

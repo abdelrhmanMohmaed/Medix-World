@@ -19,18 +19,19 @@
     <div class="card">
       <div class="card-body">
         <div class="d-flex justify-content-end mb-5">
-        @include('admin.layout.flash')
+          @include('admin.layout.flash')
 
 
-        <a href="{{ route('admins.service_provider.create') }}" class="btn-sm btn-primary btn-icon-text"> <i class="fa-solid fa-plus"></i> Add New Service Provider
+          <a href="{{ route('admins.service_provider.create') }}" class="btn-sm btn-primary btn-icon-text"> <i class="fa-solid fa-plus"></i> Add New Service Provider
           </a>
-          
+
         </div>
         <div class="table-responsive">
           <table id="dataTableExample" class="table">
 
             <thead>
               <tr>
+                <th>#</th>
                 <th>{{ __('dashboard.name-service-provider-en') }}</th>
                 <th>{{ __('dashboard.name-service-provider-ar') }}</th>
                 <th>{{ __('dashboard.status') }}</th>
@@ -41,6 +42,7 @@
             <tbody>
               @foreach ($service_provider_requests as $item)
               <tr>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->getTranslation('name', 'en') }}</td>
                 <td>{{ $item->getTranslation('name', 'ar') }}</td>
                 <td>
