@@ -16,24 +16,4 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
-
-
-    protected $fillable = [
-        'name', 'email', 'password', 'dateOfBirth', 'gender', 'active'
-    ];
-    protected $hidden = [ 'password', 'remember_token'];
-
-    protected $casts = ['email_verified_at' => 'datetime','password' => 'hashed'];
-
-    public function setDateOfBirthAttribute($value)
-    {
-        $this->attributes['dateOfBirth'] = Carbon::parse($value)->format('Y-m-d');
-    }
-
-    public function scopeActive($query)
-    {
-        return $query->where('active', true);
-    }
-
-
 }
