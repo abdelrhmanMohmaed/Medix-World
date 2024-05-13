@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\Pages;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MajorRequest extends FormRequest
+class PermissionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,8 @@ class MajorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name.*' => ['required', "unique_translation:majors,name,{$this->major?->id}"],
+            'name' => ['required', "unique:permissions,name,{$this->permission?->id}"]
         ];
     }
+
 }

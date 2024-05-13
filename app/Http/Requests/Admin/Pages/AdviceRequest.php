@@ -22,8 +22,8 @@ class AdviceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title.*' => ['required', "unique_translation:advice,title,{$this->id}"],
-            'description.*' => ['required', "unique_translation:advice,description,{$this->id}"],
+            'title.*' => ['required', "unique_translation:advice,title,{$this->advice?->id}"],
+            'description.*' => ['required', "unique_translation:advice,description,{$this->advice?->id}"],
             'img' => ['nullable', 'image'],
         ];        
     }

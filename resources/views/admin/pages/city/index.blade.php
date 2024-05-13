@@ -10,9 +10,10 @@
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route ('admins.cities.index') }}">{{ __('dashboard.city-index')}} </a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.city-index')}}  </li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.city-index')}} </li>
   </ol>
 </nav>
+@include('admin.layout.flash')
 
 <div class="row">
   <div class="col-md-12 grid-margin stretch-card">
@@ -21,8 +22,8 @@
         <div class="d-flex justify-content-end mb-5">
 
 
-        <a href="{{ route('admins.cities.create') }}" class="btn btn-primary btn-icon-text"> <i class="link-arrow" data-feather="plus"></i> Add City
-                  </a>
+          <a href="{{ route('admins.cities.create') }}" class="btn-sm btn-primary btn-icon-text"> <i class="fa-solid fa-plus"></i> Add City
+          </a>
           <!-- <button type="button" class="btn btn-inverse-primary"></button> -->
         </div>
         <div class="table-responsive">
@@ -30,6 +31,7 @@
 
             <thead>
               <tr>
+                <th>#</th>
                 <th>{{ __('dashboard.name-city-en') }}</th>
                 <th>{{ __('dashboard.name-city-ar') }}</th>
                 <th>{{ __('dashboard.status') }}</th>
@@ -40,28 +42,34 @@
             <tbody>
               @foreach ($cities as $item)
               <tr>
+              <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->getTranslation('name', 'en') }}</td>
                 <td>{{ $item->getTranslation('name', 'ar') }}</td>
-                <td href="{{ route('admins.cities.status', $item->id) }}">
+                <td>
+                  <input type="hidden" id="city" value="{{ $item->id }}">
                   @if ($item->active == 0)
-                  Active
-                  <a href="{{ route('admins.cities.status', $item->id) }}"> &nbsp;
-
-                    <span><i class="link-arrow" data-feather="toggle-right"></i></span>
-                  </a>
+                  <!-- <form action="{{ route('admins.cities.status', $item->id) }}"> -->
+                  <div class="form-check form-switch mb-2" id ="status">
+                    <input type="checkbox" class="form-check-input" id="active_status" name="active" value="1" checked>
+                    <label class="form-check-label" for="formSwitch1">Active</label>
+                    <!-- </form> -->
+                  </div>
                   @else
-                  In active
-                  <a href="{{ route('admins.cities.status', $item->id) }}">&nbsp;
-                    <span><i class="link-arrow" data-feather="toggle-left"></i></span> </a>
-                  @endif
+                  <!-- <form action="{{ route('admins.cities.status', $item->id) }}"> -->
+                  <div class="form-check form-switch mb-2">
+                    <input type="checkbox" class="form-check-input" id="active_status" value="0" name="active">
+                    <label class="form-check-label" for="formSwitch1">In-Active</label>
+                    <!-- </form>  -->
+                    @endif
                 </td>
                 <td colspan="3">
 
-                  <a href="{{ route('admins.cities.edit', $item->id) }}" class="btn btn-primary btn-icon-text"> <i class="link-arrow" data-feather="edit"></i> edit
+                  </a>
+                  <a href="{{ route('admins.cities.edit', $item->id) }}" class="btn-sm btn-primary btn-icon-text m-2 "><i class="fa-solid fa-pen-to-square"></i> edit
                   </a>
 
 
-                  <a href="{{ route('admins.cities.destroy', $item->id) }}" class="btn btn-danger btn-icon-text"> <i class="link-arrow" data-feather="trash"></i> Delete
+                  <a href="{{ route('admins.cities.destroy', $item->id) }}" class="btn-sm btn-danger btn-icon-text"> <i class="fa-solid fa-trash"></i> Delete
                   </a>
 
                   <!-- <form method="POST" action="{{ route('admins.cities.destroy', $item->id) }}" onsubmit="return confirm('Are You sure?')">
@@ -93,3 +101,26 @@
 @push('custom-scripts')
 <script src="{{ asset('assets/js/data-table.js') }}"></script>
 @endpush
+
+
+<script>
+  $(document).ready(function() {
+
+    $("#city").on('change', function() {
+            var city_id = $("#city").val();
+
+            route = '{{route("admins.cities.status", "city")}}';
+            url = route.replace('city', city_id);
+            $.ajax({
+                type: 'get',
+                url: url,
+
+                success: function(data) {
+                  
+                }
+            })
+
+   
+    })
+  });
+</script>

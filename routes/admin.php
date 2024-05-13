@@ -7,11 +7,13 @@ use App\Http\Controllers\Admin\Pages\{
     CityController,
     DashboardController,
     MajorsController,
+    PermissionController,
     RegionController,
-    ServiceProviderController
+    RoleController,
+    ServiceProviderController,
+    TermsAndCondtionController
 };
-
-
+use Spatie\Permission\Contracts\Permission;
 
 // lang(en, ar)/admins/*
 // start Admin routes
@@ -43,6 +45,8 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::patch('{city}', 'update')->name('update'); 
             Route::delete('{city}', 'destroy')->name('destroy'); 
             Route::get('{city}', 'stauts')->name('status'); 
+            Route::get('/{city}/regions', 'getRejions')->name('regions');
+
         });
 
         Route::prefix('regions')->name('regions.')->controller(RegionController::class)
@@ -79,9 +83,24 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::patch('{advice}', 'update')->name('update'); 
             Route::delete('{advice}', 'destroy')->name('destroy'); 
             Route::get('{advice}', 'stauts')->name('status');  
+            Route::get('{advice}/view', 'show')->name('show'); 
+
         });
 
 
+        Route::prefix('terms')->name('terms.')->controller(TermsAndCondtionController::class)
+        ->group(function () {
+        
+            Route::get('', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::get('/{term}/edit', 'edit')->name('edit');  
+            Route::patch('{term}', 'update')->name('update'); 
+            Route::delete('{term}', 'destroy')->name('destroy'); 
+            Route::get('{term}', 'stauts')->name('status');  
+            Route::get('{term}/view', 'show')->name('show'); 
+
+        });
 
         Route::prefix('service_provider')->name('service_provider.')->controller(ServiceProviderController::class)
         ->group(function () {
@@ -99,6 +118,31 @@ Route::middleware(['auth:admin'])->group(function () {
         });
 
 
+        Route::prefix('roles')->name('roles.')->controller(RoleController::class)
+        ->group(function () {
+        
+            Route::get('', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::get('/{role}/edit', 'edit')->name('edit');  
+            Route::patch('{role}', 'update')->name('update'); 
+            Route::delete('{role}', 'destroy')->name('destroy'); 
+            Route::get('{role}/view', 'show')->name('show'); 
+
+        });
+        
+
+        Route::prefix('permissions')->name('permissions.')->controller(PermissionController::class)
+        ->group(function () {
+        
+            Route::get('', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::get('/{permission}/edit', 'edit')->name('edit');  
+            Route::patch('{permission}', 'update')->name('update'); 
+            Route::delete('{permission}', 'destroy')->name('destroy'); 
+
+        });
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
     //End Admin routes

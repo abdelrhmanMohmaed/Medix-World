@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Pages;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Pages\CityRequest;
 use App\Models\City;
+use App\Models\Region;
 use Exception; 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -77,7 +78,7 @@ class CityController extends Controller
     }
 
     public function stauts(City $city) : RedirectResponse 
-    {
+    {dd('ddddd');
         try {
             $city->update([   
                 'active' => !$city->active
@@ -89,4 +90,12 @@ class CityController extends Controller
             return redirect()->back();//message
         }
     }
+
+    public function getRejions(City $city)  
+    {
+       $regions = $city->regions;
+
+       return $regions;
+    }
+
 }

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use App\Http\Requests\Admin\Pages\AdviceRequest;
 use Exception;
+use Illuminate\Support\Facades\File;
 
 class AdviceController extends Controller
 {
@@ -52,11 +53,16 @@ class AdviceController extends Controller
                 'img' => ($fileName)? $fileName : 'assets/images/advices/default.png',
             ]);
 
-            return redirect()->route('admins.advices.create');
+            return redirect()->route('admins.advices.index')->with('success','created successfully');
         } catch (Exception $e) {
             dd($e->getMessage());
             return redirect()->back();//message
         }
+    }
+
+    public function show(Advice $advice): View 
+    {    
+        return view('admin.pages.advice.details',compact('advice'));
     }
 
     public function edit(Advice $advice)
@@ -76,10 +82,10 @@ class AdviceController extends Controller
                     'en' => $request->input("description.en"),
                     'ar' => $request->input("description.ar"),
                 ],
-                'img' => $request->has('img') ? $request->img : 'assets/images/advices/default.png',
+                'img' => ($request->has('img') && $request->img != null) ? $request->img : 'assets/images/advices/default.png',
             ]);
 
-            return redirect()->route('admin.advice.index');
+            return redirect()->route('admins.advices.index');
         } catch (Exception $e) {
             dd($e->getMessage());
             return redirect()->back();//message
@@ -89,8 +95,11 @@ class AdviceController extends Controller
     public function destroy(Advice $advice) : RedirectResponse 
     {
         try {
+            if($advice->img !=  'assets/images/advices/default.png')
+            {
+            $img=File::delete($advice->img);
+            }
             $advice->delete();
-
             return redirect()->route('admins.advices.index');
         } catch (Exception $e) {
             dd($e->getMessage());

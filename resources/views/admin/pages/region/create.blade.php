@@ -1,45 +1,56 @@
-@extends('admin.layouts._app')
-
+@extends('admin.layout.master')
 
 @section('title', __('dashboard.region-create'))
 
-@section('main')
-    <form action="{{ route('admins.regions.store') }}" method="post">
-        @csrf
+@push('plugin-styles')
+<link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
+@endpush
 
-        <label for="city">{{ __('dashboard.name-city-en') }}</label>
-        <select name="city_id" id="city"
-        @class(['form-control', 'is-invalid' => $errors->has('city_id')])>
-            <option disabled selected>{{ __('dashboard.select-city') }}</option>
-            @foreach ($cities as $item)
-                <option value="{{ $item->id }}" @selected($item->id == old('city_id'))>
-                    {{ $item->getTranslation('name', app()->getLocale()) }}
-                <option>
-            @endforeach
-        </select>
-        @error('city_id')
-            <span>{{ $message }}</span>
-        @enderror
+@section('content')
+<nav class="page-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route ('admins.regions.index') }}">{{ __('dashboard.region-index')}} </a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.region-create')}}</li>
+  </ol>
+</nav>
+@include('admin.layout.flash')
 
-        <label for="name_en">{{ __('dashboard.name-region-en') }}</label>
-        <input type="text" name="name[en]" id="name_en"
-        value="{{ old('name.en') }}" @class(['form-control', 'is-invalid' => $errors->has('name.en')])>
-        @error('name.en')
-            <span>{{ $message }}</span>
-        @enderror
+<form class="forms-sample" action="{{ route('admins.regions.store') }}" method="post">
+  @csrf
 
-        <label for="name_ar">{{ __('dashboard.name-region-ar') }}</label>
-        <input type="text" name="name[ar]" id="name_ar"
-        value="{{ old('name.ar') }}" @class(['form-control', 'is-invalid' => $errors->has('name.ar')])>
-        @error('name.ar')
-            <span>{{ $message }}</span>
-        @enderror
+  <div class="row mb-3">
 
-        <button type="submit">{{ __('dashboard.submit') }}</button>
-    </form>
+    <label for="city" class="col-sm-3 col-form-label">{{ __('dashboard.name-city-en') }}</label>
+    <div class="col-sm-9">
+      <select name="city_id" id="city" class="form-control form-select">
+        <option disabled selected>{{ __('dashboard.select-city') }}</option>
+        @foreach ($cities as $item)
+        <option value="{{ $item->id }}">
+          {{ $item->getTranslation('name', app()->getLocale()) }}
+        </option>
+        @endforeach
+      </select>
+    </div>
 
-    @if ($errors->any())
-        {{ implode('', $errors->all('<div>:message</div>')) }}
-    @endif
+  </div>
+  <div class="row mb-3">
+    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">{{ __('dashboard.name-region-en') }}</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="name[en]" id="name_en" value="{{ old('name.en') }}">
 
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.name-region-ar') }}</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" name="name[ar]" id="name_ar" value="{{ old('name.ar') }}">
+
+
+      <!-- <input type="email" class="form-control" id="exampleInputEmail2" autocomplete="off" placeholder="Email"> -->
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary me-2">Submit</button>
+  <button class="btn btn-secondary">Cancel</button>
+</form>
 @endsection

@@ -13,6 +13,7 @@
     <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.city-create')}}</li>
   </ol>
 </nav>
+@include('admin.layout.flash')
 
 <form class="forms-sample"action="{{ route('admins.cities.store') }}" method="post">
     @csrf
@@ -29,7 +30,7 @@
   <div class="row mb-3">
     <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.name-city-ar') }}</label>
     <div class="col-sm-9">
-    <input type="text" class="form-control" name="name[ar]" id="name_ar" value="{{ old('name.ear') }}" @class(['form-control', 'is-invalid'=> $errors->has('name.ar')])>
+    <input type="text" class="form-control" name="name[ar]" id="name_ar" value="{{ old('name.ar') }}" @class(['form-control', 'is-invalid'=> $errors->has('name.ar')])>
   @error('name.ar')
   <span>{{ $message }}</span>
   @enderror

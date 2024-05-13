@@ -15,6 +15,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
+            @include('admin.layout.flash')
 
                 <div class="example">
                     <div class="d-flex justify-content-end">

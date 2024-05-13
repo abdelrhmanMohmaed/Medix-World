@@ -23,5 +23,22 @@ class User extends Authenticatable
 
     protected $casts = ['email_verified_at' => 'datetime','password' => 'hashed'];
 
-    
+    public function setDateOfBirthAttribute($value)
+    {
+        $this->attributes['dateOfBirth'] = Carbon::parse($value)->format('Y-m-d');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', true);
+    }
+    function serviceProviderDetails() : HasMany
+    {
+        return $this->hasMany(ServiceProviderDetails::class);
+    }
+    function phones() : HasMany
+    {
+        return $this->hasMany(Phone::class);
+    }
+
 }

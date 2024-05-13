@@ -32,7 +32,7 @@ class MajorsController extends Controller
                     ],
             ]);
             
-            return redirect()->route('admins.majors.index');
+            return redirect()->route('admins.majors.index')->with("success","major created successfully");
             
         } catch (Exception $e) {
             dd($e->getMessage());
@@ -56,7 +56,7 @@ class MajorsController extends Controller
                 ],
             ]);
 
-            return redirect()->route('admins.majors.index');
+            return redirect()->route('admins.majors.index')->with("success","major updated successfully");
         } catch (Exception $e) {
             dd($e->getMessage());
             return redirect()->back();//message
