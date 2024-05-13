@@ -8,7 +8,8 @@ use App\Http\Controllers\Admin\Pages\{
     DashboardController,
     MajorsController,
     RegionController,
-    ServiceProviderController
+    ServiceProviderController,
+    TermsAndCondtionController
 };
 
 
@@ -86,6 +87,19 @@ Route::middleware(['auth:admin'])->group(function () {
         });
 
 
+        Route::prefix('terms')->name('terms.')->controller(TermsAndCondtionController::class)
+        ->group(function () {
+        
+            Route::get('', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::get('/{term}/edit', 'edit')->name('edit');  
+            Route::patch('{term}', 'update')->name('update'); 
+            Route::delete('{term}', 'destroy')->name('destroy'); 
+            Route::get('{term}', 'stauts')->name('status');  
+            Route::get('{term}/view', 'show')->name('show'); 
+
+        });
 
         Route::prefix('service_provider')->name('service_provider.')->controller(ServiceProviderController::class)
         ->group(function () {
