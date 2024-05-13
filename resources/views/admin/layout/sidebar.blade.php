@@ -21,10 +21,28 @@
 
       <!-- settings -->
       <li class="nav-item nav-category">Settings</li>
+
+      <!-- roles and permissions -->
+      <li class="nav-item {{ active_class(['roles/*']) }}">
+        <a class="nav-link" data-bs-toggle="collapse" href="#roles" role="button" aria-expanded="{{ is_active_route(['roles/*']) }}" aria-controls="uiComponents">
+          <i class="fa-solid fa-lock"></i> <span class="link-title">Roles</span>
+          <i class="link-arrow" data-feather="chevron-down"></i>
+        </a>
+      </li>
+      <div class="collapse {{ show_class(['roles/*']) }}" id="roles">
+        <ul class="nav sub-menu">
+          <li class="nav-item">
+            <a href="{{ route('admins.roles.index') }}" class="nav-link {{ active_class(['roles/accordion']) }}">Roles</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admins.permissions.index') }}" class="nav-link {{ active_class(['roles/alerts']) }}">Permissions</a>
+          </li>
+        </ul>
+      </div>
+      <!-- location -->
       <li class="nav-item {{ active_class(['ui-components/*']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="{{ is_active_route(['ui-components/*']) }}" aria-controls="uiComponents">
-          <i class="link-icon" data-feather="map-pin"></i>
-          <span class="link-title">Location</span>
+          <i class="fa-solid fa-location-dot"></i> <span class="link-title">Location</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
       </li>
@@ -39,19 +57,21 @@
 
         </ul>
       </div>
+      <!-- majors -->
       <li class="nav-item {{ active_class(['/']) }}">
         <a href="{{ route('admins.majors.index') }}" class="nav-link">
-        <i class="fa-solid fa-capsules"></i>
-          <span class="link-title">Majors</span>
+          <i class="fa-solid fa-capsules"></i> <span class="link-title">Majors</span>
         </a>
       </li>
 
-
+      <!-- terms -->
       <li class="nav-item {{ active_class(['/']) }}">
         <a href="{{ route('admins.terms.index') }}" class="nav-link">
           <i class="fa-solid fa-paperclip"></i> <span class="link-title">Terms and Conditions </span>
         </a>
       </li>
+
+
       <!-- service provider -->
       <li class="nav-item nav-category">Service Providers</li>
       <li class="nav-item {{ active_class(['serviceProvider/*']) }}">
