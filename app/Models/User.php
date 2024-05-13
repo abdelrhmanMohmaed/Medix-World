@@ -31,18 +31,18 @@ class User extends Authenticatable
     {
         return $query->where('active', true);
     }
-    public function serviceProviderDetails() : HasMany
-    {
-        return $this->hasMany(ServiceProviderDetails::class);
-    }
+    // public function serviceProviderDetails() : HasMany
+    // {
+    //     return $this->hasMany(ServiceProviderDetails::class);
+    // }
     public function phones() : HasMany
     {
         return $this->hasMany(Phone::class);
     }
-    // public function serviceProviderSchedule() : HasMany
-    // {
-    //     return $this->hasMany(Schedule::class);
-    // }    
+    public function serviceProviderSchedule() : HasMany
+    {
+        return $this->hasMany(Schedule::class);
+    }    
     public function book() : HasMany
     {
         return $this->hasMany(Book::class);
