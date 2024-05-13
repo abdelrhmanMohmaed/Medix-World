@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
             MajorSeeder::class,
             TitleSeeder::class,
             AdviceSeeder::class,
-            TermsCondationSeeder::class,
+            TermsConditionSeeder::class,
             ServiceProviderDetailsSeeder::class
         ]);
 

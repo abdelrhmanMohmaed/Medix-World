@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('terms_condations', function (Blueprint $table) {
+        Schema::create('terms_conditions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->unsignedBigInteger('terms_condation_id')->nullable();
             $table->json('title')->nullable();
             $table->json('description')->nullable();
             $table->json('sub_description')->nullable();;
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('terms_condations');
+        Schema::dropIfExists('terms_conditions');
     }
 };
