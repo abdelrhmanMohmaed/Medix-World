@@ -34,13 +34,6 @@ class User extends Authenticatable
     {
         return $query->where('active', true);
     }
-    function serviceProviderDetails() 
-    {
-        return $this->hasOne(ServiceProviderDetails::class);
-    }
-    function phones() : HasMany
-    {
-        return $this->hasMany(Phone::class);
-    }
+
 
 }
