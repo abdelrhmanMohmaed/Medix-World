@@ -4,9 +4,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-bady-search card-body rounded-5 position-relative">
-                        <div class="w-100" style="max-height: 180px; overflow: hidden;">
+                        <div class="w-100" style="max-height: 250px; overflow: hidden;">
                             <img src="{{ asset('assets/images/user/landing/default.jpg') }}" loading="lazy" class="img-fluid"
-                                style="width: 100%; height: 180px; background-size:cover">
+                                style="width: 100%; height: 250px; background-size:cover">
                         </div>
                         <form action="{{ route('website.search.service-provider') }}" method="get">
                             
@@ -48,7 +48,7 @@
                                 </div>
 
                                 <div class="btn-custom btn-group w-25">
-                                    <button type="submit" class="btn btn-primary p-2 text-center">
+                                    <button type="submit" class="btn searh-btn p-2 text-center" title="{{ __('website/web.choose-search') }}">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                         {{ __('website/web.choose-search') }}
                                     </button>
