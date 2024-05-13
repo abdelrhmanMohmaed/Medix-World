@@ -39,10 +39,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Phone::class);
     }
-    public function serviceProviderSchedule() : HasMany
-    {
-        return $this->hasMany(Schedule::class);
-    }    
+    // public function serviceProviderSchedule() : HasMany
+    // {
+    //     return $this->hasMany(Schedule::class);
+    // }    
     public function book() : HasMany
     {
         return $this->hasMany(Book::class);
