@@ -4,7 +4,7 @@ namespace App\Http\Requests\Web;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactUsRequest extends FormRequest
+class ReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,10 @@ class ContactUsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "fullName" => ['required','string',"min:3"],
-            'email' => ['required','email'],
-            "subject" => ['nullable','string',"min:3"],
-            "message" => ['required','string',"min:3"],
+            "rating" => ['required','in:1,2,3,4,5'],
+            'comment' => ['required', 'string'],
+            'book_id' => ['required','exists:books,id'],
+            'user_id' => ['required','exists:users,id'],
         ];
     }
 }

@@ -44,7 +44,8 @@
                         <h1 class="text-center h3 mb-4">
                             {{ __('services/services.login-services-login') }}
                         </h1>
-                        <span class="text-center text-black-50">{{ __('services/services.login-services-hello') }}</span>
+                        <span
+                            class="text-center text-black-50">{{ __('services/services.login-services-hello') }}</span>
                     </div>
 
                     <div class="mb-3">
@@ -75,8 +76,12 @@
                                 class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
                                 name="remember">
                             <span
-                                class="ms-2 text-sm text-gray-600">{{ __('services/services.login-services-remember-me') }}</span>
+                                class="ms-2 text-sm text-gray-600 float-right">{{ __('services/services.login-services-remember-me') }}</span>
                         </label>
+                    </div>
+                    <div class="my-2">
+                        <small>{{ __('website/web.login-have-account') }} <a
+                                href="#">{{ __('website/web.sign-up') }}</a></small>
                     </div>
                     <div class="d-grid">
                         <button type="submit"

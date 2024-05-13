@@ -1,5 +1,5 @@
 <!-- Start footer Section -->
-<footer class="text-white pt-3 pb-2" style="background-color: #5459CE">
+<footer class="text-white pt-3 pb-2" style="background-color: #0070CD">
     <div class="container text-md-left">
         <div class="row text-md-left">
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
@@ -94,6 +94,11 @@
         </div>
     </div>
 
+    <!-- Start arrow back-home -->
+    <a href="#" class="back-home">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+    <!-- End arrow back-home -->
 </footer>
 <!-- End footer Section -->
 
@@ -115,29 +120,44 @@
 </script>
 <!-- OwlCarousel2 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<!-- typedJs -->
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
 
 <script>
     $(document).ready(function() {
+        // Select 2
         $('.select2').select2();
-    });
+        // Select 2
 
-    $('.city').change(function() {
-        var cityId = $(this).val();
+        // Start Back Home 
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 0) {
+                $(".back-home").fadeIn(350);
+            } else {
+                $(".back-home").fadeOut(350);
+            }
+        })
+        // End Back Home 
+        // get a areas with axios request
+        $('.city').change(function() {
+            var cityId = $(this).val();
 
-        if (cityId != 'allCities') {
-            var axiosUrl = "{{ route('website.axios.region', ':cityId') }}";
-            axiosUrl = axiosUrl.replace(':cityId', cityId);
+            if (cityId != 'allCities') {
+                var axiosUrl = "{{ route('website.axios.region', ':cityId') }}";
+                axiosUrl = axiosUrl.replace(':cityId', cityId);
 
-            axios.get(axiosUrl)
-                .then(function(response) {
-                    var regionsHtml = response.data;
+                axios.get(axiosUrl)
+                    .then(function(response) {
+                        var regionsHtml = response.data;
 
-                    $('.region').html(regionsHtml);
-                })
-                .catch(function(error) {
-                    console.error('Error fetching regions: ' + error);
-                });
-        }
+                        $('.region').html(regionsHtml);
+                    })
+                    .catch(function(error) {
+                        console.error('Error fetching areas: ' + error);
+                    });
+            }
+        });
     });
 </script>
 @yield('scripts')

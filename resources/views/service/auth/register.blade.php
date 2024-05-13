@@ -67,10 +67,11 @@
 
             /*  open this condation after finish */
             /* @if ($dir == 'rtl')
-                .wizard>.actions {
-                    text-align: left;
-                }
-            @endif */
+            .wizard>.actions {
+                text-align: left;
+            }
+            @endif
+            */
         </style>
     </head>
 
@@ -210,7 +211,7 @@
                                                     class="col-md-2 col-form-label">{{ __('services/services.register-services-date') }}*</label>
 
                                                 <div class="col-md-4">
-                                                    <input type="date" class="form-control  form-control-sm"
+                                                    <input type="date" class="form-control form-control-sm"
                                                         name="dateOfBirth" required id="date_of_birth"
                                                         value="{{ old('dateOfBirth') }}" @class(['form-control bg-light fs-6'])>
                                                     @error('dateOfBirth')
@@ -245,8 +246,9 @@
 
                                                 <div class="col-md-9">
                                                     <input type="email" class="form-control  form-control-sm"
-                                                        name="email" id="email" required autofocus old('email')
-                                                        autocomplete="username" placeholder="example@domin.com">
+                                                        name="email" id="email" required autofocus
+                                                        value="{{ old('email') }}" autocomplete="email"
+                                                        placeholder="example@domin.com">
                                                     @error('email')
                                                         <small class="text-danger">
                                                             &#x2022; {{ $message }}

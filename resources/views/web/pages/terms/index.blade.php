@@ -11,7 +11,7 @@
         }
 
         h1 {
-            color: #5459CE;
+            color: #0070CD;
         }
     </style>
 @endsection
@@ -28,7 +28,7 @@
             <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
                 <div class="col-12 col-lg-12 col-xl-12">
                     <div class="row justify-content-xl-center">
-                        <h1 class="mb-3 h3">{{ __('website/web.terms-of-use') }}</h1>
+                        <h1 class="mb-3 icon">{{ __('website/web.terms-of-use') }}</h1>
                         <div class="col-12 col-xl-11">
                             @foreach ($terms as $item)
                                 <h2 class="h3 mb-3">{{ @$item->getTranslation('title', app()->getLocale()) }}</h2>

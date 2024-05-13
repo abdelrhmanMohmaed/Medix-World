@@ -8,6 +8,7 @@ use App\Http\Controllers\Services\Auth\{
 use App\Http\Controllers\Services\Pages\{
     DashboardController,
     ProfileController,
+    ScheduleController,
 };
 
 /*
@@ -47,6 +48,14 @@ Route::middleware('auth:service_provider')->group(function () {
 
         Route::get('', 'index')->name('index');
     });
+
+    Route::prefix('schedules')->name('schedules.')->controller(ScheduleController::class)
+    ->group(function () {
+
+        Route::get('', 'index')->name('index');
+        Route::post('', 'store')->name('store');
+    });
+
 
 
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

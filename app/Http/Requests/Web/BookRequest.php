@@ -4,7 +4,7 @@ namespace App\Http\Requests\Web;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactUsRequest extends FormRequest
+class BookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,8 @@ class ContactUsRequest extends FormRequest
     {
         return [
             "fullName" => ['required','string',"min:3"],
-            'email' => ['required','email'],
-            "subject" => ['nullable','string',"min:3"],
-            "message" => ['required','string',"min:3"],
+            'tel' => ['required', 'string', 'regex:/^\+[0-9]{12}$/'],
+            'email' => ['nullable','email'],
         ];
     }
 }
