@@ -32,25 +32,56 @@ class HomeController extends Controller
     }
     public function search(Request $request): View
     {
+        $majorName = null;
+        $major = $request->major;
+        $city = $request->city;
+        $area = $request->area;
+
         $titles = Title::active()->get();
-        // $city = '';
-        // $region = '';
-        // $major = '';
-        // $major = '';
 
         $query = ServiceProviderDetails::query()
             ->whereHas('user', function ($q) {
                 $q->active();
             })
             ->approved();
+
+        if ($request->filled('major')) {
+            $query->where('major_id', $major);
+            $majorName = Major::findOrFail($major);
+        }
+
+        $query->when($request->filled('city') && $city != 'allCities', function ($query) use ($city) {
+
+            return $query->where('city_id', $city);
+        });
     
-        $majorName = null;
+        $query->when($request->filled('area') && $area != 'allAreas', function ($query) use ($area) {
+
+            return $query->where('region_id', $area);
+        });
+    
+        $results = $query->with(['user', 'city', 'region', 'major', 'title', 'user.serviceProviderSchedule' => function ($q) {
+            $q->whereDoesntHave('book');
+        }])->paginate(10);
+  
+        return view('web.pages.serviceProviders.index', compact(
+            'results', 'majorName','titles',
+            'major','city','area'
+        ));
+    }
+    public function filter(Request $request) 
+    {
+        $query = ServiceProviderDetails::query()
+            ->whereHas('user', function ($q) {
+                $q->active();
+            })
+            ->approved();
     
         if ($request->filled('major')) {
             $query->where('major_id', $request->major);
             $majorName = Major::findOrFail($request->major);
         }
-    
+
         $query->when($request->filled('city') && $request->city != 'allCities', function ($query) use ($request) {
             return $query->where('city_id', $request->city);
         });
@@ -58,12 +89,35 @@ class HomeController extends Controller
         $query->when($request->filled('area') && $request->area != 'allAreas', function ($query) use ($request) {
             return $query->where('region_id', $request->area);
         });
-    
+        
+        $query->when($request->filled('title'), function ($query) use ($request) {
+            return $query->whereIn('title_id', $request->title);
+        });
+        
+        $query->when($request->filled('gender'), function ($query) use ($request) {
+            return $query->whereHas('user', function ($q) use ($request) {
+                $q->whereIn('gender', $request->gender);
+            });
+        });
+
+        $query->when($request->filled('price_range'), function ($query) use ($request) {
+            $priceRanges = $request->price_range;
+            $query->where(function ($query) use ($priceRanges) {
+                foreach ($priceRanges as $range) {
+                    [$min, $max] = explode('-', $range);
+                    
+                    $query->orWhereBetween('price', [$min, $max]);
+                }
+            });
+        
+            return $query;
+        });
+        
         $results = $query->with(['user', 'city', 'region', 'major', 'title', 'user.serviceProviderSchedule' => function ($q) {
             $q->whereDoesntHave('book');
         }])->paginate(10);
-    
-        return view('web.pages.serviceProviders.index', compact('results', 'majorName','titles'));
+ 
+        return view('web.pages.serviceProviders.partials.filter', compact('results'));
     }
     public function show(ServiceProviderDetails $serviceProvider): View
     {

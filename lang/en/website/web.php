@@ -30,6 +30,7 @@ return [
 
 
     // 
+    'provider-filter-title' => 'Filter',
     'text-slider-title' => "Find the Best Healthcare Providers with Medix",
     'text-slider-1' => 'We are here to make your healthcare search journey easier and warmer.',
     'text-slider-2' => 'Medix helps you find the best doctors and clinics near you.',
