@@ -9,7 +9,6 @@ use Spatie\Translatable\HasTranslations;
 
 class TermsCondition extends Model
 {
-    public $table = "terms_condations";
     use HasFactory, HasTranslations;
 
     public $translatable = [
@@ -20,7 +19,6 @@ class TermsCondition extends Model
 
     public $fillable = [
         'user_id',
-        // 'terms_condation_id',
         'title',
         'description',
         'sub_description',
