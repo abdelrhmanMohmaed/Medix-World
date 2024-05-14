@@ -32,10 +32,10 @@
                         <div class="col-12 col-xl-11">
                             @foreach ($terms as $item)
                                 <h2 class="h3 mb-3">{!! @$item->getTranslation('title', app()->getLocale()) !!}</h2>
-                                <p class="text-secondary mb-3">
+                                <p class="text-secondary">
                                     {!! $item->getTranslation('description', app()->getLocale()) !!}
                                 </p>
-                                <p class="text-secondary ps-5"  >
+                                <p class="text-secondary mx-5">
                                     {!! $item->getTranslation('sub_description', app()->getLocale()) !!}
                                 </p>
                             @endforeach
