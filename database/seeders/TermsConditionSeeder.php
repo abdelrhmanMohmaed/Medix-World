@@ -33,8 +33,9 @@ class TermsConditionSeeder extends Seeder
                     1.2 Our Services Our services include our website and application, allowing users to identify healthcare providers and book appointments with them, including clinics, hospitals, or diagnostic laboratories for consultations and physical services. Our services, both public and protected, are collectively referred to as \"Services\". In other words, our services are only intended to assist you in searching and booking appointments with service providers. You are aware that some services are available under different names. You also acknowledge that services may be provided by 
                     (1) some subsidiaries and affiliates of Medix or 
                     (2) independent service providers.</div>\r\n</div>\r\n</div>\r\n</div>",
+                    
                     "ar" => "<div>1.1 نظرة عامة قد تتضمن خدماتنا نصًا أو بيانات أو رسومات أو صورًا أو أي محتوى آخر (يُشار إليه إجمالاً باسم \"المحتوى\") أنشأناه بمعرفتنا أو من قبل الغير، بما في ذلك المتعاقدين للتسويق مع ميديكس من مقدمي الرعاية الصحية والشركاء مثل الأطباء والمستشفيات والعيادات الشاملة والمختبرات ومراكز الأشعة والصيدليات.</div>\r\n<div>\r\n<div>
-                    1.2 خدماتنا تشمل خدماتنا هذا الموقع والتطبيق مما يتيح للمستخدمين التعرف على مقدمي الرعاية الصحية والحجز لديهم بما في ذلك العيادات والمستشفيات أو مختبرات التشخيص للاستشارات والخدمات الفيزيائية. يُشار إلى خدماتنا العامة والمحمية إجمالًا باسم \"الخدمات\". بمعنى آخر، تهدف خدماتنا فقط إلى مساعدتك في البحث وحجز موعد مع مقدم الخدمة. أنت تعلم بأن بعض الخدمات متاحة تحت أسماء مختلفة . أنت تعلم أيضًا بأنه قد يتم توفير الخدمات من قبل .</div>\r\n</div>\r\n<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>",
+                    1.2 خدماتنا تشمل خدماتنا هذا الموقع والتطبيق مما يتيح للمستخدمين التعرف على مقدمي الرعاية الصحية والحجز لديهم بما في ذلك العيادات والمستشفيات أو مختبرات التشخيص للاستشارات والخدمات الفيزيائية. يُشار إلى خدماتنا العامة والمحمية إجمالًا باسم \"الخدمات\". بمعنى آخر، تهدف خدماتنا فقط إلى مساعدتك في البحث وحجز موعد مع مقدم الخدمة. أنت تعلم بأن بعض الخدمات متاحة تحت أسماء مختلفة . أنت تعلم أيضًا بأنه قد يتم توفير الخدمات من قبل .</div>\r\n</div>\r\n<div></div>",
                 ],
                 'sub_description' => [
                     "en" => "(1) some subsidiaries and affiliates of Medix\r\n <br> (2) independent service providers.",
@@ -54,7 +55,7 @@ class TermsConditionSeeder extends Seeder
                     (1) some subsidiaries and affiliates of Medix or 
                     (2) independent service providers.</div>\r\n</div>\r\n</div>\r\n</div>",
                     "ar" => "<div>1.1 نظرة عامة قد تتضمن خدماتنا نصًا أو بيانات أو رسومات أو صورًا أو أي محتوى آخر (يُشار إليه إجمالاً باسم \"المحتوى\") أنشأناه بمعرفتنا أو من قبل الغير، بما في ذلك المتعاقدين للتسويق مع ميديكس من مقدمي الرعاية الصحية والشركاء مثل الأطباء والمستشفيات والعيادات الشاملة والمختبرات ومراكز الأشعة والصيدليات.</div>\r\n<div>\r\n<div>
-                    1.2 خدماتنا تشمل خدماتنا هذا الموقع والتطبيق مما يتيح للمستخدمين التعرف على مقدمي الرعاية الصحية والحجز لديهم بما في ذلك العيادات والمستشفيات أو مختبرات التشخيص للاستشارات والخدمات الفيزيائية. يُشار إلى خدماتنا العامة والمحمية إجمالًا باسم \"الخدمات\". بمعنى آخر، تهدف خدماتنا فقط إلى مساعدتك في البحث وحجز موعد مع مقدم الخدمة. أنت تعلم بأن بعض الخدمات متاحة تحت أسماء مختلفة . أنت تعلم أيضًا بأنه قد يتم توفير الخدمات من قبل .</div>\r\n</div>\r\n<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>",
+                    1.2 خدماتنا تشمل خدماتنا هذا الموقع والتطبيق مما يتيح للمستخدمين التعرف على مقدمي الرعاية الصحية والحجز لديهم بما في ذلك العيادات والمستشفيات أو مختبرات التشخيص للاستشارات والخدمات الفيزيائية. يُشار إلى خدماتنا العامة والمحمية إجمالًا باسم \"الخدمات\". بمعنى آخر، تهدف خدماتنا فقط إلى مساعدتك في البحث وحجز موعد مع مقدم الخدمة. أنت تعلم بأن بعض الخدمات متاحة تحت أسماء مختلفة . أنت تعلم أيضًا بأنه قد يتم توفير الخدمات من قبل .</div>\r\n</div>\r\n<div></div>",
                 ],
                 'sub_description' => [
                     "en" => "(1) some subsidiaries and affiliates of Medix\r\n <br> (2) independent service providers.",
@@ -70,59 +71,60 @@ class TermsConditionSeeder extends Seeder
                     "ar" => "3. الدفع" 
                 ],
                 'description' => [
-                    "en" => "<p>3.1 Payment Collection.</p>",
-                    "ar" => "<p>3.1 تحصيل المدفوعات</p>" 
+                    "en" => "<div>\r\n<div>3.1 Payment Collection.</div>\r\n<div>\r\n",
+                    "ar" => "<div>\r\n<div>3.1 تحصيل المدفوعات</div>\r\n<div>\r\n" 
                 ],
+
                 'sub_description' => [
-                    "en" => "<p>
+                    "en" => "
                     3.1.1 You can choose either (1) cash payment at the service provider's location at the time of consultation or (2) online payment through our website or application. 
                     When collecting amounts on behalf of service providers, you expressly agree to comply with the payment terms of this service provider. 
                     If necessary, we will include any taxes. 
                     We currently accept payment by credit/debit cards, Fawry service, or digital wallets. 
                     You agree to make all these payments in a timely manner and acknowledge that you are responsible for any amounts associated with your account. 
                     Depending on the service, we will collect payments before or after providing the service.
-                    </p>\r\n<p>
-
+                    \r\n
+                    <br>
                     3.1.2 We reserve the right to determine, modify, or remove any fees, at our sole discretion. 
                     We may also offer promotions or discounts, which will change the amount paid, but are subject only to the terms and conditions of this promotional offer or discount.
-                    </p>\r\n",
+                    \r\n",
                     
-                    "ar" => "<p>
+                    "ar" => "
                     3.1.1 يمكنك اختيار إما (1) الدفع نقدًا في موقع مقدم الخدمة في وقت الاستشارة أو (2) الدفع عبر الإنترنت من خلال موقعنا أو تطبيقنا.
                     عند تحصيل المبالغ نيابة عن مقدمي الخدمات، فإنك توافق صراحًا على الالتزام بشروط الدفع الخاصة بمقدم الخدمة هذا.
                     و عند الاقتضاء ، سنقوم بتضمين أية ضرائب. نقبل حاليًا الدفع من خلال بطاقات الائتمان / الخصم أو خدمة فوري أو المحافظ الرقمية.
                     أنت توافق على إجراء جميع هذه المدفوعات في الوقت المناسب ، وتقر بأنك مسؤول عن أي مبالغ مرتبطة بحسابك.
                     و اعتمادًا على الخدمة ، سنقوم بتحصيل المدفوعات قبل أو بعد تقديم الخدمة.
-                    </p>\r\n<p>
-
+                    \r\n
+                    <br>
                     3.1.2 نحتفظ بالحق في تحديد أو تعديل أو إزالة أي رسوم ، وفقًا لتقديرنا الخاص.
                     قد نقدم أيضًا عروضًا ترويجية أو خصومات ، والتي ستغير المبلغ المدفوع ، ولكن تخضع فقط لشروط وأحكام هذا العرض الترويجي أو الخصم.
-                    </p>\r\n"
+                    \r\n"
                 ], 
             ],
             [ 
                 
                 'description' => [
-                    "en" => "<p>3.2 Refund Policy</p>\r\n<p>",
-                    "ar" => "<p>3.2 سياسة الاسترداد</p>\r\n" 
+                    "en" => "<div>\r\n<div>3.2 Refund Policy</div>\r\n<div>\r\n",
+                    "ar" => "<div>\r\n<div>3.2 سياسة الاسترداد</div>\r\n<div>\r\n" 
                 ],
                 'sub_description' => [
 
-                    "en" => "<p>3.2.1 The fees you pay are final and non-refundable unless otherwise specified by Medix.</p>\r\n
-                    <p>3.2.2 Refunds will be made using the same payment method, if available.</p>\r\n
-                    <p>3.2.3 Medix reserves the right to refund any amounts to users' accounts for use in other services at its own discretion.</p>\r\n
-                    <p>3.2.4 Refunded amounts are not applicable if the user is not satisfied with the medical service provided.</p>\r\n
-                    <p>3.2.5 Users are entitled to a full refund if:</p>\r\n<p>3.2.5.1. The user cancels the appointment before the appointment date;</p>\r\n
-                    <p>3.2.5.2. The service provider cancels or does not attend the appointment for which the user paid.</p>\r\n",
+                    "en" => "3.2.1 The fees you pay are final and non-refundable unless otherwise specified by Medix.\r\n<br>
+                    3.2.2 Refunds will be made using the same payment method, if available.\r\n<br>
+                    3.2.3 Medix reserves the right to refund any amounts to users' accounts for use in other services at its own discretion.\r\n<br>
+                    3.2.4 Refunded amounts are not applicable if the user is not satisfied with the medical service provided.\r\n<br>
+                    3.2.5 Users are entitled to a full refund if:\r\n3.2.5.1. The user cancels the appointment before the appointment date;\r\n<br>
+                    3.2.5.2. The service provider cancels or does not attend the appointment for which the user paid.\r\n<br>",
 
 
-                    "ar" => "<p>3.2.1 الرسوم التي تدفعها نهائية وغير قابلة للاسترداد ، ما لم تحدد ميديكس خلاف ذلك.</p>\r\n
-                    <p>3.2.2 تُسترد الأموال بنفس طريقة الدفع ، إن وُجدت.</p>\r\n
-                    <p>3.2.3 تحتفظ ميديكس بحقها في استرداد أي مبالغ إلى حساب المستخدمين لاستخدامها في خدمات أخرى وفقًا لتقديرها الخاص.</p>\r\n
-                    <p>3.2.4 المبالغ المُستردة غير قابلة للتطبيق إذا كان المستخدم غير راضٍ عن الخدمة الطبية المُقدمة.</p>\r\n
-                    <p>3.2.5 يحق للمستخدم استرداد كامل المبلغ إذا:</p>\r\n
-                    <p>3.2.5.1. ألغى المستخدم الحجز قبل تاريخ الموعد؛</p>\r\n
-                    <p>3.2.5.2. ألغى مقدم الخدمة ، أو لم يحضر ، الموعد الذي دفع المستخدم من أجله ؛</p>\r\n<p>",
+                    "ar" => "3.2.1 الرسوم التي تدفعها نهائية وغير قابلة للاسترداد ، ما لم تحدد ميديكس خلاف ذلك.\r\n<br>
+                    3.2.2 تُسترد الأموال بنفس طريقة الدفع ، إن وُجدت.\r\n<br>
+                    3.2.3 تحتفظ ميديكس بحقها في استرداد أي مبالغ إلى حساب المستخدمين لاستخدامها في خدمات أخرى وفقًا لتقديرها الخاص.\r\n<br>
+                    3.2.4 المبالغ المُستردة غير قابلة للتطبيق إذا كان المستخدم غير راضٍ عن الخدمة الطبية المُقدمة.\r\n<br>
+                    3.2.5 يحق للمستخدم استرداد كامل المبلغ إذا:\r\n<br>
+                    3.2.5.1. ألغى المستخدم الحجز قبل تاريخ الموعد؛\r\n<br>
+                    3.2.5.2. ألغى مقدم الخدمة ، أو لم يحضر ، الموعد الذي دفع المستخدم من أجله ؛\r\n<br>",
 
                 ],
             ],

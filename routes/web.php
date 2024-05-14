@@ -35,6 +35,7 @@ Route::get('axios/region/{id}', [HomeController::class, 'axiosRegion'])->name('a
 Route::prefix('search')->name('search.')->controller(HomeController::class)->group(function () {
 
     Route::get('service-provider',  'search')->name('service-provider');
+    Route::get('service-provider/filter',  'filter')->name('service-provider.filter');
     Route::get('service-provider/{serviceProvider}',  'show')->name('service-provider.show');
 });  
 
