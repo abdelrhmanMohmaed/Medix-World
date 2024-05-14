@@ -22,9 +22,9 @@ class TermsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title.*' => ['required', "unique_translation:terms_condations,title,{$this->term?->id}"],
-            'sub_description.*' => ['required', "unique_translation:terms_condations,sub_description,{$this->term?->id}"],
-            'description.*' => ['required', "unique_translation:terms_condations,description,{$this->term?->id}"],
+            'title.*' => ['nullable', "unique_translation:terms_conditions,title,{$this->term?->id}"],
+            'sub_description.*' => ['nullable', "unique_translation:terms_conditions,sub_description,{$this->term?->id}"],
+            'description.*' => ['nullable', "unique_translation:terms_conditions,description,{$this->term?->id}"],
 
         ];
     }
