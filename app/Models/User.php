@@ -19,9 +19,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'dateOfBirth', 'gender', 'active'
     ];
-    protected $hidden = [ 'password', 'remember_token'];
+    protected $hidden = ['password', 'remember_token'];
 
-    protected $casts = ['email_verified_at' => 'datetime','password' => 'hashed'];
+    protected $casts = ['email_verified_at' => 'datetime', 'password' => 'hashed'];
 
     public function setDateOfBirthAttribute($value)
     {
@@ -32,34 +32,41 @@ class User extends Authenticatable
     {
         return $query->where('active', true);
     }
-    public function serviceProviderDetails() : HasMany
+
+    public function scopeUser($query)
+    {
+
+        return $query->whereHas('roles', function ($query) {
+            $query->where('roles.name', 'User');
+        });
+    }
+
+    public function serviceProviderDetails(): HasMany
     {
         return $this->hasMany(ServiceProviderDetails::class);
     }
-    public function phones() : HasMany
+    public function phones(): HasMany
     {
         return $this->hasMany(Phone::class);
     }
-    public function serviceProviderSchedule() : HasMany
+    public function serviceProviderSchedule(): HasMany
     {
-     return $this->hasMany(Schedule::class);
-    }    
-        public function book() : HasMany
-     {
-    return $this->hasMany(Book::class);
-     }   
-     public function clientBook() : HasMany
-     {
-    return $this->hasMany(Book::class,'client_id');
-     }    
-    public function review() : HasMany
+        return $this->hasMany(Schedule::class);
+    }
+    public function book(): HasMany
+    {
+        return $this->hasMany(Book::class);
+    }
+    public function clientBook(): HasMany
+    {
+        return $this->hasMany(Book::class, 'client_id');
+    }
+    public function review(): HasMany
     {
         return $this->hasMany(Review::class);
-    }   
-    public function clientReview() : HasMany
-    {
-        return $this->hasMany(Review::class,'client_id');
     }
- 
-
+    public function clientReview(): HasMany
+    {
+        return $this->hasMany(Review::class, 'client_id');
+    }
 }

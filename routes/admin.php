@@ -11,7 +11,8 @@ use App\Http\Controllers\Admin\Pages\{
     RegionController,
     RoleController,
     ServiceProviderController,
-    TermsAndCondtionController
+    TermsAndCondtionController,
+    UserController
 };
 use Spatie\Permission\Contracts\Permission;
 
@@ -141,6 +142,20 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('/{permission}/edit', 'edit')->name('edit');  
             Route::patch('{permission}', 'update')->name('update'); 
             Route::delete('{permission}', 'destroy')->name('destroy'); 
+
+        });
+
+        Route::prefix('users')->name('users.')->controller(UserController::class)
+        ->group(function () {
+        
+            Route::get('', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::get('/{user}/edit', 'edit')->name('edit');  
+            Route::patch('{user}', 'update')->name('update'); 
+            Route::delete('{user}', 'destroy')->name('destroy'); 
+            Route::get('{user}/view', 'show')->name('show'); 
+
 
         });
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

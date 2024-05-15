@@ -94,7 +94,7 @@
 
       <!-- Patient -->
       <li class="nav-item {{ active_class(['pages/*']) }}">
-        <a href="{{ route('admins.advices.index') }}" class="nav-link"> <i class="fa-solid fa-users"></i><span class="link-title">Patients </span></a>
+        <a href="{{ route('admins.users.index') }}" class="nav-link"> <i class="fa-solid fa-users"></i><span class="link-title">Patients </span></a>
       </li>
       <!-- Pages -->
       <li class="nav-item nav-category">Pages</li>
