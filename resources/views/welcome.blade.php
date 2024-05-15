@@ -3,152 +3,102 @@
 @section('title', __('website/web.medix-welcome'))
 
 @section('styles')
-
+    <link rel="stylesheet" href="{{ asset('assets/styles/user/welcome.css') }}">
     <style>
-        /* Start Hero Section */
         .hero-section {
-            background: url("{{ asset('assets/images/advices/default.png') }}") no-repeat center;
+            background: url("{{ asset('assets/images/user/landing/default.jpg') }}") no-repeat center;
             background-size: cover;
             width: 100%;
             height: 100vh;
         }
-
-        .hero-section::before {
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.4);
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-        }
-
-        .hero-section .container {
-            height: 100vh;
-            z-index: 1;
-            position: relative;
-        }
-
-        .hero-section h1 {
-            font-size: 1.5em;
-        }
-
-        .hero-section h2 {
-            font-size: 1.2em;
-        }
-
-        /* End Hero Section */
-
-        /* Start Advices Section */
-        .card {
-            border-radius: 30px;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-        }
-
-        .card-body {
-            padding: 25px;
-            margin-top: -15px;
-        }
-
-        /* End Advices Section */
-
-        /* Start Advices Section */
-        .card-img-top {
-            border-radius: 50px;
-            padding: 20px;
-        }
-
-        /* End Advices Section */
-
-        /* Start General Idea */
-        .card .card-icon {
-            display: flex;
-            width: 100%;
-            height: 80px;
-            justify-content: flex-start;
-            padding: 25px;
-        }
-
-        .icon {
-            color: #5459CE;
-        }
-
-        .icon-line {
-            width: 43px;
-            border: 2px solid rgb(239, 15, 15);
-        }
-
-        /* End General Idea */
-
-        /* Start Contact Us */
-        #contact-us,
-        #advice {
-            background: #EEF0F2;
-        }
-
-        /* End Contact Us */
     </style>
 @endsection
 
 @section('main')
+    <!-- Start include php condation to fix style ar or en -->
     @php
         $dir = 'ltr';
         if (str_replace('_', '-', app()->getLocale()) == 'ar') {
             $dir = 'rtl';
         }
     @endphp
+    <!-- End include php condation to fix style ar or en -->
 
-    <!-- Hero Section -->
+    <!-- Start Hero Section -->
     <section class="hero-section">
         <div class="container contad-flex d-flex align-items-center justify-content-center fs-1 text-white flex-column">
-            <h1>Medix World</h1>
-            <h2>The best way to find you services</h2>
-
-
             <div class="row row-cols-1 row-cols-md-3 g-4 py-5 w-100">
                 <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body d-flex mt-0 gap-2 flex-wrap">
-                            <!-- Example single danger button -->
+                    <div class="card p-3">
 
-                            <div class="btn-group flex-grow-1">
-                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    القسم
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
+                        <div class="col-md-12 text-center">
+                            <div class="row justify-content-center align-items-center">
+                                <h1 style="font-size: 40px" class="my-2">{{ __('website/web.text-slider-title') }}</h1>
                             </div>
+                            <div class="row justify-content-center align-items-center">
+                                <h4 class=""><span id="typed-text"></span></h4>
+                            </div>
+                        </div>
 
-                            <div class="btn-group flex-grow-1">
-                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    التخصص
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
 
-                            <div class="btn-group flex-grow-1">
-                                <button type="button" class="btn btn-primary">
-                                    بحث
-                                </button>
+                        <div class="card-body">
+                            <!-- Start Form Search-->
+                            <hr class="text-white">
+                            <div class="col-md-12">
+                                <form class="row" action="{{ route('website.search.service-provider') }}" method="get">
+
+                                    <div class="col-md-3">
+                                        <div class="btn-group w-100">
+                                            <select class="form-select select2 w-100" name="major">
+                                                <option selected disabled>{{ __('website/web.choose-specialty') }}
+                                                </option>
+                                                @foreach ($allMajors as $item)
+                                                    <option value="{{ $item->id }}">
+                                                        {{ $item->getTranslation('name', app()->getLocale()) }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="btn-group w-100">
+                                            <select class="city form-select select2 w-100" name="city">
+                                                <option selected disabled>{{ __('website/web.choose-city') }}</option>
+                                                <option value="allCities">
+                                                    {{ __('website/web.website/web.choose-specialty-all') }}</option>
+                                                @foreach ($allCities as $item)
+                                                    <option value="{{ $item->id }}">
+                                                        {{ $item->getTranslation('name', app()->getLocale()) }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="btn-group w-100">
+                                            <select class="region form-select select2 w-100" name="area">
+                                                <option selected disabled>{{ __('website/web.choose-area') }}</option>
+                                                <option value="allAreas">
+                                                    {{ __('website/web.website/web.choose-area-all') }}</option>
+                                                <!-- Display as us axios -->
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="btn-group w-100">
+                                            <button type="submit" class="btn searh-btn p-2 text-center"
+                                                title="{{ __('website/web.choose-search') }}">
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                                {{ __('website/web.choose-search') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+                            <!-- End Form Search-->
                         </div>
                     </div>
                 </div>
@@ -167,7 +117,8 @@
                     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
                         <div class="col-md-12">
                             <div class="card">
-                                <img src="{{ asset($item->img) }}" loading="lazy" class="card-img-top" alt="advices">
+                                <img src="{{ asset($item->img) }}" {{-- loading="lazy" --}} class="card-img-top"
+                                    alt="advices">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $item->getTranslation('title', app()->getLocale()) }}</h5>
                                     <p class="card-text">
@@ -254,12 +205,12 @@
 
     <!-- Start Contact us Section -->
     <section id="contact-us" class="contact-us-section">
-        <div class="container py-5">
+        <div class="container py-4">
             <h2 class="text-center">{{ __('website/web.contact-us') }}</h2>
             <p class="text-center">{{ __('website/web.contact-sub-title') }}</p>
-            <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-                <div class="col-md-12">
+            <div class="row row-cols-1 row-cols-md-3 g-4 py-1">
 
+                <div class="col-md-12">
                     <form method="post" action="{{ route('website.contact.store') }}">
                         @csrf
                         <div class="mb-1">
@@ -311,11 +262,25 @@
                 </div>
             </div>
         </div>
-        </div>
     </section>
     <!-- End Contact us Section -->
 @endsection
 
 @section('scripts')
     <script src="{{ asset('assets/js/user/landing.js') }}"></script>
+    <script>
+        var typed = new Typed('#typed-text', {
+            strings: [
+                "{{ __('website/web.text-slider-1') }}",
+                "{{ __('website/web.text-slider-2') }}",
+                "{{ __('website/web.text-slider-3') }}",
+                "{{ __('website/web.text-slider-4') }}",
+                "{{ __('website/web.text-slider-5') }}",
+                "{{ __('website/web.text-slider-6') }}",
+            ],
+            typeSpeed: 45,
+            backSpeed: 45,
+            loop: true,
+        });
+    </script>
 @endsection

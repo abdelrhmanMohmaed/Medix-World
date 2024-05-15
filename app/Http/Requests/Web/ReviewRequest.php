@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Pages;
+namespace App\Http\Requests\Web;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TermsRequest extends FormRequest
+class ReviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,10 @@ class TermsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title.*' => ['nullable', "unique_translation:terms_conditions,title,{$this->term?->id}"],
-            'sub_description.*' => ['nullable', "unique_translation:terms_conditions,sub_description,{$this->term?->id}"],
-            'description.*' => ['nullable', "unique_translation:terms_conditions,description,{$this->term?->id}"],
-
+            "rating" => ['required','in:1,2,3,4,5'],
+            'comment' => ['required', 'string'],
+            'book_id' => ['required','exists:books,id'],
+            'user_id' => ['required','exists:users,id'],
         ];
     }
 }

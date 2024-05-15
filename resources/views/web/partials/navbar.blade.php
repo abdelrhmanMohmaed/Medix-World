@@ -63,7 +63,7 @@
                 {{ __('website/web.logout') }}
             </a>
         @elseif (auth()->guard('service_provider')->check())
-            <a class="login-button" href="{{ route('website.logout') }}">
+            <a class="login-button" href="{{ route('services.logout') }}">
                 {{ __('website/web.logout') }}
             </a>
         @else

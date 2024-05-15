@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Translatable\HasTranslations;
 
 class ServiceProviderDetails extends Model
@@ -30,7 +31,7 @@ class ServiceProviderDetails extends Model
 
 
     # Getter and Setter
-
+    // remove it 
     public function getImageAttribute()
     {
         return url('assets/images/services/avatars/' . $this->img);
@@ -39,27 +40,27 @@ class ServiceProviderDetails extends Model
 
     # Relation
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function title()
+    public function title(): BelongsTo
     {
         return $this->belongsTo(Title::class);
     }
 
-    public function major()
+    public function major(): BelongsTo
     {
         return $this->belongsTo(Major::class);
     }
 
-    public function city()
+    public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
     }
 
-    public function region()
+    public function region(): BelongsTo
     {
         return $this->belongsTo(Region::class);
     }

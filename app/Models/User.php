@@ -16,8 +16,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
-
-
     protected $fillable = [
         'name', 'email', 'password', 'dateOfBirth', 'gender', 'active'
     ];
@@ -34,13 +32,34 @@ class User extends Authenticatable
     {
         return $query->where('active', true);
     }
-    function serviceProviderDetails() 
+    public function serviceProviderDetails() : HasMany
     {
-        return $this->hasOne(ServiceProviderDetails::class);
+        return $this->hasMany(ServiceProviderDetails::class);
     }
-    function phones() : HasMany
+    public function phones() : HasMany
     {
         return $this->hasMany(Phone::class);
     }
+    public function serviceProviderSchedule() : HasMany
+    {
+     return $this->hasMany(Schedule::class);
+    }    
+        public function book() : HasMany
+     {
+    return $this->hasMany(Book::class);
+     }   
+     public function clientBook() : HasMany
+     {
+    return $this->hasMany(Book::class,'client_id');
+     }    
+    public function review() : HasMany
+    {
+        return $this->hasMany(Review::class);
+    }   
+    public function clientReview() : HasMany
+    {
+        return $this->hasMany(Review::class,'client_id');
+    }
+ 
 
 }

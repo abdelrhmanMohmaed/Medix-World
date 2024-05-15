@@ -12,8 +12,33 @@ return [
     'provider-read-less' => 'أقرأ أقل',
     'provider-all-specialty' => 'كل التخصاصات',
     'provider-booking-price' => 'سعر المكالمة العادية',
+    //
+    'provider-info' => 'معلومات عن الدكتور',
+    'provider-patients-reviews' => 'تقييم المرضي',
+    'provider-overall-rating' => 'التقييم العام',
+    'provider-overall-rating-at' => 'التقييم العام من',
+    'provider-overall-rating-visit' => 'زاروا الدكتور',
+    'provider-doctor-rating' => 'تقيم الدكتور',
+    'provider-doctor-day' => 'يوم :',
+    'provider-doctor-from' => 'من :',
+    'provider-doctor-to' => 'الى :',
+    'provider-doctor-reservation-information' => 'أدخل معلومات الحجز',
+    'provider-doctor-reservation-wish' => 'نتمنى لكم تجربة ممتعة وسلسة',
+    'provider-doctor-book' => 'حجز',
+    'provider-doctor-optional' => 'ْأختياري',
+    
     // Page after search
 
+    //
+    'provider-filter-title' => 'حدد بحثك',
+    'text-slider-title' => "ابحث عن أفضل مقدمي الرعاية الصحية مع ميديكس",
+    'text-slider-1' => 'نحن هنا لنجعل رحلتك في البحث عن الرعاية الصحية أكثر سهولة ودفئًا.',
+    'text-slider-2' => 'يساعدك ميدكس في العثور على أفضل الأطباء والعيادات القريبة لك.',
+    'text-slider-3' => 'دعنا نمنحك الدفء والراحة التي تستحقها في رحلتك الطبية مع ميدكس.',
+    'text-slider-4' => 'ميدكس يسهل عليك العثور على أفضل الأطباء بناءً على تقييمات المرضى.',
+    'text-slider-5' => 'ميدكس يجعل البحث عن أفضل الأطباء والعيادات سهلًا وسريعًا',
+    'text-slider-6' => 'استخدم ميدكس للعثور على أعلى تقييمات الأطباء وأقربهم إليك.',
+    //
 
 
 

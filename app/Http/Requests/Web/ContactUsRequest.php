@@ -23,7 +23,7 @@ class ContactUsRequest extends FormRequest
     {
         return [
             "fullName" => ['required','string',"min:3"],
-            'email' => ['required','email',"min:3"],
+            'email' => ['required','email'],
             "subject" => ['nullable','string',"min:3"],
             "message" => ['required','string',"min:3"],
         ];

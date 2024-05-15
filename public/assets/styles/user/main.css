@@ -1,0 +1,246 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.icon {
+    color: #0070CD;
+}
+
+.btn-show-more {
+    width: 100%;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+}
+
+/* Start search navbar */
+#nav_search .button-container {
+    top: 75%;
+    left: 50%;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#nav_search .btn-custom {
+    margin: 2px;
+}
+
+#nav_search .card-bady-search::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+#nav_search .btn-custom button {
+    text-align: start;
+}
+
+#nav_search .btn-custom button::after {
+    display: none
+}
+
+.searh-btn {
+    background-color: rgb(239, 15, 15);
+    color: white;
+}
+
+.searh-btn:hover {
+    background-color: white;
+    color: rgb(239, 15, 15);
+    transition: 0.5s ease-in-out;
+}
+
+/* Start search navbar */
+
+/* Style for the custom select */
+#nav_search .select2-selection__rendered,
+.hero-section .select2-selection__rendered {
+    font-size: 16px !important;
+}
+
+#nav_search .select2-container .select2-selection--single,
+.hero-section .select2-container .select2-selection--single {
+    background-color: #0070CD;
+    border-radius: 5px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    cursor: pointer;
+    height: auto !important;
+}
+
+#nav_search .select2-container--default .select2-selection--single .select2-selection__arrow,
+.hero-section .select2-container--default .select2-selection--single .select2-selection__arrow {
+    color: white;
+    height: calc(1.5em + .75rem);
+    background-color: #0070CD;
+}
+
+#nav_search .select2-container--default .select2-selection--single .select2-selection__rendered,
+.hero-section .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: white
+}
+
+#nav_search .select2 .select2-container .select2-container--default,
+.hero-section .select2 .select2-container .select2-container--default {
+    width: 100% !important;
+}
+
+.hero-section .select2-selection__arrow {
+    color: white !important;
+}
+
+.hero-section .select2-container--open .select2-dropdown {
+    background-color: white !important;
+}
+
+/* Focus style for the custom select */
+
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* loader */
+.loader-wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.loaded .loader-wrapper {
+    visibility: hidden;
+    opacity: 0;
+    transition: all .8s ease-out
+}
+
+.loader-wrapper .loader {
+    font-size: 10px;
+    margin: 50px auto;
+    text-indent: -9999em;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #6571ff;
+    background: linear-gradient(90deg, #6571ff 10%, transparent 42%);
+    -webkit-animation: loading 1.4s linear infinite;
+    animation: loading 1.4s linear infinite;
+    transform: translateZ(0)
+}
+
+.loader-wrapper .loader.loader:before {
+    width: 50%;
+    height: 50%;
+    background: #6571ff;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: ""
+}
+
+.loader-wrapper.loader-wrapper .loader.loader:before {
+    width: 50%;
+    height: 50%;
+    background: #6571ff;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: ""
+}
+
+.loader-wrapper .loader.loader:after {
+    background: #f9fafb;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: "";
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0
+}
+
+@-webkit-keyframes loading {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+/* loader */
+
+/* Start Back Home Link */
+.back-home {
+    position: fixed;
+    right: 30px;
+    background-color: rgb(239, 15, 15);
+    bottom: 70px;
+    color: #fff;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 50%;
+    display: none;
+    z-index: 2;
+    padding: 4px;
+}
+
+.back-home:hover {
+    color: #000;
+    background-color: #0070CD;
+    transition: all 0.5s;
+}
+/* End Back Home Link */
+
+
+#display_providers .card,
+.dropdown button,
+.schedulesModel, .filter-box {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+#display_providers .card,
+.schedulesModel, .filter-box {
+    border-radius: 30px;
+}
+
+#display_providers .card-body,
+.schedulesModel, .filter-box {
+    padding: 25px;
+    margin-top: -10px;
+}

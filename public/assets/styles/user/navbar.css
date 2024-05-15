@@ -1,6 +1,6 @@
 /* Start navbar */
 .navbar {
-    background-color: #5459CE;
+    background-color: #0070CD;
     height: 60px;
     margin: 10px;
     border-radius: 16px;
@@ -26,7 +26,7 @@
 
 .login-button,
 .signUp-button {
-    background-color: #5459CE;
+    background-color: #0070CD;
     color: #FFF;
     font-size: 14px;
     padding: 8px 20px;
@@ -38,7 +38,7 @@
 .login-button:hover,
 .signUp-button:hover {
     background-color: #FFF;
-    color: #5459CE;
+    color: #0070CD;
 }
 
 .navbar-toggler {
@@ -78,7 +78,7 @@
         transform: translateX(-50%);
         width: 0%;
         height: 1px;
-        background-color: #5459CE;
+        background-color: #0070CD;
         visibility: hidden;
         transition: 0.3s ease-in-out;
     }

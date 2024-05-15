@@ -11,14 +11,34 @@ return [
     'provider-read-less' => 'Read Less',
     'provider-all-specialty' => 'All Specialities',
     'provider-booking-price' => 'Cost of regular call',
-
+    //
+    'provider-info' => 'About The Doctor',
+    'provider-patients-reviews' => 'Patients’ Reviews',
+    'provider-overall-rating' => 'Overall Rating',
+    'provider-overall-rating-at' => 'From',
+    'provider-overall-rating-visit' => 'Visitors',
+    'provider-doctor-rating' => 'Doctor Rating',
+    'provider-doctor-day' => 'Day :',
+    'provider-doctor-from' => 'From :',
+    'provider-doctor-to' => 'To :',
+    'provider-doctor-reservation-information' => 'Enter The Reservation Information',
+    'provider-doctor-reservation-wish' => 'We wish you an enjoyable and smooth experience',
+    'provider-doctor-book' => 'Book',
+    'provider-doctor-optional' => 'Optional',
     // Page after search
 
 
 
-
-
-
+    // 
+    'provider-filter-title' => 'Filter',
+    'text-slider-title' => "Find the Best Healthcare Providers with Medix",
+    'text-slider-1' => 'We are here to make your healthcare search journey easier and warmer.',
+    'text-slider-2' => 'Medix helps you find the best doctors and clinics near you.',
+    'text-slider-3' => 'Let us provide you with the warmth and comfort you deserve on your medical journey with Medix.',
+    'text-slider-4' => 'Medix makes it easy for you to find the best doctors based on patient ratings.',
+    'text-slider-5' => 'Medix makes searching for the best doctors and clinics easy and fast.',
+    'text-slider-6' => 'Use Medix to find the highest-rated doctors and bring them closer to you.',
+    // 
 
 
 

@@ -12,7 +12,7 @@
 
         .icon,
         h1 {
-            color: #5459CE;
+            color: #0070CD;
         }
     </style>
 @endsection
@@ -51,11 +51,11 @@
                             </p>
                             <h4 class="mb-3">{{ __('website/web.about-us-what-we-offer') }} :</h4>
 
-                            <ul class="list-unstyled mb-5" {{--   style="{{ $dir == 'rtl' ? 'margin-right: -45px;' : '' }}" --}}>
+                            <ul class="list-unstyled mb-5">
                                 <li class="mb-4">
                                     <div class="d-flex">
                                         <div class="me-4 icon">
-                                            <i class="fas fa-stethoscope fa-2x ms-4" {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }}" --}}></i>
+                                            <i class="fas fa-stethoscope fa-2x ms-4"></i>
                                         </div>
                                         <div>
                                             <h4 class="mb-3">{{ __('website/web.about-us-what-we-offer-find-doctors') }}
@@ -69,7 +69,7 @@
                                 <li class="mb-4">
                                     <div class="d-flex">
                                         <div class="me-4 icon">
-                                            <i class="fas fa-calendar-plus fa-2x ms-4" {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }}"  --}}></i>
+                                            <i class="fas fa-calendar-plus fa-2x ms-4"></i>
                                         </div>
                                         <div>
                                             <h4 class="mb-3">
@@ -84,7 +84,7 @@
                                 <li class="mb-4">
                                     <div class="d-flex">
                                         <div class="me-4 icon">
-                                            <i class="fas fa-file-medical fa-2x ms-4" {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }}" --}}></i>
+                                            <i class="fas fa-file-medical fa-2x ms-4"></i>
                                         </div>
                                         <div>
                                             <h4 class="mb-3">
@@ -100,7 +100,7 @@
                                 <li class="mb-4">
                                     <div class="d-flex">
                                         <div class="me-4 icon">
-                                            <i class="fas fa-star fa-2x ms-4" {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }}" --}}></i>
+                                            <i class="fas fa-star fa-2x ms-4"></i>
                                         </div>
                                         <div>
                                             <h4 class="mb-3">
@@ -115,7 +115,7 @@
                                 <li class="mb-4">
                                     <div class="d-flex">
                                         <div class="me-4 icon">
-                                            <i class="fas fa-user-md fa-2x ms-4" {{-- style="{{ $dir == 'rtl' ? 'margin-left: 25px;' : '' }} --}} "></i>
+                                            <i class="fas fa-user-md fa-2x ms-4"></i>
                                                     </div>
                                                     <div>
                                                         <h4 class="mb-3">

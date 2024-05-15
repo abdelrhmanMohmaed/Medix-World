@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Web\Auth\{
     
     AuthenticatedSessionController,
@@ -29,10 +30,40 @@ use Illuminate\Support\Facades\Route;
 // Landing page 
 Route::get('/',[HomeController::class, 'index'])->name('welcome');
 Route::get('axios/region/{id}', [HomeController::class, 'axiosRegion'])->name('axios.region');
-Route::get('search/service-provider', [HomeController::class, 'search'])->name('search.service-provider');
-Route::get('search/service-provider/{serviceProvider}', [HomeController::class, 'show'])->name('search.service-provider.show');
 
+//Search
+Route::prefix('search')->name('search.')->controller(HomeController::class)->group(function () {
 
+    Route::get('service-provider',  'search')->name('service-provider');
+    Route::get('service-provider/filter',  'filter')->name('service-provider.filter');
+    Route::get('service-provider/{serviceProvider}',  'show')->name('service-provider.show');
+});  
+
+// Booking
+Route::prefix('booking')->name('booking.')->controller(HomeController::class)->group(function () {
+
+    Route::get('{schedule}/{serviceProvider}', 'booking')->name('service-provider.show');
+    Route::post('{schedule}/{serviceProvider}',  'store')->name('service-provider.store');
+});  
+
+// Contact Routes
+Route::prefix('contact')->name('contact.')->group(function () {
+
+    Route::post('/', [ContactUsController::class, 'store'])->name('store');
+});  
+
+// About Routes
+Route::prefix('about')->name('about.')->group(function () {
+
+    // Route::get('/', [AboutController::class, 'index'])->name('index');
+    Route::view('/', 'web.pages.about.index')->name('index');
+});    
+
+// Terms Routes
+Route::prefix('terms-of-use')->name('terms.')->group(function () {
+
+    Route::get('/', [TermsController::class, 'index'])->name('index');
+});   
 
 
 // User Routes 
@@ -43,26 +74,6 @@ Route::middleware('guest:web')->group(function () {
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
-
-    // Contact Routes
-    Route::prefix('contact')->name('contact.')->group(function () {
-
-        Route::post('/', [ContactUsController::class, 'store'])->name('store');
-    });  
-
-    // About Routes
-    Route::prefix('about')->name('about.')->group(function () {
-
-        // Route::get('/', [AboutController::class, 'index'])->name('index');
-        Route::view('/', 'web.pages.about.index')->name('index');
-    });    
-
-    // Terms Routes
-    Route::prefix('terms-of-use')->name('terms.')->group(function () {
-
-        Route::get('/', [TermsController::class, 'index'])->name('index');
-    });   
-
 });
 
 
@@ -72,6 +83,7 @@ Route::middleware('auth:web')->group(function () {
     Route::prefix('profile')->name('profile.')->group(function () {
 
         Route::get('/', [ProfileController::class, 'index'])->name('index');
+        Route::post('/book-review', [ProfileController::class, 'bookReview'])->name('book-review');
     });    
 
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

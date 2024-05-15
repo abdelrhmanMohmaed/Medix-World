@@ -36,21 +36,22 @@
 
   <div class="row mb-3">
     <div class="col-lg-3">
-      <label for="defaultconfig" class="col-form-label">Sub Description (EN)</label>
+        <label for="defaultconfig" class="col-form-label">Sub Description (EN)</label>
     </div>
+    
     <div class="col-lg-8">
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="sub_description[en]">{{ $term->getTranslation('sub_description', 'en') }}</textarea>
+      <textarea class="form-control simpleMdeExample" id="tinymceExample" name="sub_description[en]">{{ $term->getTranslation('sub_description', 'en') }}</textarea>
     </div>
-  </div>
+</div>
 
-  <div class="row mb-3">
+<div class="row mb-3">
     <div class="col-lg-3">
-      <label for="defaultconfig" class="col-form-label">Sub Description (AR)</label>
+        <label for="defaultconfig" class="col-form-label">Sub Description (AR)</label>
     </div>
     <div class="col-lg-8">
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="sub_description[ar]">{{ $term->getTranslation('sub_description', 'ar') }}</textarea>
+      <textarea class="form-control simpleMdeExample" id="tinymceExample" name="sub_description[ar]">{{ $term->getTranslation('sub_description', 'ar') }}</textarea>
     </div>
-  </div>
+</div>
 
 
   <div class="row mb-3">
