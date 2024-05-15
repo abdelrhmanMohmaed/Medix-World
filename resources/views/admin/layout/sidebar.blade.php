@@ -71,13 +71,12 @@
         </a>
       </li>
 
+      <li class="nav-item nav-category">Users</li>
 
       <!-- service provider -->
-      <li class="nav-item nav-category">Service Providers</li>
       <li class="nav-item {{ active_class(['serviceProvider/*']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#serviceProvider" role="button" aria-expanded="{{ is_active_route(['userviceProvider/*']) }}" aria-controls="uiComponents">
-          <i class="fa-solid fa-user-nurse"></i>
-          <span class="link-title">Service Providers</span>
+          <i class="fa-solid fa-user-doctor"></i> <span class="link-title">Service Providers</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
         </a>
       </li>
@@ -93,7 +92,10 @@
         </ul>
       </div>
 
-
+      <!-- Patient -->
+      <li class="nav-item {{ active_class(['pages/*']) }}">
+        <a href="{{ route('admins.advices.index') }}" class="nav-link"> <i class="fa-solid fa-users"></i><span class="link-title">Patients </span></a>
+      </li>
       <!-- Pages -->
       <li class="nav-item nav-category">Pages</li>
       <li class="nav-item {{ active_class(['pages/*']) }}">
