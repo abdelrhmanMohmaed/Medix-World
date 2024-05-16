@@ -7,10 +7,10 @@ use App\Http\Controllers\Web\Auth\{
     RegisteredUserController
 };
 use App\Http\Controllers\Web\Pages\{
-    AboutController,
     ProfileController,
     HomeController,
     ContactUsController,
+    MedicalController,
     TermsController
 };
 use Illuminate\Support\Facades\Route;
@@ -83,7 +83,17 @@ Route::middleware('auth:web')->group(function () {
     Route::prefix('profile')->name('profile.')->group(function () {
 
         Route::get('/', [ProfileController::class, 'index'])->name('index');
+        Route::patch('/{user}', [ProfileController::class, 'update'])->name('update');
         Route::post('/book-review', [ProfileController::class, 'bookReview'])->name('book-review');
+    });   
+
+    Route::prefix('medicals')->name('medicals.')->group(function () {
+ 
+        Route::get('medical-files/{major}', [MedicalController::class, 'index'])->name('index');
+        Route::post('medical-files', [MedicalController::class, 'store'])->name('store'); 
+        Route::post('medical-files/update', [MedicalController::class, 'update'])->name('update'); 
+        Route::get('medical-files/download/{file}', [MedicalController::class, 'download'])->name('download'); 
+        Route::post('medical-files/delete', [MedicalController::class, 'destroy'])->name('destroy'); 
     });    
 
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

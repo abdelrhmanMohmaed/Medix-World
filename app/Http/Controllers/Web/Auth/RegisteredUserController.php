@@ -33,23 +33,39 @@ class RegisteredUserController extends Controller
                 'name' => $request->fullName,
                 'email' => $request->email,
                 'password' => $request->password,
-                'tel' => $request->tel,
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
             ]); 
             $user->assignRole('User');
 
             Phone::create([
-                'user_id' => $user->id,
-                'tel' => $request->tel
+
+                    'user_id' => $user->id,
+                    'type' => 'personal',
+                    'tel' => $request->input("tel"), 
+                    'active' => 1
             ]);
+            
+
+            if ($request->has('telTwo')) { 
+                if (!empty($request->input('telTwo'))) 
+                { 
+                    Phone::create([
+
+                        'user_id' => $user->id,
+                        'type' => 'personal',
+                        'tel' => $request->input("tel"), 
+                        'active' => 1
+                    ]);
+                }
+            }
 
             event(new Registered($user));
             Auth::guard('web')->login($user);
 
             DB::commit();
 
-            return redirect()->intended(route('website.welcome', app()->getLocale()));
+            return redirect()->intended(route('website.welcome', app()->getLocale()))->with('success',__('website/web.success-register'));
         } catch (Exception $e) {
             DB::rollback();
             dd($e->getMessage());  

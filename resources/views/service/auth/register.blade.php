@@ -176,6 +176,21 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                            <div class="row my-2">
+                                                <label for="tel"
+                                                    class="col-md-3 col-form-label">{{ __('services/services.register-services-tel') }}*</label>
+
+                                                <div class="col-md-9">
+                                                    <input type="tel" name="telTwo" id="tel"
+                                                        autocomplete="tel" value="{{ old('telTwo') }}"
+                                                        placeholder="+201123843996" @class(['form-control form-control-sm bg-light fs-6'])>
+                                                    @error('telTwo')
+                                                        <small class="text-danger">
+                                                            &#x2022; {{ $message }}
+                                                        </small>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                             <!-- phone -->
 
                                             <!-- Gender BirthDay Profile Image-->

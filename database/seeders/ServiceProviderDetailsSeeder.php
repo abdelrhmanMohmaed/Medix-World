@@ -18,7 +18,7 @@ class ServiceProviderDetailsSeeder extends Seeder
         User::factory()
             ->count(8000)
             ->has(ServiceProviderDetails::factory()->count(1))
-            ->has(Phone::factory()->count(2))
+            ->has(Phone::factory()->count(4))
             ->create();
     }
 }

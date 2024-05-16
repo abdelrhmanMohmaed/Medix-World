@@ -54,6 +54,21 @@
                             <br>
                         @enderror
 
+                        <label for="tel">{{ __('website/web.register-tel') }}</label>
+                        <div class="input-group my-2">
+                            <input type="tel" id="tel" name="telTwo" autofocus autocomplete="tel"
+                                value="{{ old('telTwo') }}" placeholder="+201123843996" @class([
+                                    'form-control form-control-lg bg-light fs-6',
+                                    'is-invalid' => $errors->has('telTwo'),
+                                ])>
+                        </div>
+                        @error('telTwo')
+                            <small class="text-danger">
+                                &#x2022; {{ $message }}
+                            </small>
+                            <br>
+                        @enderror
+
                         <label for="email">{{ __('website/web.email-address') }}*</label>
                         <div class="input-group my-2">
                             <input type="email" id="email" required name="email" autofocus autocomplete="username"

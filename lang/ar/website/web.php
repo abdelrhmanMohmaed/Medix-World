@@ -40,11 +40,31 @@ return [
     'text-slider-6' => 'استخدم ميدكس للعثور على أعلى تقييمات الأطباء وأقربهم إليك.',
     //
 
-
-
-
-
-
+    //profile
+    'profile-data' => 'بيانات الملف الشخصي', 
+    'profile-appointment' => 'المواعيد المتاحة اليوم',
+    'profile-appointment-comment' => 'ليس لديك موعد اليوم',
+    'profile-ratings' => 'التقييمات',
+    'profile-ratings-comment' => 'احجز موعدًا الآن لتقييم مقدم الخدمة',
+    'profile-ratings-comment-model' => 'التعليق',
+    'profile-ratings-comment-model-details' => 'اجعل تعليقك بناء',
+    'profile-medical-history' => 'التاريخ طبى',
+    'profile-dr-name' => 'اسم مقدم الخدمة',
+    'profile-schedule' => 'جدول مواعيد',
+    'profile-create-title' => 'العنوان',
+    'profile-create-medical' => 'إنشاء ملف طبي',
+    'profile-create-file' => 'ملف',
+    'profile-create-description' => 'وصف',
+    'profile-create-add' => 'أضافة',
+    'profile-create-by' => 'أضافة بواسطة',
+    'profile-action' => 'الأجراءات',
+    'profile-medical-comment' => 'لا يوجد ملفات لهذا التخصص حتى الأن',
+    'profile-add-review' => 'أضافة تقييم',
+    'profile-update-medical' => 'تحديث الملف الطبي',
+    'profile-update-btn' => 'تحديث',
+    'profile-delete-btn' => 'حذف',
+    'profile-delete-alert' => 'هل أنت متأكد من رغبتك في حذف هذا الملف؟',
+    'profile-delete-alert-2' => 'سيقوم النظام بإزالة هذا الملف.',
 
 
     // register section
@@ -157,4 +177,21 @@ return [
     'footer-owners' => "ملاك ميدكس",
 
     //footer section
+
+
+
+    // success message
+    'success-login' => 'تسجيل الدخول بنجاح',
+    'success-update-profile' => 'تم تحديث بيانات بنجاح',
+    'success-register' => 'تم تسجيل حساب جديد بنجاح',
+    'success-contact-us' => 'تم ارسال سيقوم احد موظفينا بالرد عليك فى اقرب وقت ممكن',
+    'success-book' => 'تم حجز الموعد بنجاح',
+    'success-book-review' => 'تمت إضافة المراجعة بنجاح',
+    'success-medical-file' => 'تمت إضافة الملف الطبي بنجاح',
+    'success-medical-delete' => 'تم حذف الملف بنجاح',
+    'success-medical-update' => 'تم تحديث الملف الطبي بنجاح',
+    // success message
+    // wrong message
+    'wrong' => 'هناك خطأ ما، يرجى المحاولة مرة أخرى.',
+
 ];

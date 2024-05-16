@@ -40,8 +40,34 @@ return [
     'text-slider-6' => 'Use Medix to find the highest-rated doctors and bring them closer to you.',
     // 
 
+    // Profile
+    'profile-data' => 'Profile Data', 
+    'profile-appointment' => 'Appointments Available Today',
+    'profile-appointment-comment' => 'You don\'t have an Appointment Today',
+    'profile-ratings' => 'Ratings',
+    'profile-ratings-comment' => 'Book an appointment now to evaluate the service provider',
+    'profile-ratings-comment-model' => 'Comment',
+    'profile-ratings-comment-model-details' => 'Make your comment constructive',
+    'profile-medical-history' => 'Medical History',
+    'profile-dr-name' => 'Dr Name',
+    'profile-schedule' => 'Schedule',
+    'profile-create-title' => 'Title',
+    'profile-create-medical' => 'Create Medical File',
+    'profile-create-file' => 'File',
+    'profile-create-description' => 'Description',
+    'profile-create-add' => 'Add',
+    'profile-create-by' => 'Created By',
+    'profile-action' => 'Actions',
+    'profile-medical-comment' => 'There are no files for this specialty yet',
+    'profile-add-review' => 'Add Review',
+    'profile-update-medical' => 'Update Medical File',
+    'profile-update-btn' => 'Update',
+    'profile-delete-btn' => 'Delete',
+    'profile-delete-alert' => 'Are you sure you want to delete this File ?',
+    'profile-delete-alert-2' => 'The system will remove this File.',
 
 
+    
     // register section
     "register" => "Join Now",
     "register-hello"=>"Join Our Healthcare Community.",
@@ -148,5 +174,22 @@ return [
     'footer-copyright' => "Copyright © 2024 All rights reserved by: ",
     'footer-owners' => "Owners of Medix",
     // footer section
+
+
+    // success message
+    'success-login' => 'Login successfully',
+    'success-register' => 'A new account has been registered successfully',
+    'success-contact-us' => 'Your message has been sent. One of our employees will respond to you as soon as possible',
+    'success-update-profile' => 'Data has been updated successfully',
+    'success-book' => 'The appointment has been booked successfully',
+    'success-book-review' => 'The review has been added successfully',
+    'success-medical-file' => 'Medical File was added successfully',
+    'success-medical-delete' => 'The file was deleted successfully',
+    'success-medical-update' => 'The medical file was updated successfully',
+    // success message
+    // wrong message
+    'wrong' => 'Something is wrong please try again.',
+    // wrong message
+
 
 ];

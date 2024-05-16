@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,6 +16,10 @@ class ServiceProviderDetailsFactory extends Factory
      */
     public function definition(): array
     {
+        $fakerEn = Faker::create();
+        $fakerAr = Faker::create('ar_SA');
+
+
         $city = \App\Models\City::pluck('id')->toArray();
         $randomCityId = $this->faker->randomElement($city);
 
@@ -27,20 +31,19 @@ class ServiceProviderDetailsFactory extends Factory
             'major_id' => $this->faker->randomElement(\App\Models\Major::pluck('id')->toArray()),
             'title_id' => $this->faker->randomElement(\App\Models\Title::pluck('id')->toArray()),
             'name' => [
-                'en'=> $this->faker->name(),
-                'ar'=> $this->faker->name(), 
+                'en'=> $fakerEn->name,
+                'ar'=> $fakerAr->name,
             ],
             'summary' => [
-                'en'=> $this->faker->text(),
-                'ar'=> $this->faker->text(),
+                'en'=> $fakerEn->text,
+                'ar'=> $fakerAr->sentence,
             ],
             'address' => [
-                'en'=> $this->faker->address(),
-                'ar'=> $this->faker->address(),
+                'en'=> $fakerEn->address,
+                'ar'=> $fakerAr->address,
             ],
 
             'price' => $this->faker->randomFloat(2, 100, 10000),
-            'tel' => '+20' . $this->faker->numberBetween(1000000000, 1999999999),
             'medical_card' => $this->faker->randomElement([
                 'assets/images/services/medicalCard/1.avif',
                 'assets/images/services/medicalCard/2.avif',
