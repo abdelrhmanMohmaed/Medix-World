@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained(); 
             $table->string('tel');
+            $table->enum('type',['personal','clinic']);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

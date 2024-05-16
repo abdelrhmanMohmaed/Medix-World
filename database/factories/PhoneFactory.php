@@ -17,6 +17,7 @@ class PhoneFactory extends Factory
     public function definition(): array
     {
         return [
+            'type' => $this->faker->randomElement(['personal','clinic']),
             'tel' => '+20' . $this->faker->numberBetween(1000000000, 1999999999),
         ];
     }

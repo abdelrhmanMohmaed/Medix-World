@@ -225,22 +225,31 @@ footer a:hover {
     background-color: #0070CD;
     transition: all 0.5s;
 }
+
 /* End Back Home Link */
 
 
 #display_providers .card,
 .dropdown button,
-.schedulesModel, .filter-box {
+.schedulesModel, .filter-box, .profile {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 
 #display_providers .card,
-.schedulesModel, .filter-box {
+.schedulesModel, .filter-box, .profile {
     border-radius: 30px;
 }
 
 #display_providers .card-body,
-.schedulesModel, .filter-box {
+.schedulesModel, .filter-box, .profile {
     padding: 25px;
     margin-top: -10px;
+}
+/* Toaster */
+.buy-now-wrapper {
+    display: none !important;
+}
+
+.toastr {
+    opacity: 1;
 }

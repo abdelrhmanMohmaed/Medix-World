@@ -122,14 +122,45 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <!-- typedJs -->
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<!-- toastr -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<!-- To select to the current area -->
+@if (@$city != 'allCities')
+    <script>
+        $(document).ready(function() {
 
+            var cityId = '{{ @$city }}';
+            var areaId = '{{ @$area }}';
+            if (cityId != 'allCities') {
+                var axiosUrl = "{{ route('website.axios.region', ':cityId') }}";
+                axiosUrl = axiosUrl.replace(':cityId', cityId);
+                axios.get(axiosUrl)
 
+                    .then(function(response) {
+
+                        var regionsHtml = response.data;
+                        $('.region').html(regionsHtml);
+
+                        if (areaId) {
+                            $('.region option').each(function() {
+                                if ($(this).val() == areaId) {
+                                    $(this).attr('selected', 'selected');
+                                }
+                            });
+                        }
+                    })
+                    .catch(function(error) {
+                        console.error('Error fetching areas: ' + error);
+                    });
+            }
+        });
+    </script>
+@endif
 <script>
     $(document).ready(function() {
         // Select 2
         $('.select2').select2();
         // Select 2
-
         // Start Back Home 
         window.addEventListener('scroll', function() {
             if (window.scrollY > 0) {
@@ -158,9 +189,12 @@
                     });
             }
         });
+        // get a areas with axios request
     });
 </script>
 @yield('scripts')
+
+@include('web.partials.partials.toastr')
 </body>
 
 </html>

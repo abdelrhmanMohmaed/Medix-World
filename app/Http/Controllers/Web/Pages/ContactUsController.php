@@ -20,10 +20,10 @@ class ContactUsController extends Controller
                 "message" => $request->input("message"),
             ]);
 
-            return redirect()->back();
+            return redirect()->back()->with('success',__('website/web.success-contact-us'));
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            
+            return redirect()->back()->with('wrong',__('website/web.wrong'));
         }
     }
 }

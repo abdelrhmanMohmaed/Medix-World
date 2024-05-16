@@ -80,30 +80,37 @@ class RegisteredUserController extends Controller
                     'ar' => $request->input("address.ar")
                 ],
                 'price' => $request->input("bookingPrice"),
-                'tel' => $request->input("tel"),
                 
                 'img' => $avatarName,
                 'medical_card' => $medicalCardName,
             ]);
-
-            Phone::create([
-                'user_id' => $user->id,
-                'tel' => $request->input("clinicTel"),
-                'active' => 1,
-            ]);
-
-            if ($request->has('clinicTelTwo')) { 
-                if (!empty($request->input('clinicTelTwo'))) { 
-                    
-                    Phone::create([
-                        'user_id' => $user->id,
-                        'tel' => $request->input('clinicTelTwo'),
-                        'active' => 1,
-                    ]);
-                }
+            // required phones
+            $phones = [
+                ['type' => 'personal', 'tel' => $request->input('tel')],
+                ['type' => 'clinic', 'tel' => $request->input('clinicTel')],
+            ];
+            // required phones
+            // optional
+            if ($request->has('telTwo') && !empty($request->input('telTwo'))) {
+                $phones[] = ['type' => 'personal', 'tel' => $request->input('telTwo')];
+            }
+            
+            if ($request->has('clinicTelTwo') && !empty($request->input('clinicTelTwo'))) {
+                $phones[] = ['type' => 'clinic', 'tel' => $request->input('clinicTelTwo')];
+            }
+            // optional
+            
+            foreach ($phones as $phoneData) {
+                Phone::create([
+                    'type' => $phoneData['type'],
+                    'user_id' => $user->id,
+                    'tel' => $phoneData['tel'],
+                    'active' => 1,
+                ]);
             }
 
             $user->assignRole('Service Providers');
+            
             event(new Registered($user));
             Auth::guard('service_provider')->login($user);
 

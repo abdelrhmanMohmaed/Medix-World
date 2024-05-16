@@ -157,6 +157,10 @@ return [
         'clinicTel' => 'هاتف العيادة',
         'clinicTelTwo' => 'هاتف العيادة',
         'bookingPrice' => 'سعر الحجز',
+        'title' => 'العنوان',
+        'description' => 'الوصف',
+        'major' => 'التخصص',
+        'file' => 'الملف',
     ],
 
     'custom' => [

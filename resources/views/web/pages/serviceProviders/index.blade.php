@@ -87,7 +87,7 @@
                                             <li class="sidebar-item">
                                                 <label>
                                                     <input type="checkbox" name="title[]" value="{{ $item->id }}">
-                                                    {{ $item->getTranslation('title', app()->getLocale()) }}
+                                                    {{ $item->title }}
                                                 </label>
                                             </li>
                                         @endforeach
@@ -185,7 +185,7 @@
                         <div class="col-12 h-25 d-flex justify-content-between py-4 ">
                             <div class="h-100">
                                 <h3 class="h5 text-black-50">
-                                    {{ $majorName != null ? $majorName->getTranslation('name', app()->getLocale()) : __('website/web.provider-all-specialty') }}
+                                    {{ $majorName != null ? $majorName->name : __('website/web.provider-all-specialty') }}
                                     {{-- <span id="total" class="h6 ">{{ $total }}</span> --}}
                                     {{-- {{ __('website/web.provider-male') }} --}}
                                 </h3>
@@ -213,13 +213,19 @@
                         @foreach ($results as $item)
                             <!-- Stars -->
                             @php
-                                $countRate = $item->user->review->count();
+                                $totalRate = 0;
                                 $countBook = count($item->user->book);
-                                $totalRate = $countBook > 0 ? $countRate / $countBook : 0;
-                                $totalRate = max(0, min($totalRate, 5));
-                                $totalRate = round($totalRate);
+                                if ($countBook > 0) {
+                                    $countRate = 0;
+                                    foreach ($item->user->review as $review) {
+                                        $countRate += $review->rate;
+                                    }
+                                    $totalRate = $countRate / $countBook;
 
+                                    $totalRate = max(0, min($totalRate, 5));
+                                }
                             @endphp
+
                             <!-- Stars -->
                             <div class="row">
                                 <div class="col-12 h-25 d-flex justify-content-between">
@@ -237,7 +243,7 @@
                                                                     style="overflow: hidden; width: 150px; height: 130px;">
                                                             </div>
                                                         </div>
-
+                                                        
                                                         <div class="col-md-9 show-more"
                                                             data-user-id="{{ $item->id }}">
                                                             <div class="d-flex flex-column ">
@@ -247,8 +253,7 @@
                                                                     @else
                                                                         {{ __('website/web.provider-female') }}
                                                                     @endif
-                                                                    <span
-                                                                        class="h5">{{ $item->getTranslation('name', app()->getLocale()) }}</span>
+                                                                    <span class="h5">{{ $item->name }}</span>
                                                                 </span>
 
                                                                 <h6 class="mb-0">
@@ -256,17 +261,19 @@
                                                                 </h6>
                                                                 <br>
                                                                 <h6 class="mb-0">
-                                                                    @php
-                                                                        $start = 3;
-                                                                    @endphp
                                                                     <!-- Stars -->
                                                                     <li class="list-group-item">
-                                                                        @if ($countBook != 0)
-                                                                            @for ($i = $totalRate + 1; $i <= 5; $i++)
-                                                                                <i class="icon-gold fa-solid fa-star"></i>
-                                                                            @endfor
-                                                                        @endif
-                                                                        @for ($i = 1; $i <= $totalRate; $i++)
+                                                                    <li class="list-group-item">
+                                                                        @php
+                                                                            $goldStars = floor($totalRate);
+                                                                            $remainingStars = 5 - $goldStars;
+                                                                        @endphp
+
+                                                                        @for ($i = 1; $i <= $goldStars; $i++)
+                                                                            <i class="icon-gold fa-solid fa-star"></i>
+                                                                        @endfor
+
+                                                                        @for ($i = 1; $i <= $remainingStars; $i++)
                                                                             <i class="fa-regular fa-star"></i>
                                                                         @endfor
                                                                     </li>
@@ -280,13 +287,13 @@
                                                                 </h6>
 
                                                                 <h6 class="mb-0 my-2">
-                                                                    {{ $item->getTranslation('name', app()->getLocale()) }}
+                                                                    {{ $item->name }}
                                                                 </h6>
                                                                 <h6 class="mb-0 my-2">
                                                                     <i class="icon fa-solid fa-stethoscope mx-2"></i>
                                                                     <span id="summary{{ $loop->index }}"
                                                                         class="summary">
-                                                                        {{ substr($item->getTranslation('summary', app()->getLocale()), 0, 30) }}
+                                                                        {{ substr($item->summary, 0, 30) }}
                                                                     </span>
                                                                     <a id="readMore{{ $loop->index }}" class="readBtn"
                                                                         style="text-decoration: underline; color: #0070CD;"
@@ -296,8 +303,8 @@
                                                                 <!-- Start Address Price -->
                                                                 <h6 class="mb-0 my-2">
                                                                     <i
-                                                                        class="icon fa-solid fa-location-dot mx-2"></i>&nbsp;&nbsp;{{ $item->region->getTranslation('name', app()->getLocale()) }}:
-                                                                    {{ $item->getTranslation('address', app()->getLocale()) }}
+                                                                        class="icon fa-solid fa-location-dot mx-2"></i>&nbsp;&nbsp;{{ $item->region->name }}:
+                                                                    {{ $item->address }}
                                                                 </h6>
 
                                                                 <h6 class="mb-0 my-2">
@@ -309,7 +316,7 @@
                                                                 <!-- End Address Price -->
 
                                                                 <!-- Start Phones -->
-                                                                @foreach ($item->user->phones as $itemPhone)
+                                                                @foreach ($item->user->clinicPhones as $itemPhone)
                                                                     <h6 class="mb-0 my-2">
                                                                         <i class="icon fa-solid fa-phone-volume mx-2"></i>
                                                                         {{ $itemPhone->tel }}
@@ -325,7 +332,7 @@
                                                 <div class="col-md-3 schedulesModel">
                                                     <div class="carousel-wrapper w-100"
                                                         style="height: 200px; overflow: hidden;">
-                                                        <div id="carouselExample-{{ $item->id }}"
+                                                        <div id="carouselExample-{{ $item->id  }}"
                                                             class="carousel slide">
                                                             <div class="carousel-inner">
                                                                 @php
@@ -389,7 +396,7 @@
                                                                 @endfor
                                                             </div>
                                                             <button class="carousel-control-prev" type="button"
-                                                                data-bs-target="#carouselExample-{{ $item->id }}"
+                                                                data-bs-target="#carouselExample-{{ $item->id  }}"
                                                                 data-bs-slide="prev"
                                                                 style="position: absolute;height: 25%;  top: 25px; left: 0; transform: translateY(-50%);">
                                                                 <span class="visually-hidden">Previous</span>
@@ -398,7 +405,7 @@
                                                                     style="height: 32px; padding-right: 10px;">
                                                             </button>
                                                             <button class="carousel-control-next" type="button"
-                                                                data-bs-target="#carouselExample-{{ $item->id }}"
+                                                                data-bs-target="#carouselExample-{{ $item->id  }}"
                                                                 data-bs-slide="next"
                                                                 style="position: absolute;height: 25%;  top: 25px; right: 0; transform: translateY(-50%);">
                                                                 <span class="visually-hidden">Next</span>
@@ -412,7 +419,7 @@
                                                     </div>
                                                     <div class="text-center">
                                                         <button class="btn btn-sm btn-primary btn-show-more"
-                                                            onclick="showMore('{{ $item->id }}')">{{ __('website/web.provider-read-more') }}</button>
+                                                            onclick="showMoreSchedule('{{ $item->id  }}')">{{ __('website/web.provider-read-more') }}</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -466,7 +473,7 @@
         // Start to show more summaries for service 
         var summaries = [
             @foreach ($results as $item)
-                "{{ $item->getTranslation('summary', app()->getLocale()) }}",
+                "{{ $item->summary }}",
             @endforeach
         ];
         var isFullSummary = [];
@@ -503,7 +510,7 @@
         // Start Switch on and off in scheduleModel to open and close
         var isOpen = false;
 
-        function showMore(userId) {
+        function showMoreSchedule(userId) {
             var wrapper = document.querySelector('.carousel-wrapper');
 
             if (!isOpen) {

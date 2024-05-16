@@ -7,6 +7,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -35,15 +36,22 @@ class User extends Authenticatable
 
     public function scopeUser($query)
     {
-
         return $query->whereHas('roles', function ($query) {
             $query->where('roles.name', 'User');
         });
     }
 
-    public function serviceProviderDetails(): HasMany
+    public function serviceProviderDetails(): HasOne
     {
-        return $this->hasMany(ServiceProviderDetails::class);
+        return $this->hasOne(ServiceProviderDetails::class);
+    }
+    public function personalPhones(): HasMany
+    {
+        return $this->hasMany(Phone::class)->where('type','personal');
+    }
+    public function clinicPhones(): HasMany
+    {
+        return $this->hasMany(Phone::class)->where('type','clinic');
     }
     public function phones(): HasMany
     {
@@ -68,5 +76,9 @@ class User extends Authenticatable
     public function clientReview(): HasMany
     {
         return $this->hasMany(Review::class, 'client_id');
+    }
+    public function clientMedicalFiles(): HasMany
+    {
+        return $this->hasMany(MedicalDocument::class, 'client_id');
     }
 }

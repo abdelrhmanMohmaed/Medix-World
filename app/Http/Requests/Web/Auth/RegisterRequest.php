@@ -28,6 +28,7 @@ class RegisterRequest extends FormRequest
             'email' => ['required', 'string', 'lowercase','email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'tel' => ['required', 'string', 'regex:/^\+[0-9]{12}$/'],
+            'telTwo' => ['nullable', 'string', 'regex:/^\+[0-9]{12}$/'],
             'dateOfBirth' => ['required', 'date'],
             'gender' => ['required', 'in:1,2'],
             'term' => ['required', 'accepted']

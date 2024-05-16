@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\Auth\UserLoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('website.welcome',app()->getLocale()));
+        return redirect()->intended(route('website.welcome',app()->getLocale()))->with('success',__('website/web.success-login'));
     }
 
     /**

@@ -6,7 +6,12 @@
     <!-- Navbar -->
     <link rel="stylesheet" href="{{ asset('assets/styles/user/navbar.css') }}">
     <style>
-        input[type="radio"] {
+        .vertical-tabs {
+            border-left: 1px solid #dee2e6;
+            height: 100%;
+        }
+
+        .modal-body input[type="radio"] {
             display: none;
         }
 
@@ -14,6 +19,17 @@
             font-size: 2em;
             color: #ddd;
             cursor: pointer;
+        }
+
+        .profile .nav-link {
+            color: black
+        }
+
+        .badge {
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
         }
     </style>
 @endsection
@@ -23,69 +39,58 @@
     <!-- Start Search Navbar -->
     @include('web.partials.navbarSearch')
     <!-- End Search Navbar -->
-    @foreach($errors->all() as $error)
-    <li>{{ $error }} </li>
-@endforeach
-    <span>User Profile
-        <br>
-        <a href="{{ route('website.logout') }}">logout</a>
 
-
-
-        @foreach ($user->clientBook as $item)
-            <span>{{ $item->serviceProvider->name }}</span>
-            <br>
-            <span>{{ $item->schedule->start_time }}</span>
-            <br>
-            <span>{{ $item->schedule->end_time }}</span>
-            <br>
-            <a type="button" data-bs-toggle="modal" href="#review" data-id="{{ $item->id }}" data-service="{{ $item->user_id }}" >
-                Add Review
-            </a>
-        @endforeach
-    </span>
-    <!-- start update Modal -->
-    <div class="modal fade" id="review" tabindex="-1" aria-labelledby="reviewLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-white bg-warning">
-                    <h5 class="modal-title" id="reviewLabel">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        Review
-                    </h5>
+    <section id="#profile">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Side Nav -->
+                <div class="col-md-3 mt-3 mb-5">
+                    <div class="profile nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active" id="profile-tab" data-bs-toggle="pill" data-bs-target="#profile"
+                            type="button" role="tab" aria-controls="profile"
+                            aria-selected="true">{{ __('website/web.profile-data') }}</button>
+                        <button class="nav-link" id="appointments-tab" data-bs-toggle="pill" data-bs-target="#appointments"
+                            type="button" role="tab" aria-controls="appointments" aria-selected="false">
+                            {{ __('website/web.profile-appointment') }}
+                            <span class="badge">{{ count($booking) }}</span>
+                        </button>
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="pill" data-bs-target="#reviews"
+                            type="button" role="tab" aria-controls="reviews" aria-selected="false">
+                            {{ __('website/web.profile-ratings') }}
+                            <span class="badge">{{ count($user->clientBook) }}</span>
+                        </button>
+                        <button class="nav-link" id="medical_history-tab" data-bs-toggle="pill"
+                            data-bs-target="#medical_history" type="button" role="tab" aria-controls="medical_history"
+                            aria-selected="false">
+                            {{ __('website/web.profile-medical-history') }}
+                            <span class="badge">{{ count($user->clientMedicalFiles) }}</span>
+                        </button>
+                    </div>
                 </div>
 
-                <form action="{{ route('website.profile.book-review') }}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <input type="hidden" id="book_id" name="book_id">
-                        <input type="hidden" id="user_id" name="user_id">
-                        <div class="mb-3 rating">
-                            <label for="star1"><i class="fas fa-star"></i></label>
-                            <input type="radio" id="star1" name="rating" value="1">
-                            <label for="star2"><i class="fas fa-star"></i></label>
-                            <input type="radio" id="star2" name="rating" value="2">
-                            <label for="star3"><i class="fas fa-star"></i></label>
-                            <input type="radio" id="star3" name="rating" value="3">
-                            <label for="star4"><i class="fas fa-star"></i></label>
-                            <input type="radio" id="star4" name="rating" value="4">
-                            <label for="star5"><i class="fas fa-star"></i></label>
-                            <input type="radio" id="star5" name="rating" value="5">
-                        </div>
-                        <div class="mb-3">
-                            <label for="comment" class="form-label">Comment</label>
-                            <input type="text" class="form-control" id="comment" name="comment">
-                            <div id="emailHelp" class="form-text">Make your comment constructive.
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+                <!-- Content -->
+                <div class="col-md-9 mt-3 mb-5">
 
+                    <div class="tab-content profile" id="v-pills-tabContent">
+
+                        @include('web.pages.profile.partials.profileData')
+                        @include('web.pages.profile.partials.appointment')
+                        @include('web.pages.profile.partials.review')
+                        @include('web.pages.profile.partials.medicalHistory')
+
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- end update Modal -->
+    </section>
+
+
+    {{--  Model --}}
+    @include('web.pages.profile.partials.models.createMedicalModel')
+    @include('web.pages.profile.partials.models.editMedicalFileModel')
+    @include('web.pages.profile.partials.models.deleteMedicalFileModel')
+    @include('web.pages.profile.partials.models.reviewModel')
+    {{--  Model --}}
 @endsection
 
 @section('scripts')
@@ -108,6 +113,29 @@
             });
         });
 
+        // get a areas with axios request
+        $('#specification').change(function() {
+            var major = $(this).val();
+
+            var axiosUrl = "{{ route('website.medicals.index', ':major') }}";
+            axiosUrl = axiosUrl.replace(':major', major);
+
+            axios.get(axiosUrl)
+                .then(function(response) {
+                    console.log(response.data);
+                    var regionsHtml = response.data;
+
+                    $('.specialty').html(regionsHtml);
+                })
+                .catch(function(error) {
+                    console.error('Error fetching areas: ' + error);
+                });
+        });
+        // get a areas with axios request
+    </script>
+    <!-- Models -->
+    <script>
+        // Review
         $('#review').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var id = button.data('id')
@@ -117,5 +145,31 @@
             modal.find('.modal-body #book_id').val(id);
             modal.find('.modal-body #user_id').val(user_id);
         })
+
+        // <!-- start update --> 
+        $('#editFile').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            var title = button.data('title')
+            var description = button.data('description')
+            var modal = $(this)
+
+            modal.find('.modal-body #file_id').val(id);
+            modal.find('.modal-body #title').val(title);
+            modal.find('.modal-body #description').val(description);
+        })
+        // <!-- end update -->
+
+        // <!-- start delete --> 
+        $('#deleteFile').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            var name = button.data('name')
+            var modal = $(this)
+
+            modal.find('.modal-body #file').val(id);
+        })
     </script>
+    {{-- <!-- end delete -->  --}}
+
 @endsection

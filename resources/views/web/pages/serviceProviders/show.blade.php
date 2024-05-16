@@ -29,12 +29,21 @@
 
     <!-- Stars -->
     @php
-        $countRate = $serviceProvider->user->review->count();
+        $totalRate = 0;
         $countBook = count($serviceProvider->user->book);
-        $totalRate = $countBook > 0 ? $countRate / $countBook : 0;
-        $totalRate = max(0, min($totalRate, 5));
-        $totalRate = round($totalRate);
+        if ($countBook > 0) {
+            $countRate = 0;
+            foreach ($serviceProvider->user->review as $review) {
+                $countRate += $review->rate;
+            }
+            $totalRate = $countRate / $countBook;
+
+            $totalRate = max(0, min($totalRate, 5));
+        }
+        $goldStars = floor($totalRate);
+        $remainingStars = 5 - $goldStars;
     @endphp
+
     <!-- Stars -->
 
     <!-- Start Search Navbar -->
@@ -96,10 +105,11 @@
                                                 <h6 class="mb-0">
                                                     <!-- Stars -->
                                                     <li class="list-group-item">
-                                                        @for ($i = $totalRate + 1; $i <= 5; $i++)
+                                                        @for ($i = 1; $i <= $goldStars; $i++)
                                                             <i class="icon-gold fa-solid fa-star"></i>
                                                         @endfor
-                                                        @for ($i = 1; $i <= $totalRate; $i++)
+
+                                                        @for ($i = 1; $i <= $remainingStars; $i++)
                                                             <i class="fa-regular fa-star"></i>
                                                         @endfor
                                                     </li>
@@ -199,10 +209,11 @@
                                                 <h6 class="mb-0 my-2">
 
                                                     <li class="list-group-item">
-                                                        @for ($i = $totalRate + 1; $i <= 5; $i++)
+                                                        @for ($i = 1; $i <= $goldStars; $i++)
                                                             <i class="icon-gold fa-solid fa-star fa-2x"></i>
                                                         @endfor
-                                                        @for ($i = 1; $i <= $totalRate; $i++)
+
+                                                        @for ($i = 1; $i <= $remainingStars; $i++)
                                                             <i class="fa-regular fa-star fa-2x"></i>
                                                         @endfor
                                                     </li>
