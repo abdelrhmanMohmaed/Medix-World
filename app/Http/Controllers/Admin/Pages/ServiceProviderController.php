@@ -113,7 +113,7 @@ class ServiceProviderController extends Controller
         } catch (Exception $e) {
             // dd($e->getMessage());
 
-            return redirect()->back()->with($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -128,11 +128,11 @@ class ServiceProviderController extends Controller
             $service_provider->update(['status' => $request->status]);
 
 
-            return redirect()->route('admins.service_provider.requests');
+            return redirect()->route('admins.service_provider.requests')->with('success','request updated successfully');
         } catch (Exception $e) {
 
-            dd($e->getMessage());
-            return redirect()->back(); //message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -144,10 +144,10 @@ class ServiceProviderController extends Controller
 
             $service_provider->delete();
 
-            return redirect()->route('admins.service_provider.index');
+            return redirect()->back()->with('success','request deleted successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back(); //message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 }

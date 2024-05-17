@@ -47,8 +47,8 @@ class TermsAndCondtionController extends Controller
 
             return redirect()->route('admins.terms.index')->with('success', 'created successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back(); //message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -82,8 +82,8 @@ class TermsAndCondtionController extends Controller
 
             return redirect()->route('admins.terms.index')->with('success','terms updated successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -96,8 +96,8 @@ class TermsAndCondtionController extends Controller
 
             return redirect()->route('admins.terms.index')->with('success','terms deleted successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back(); //message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 }

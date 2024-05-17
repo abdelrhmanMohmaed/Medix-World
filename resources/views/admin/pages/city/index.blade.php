@@ -46,21 +46,13 @@
                 <td>{{ $item->getTranslation('name', 'en') }}</td>
                 <td>{{ $item->getTranslation('name', 'ar') }}</td>
                 <td>
-                  <input type="hidden" id="city" value="{{ $item->id }}">
-                  @if ($item->active == 0)
-                  <!-- <form action="{{ route('admins.cities.status', $item->id) }}"> -->
-                  <div class="form-check form-switch mb-2" id ="status">
-                    <input type="checkbox" class="form-check-input" id="active_status" name="active" value="1" checked>
-                    <label class="form-check-label" for="formSwitch1">Active</label>
-                    <!-- </form> -->
+                  <div class="form-check form-switch mb-2" id="status">
+                    <form method="get" action="{{ route('admins.cities.status', $item->id) }}" class="d-inline">
+                      @csrf
+                      <input type="checkbox" class="form-check-input" id="active_status" onchange="this.form.submit()" name="active" value="1" {{ $item->active ? 'checked': ''}}>
+                      <label class="form-check-label" id="status_label" for="formSwitch1">{{ $item->active ? 'Active': 'In-Active'}}</label>
+                    </form>
                   </div>
-                  @else
-                  <!-- <form action="{{ route('admins.cities.status', $item->id) }}"> -->
-                  <div class="form-check form-switch mb-2">
-                    <input type="checkbox" class="form-check-input" id="active_status" value="0" name="active">
-                    <label class="form-check-label" for="formSwitch1">In-Active</label>
-                    <!-- </form>  -->
-                    @endif
                 </td>
                 <td colspan="3">
 
@@ -69,16 +61,14 @@
                   </a>
 
 
-                  <a href="{{ route('admins.cities.destroy', $item->id) }}" class="btn-sm btn-danger btn-icon-text"> <i class="fa-solid fa-trash"></i> Delete
-                  </a>
+                  <!-- <a href="{{ route('admins.cities.destroy', $item->id) }}" class="btn-sm btn-danger btn-icon-text" onclick="return confirm('Are you sure to delete this city')"> <i class="fa-solid fa-trash"></i> Delete
+                  </a> -->
 
-                  <!-- <form method="POST" action="{{ route('admins.cities.destroy', $item->id) }}" onsubmit="return confirm('Are You sure?')">
-                    @method('DELETE')
+                  <form method="POST" action="{{ route('admins.cities.destroy', $item->id) }}" class="d-inline"> 
                     @csrf
-                    <button type="submit" class="btn bg-gradient-danger btn-sm">
-                      <i class="link-arrow" data-feather="trash"></i> Delete
-                    </button>
-                  </form> -->
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger btn-xs btn-icon-text p-1" onclick="return confirm('Are you sure to delete this city')"><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
+                  </form>
 
                 </td>
               </tr>

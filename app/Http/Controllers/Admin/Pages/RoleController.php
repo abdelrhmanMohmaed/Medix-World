@@ -36,8 +36,8 @@ class RoleController extends Controller
 
             return redirect()->route('admins.roles.index')->with('success', 'role created successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back(); //message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -64,8 +64,8 @@ class RoleController extends Controller
 
             return redirect()->route('admins.roles.index')->with('success', 'role updated successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back(); //message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -77,8 +77,8 @@ class RoleController extends Controller
 
             return redirect()->route('admins.roles.index')->with('success', 'role deleted successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back(); //message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 }

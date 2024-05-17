@@ -51,8 +51,8 @@ class UserController extends Controller
 
             return redirect()->route('admins.user.index')->with('success','created successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -77,10 +77,10 @@ class UserController extends Controller
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,            ]);
 
-            return redirect()->route('admins.users.index');
+            return redirect()->route('admins.users.index')->with('success','user updated successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -89,10 +89,10 @@ class UserController extends Controller
         try {
             $user->phones()->delete();
             $user->delete();
-            return redirect()->route('admins.users.index');
+            return redirect()->route('admins.users.index')->with('success', 'user deleted successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
