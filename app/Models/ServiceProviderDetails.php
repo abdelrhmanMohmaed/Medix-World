@@ -30,11 +30,7 @@ class ServiceProviderDetails extends Model
 
 
     # Getter and Setter
-    // remove it 
-    public function getImageAttribute()
-    {
-        return url('assets/images/services/avatars/' . $this->img);
-    }
+    
 
 
     # Relation

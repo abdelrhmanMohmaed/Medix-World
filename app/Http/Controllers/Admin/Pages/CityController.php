@@ -36,10 +36,10 @@ class CityController extends Controller
                 ],
             ]);
 
-            return redirect()->route('admins.cities.index');
+            return redirect()->route('admins.cities.index')->with('success', 'City created successfully');
         } catch (Exception $e) {
 
-            return redirect()->back();//message
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -58,27 +58,33 @@ class CityController extends Controller
                 ],
             ]);
 
-            return redirect()->route('admins.cities.index');
+            return redirect()->route('admins.cities.index')->with('success', ' City updated successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
     public function destroy(City $city) : RedirectResponse 
     {
         try {
+            if($city->serviceProviders->count() > 0){
+                return redirect()->back()->with('error','can\'t delete, there are active service providers in this city');   
+            }
+            $city->regions()->delete();
+            $city->serviceProviders()->delete();
+
             $city->delete();
 
-            return redirect()->route('admins.cities.index');
+            return redirect()->route('admins.cities.index')->with('success', 'city deleted successfully ');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
     public function stauts(City $city) : RedirectResponse 
-    {dd('ddddd');
+    {
         try {
             $city->update([   
                 'active' => !$city->active
@@ -86,8 +92,8 @@ class CityController extends Controller
 
             return redirect()->route('admins.cities.index');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
