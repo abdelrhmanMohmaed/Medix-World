@@ -18,7 +18,7 @@
 <form class="forms-sample" action="{{ route('admins.roles.store') }}" method="post">
   @csrf
 
-  <div class="row mb-3">
+  <!-- <div class="row mb-3">
     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">{{ __('dashboard.name-role') }}</label>
     <div class="col-sm-9">
       <input type="text" class="form-control" name="name" id="name_en" value="{{ old('name') }}">
@@ -35,6 +35,36 @@
         <input type="checkbox" class="form-check-input" name="permission[]" id="name_en" value="{{ $item->id }}"> {{ $item->name }}
       </div>
       @endforeach
+    </div> -->
+
+
+    @php
+  $mid = ceil($permissions->count() / 2);
+  $leftColumn = $permissions->slice(0, $mid);
+  $rightColumn = $permissions->slice($mid);
+  @endphp
+
+  <div class="row mb-3">
+    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">{{ __('dashboard.name-permissions') }}</label>
+    <div class="col-sm-9">
+      <div class="row">
+        <div class="col-md-6">
+          @foreach ($leftColumn as $item)
+          <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" name="permissions[]" id="permission_{{ $item->id }}" value="{{ $item->name }}">
+            <label class="form-check-label" for="permission_{{ $item->id }}">{{ $item->name }}</label>
+          </div>
+          @endforeach
+        </div>
+        <div class="col-md-6">
+          @foreach ($rightColumn as $item)
+          <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" name="permissions[]" id="permission_{{ $item->id }}" value="{{ $item->name }}">
+            <label class="form-check-label" for="permission_{{ $item->id }}">{{ $item->name }}</label>
+          </div>
+          @endforeach
+        </div>
+      </div>
     </div>
   </div>
   <button type="submit" class="btn btn-primary me-2">Submit</button>
