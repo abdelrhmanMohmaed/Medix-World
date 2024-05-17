@@ -89,24 +89,40 @@ class ServiceProviderController extends Controller
                     'ar' => $request->input("address.ar")
                 ],
                 'price' => $request->input("bookingPrice"),
-                'tel' => $request->input("tel"),
+                // 'tel' => $request->input("tel"),
 
                 'img' => $avatarName,
                 'medical_card' => $medicalCardName,
             ]);
         
+            
+            $user->phones()->create([
+                'tel' => $request->input("tel"),
+                'type' => 'personal',
+                'active' => 1,
+            ]);
+            if (isset($request['telTwo']) && $request['telTwo'] != null) {
+                $user->phones()->create([
+                    'tel' => $request->input("telTwo"),
+                    'type' => 'personal',
+                    'active' => 1,
+                ]);
+            }
+
             $user->phones()->create([
                 'tel' => $request->input("clinicTel"),
+                'type' => 'clinic',
                 'active' => 1,
             ]);
 
             if (isset($request['clinicTelTwo']) && $request['clinicTelTwo'] != null) {
                 $user->phones()->create([
                     'tel' => $request->input("clinicTelTwo"),
+                    'type' => 'clinic',
                     'active' => 1,
                 ]);
             }
-            $user->assignRole('Service Providers');
+            $user->assignRole('Service Providers','web');
            
             DB::commit();
             return redirect()->route('admins.service_provider.index')->with('success', 'Service Provider created successfully');

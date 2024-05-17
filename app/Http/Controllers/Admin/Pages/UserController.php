@@ -13,25 +13,26 @@ use App\Models\Phone;
 use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\File;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
     use UploadTrait;
-    
-    public function index() : View  
+
+    public function index(): View
     {
-        $users  = User::user()->get(); 
+        $users  = User::user()->get();
 
-        return view('admin.pages.user.index',compact('users'));
-    } 
+        return view('admin.pages.user.index', compact('users'));
+    }
 
-    public function create(): View 
-    {    
+    public function create(): View
+    {
         return view('admin.pages.user.create');
     }
 
     public function store(UserRequest $request): RedirectResponse
-    { 
+    {
         try {
 
             $user = User::create([
@@ -41,32 +42,33 @@ class UserController extends Controller
                 'tel' => $request->tel,
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
-            ]); 
-            // $user->assignRole('User');
+            ]);
+
+            // $user->assignRole('User', 'web');
 
             Phone::create([
                 'user_id' => $user->id,
                 'tel' => $request->tel
             ]);
 
-            return redirect()->route('admins.user.index')->with('success','created successfully');
+            return redirect()->route('admins.user.index')->with('success', 'created successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
-            return redirect()->back()->with('error',$e->getMessage());//message
+            return redirect()->back()->with('error', $e->getMessage()); //message
         }
     }
 
-    public function show(User $user): View 
-    {    
-        return view('admin.pages.user.details',compact('user'));
+    public function show(User $user): View
+    {
+        return view('admin.pages.user.details', compact('user'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.pages.user.edit',compact('user'));
+        return view('admin.pages.user.edit', compact('user'));
     }
 
-    public function update(UserRequest $request, User $user) : RedirectResponse
+    public function update(UserRequest $request, User $user): RedirectResponse
     {
         try {
             $user->update([
@@ -75,16 +77,17 @@ class UserController extends Controller
                 'password' => '123456',
                 'tel' => $request->tel,
                 'dateOfBirth' => $request->dateOfBirth,
-                'gender' => $request->gender,            ]);
+                'gender' => $request->gender,
+            ]);
 
-            return redirect()->route('admins.users.index')->with('success','user updated successfully');
+            return redirect()->route('admins.users.index')->with('success', 'user updated successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
-            return redirect()->back()->with('error',$e->getMessage());//message
+            return redirect()->back()->with('error', $e->getMessage()); //message
         }
     }
 
-    public function destroy(User $user) : RedirectResponse 
+    public function destroy(User $user): RedirectResponse
     {
         try {
             $user->phones()->delete();
@@ -92,9 +95,7 @@ class UserController extends Controller
             return redirect()->route('admins.users.index')->with('success', 'user deleted successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
-            return redirect()->back()->with('error',$e->getMessage());//message
+            return redirect()->back()->with('error', $e->getMessage()); //message
         }
     }
-
-    
 }
