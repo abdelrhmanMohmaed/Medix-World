@@ -14,12 +14,12 @@
   </ol>
 </nav>
 
+@include('admin.layout.flash')
 <div class="row">
   <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
         <div class="d-flex justify-content-end mb-5">
-          @include('admin.layout.flash')
 
 
           <a href="{{ route('admins.service_provider.create') }}" class="btn-sm btn-primary btn-icon-text"> <i class="fa-solid fa-plus"></i> Add New Service Provider
@@ -64,7 +64,7 @@
                     <form method="POST" action="{{ route('admins.service_provider.destroy', $item->id) }}">
                       @csrf
                       @method('delete')
-                      <button type="submit" class="btn btn-danger btn-sm btn-icon-text "><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
+                      <button type="submit" class="btn btn-danger btn-sm btn-icon-text " onclick="return confirm('Are you sure to delete this request')"><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
                     </form>
 
                   </div>

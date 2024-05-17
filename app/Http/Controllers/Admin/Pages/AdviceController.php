@@ -55,8 +55,8 @@ class AdviceController extends Controller
 
             return redirect()->route('admins.advices.index')->with('success','created successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -85,10 +85,10 @@ class AdviceController extends Controller
                 'img' => ($request->has('img') && $request->img != null) ? $request->img : 'assets/images/advices/default.png',
             ]);
 
-            return redirect()->route('admins.advices.index');
+            return redirect()->route('admins.advices.index')->with('success', 'advice updated successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -100,10 +100,10 @@ class AdviceController extends Controller
             $img=File::delete($advice->img);
             }
             $advice->delete();
-            return redirect()->route('admins.advices.index');
+            return redirect()->route('admins.advices.index')->with('success','advice deleted successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 

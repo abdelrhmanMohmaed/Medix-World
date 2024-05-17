@@ -59,17 +59,8 @@
                   <form method="POST" action="{{ route('admins.users.destroy', $item->id) }}" class="d-inline"> 
                     @csrf
                     @method('delete')
-                    <button type="submit" class="btn btn-danger btn-xs btn-icon-text p-1"><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
+                    <button type="submit" class="btn btn-danger btn-xs btn-icon-text p-1" onclick="return confirm('Are you sure to delete this user')"><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
                   </form>
-                  
-
-                  <!-- <form method="POST" action="{{ route('admins.cities.destroy', $item->id) }}" onsubmit="return confirm('Are You sure?')">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn bg-gradient-danger btn-sm">
-                      <i class="link-arrow" data-feather="trash"></i> Delete
-                    </button>
-                  </form> -->
 
                 </td>
               </tr>

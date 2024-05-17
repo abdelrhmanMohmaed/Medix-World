@@ -89,31 +89,47 @@ class ServiceProviderController extends Controller
                     'ar' => $request->input("address.ar")
                 ],
                 'price' => $request->input("bookingPrice"),
-                'tel' => $request->input("tel"),
+                // 'tel' => $request->input("tel"),
 
                 'img' => $avatarName,
                 'medical_card' => $medicalCardName,
             ]);
         
+            
+            $user->phones()->create([
+                'tel' => $request->input("tel"),
+                'type' => 'personal',
+                'active' => 1,
+            ]);
+            if (isset($request['telTwo']) && $request['telTwo'] != null) {
+                $user->phones()->create([
+                    'tel' => $request->input("telTwo"),
+                    'type' => 'personal',
+                    'active' => 1,
+                ]);
+            }
+
             $user->phones()->create([
                 'tel' => $request->input("clinicTel"),
+                'type' => 'clinic',
                 'active' => 1,
             ]);
 
             if (isset($request['clinicTelTwo']) && $request['clinicTelTwo'] != null) {
                 $user->phones()->create([
                     'tel' => $request->input("clinicTelTwo"),
+                    'type' => 'clinic',
                     'active' => 1,
                 ]);
             }
-            $user->assignRole('Service Providers');
+            $user->assignRole('Service Providers','web');
            
             DB::commit();
             return redirect()->route('admins.service_provider.index')->with('success', 'Service Provider created successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
 
-            return redirect()->back()->with($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -128,11 +144,11 @@ class ServiceProviderController extends Controller
             $service_provider->update(['status' => $request->status]);
 
 
-            return redirect()->route('admins.service_provider.requests');
+            return redirect()->route('admins.service_provider.requests')->with('success','request updated successfully');
         } catch (Exception $e) {
 
-            dd($e->getMessage());
-            return redirect()->back(); //message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -144,10 +160,10 @@ class ServiceProviderController extends Controller
 
             $service_provider->delete();
 
-            return redirect()->route('admins.service_provider.index');
+            return redirect()->back()->with('success','request deleted successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back(); //message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 }

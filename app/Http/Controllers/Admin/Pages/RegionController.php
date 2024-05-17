@@ -36,10 +36,10 @@ class RegionController extends Controller
                 'city_id' => $request->input("city_id"),
             ]);
 
-            return redirect()->route('admins.regions.index');
+            return redirect()->route('admins.regions.index')->with('success','Region created successfully');
         } catch (Exception $e) {
 
-            return redirect()->back();//message
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
@@ -62,22 +62,29 @@ class RegionController extends Controller
                 'city_id' => $request->input("city_id"),
             ]);
 
-            return redirect()->route('admins.regions.index');
+            return redirect()->route('admins.regions.index')->with('success','Region updated successfully');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
     public function destroy(Region $region) : RedirectResponse 
     {
         try {
+
+            if ($region->serviceProviders->count() > 0) {
+                return redirect()->back()->with('error','can\'t delete, there are active service providers in this region');   
+            }
+
             $region->delete();
 
-            return redirect()->route('admins.regions.index');
+            return redirect()->route('admins.regions.index')->with('success', 'region deleted successfully');
+            $region->delete();
+
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 

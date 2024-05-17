@@ -14,6 +14,13 @@ class Region extends Model
     public $translatable = ['name'];
     public $fillable = ['city_id','name','active'];
     
+
+    public function serviceProviders()
+    {
+        return $this->hasMany(ServiceProviderDetails::class);
+    }
+   
+
     public function scopeActive($query): Builder
     {
         return $query->where('active', 1);

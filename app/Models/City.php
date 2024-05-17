@@ -22,4 +22,8 @@ class City extends Model
     {
         return $this->hasMany(Region::class);
     }
+    public function serviceProviders()
+    {
+        return $this->hasMany(ServiceProviderDetails::class);
+    }
 }

@@ -71,6 +71,14 @@
 
                                 <div class="row mb-3">
                                     <div class="col-lg-3">
+                                        <label for="defaultconfig-3" class="col-form-label">Personal Tel Number</label>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" type="text" name="telTwo" value="{{ old('telTwo') }}">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-lg-3">
                                         <label for="defaultconfig-3" class="col-form-label">Gender</label>
                                     </div>
                                     <div class="col-lg-8">

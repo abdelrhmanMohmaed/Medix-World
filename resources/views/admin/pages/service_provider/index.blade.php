@@ -64,7 +64,7 @@
                     <form method="POST" action="{{ route('admins.service_provider.destroy', $item->id) }}">
                       @csrf
                       @method('delete')
-                      <button type="submit" class="btn btn-danger btn-sm btn-icon-text "><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
+                      <button type="submit" class="btn btn-danger btn-sm btn-icon-text "  onclick="return confirm('Are you sure to delete this service provider')"><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
                     </form>
 
                   </div>
