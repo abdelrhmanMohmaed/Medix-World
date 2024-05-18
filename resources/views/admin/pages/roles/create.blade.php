@@ -19,6 +19,7 @@
     <form class="forms-sample" action="{{ route('admins.roles.store') }}" method="post">
       @csrf
 
+
       <div class="row mb-3">
       <div class="col-lg-2">
         <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.name') }}</label>
@@ -27,6 +28,8 @@
           <input type="text" class="form-control" name="name" id="name_en" value="{{ old('name') }}">
         </div>
       </div>
+
+
 
 
       <!-- 
@@ -77,6 +80,7 @@
         <button class="btn btn-secondary">Cancel</button>
       </div>
     </form>
+
   </div>
 </div>
     @endsection

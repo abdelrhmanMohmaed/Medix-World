@@ -30,17 +30,18 @@
 
       <!-- <div class="row mb-3">
     <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.name-permissions') }}</label>
+
     <div class="col-sm-9">
-      @php 
+      @php
       $items = json_decode($role->permissions, true);
 
-// Array to store only the "id" values
-$ids = array();
+      // Array to store only the "id" values
+      $ids = array();
 
-// Loop through each item and extract the "id" value
-foreach ($items as $item) {
-    $ids[] = $item['id'];
-}
+      // Loop through each item and extract the "id" value
+      foreach ($items as $item) {
+      $ids[] = $item['id'];
+      }
 
       echo $role->permission
       @endphp
@@ -102,4 +103,5 @@ foreach ($items as $item) {
     </form>
   </div>
 </div>
+
 @endsection
