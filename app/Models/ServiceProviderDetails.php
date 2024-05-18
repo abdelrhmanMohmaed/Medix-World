@@ -61,9 +61,9 @@ class ServiceProviderDetails extends Model
     }
     # Scope
 
-    public function scopeNotApproved($query)
+    public function scopeStatus($query,$status)
     {
-        return $query->where('status', '<>', 'Approval');
+        return $query->where('status', $status);
     }
 
     public function scopeApproved($query)

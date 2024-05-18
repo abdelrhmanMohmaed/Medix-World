@@ -15,27 +15,27 @@ use Exception;
 use Illuminate\Support\Facades\File;
 use Spatie\Permission\Models\Role;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     use UploadTrait;
 
     public function index(): View
     {
-        $users  = User::user()->get();
+        $admins  = User::admin()->get();
 
-        return view('admin.pages.user.index', compact('users'));
+        return view('admin.pages.admin.index', compact('admins'));
     }
 
     public function create(): View
     {
-        return view('admin.pages.user.create');
+        return view('admin.pages.admin.create');
     }
 
     public function store(UserRequest $request): RedirectResponse
     {
         try {
 
-            $user = User::create([
+            $admin = User::create([
                 'name' => $request->fullName,
                 'email' => $request->email,
                 'password' => '123456',
@@ -43,15 +43,15 @@ class UserController extends Controller
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
             ]);
-
-            // $user->assignRole('User', 'web');
+// dd(Role::all());
+            // $admin->assignRole('Admin','web');
 
             Phone::create([
-                'user_id' => $user->id,
+                'user_id' => $admin->id,
                 'tel' => $request->tel
             ]);
 
-            return redirect()->route('admins.users.index')->with('success', 'created successfully');
+            return redirect()->route('admins.admins.index')->with('success', 'created successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage()); //message
@@ -60,12 +60,12 @@ class UserController extends Controller
 
     public function show(User $user): View
     {
-        return view('admin.pages.user.details', compact('user'));
+        return view('admin.pages.admin.details', compact('user'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.pages.user.edit', compact('user'));
+        return view('admin.pages.admin.edit', compact('user'));
     }
 
     public function update(UserRequest $request, User $user): RedirectResponse
@@ -80,7 +80,7 @@ class UserController extends Controller
                 'gender' => $request->gender,
             ]);
 
-            return redirect()->route('admins.users.index')->with('success', 'user updated successfully');
+            return redirect()->route('admins.admins.index')->with('success', 'Admin updated successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage()); //message
@@ -92,7 +92,7 @@ class UserController extends Controller
         try {
             $user->phones()->delete();
             $user->delete();
-            return redirect()->route('admins.users.index')->with('success', 'user deleted successfully');
+            return redirect()->route('admins.admins.index')->with('success', 'Admin deleted successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage()); //message

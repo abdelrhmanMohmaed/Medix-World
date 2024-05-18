@@ -6,7 +6,7 @@
 @section('content')
 <nav class="page-breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route ('admins.service_provider.requests') }}">{{ __('dashboard.service-provider')}} </a></li>
+        <li class="breadcrumb-item"><a href="{{route ('admins.service_provider.index') }}">{{ __('dashboard.service-provider')}} </a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.service-provider-view')}} </li>
     </ol>
 </nav>
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
-                                    <img src="{{ $service_provider->image }}" class="wd-100 wd-sm-150 ms-3 card-img" alt="profile image">
+                                    <img src="{{ asset($service_provider->img) }}" class="wd-100 wd-sm-150 ms-3 card-img" alt="profile image">
                                 </div>
                             </div>
                             <div class="row mb-3">

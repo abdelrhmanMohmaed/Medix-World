@@ -41,6 +41,15 @@ class User extends Authenticatable
         });
     }
 
+    public function scopeAdmin($query)
+    {
+        return $query->whereHas('roles', function ($query) {
+            $query->where('roles.name', 'Admin');
+        });
+    }
+
+
+
     public function serviceProviderDetails(): HasOne
     {
         return $this->hasOne(ServiceProviderDetails::class);
