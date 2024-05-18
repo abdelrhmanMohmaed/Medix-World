@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 
-@section('title', __('dashboard.user-view'))
+@section('title', __('dashboard.admin-view'))
 
 @push('plugin-styles')
 <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
@@ -9,15 +9,15 @@
 @section('content')
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{route ('admins.users.index') }}">{{ __('dashboard.user-index')}} </a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.user-view')}}</li>
+    <li class="breadcrumb-item"><a href="{{route ('admins.admins.index') }}">{{ __('dashboard.admin-index')}} </a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.admin-view')}}</li>
   </ol>
 </nav>
 
 
 
 <div class="row mb-3">
-  <label for="exampleInputUsername2" class="col-sm-3 col-form-label">{{ __('dashboard.name') }}</label>
+  <label for="exampleInputadminname2" class="col-sm-3 col-form-label">{{ __('dashboard.name') }}</label>
   <div class="col-sm-9">
     <input type="text" class="form-control" name="title[en]" id="title_en" value="{{ $user->name}}" disabled>
 
