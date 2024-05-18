@@ -9,7 +9,7 @@
 @section('content')
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{route ('admins.service_provider.requests') }}">{{ __('dashboard.service-provider')}} </a></li>
+    <li class="breadcrumb-item"><a href="{{route ('admins.service_provider.requests', $service_provider_requests->first()->status) }}">{{ __('dashboard.service-provider')}} </a></li>
     <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.service-provider-requests')}} </li>
   </ol>
 </nav>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Pages\{
+    AdminController,
     AdviceController,
     CityController,
     DashboardController,
@@ -114,7 +115,7 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('{service_provider}/view', 'show')->name('show'); 
             Route::get('{service_provider}/view-request', 'showRequest')->name('show_request'); 
 
-            Route::get('/requests', 'getRequest')->name('requests');
+            Route::get('/requests/{status}', 'getRequest')->name('requests');
 
         });
 
@@ -146,6 +147,20 @@ Route::middleware(['auth:admin'])->group(function () {
         });
 
         Route::prefix('users')->name('users.')->controller(UserController::class)
+        ->group(function () {
+        
+            Route::get('', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::get('/{user}/edit', 'edit')->name('edit');  
+            Route::patch('{user}', 'update')->name('update'); 
+            Route::delete('{user}', 'destroy')->name('destroy'); 
+            Route::get('{user}/view', 'show')->name('show'); 
+
+
+        });
+
+        Route::prefix('admins')->name('admins.')->controller(AdminController::class)
         ->group(function () {
         
             Route::get('', 'index')->name('index');

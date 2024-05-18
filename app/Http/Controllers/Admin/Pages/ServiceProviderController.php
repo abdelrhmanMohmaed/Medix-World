@@ -19,10 +19,10 @@ class ServiceProviderController extends Controller
 {
     use UploadTrait;
 
-    public function getRequest()
+    public function getRequest(Request $request)
     {
 
-        $service_provider_requests  = ServiceProviderDetails::NotApproved()->get();
+        $service_provider_requests  = ServiceProviderDetails::status($request->status)->get();
 
         return view('admin.pages.service_provider.request_index', compact('service_provider_requests'));
     }

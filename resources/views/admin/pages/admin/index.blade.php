@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 
-@section('title', __('dashboard.user-index'))
+@section('title', __('dashboard.admin-index'))
 
 @push('plugin-styles')
 <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
@@ -9,8 +9,8 @@
 @section('content')
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{route ('admins.users.index') }}">{{ __('dashboard.user-index')}} </a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.user-index')}} </li>
+    <li class="breadcrumb-item"><a href="{{route ('admins.admins.index') }}">{{ __('dashboard.admin-index')}} </a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.admin-index')}} </li>
   </ol>
 </nav>
 @include('admin.layout.flash')
@@ -22,7 +22,7 @@
         <div class="d-flex justify-content-end mb-5">
 
 
-          <a href="{{ route('admins.users.create') }}" class="btn-sm btn-primary btn-icon-text"> <i class="fa-solid fa-plus"></i> Add New user
+          <a href="{{ route('admins.admins.create') }}" class="btn-sm btn-primary btn-icon-text"> <i class="fa-solid fa-plus"></i> Add New admin
           </a>
           <!-- <button type="button" class="btn btn-inverse-primary"></button> -->
         </div>
@@ -41,7 +41,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($users as $item)
+              @foreach ($admins as $item)
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->name }}</td>
@@ -49,19 +49,19 @@
                 <td>{{ $item->email }}</td>
 
                 <td>
-                  <a href="{{ route('admins.users.show', $item->id) }}" class="btn-sm btn-secondary btn-icon-text"> <i class="fa-solid fa-eye p-1"></i>view
+                  <a href="{{ route('admins.admins.show', $item->id) }}" class="btn-sm btn-secondary btn-icon-text"> <i class="fa-solid fa-eye p-1"></i>view
                   </a>
 
-                  <a href="{{ route('admins.users.edit', $item->id) }}" class="btn-sm btn-primary btn-icon-text m-1 "><i class="fa-solid fa-pen-to-square"></i> edit
+                  <a href="{{ route('admins.admins.edit', $item->id) }}" class="btn-sm btn-primary btn-icon-text m-1 "><i class="fa-solid fa-pen-to-square"></i> edit
                   </a>
 
-
-                  <form method="POST" action="{{ route('admins.users.destroy', $item->id) }}" class="d-inline"> 
+                  @if($item->id != 1)
+                  <form method="POST" action="{{ route('admins.admins.destroy', $item->id) }}" class="d-inline">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger btn-xs btn-icon-text p-1" onclick="return confirm('Are you sure to delete this user')"><i class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
                   </form>
-
+                  @endif
                 </td>
               </tr>
               @endforeach

@@ -15,31 +15,40 @@
 </nav>
 @include('admin.layout.flash')
 
-<form class="forms-sample"action="{{ route('admins.cities.store') }}" method="post">
-    @csrf
+<div class="card">
+  <div class="example m-4">
+    <form class="forms-sample" action="{{ route('admins.cities.store') }}" method="post">
+      @csrf
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.name-city-en') }}</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" name="name[en]" id="name_en" value="{{ old('name.en') }}">
+          @error('name.ar')
+          <span>{{ $message }}</span>
+          @enderror
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="exampleInputEmail2" class="col-form-label">{{ __('dashboard.name-city-ar') }}</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" name="name[ar]" id="name_ar" value="{{ old('name.ar') }}">
+          @error('name.ar')
+          <span>{{ $message }}</span>
+          @enderror
 
-  <div class="row mb-3">
-    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">{{ __('dashboard.name-city-en') }}</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" name="name[en]" id="name_en" value="{{ old('name.en') }}" @class(['form-control', 'is-invalid'=> $errors->has('name.en')])>
-      @error('name.ar')
-    <span>{{ $message }}</span>
-    @enderror
-    </div>
+          <!-- <input type="email" class="form-control" id="exampleInputEmail2" autocomplete="off" placeholder="Email"> -->
+        </div>
+      </div>
+      <div class="action d-flex mt-5 justify-content-end">
+
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <button class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
   </div>
-  <div class="row mb-3">
-    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.name-city-ar') }}</label>
-    <div class="col-sm-9">
-    <input type="text" class="form-control" name="name[ar]" id="name_ar" value="{{ old('name.ar') }}" @class(['form-control', 'is-invalid'=> $errors->has('name.ar')])>
-  @error('name.ar')
-  <span>{{ $message }}</span>
-  @enderror
-
-      <!-- <input type="email" class="form-control" id="exampleInputEmail2" autocomplete="off" placeholder="Email"> -->
-    </div>
-  </div>
-
-  <button type="submit" class="btn btn-primary me-2">Submit</button>
-  <button class="btn btn-secondary">Cancel</button>
-</form>
+</div>
 @endsection

@@ -33,8 +33,8 @@
               <tr>
                 <th>#</th>
 
-                <th>{{ __('dashboard.title-term-en') }}</th>
-                <th>{{ __('dashboard.title-term-ar') }}</th>
+                <th>{{ __('dashboard.title-en') }}</th>
+                <th>{{ __('dashboard.title-ar') }}</th>
                 <th>{{ __('dashboard.actions') }}</th>
               </tr>
             </thead>

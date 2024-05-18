@@ -19,11 +19,19 @@
         </a>
       </li>
 
+      <li class="nav-item nav-category">Admin</li>
+      <li class="nav-item {{ active_class(['/']) }}">
+        <a href="{{ route('admins.admins.index') }}" class="nav-link">
+          <i class="fa-solid fa-user"></i> <span class="link-title">Admin</span>
+        </a>
+      </li>
+
+
       <!-- settings -->
       <li class="nav-item nav-category">Settings</li>
 
-            <!-- location -->
-            <li class="nav-item {{ active_class(['ui-components/*']) }}">
+      <!-- location -->
+      <li class="nav-item {{ active_class(['ui-components/*']) }}">
         <a class="nav-link" data-bs-toggle="collapse" href="#uiComponents" role="button" aria-expanded="{{ is_active_route(['ui-components/*']) }}" aria-controls="uiComponents">
           <i class="fa-solid fa-location-dot"></i> <span class="link-title">Location</span>
           <i class="link-arrow" data-feather="chevron-down"></i>
@@ -41,7 +49,7 @@
         </ul>
       </div>
 
-      
+
       <!-- roles and permissions -->
 
       <li class="nav-item {{ active_class(['/']) }}">
@@ -93,7 +101,10 @@
       <div class="collapse {{ show_class(['serviceProvider/*']) }}" id="serviceProvider">
         <ul class="nav sub-menu">
           <li class="nav-item">
-            <a href="{{ route('admins.service_provider.requests') }}" class="nav-link {{ active_class(['serviceProvider/accordion']) }}">Service Provider Requests</a>
+            <a href="{{ route('admins.service_provider.requests','pending') }}" class="nav-link {{ active_class(['serviceProvider/accordion']) }}">Pending Requests</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admins.service_provider.requests','reject') }}" class="nav-link {{ active_class(['serviceProvider/accordion']) }}">Rejected Requests</a>
           </li>
           <li class="nav-item">
             <a href="{{ route('admins.service_provider.index') }}" class="nav-link {{ active_class(['serviceProvider/alerts']) }}">Active Service Provider</a>
