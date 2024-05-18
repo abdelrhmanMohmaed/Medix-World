@@ -51,7 +51,7 @@ class UserController extends Controller
                 'tel' => $request->tel
             ]);
 
-            return redirect()->route('admins.user.index')->with('success', 'created successfully');
+            return redirect()->route('admins.users.index')->with('success', 'created successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
             return redirect()->back()->with('error', $e->getMessage()); //message
