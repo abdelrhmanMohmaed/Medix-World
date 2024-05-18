@@ -16,65 +16,76 @@
 </nav>
 @include('admin.layout.flash')
 
-<form class="forms-sample" action="{{ route('admins.terms.update',$term) }}" method="post" enctype="multipart/form-data">
-  @csrf
-  @method('PATCH')
+<div class="card">
+  <div class="example m-4">
+    <form class="forms-sample" action="{{ route('admins.terms.update',$term) }}" method="post" enctype="multipart/form-data">
+      @csrf
+      @method('PATCH')
 
-  <div class="row mb-3">
-    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">{{ __('dashboard.title-term-en') }}</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" name="title[en]" id="title_en" value="{{ $term->getTranslation('title', 'en') }}">
+      <div class="row mb-3">
+        <div class="col-lg-2">
+        <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.title-en') }}</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" name="title[en]" id="title_en" value="{{ $term->getTranslation('title', 'en') }}">
 
-    </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-lg-2">
+        <label for="exampleInputEmail2" class="col-form-label">{{ __('dashboard.title-ar') }}</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $term->getTranslation('title', 'ar') }}">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="defaultconfig" class="col-form-label">Sub Description (EN)</label>
+        </div>
+
+        <div class="col-lg-8">
+          <textarea class="form-control simpleMdeExample" id="tinymceExample" name="sub_description[en]">{{ $term->getTranslation('sub_description', 'en') }}</textarea>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="defaultconfig" class="col-form-label">Sub Description (AR)</label>
+        </div>
+        <div class="col-lg-8">
+          <textarea class="form-control simpleMdeExample" id="tinymceExample" name="sub_description[ar]">{{ $term->getTranslation('sub_description', 'ar') }}</textarea>
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="defaultconfig" class="col-form-label">Description (EN)</label>
+        </div>
+        <div class="col-lg-8">
+          <textarea class="form-control simpleMdeExample" id="tinymceExample" name="description[en]" readonly>{{ $term->getTranslation('description', 'en') }}</textarea>
+        </div>
+      </div>
+
+
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="defaultconfig" class="col-form-label">Description (AR)</label>
+        </div>
+        <div class="col-lg-8">
+          <textarea class="form-control simpleMdeExample" id="tinymceExample" name="description[ar]">{{ $term->getTranslation('description', 'ar') }}</textarea>
+        </div>
+      </div>
+
+      <div class="action d-flex mt-5 justify-content-end">
+      <button type="submit" class="btn btn-primary me-2">Submit</button>
+      <button class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
   </div>
-  <div class="row mb-3">
-    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.title-term-ar') }}</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $term->getTranslation('title', 'ar') }}">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col-lg-3">
-        <label for="defaultconfig" class="col-form-label">Sub Description (EN)</label>
-    </div>
-    
-    <div class="col-lg-8">
-      <textarea class="form-control simpleMdeExample" id="tinymceExample" name="sub_description[en]">{{ $term->getTranslation('sub_description', 'en') }}</textarea>
-    </div>
 </div>
-
-<div class="row mb-3">
-    <div class="col-lg-3">
-        <label for="defaultconfig" class="col-form-label">Sub Description (AR)</label>
-    </div>
-    <div class="col-lg-8">
-      <textarea class="form-control simpleMdeExample" id="tinymceExample" name="sub_description[ar]">{{ $term->getTranslation('sub_description', 'ar') }}</textarea>
-    </div>
-</div>
-
-
-  <div class="row mb-3">
-    <div class="col-lg-3">
-      <label for="defaultconfig" class="col-form-label">Description (EN)</label>
-    </div>
-    <div class="col-lg-8">
-      <textarea class="form-control simpleMdeExample" id="tinymceExample" name="description[en]" readonly>{{ $term->getTranslation('description', 'en') }}</textarea>
-    </div>
-  </div>
-
-  
-  <div class="row mb-3">
-    <div class="col-lg-3">
-      <label for="defaultconfig" class="col-form-label">Description (AR)</label>
-    </div>
-    <div class="col-lg-8">
-    <textarea class="form-control simpleMdeExample" id="tinymceExample" name="description[ar]">{{ $term->getTranslation('description', 'ar') }}</textarea>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary me-2">Submit</button>
-  <button class="btn btn-secondary">Cancel</button>
-</form>
 @endsection
 
 

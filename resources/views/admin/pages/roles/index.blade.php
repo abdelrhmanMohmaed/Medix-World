@@ -32,7 +32,7 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>{{ __('dashboard.name-role') }}</th>
+                <th>{{ __('dashboard.name') }}</th>
                 <th>{{ __('dashboard.actions') }}</th>
               </tr>
             </thead>

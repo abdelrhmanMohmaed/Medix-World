@@ -15,45 +15,59 @@
 </nav>
 
 
+<div class="card">
+  <div class="example m-4">
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputadminname2" class=" col-form-label">{{ __('dashboard.name') }}</label>
+      </div>
+      <div class="col-lg-8">
+        <input type="text" class="form-control" name="title[en]" id="title_en" value="{{ $user->name}}" disabled>
 
-<div class="row mb-3">
-  <label for="exampleInputadminname2" class="col-sm-3 col-form-label">{{ __('dashboard.name') }}</label>
-  <div class="col-sm-9">
-    <input type="text" class="form-control" name="title[en]" id="title_en" value="{{ $user->name}}" disabled>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputEmail2" class=" col-form-label">{{ __('dashboard.phone') }}</label>
+      </div>
+      <div class="col-lg-8">
+        <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $user->personalPhones->first()?->tel }}" disabled>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputEmail2" class=" col-form-label">{{ __('dashboard.email') }}</label>
+      </div>
+      <div class="col-lg-8">
+        <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $user->email}}" disabled>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputEmail2" class=" col-form-label">{{ __('dashboard.date_of_birth') }}</label>
+      </div>
+      <div class="col-lg-8">
+        <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $user->dateOfBirth}}" disabled>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputEmail2" class=" col-form-label">{{ __('dashboard.gender') }}</label>
+      </div>
+      <div class="col-lg-8">
+        <input type="text" class="form-control" name="title[ar]" id="title_ar" value="@if($user->gender == 1)male @else female @endif" disabled>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputEmail2" class=" col-form-label">{{ __('dashboard.status') }}</label>
+      </div>
+      <div class="col-lg-8">
+        <input type="text" class="form-control" name="title[ar]" id="title_ar" value="@if ($user->active == 1) Active @else Inactive @endif" disabled>
+      </div>
+    </div>
 
   </div>
 </div>
-<div class="row mb-3">
-  <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.phone') }}</label>
-  <div class="col-sm-9">
-    <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $user->personalPhones->first()?->tel }}" disabled>
-  </div>
-</div>
-
-<div class="row mb-3">
-  <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.email') }}</label>
-  <div class="col-sm-9">
-    <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $user->email}}" disabled>
-  </div>
-</div>
-<div class="row mb-3">
-  <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.date_of_birth') }}</label>
-  <div class="col-sm-9">
-    <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $user->dateOfBirth}}" disabled>
-  </div>
-</div>
-<div class="row mb-3">
-  <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.gender') }}</label>
-  <div class="col-sm-9">
-    <input type="text" class="form-control" name="title[ar]" id="title_ar" value="@if($user->gender == 1)male @else female @endif" disabled>
-  </div>
-</div>
-<div class="row mb-3">
-  <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.status') }}</label>
-  <div class="col-sm-9">
-    <input type="text" class="form-control" name="title[ar]" id="title_ar" value="@if ($user->active == 1) Active @else Inactive @endif" disabled>
-  </div>
-</div>
-
-
 @endsection

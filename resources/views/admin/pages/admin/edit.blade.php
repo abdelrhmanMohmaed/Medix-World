@@ -14,59 +14,69 @@
   </ol>
 </nav>
 @include('admin.layout.flash')
+<div class="card">
+  <div class="example m-4">
 
-<form class="forms-sample" action="{{ route('admins.admins.update', $user->id) }}" method="post" enctype="multipart/form-data">
-  @csrf
-  @method('PATCH')
-  <div class="row mb-3">
-    <label for="exampleInputadminname2" class="col-sm-3 col-form-label">{{ __('dashboard.name') }}</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" name="fullName" id="fullName" value="{{ $user->name }}">
-
-    </div>
-  </div>
-  <div class="row mb-3">
-    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.phone') }}</label>
-    <div class="col-sm-9">
-      <input type="tel" class="form-control" name="tel" id="tel" value="{{ $user->phones->first()?->tel }}">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col-lg-3">
-      <label for="defaultconfig" class="col-form-label">Email</label>
-    </div>
-    <div class="col-lg-8">
-      <input type="email" class="form-control" name="email" id="email" value="{{ $user->email }}">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col-lg-3">
-      <label for="defaultconfig" class="col-form-label">Date of Birth</label>
-    </div>
-    <div class="col-lg-8">
-      <input class="form-control" type="date" id="date_of_birth" name="dateOfBirth" value="{{ $user->dateOfBirth }}">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-      <div class="col-lg-3">
-        <label for="defaultconfig-3" class="col-form-label">Gender</label>
+    <form class="forms-sample" action="{{ route('admins.admins.update', $user->id) }}" method="post" enctype="multipart/form-data">
+      @csrf
+      @method('PATCH')
+      <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputadminname2" class=" col-form-label">{{ __('dashboard.name') }}</label>
       </div>
-      <div class="col-lg-8">
-        <input type="radio" class="form-check-input" name="gender" id="radioDefault1" value="1" @if($user->gender ==1) checked @endif>
-        <label class="form-check-label" for="radioDefault1">
-          Male
-        </label>
-        <input type="radio" class="form-check-input" name="gender" id="radioDefault1" value="2" @if( $user->gender ==2) checked @endif>
-        <label class="form-check-label" for="radioDefault1">
-          Female
-        </label>
-      </div>
-    </div>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" name="fullName" id="fullName" value="{{ $user->name }}">
 
-  <button type="submit" class="btn btn-primary me-2">Submit</button>
-  <button class="btn btn-secondary">Cancel</button>
-</form>
+        </div>
+      </div>
+      <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputEmail2" class=" col-form-label">{{ __('dashboard.phone') }}</label>
+      </div>
+        <div class="col-lg-8">
+          <input type="tel" class="form-control" name="tel" id="tel" value="{{ $user->phones->first()?->tel }}">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="defaultconfig" class="col-form-label">Email</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="email" class="form-control" name="email" id="email" value="{{ $user->email }}">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="defaultconfig" class="col-form-label">Date of Birth</label>
+        </div>
+        <div class="col-lg-8">
+          <input class="form-control" type="date" id="date_of_birth" name="dateOfBirth" value="{{ $user->dateOfBirth }}">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="defaultconfig-3" class="col-form-label">Gender</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="radio" class="form-check-input" name="gender" id="radioDefault1" value="1" @if($user->gender ==1) checked @endif>
+          <label class="form-check-label" for="radioDefault1">
+            Male
+          </label>
+          <input type="radio" class="form-check-input" name="gender" id="radioDefault1" value="2" @if( $user->gender ==2) checked @endif>
+          <label class="form-check-label" for="radioDefault1">
+            Female
+          </label>
+        </div>
+      </div>
+      <div class="action d-flex mt-5 justify-content-end">
+
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <button class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
 @endsection
