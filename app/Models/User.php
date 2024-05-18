@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $query->where('active', true);
     }
 
+    public function scopeInactive($query)
+    {
+        return $query->where('active', false);
+    }
+
     public function scopeUser($query)
     {
         return $query->whereHas('roles', function ($query) {
@@ -48,6 +53,12 @@ class User extends Authenticatable
         });
     }
 
+ public function scopeServiceProvider($query)
+    {
+        return $query->whereHas('roles', function ($query) {
+            $query->where('roles.name', 'Service Providers');
+        });
+    }
 
 
     public function serviceProviderDetails(): HasOne

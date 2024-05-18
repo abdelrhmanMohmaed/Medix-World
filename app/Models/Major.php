@@ -24,5 +24,10 @@ class Major extends Model
     {
         return $query->where('active', 1);
     }
+
+    public function scopeInactive($query): Builder
+    {
+        return $query->where('active', 0);
+    }
     
 }

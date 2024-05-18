@@ -18,6 +18,12 @@ class Advice extends Model
     {
         return $query->where('active', 1);
     }
+
+    public function scopeInactive($query): Builder
+    {
+        return $query->where('active', 0);
+    }
+
     public function createBy() : BelongsTo
     {
         return $this->belongsTo(User::class,'user_id');
