@@ -42,7 +42,7 @@ class ScheduleController extends Controller
             if ($end <= $to) { 
                 Schedule::create([
                     'user_id' =>
-                    4,
+                    3,
                     // Auth::id(),
                     'start_time' => $currentStart,
                     'end_time' => $end,

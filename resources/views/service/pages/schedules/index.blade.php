@@ -1,16 +1,15 @@
-@extends('admin.layout.master')
+@extends('service.layout.master')
 
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/fullcalendar/main.min.css') }}" rel="stylesheet" />
 @endpush
 
 @section('content')
-<style>
-
-    .fc-content .fc-time {
-        display: none;
-    }
-</style>
+    <style>
+        .fc-content .fc-time {
+            display: none;
+        }
+    </style>
     <div class="row">
         <div class="col-md-12">
             <div class="row">

@@ -94,8 +94,7 @@
                                                     @else
                                                         {{ __('website/web.provider-female') }}
                                                     @endif
-                                                    <span
-                                                        class="h5">{{ $serviceProvider->getTranslation('name', app()->getLocale()) }}</span>
+                                                    <span class="h5">{{ $serviceProvider->name }}</span>
                                                 </span>
 
                                                 <h6 class="mb-0">
