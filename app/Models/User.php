@@ -93,6 +93,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+    public function activeReview(): HasMany
+    {
+        return $this->hasMany(Review::class)->where('active',true);
+    }
     public function clientReview(): HasMany
     {
         return $this->hasMany(Review::class, 'client_id');

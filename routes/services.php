@@ -47,6 +47,8 @@ Route::middleware('auth:service_provider')->group(function () {
     ->group(function () {
 
         Route::get('', 'index')->name('index');
+        Route::get('{service}', 'edit')->name('edit');
+        Route::patch('{service}', 'update')->name('update');
     });
 
     Route::prefix('schedules')->name('schedules.')->controller(ScheduleController::class)
