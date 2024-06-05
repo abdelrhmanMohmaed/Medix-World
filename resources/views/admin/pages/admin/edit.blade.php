@@ -71,6 +71,22 @@
           </label>
         </div>
       </div>
+
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="defaultconfig-3" class="col-form-label">Status</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="radio" class="form-check-input" name="active" id="radioDefault1" value="1" @if($user->active ==1) checked @endif>
+          <label class="form-check-label" for="radioDefault1">
+            Active
+          </label>
+          <input type="radio" class="form-check-input" name="active" id="radioDefault1" value="0" @if($user->active ==0) checked @endif>
+          <label class="form-check-label" for="radioDefault1">
+            Inactive
+          </label>
+        </div>
+      </div>
       <div class="action d-flex mt-5 justify-content-end">
 
         <button type="submit" class="btn btn-primary me-2">Submit</button>

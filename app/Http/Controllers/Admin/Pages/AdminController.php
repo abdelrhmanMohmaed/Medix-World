@@ -42,6 +42,7 @@ class AdminController extends Controller
                 'tel' => $request->tel,
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
+                'active' => $request->active
             ]);
 // dd(Role::all());
             // $admin->assignRole('Admin','web');
@@ -65,6 +66,7 @@ class AdminController extends Controller
 
     public function edit(User $user)
     {
+        // dd($user->phones->first()?->tel);
         return view('admin.pages.admin.edit', compact('user'));
     }
 
@@ -78,8 +80,12 @@ class AdminController extends Controller
                 'tel' => $request->tel,
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
+                'active' => $request->active
             ]);
-
+            Phone::updateOrCreate([
+                'user_id' => $user->id,
+                'tel' => $request->tel
+            ]);
             return redirect()->route('admins.admins.index')->with('success', 'Admin updated successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
