@@ -8,28 +8,29 @@
       <div class="card">
         <div class="row">
           <div class="col-md-4 pe-md-0">
-            <div class="auth-side-wrapper" style="background-image: url({{ url('https://via.placeholder.com/219x452') }})">
+            <div class="auth-side-wrapper " style="background-image: asset({{ asset('images/others/profile.png') }})">
+              <img src="{{ asset('/assets/images/others/logo-placeholder.png')  }}" alt="">
 
             </div>
           </div>
           <div class="col-md-8 ps-md-0">
             <div class="auth-form-wrapper px-4 py-5">
-              <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
+              <a href="#" class="noble-ui-logo d-block mb-2">Medix<span>World</span></a>
               <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
 
 
               <form class="forms-sample" method="POST" action="{{ route('admins.login',app()->getLocale()) }}">
                 @csrf
                 @if (isset($errors) && count($errors))
-     
-     There were {{count($errors->all())}} Error(s)
-                 <ul>
-             @foreach($errors->all() as $error)
-                 <li>{{ $error }} </li>
-             @endforeach
-         </ul>
-         
- @endif
+
+                There were {{count($errors->all())}} Error(s)
+                <ul>
+                  @foreach($errors->all() as $error)
+                  <li>{{ $error }} </li>
+                  @endforeach
+                </ul>
+
+                @endif
                 <div class="mb-3">
                   <label for="userEmail" class="form-label">Email address</label>
                   <input type="email" class="form-control" id="userEmail" placeholder="Email" name="email">
@@ -51,7 +52,7 @@
                     Login with twitter
                   </button> -->
                 </div>
-                <a href="{{ url('/auth/register') }}" class="d-block mt-3 text-muted">Not a user? Sign up</a>
+                <a href="{{ route('website.register') }}" class="d-block mt-3 text-muted">Not a user? Sign up</a>
               </form>
             </div>
           </div>

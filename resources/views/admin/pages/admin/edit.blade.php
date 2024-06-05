@@ -10,7 +10,7 @@
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route ('admins.admins.index') }}">{{ __('dashboard.admin-index')}} </a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.admin-edit')}}</li>
+    <li class="breadcrumb-item active" aria-current="page"> @if ( $user->id == auth()->user()->id)  Edit My Profile @else {{ __('dashboard.admin-edit')}} @endif</li>
   </ol>
 </nav>
 @include('admin.layout.flash')
