@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Pages\{
     AdminController,
     AdviceController,
+    BookingController,
     CityController,
     DashboardController,
     MajorsController,
@@ -170,6 +171,16 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::patch('{user}', 'update')->name('update'); 
             Route::delete('{user}', 'destroy')->name('destroy'); 
             Route::get('{user}/view', 'show')->name('show'); 
+
+
+        });
+
+
+        Route::prefix('bookings')->name('bookings.')->controller(BookingController::class)
+        ->group(function () {
+        
+            Route::get('', 'index')->name('index');
+            Route::get('{booking}/view', 'show')->name('show'); 
 
 
         });
