@@ -21,6 +21,7 @@ return [
     "register-services-male" => "Male",
     "register-services-female" => "Female",
     "register-services-date" => "Birth Date",
+    "services-view" => "Views",
 
     "register-services-major" => "Specialization",
     "register-services-title" => "Title",

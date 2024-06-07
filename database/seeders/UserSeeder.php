@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'password' => 123456789, 
             'dateOfBirth' => '1992-12-12',
             'gender' => 1,
+            'active' => true,
         ]);
         $admin->assignRole('Admin');
 
@@ -30,6 +31,7 @@ class UserSeeder extends Seeder
             'password' => 123456789, 
             'dateOfBirth' => '1992-12-12',
             'gender' => 1,
+            'active' => true,
         ]);
         $user->assignRole('User');
 
@@ -40,6 +42,7 @@ class UserSeeder extends Seeder
             'password' => 123456789,
             'dateOfBirth' => '1992-12-12',
             'gender' => 1,
+            'active' => true,
         ]);
         $serviceProvider->assignRole('Service Providers');
     }

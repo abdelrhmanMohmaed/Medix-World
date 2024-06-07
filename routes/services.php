@@ -7,6 +7,7 @@ use App\Http\Controllers\Services\Auth\{
 };
 use App\Http\Controllers\Services\Pages\{
     DashboardController,
+    PatientController,
     ProfileController,
     ScheduleController,
 };
@@ -22,6 +23,7 @@ use App\Http\Controllers\Services\Pages\{
 |
 */
 
+Route::get('axios/region/{id}', [ProfileController::class, 'axiosRegion'])->name('axios.region');
 
 // lang (en, ar)/ services
 Route::middleware('guest:service_provider')->group(function () {
@@ -48,7 +50,8 @@ Route::middleware('auth:service_provider')->group(function () {
 
         Route::get('', 'index')->name('index');
         Route::get('{service}', 'edit')->name('edit');
-        Route::patch('{service}', 'update')->name('update');
+        Route::patch('profile/{id}', 'update')->name('update');
+
     });
 
     Route::prefix('schedules')->name('schedules.')->controller(ScheduleController::class)
@@ -56,9 +59,17 @@ Route::middleware('auth:service_provider')->group(function () {
 
         Route::get('', 'index')->name('index');
         Route::post('', 'store')->name('store');
+        Route::post('destroy', 'destroy')->name('destroy');
     });
 
+    Route::prefix('patients')->name('patients.')->controller(PatientController::class)
+    ->group(function () {
 
+        Route::get('', 'index')->name('index');
+        Route::get('{client_id}', 'show')->name('show');
+        Route::get('medical-files/download/{file}', 'download')->name('download'); 
+        Route::post('{client_id}',  'store')->name('store');  
+    });
 
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });   

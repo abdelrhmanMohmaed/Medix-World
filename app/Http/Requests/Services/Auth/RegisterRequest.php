@@ -22,9 +22,10 @@ class RegisterRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
         return [
             'name.*' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase','email', 'max:255', 'unique:users,email'],
+            'email' => ['required', 'string', 'lowercase','email', 'max:255', "unique:users,email,{$id}"],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'tel' => ['required', 'string', 'regex:/^\+[0-9]{12}$/'], 
             'dateOfBirth' => ['required', 'date'],
@@ -37,11 +38,13 @@ class RegisterRequest extends FormRequest
             'summary.*' => ['required', 'string'],
             'address.*' => ['required', 'string'],
             'bookingPrice' => ['required', 'numeric', 'min:0'],
-            'profileImage'=>['required','image','max:2048'],
-            'medical_association_card' => ['required','image','max:2048' ],
+            
+            'profileImage' => $id ? ['nullable', 'image', 'max:2048'] : ['required', 'image', 'max:2048'],
+            'medical_association_card' => $id ? ['nullable', 'image', 'max:2048'] : ['required', 'image', 'max:2048'],
+            
             'clinicTel' => ['required', 'string', 'regex:/^\+[0-9]/'],
             'clinicTelTwo' => ['nullable', 'string', 'regex:/^\+[0-9]/'],
-            'term' => ['required', 'accepted'],
+            'term' => $id ? ['nullable'] : ['required', 'accepted'],
         ];
     }
 }

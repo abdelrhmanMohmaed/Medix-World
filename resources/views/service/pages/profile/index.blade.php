@@ -1,5 +1,5 @@
 @extends('service.layout.master')
-@section('title','My Profile')
+@section('title', 'My Profile')
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/fullcalendar/main.min.css') }}" rel="stylesheet" />
     <style>
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-
+    @include('admin.layout.flash')
 
     @if ($service->serviceProviderDetails->status == 'Approval')
         <div class="spinner-grow spinner-grow-sm text-success" role="status">
@@ -66,7 +66,7 @@
             your
             mail.</small>
     @endif
-
+    
     <div class="row profile-body">
         <!-- left wrapper start -->
         <div class="col-md-8 left-wrapper my-3">
@@ -147,8 +147,7 @@
                 <div class="card rounded">
                     <div class="card-body">
                         <div>
-                            <label
-                                class="tx-11 fw-bolder mb-0 text-uppercase">{{ __('website/web.provider-booking-price') }}:</label>
+                            <label class="tx-11 fw-bolder mb-0 text-uppercase">{{ __('price') }}:</label>
                             <p class="text-muted">{{ $service->serviceProviderDetails->price }}
                                 {{ __('services/services.register-services-egp') }}</p>
                         </div>
@@ -156,8 +155,7 @@
                             <label
                                 class="tx-11 fw-bolder mb-0 text-uppercase">{{ __('services/services.register-services-personal-information') }}:</label>
                             @forelse ($service->personalPhones as $itemPhone)
-                                <p class="text-muted">{{ $itemPhone->tel }}
-                                    {{ __('services/services.register-services-egp') }}</p>
+                                <p class="text-muted">{{ $itemPhone->tel }}</p>
                             @empty
                                 You doesn't have a Personal Phones yet.
                             @endforelse
@@ -166,8 +164,7 @@
                             <label
                                 class="tx-11 fw-bolder mb-0 text-uppercase">{{ __('services/services.register-services-clinic-tel') }}:</label>
                             @forelse ($service->clinicPhones as $itemPhone)
-                                <p class="text-muted">{{ $itemPhone->tel }}
-                                    {{ __('services/services.register-services-egp') }}</p>
+                                <p class="text-muted">{{ $itemPhone->tel }}</p>
                             @empty
                                 You doesn't have a Clinic Phones yet.
                             @endforelse
