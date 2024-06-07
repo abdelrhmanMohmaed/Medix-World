@@ -173,6 +173,8 @@ Route::middleware(['auth:admin'])->group(function () {
 
 
         });
+
+
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
     //End Admin routes

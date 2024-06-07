@@ -43,7 +43,7 @@ class AdminLoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        $user = User::whereEmail($this->email)->role('Admin')->first();
+        $user = User::whereEmail($this->email)->where('active',1)->role('Admin')->first();
         if ($user == null || !Hash::check($this->password, $user->password) ) {
 
             RateLimiter::hit($this->throttleKey());

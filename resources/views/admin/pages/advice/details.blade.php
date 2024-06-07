@@ -16,6 +16,13 @@
 
 <div class="card">
   <div class="example m-4">
+  <div class="d-flex justify-content-end mb-5">
+
+
+  <a href="{{ route('admins.advices.edit', $advice->id) }}" class="btn-sm btn-primary btn-icon-text m-1 "><i class="fa-solid fa-pen-to-square"></i> edit
+                  </a>
+<!-- <button type="button" class="btn btn-inverse-primary"></button> -->
+</div>
     <div class="row mb-3">
       <div class="col-lg-2">
         <label for="defaultconfig-3" class="col-form-label">Image</label>

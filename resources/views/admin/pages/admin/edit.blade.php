@@ -10,7 +10,7 @@
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route ('admins.admins.index') }}">{{ __('dashboard.admin-index')}} </a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{ __('dashboard.admin-edit')}}</li>
+    <li class="breadcrumb-item active" aria-current="page"> @if ( $user->id == auth()->user()->id)  Edit My Profile @else {{ __('dashboard.admin-edit')}} @endif</li>
   </ol>
 </nav>
 @include('admin.layout.flash')
@@ -68,6 +68,22 @@
           <input type="radio" class="form-check-input" name="gender" id="radioDefault1" value="2" @if( $user->gender ==2) checked @endif>
           <label class="form-check-label" for="radioDefault1">
             Female
+          </label>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-lg-2">
+          <label for="defaultconfig-3" class="col-form-label">Status</label>
+        </div>
+        <div class="col-lg-8">
+          <input type="radio" class="form-check-input" name="active" id="radioDefault1" value="1" @if($user->active ==1) checked @endif>
+          <label class="form-check-label" for="radioDefault1">
+            Active
+          </label>
+          <input type="radio" class="form-check-input" name="active" id="radioDefault1" value="0" @if($user->active ==0) checked @endif>
+          <label class="form-check-label" for="radioDefault1">
+            Inactive
           </label>
         </div>
       </div>
