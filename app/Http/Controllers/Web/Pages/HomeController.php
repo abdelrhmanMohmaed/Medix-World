@@ -10,6 +10,7 @@ use App\Models\Region;
 use App\Models\Schedule;
 use App\Models\ServiceProviderDetails;
 use App\Models\Title;
+use App\Models\View as ModelsView;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -31,17 +32,16 @@ class HomeController extends Controller
         return view('web.partials.partials.regions',compact('regions'));
     }
     public function show(ServiceProviderDetails $serviceProvider): View
-    {
-        $serviceProvider->load(['user', 'city', 'region', 'major', 'title' , 
-            'user.serviceProviderSchedule' => function ($q) {
-            
-                $q->whereDoesntHave('book');
-            }
-        ]);
-
-        return  view('web.pages.serviceProviders.show',compact('serviceProvider'));
+    { 
+        $serviceProvider->load(['user', 'city', 'region', 'major', 'title', 'user.serviceProviderSchedule' => function ($q) {
+            $q->whereDoesntHave('book');
+        }]);
+    
+         ModelsView::where('user_id', $serviceProvider->user->id)->increment('view');
+    
+        return view('web.pages.serviceProviders.show', compact('serviceProvider'));
     }
-    public function store(Schedule $schedule ,ServiceProviderDetails $serviceProvider, Request $request): RedirectResponse
+        public function store(Schedule $schedule ,ServiceProviderDetails $serviceProvider, Request $request): RedirectResponse
     {
         try {
             $checkBook = Book::where('schedule_id',$schedule->id)->first();
@@ -67,8 +67,6 @@ class HomeController extends Controller
         }
         
     }
-
-
 
     public function search(Request $request): View
     {
@@ -128,6 +126,15 @@ class HomeController extends Controller
             $q->whereDoesntHave('book');
         }])->paginate(10)->withQueryString();
 
+
+        
+
+        // if($request->expectsJson())
+        // {
+        //     return view('web.pages.serviceProviders.partials.filter', compact('results'));
+        // }
+
+        
         return view('web.pages.serviceProviders.index', compact(
             'results', 'majorName','titles',
             'major','city','area'

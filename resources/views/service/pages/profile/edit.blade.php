@@ -24,6 +24,7 @@
                         </div>
                     </div>
                 </div>
+                @include('admin.layout.flash')
 
                 <div class="card-header">
                     <div class="d-flex align-items-center row">
@@ -93,7 +94,7 @@
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" type="text" name="tel"
-                                                                    value="{{ old('tel') }}">
+                                                                    value="{{ @$service->personalPhones[0]['tel'] }}">
                                                             </div>
                                                         </div>
 
@@ -104,7 +105,7 @@
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" type="text" name="telTwo"
-                                                                    value="{{ old('telTwo') }}">
+                                                                    value="{{ @$service->personalPhones[1]['tel'] }}">
                                                             </div>
                                                         </div>
 
@@ -117,15 +118,13 @@
                                                                 <input type="radio" class="form-check-input"
                                                                     name="gender" id="radioDefault1" value="1"
                                                                     @checked($service->gender == 1)>
-                                                                <label class="form-check-label" for="radioDefault1">
-                                                                    Male
-                                                                </label>
+                                                                <label class="form-check-label"
+                                                                    for="radioDefault1">Male</label>
                                                                 <input type="radio" class="form-check-input"
-                                                                    name="gender" id="radioDefault1" value="2"
+                                                                    name="gender" id="radioDefault2" value="2"
                                                                     @checked($service->gender == 2)>
-                                                                <label class="form-check-label" for="radioDefault1">
-                                                                    Female
-                                                                </label>
+                                                                <label class="form-check-label"
+                                                                    for="radioDefault2">Female</label>
                                                             </div>
                                                         </div>
 
@@ -161,6 +160,30 @@
                                                                 <input type="file" id="img" name="profileImage">
                                                             </div>
                                                         </div>
+
+                                                        <div class="row mb-3">
+                                                            <div class="col-lg-3">
+                                                                <label for="defaultconfig-3"
+                                                                    class="col-form-label">Password</label>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <input class="form-control" type="password"
+                                                                    id="password" name="password">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mb-3">
+                                                            <div class="col-lg-3">
+                                                                <label for="defaultconfig-3"
+                                                                    class="col-form-label">Confirm Password</label>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <input class="form-control" type="password"
+                                                                    id="password_confirmation"
+                                                                    name="password_confirmation">
+                                                            </div>
+                                                        </div>
+
                                                     </div>
 
                                                     <!-- 2nd tab -->
@@ -174,10 +197,7 @@
                                                             <div class="col-lg-8">
                                                                 <select name="major_id" id="major"
                                                                     class="form-select">
-                                                                    <option disabled>
-                                                                        Select Specialization
-                                                                    </option>
-
+                                                                    <option disabled>Select Specialization</option>
                                                                     @foreach ($allMajors as $item)
                                                                         <option value="{{ $item->id }}"
                                                                             @selected($item->id == $service->serviceProviderDetails->major_id)>
@@ -196,10 +216,7 @@
                                                             <div class="col-lg-8">
                                                                 <select name="title_id" id="title"
                                                                     class="form-select">
-                                                                    <option selected disabled>
-                                                                        Select Title
-                                                                    </option>
-
+                                                                    <option selected disabled>Select Title</option>
                                                                     @foreach ($titles as $item)
                                                                         <option value="{{ $item->id }}"
                                                                             @selected($item->id == $service->serviceProviderDetails->title_id)>
@@ -213,8 +230,7 @@
                                                         <div class="row mb-3">
                                                             <div class="col-lg-3">
                                                                 <label for="defaultconfig" class="col-form-label">Medical
-                                                                    Association
-                                                                    Card</label>
+                                                                    Association Card</label>
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input name="medical_association_card"
@@ -244,7 +260,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- 3rd  tab -->
+
+                                                    <!-- 3rd tab -->
                                                     <div class="tab-pane fade" id="clinic" role="tabpanel"
                                                         aria-labelledby="clinic-tab">
                                                         <div class="row mb-3">
@@ -253,14 +270,13 @@
                                                                     class="col-form-label">City</label>
                                                             </div>
                                                             <div class="col-lg-8">
-                                                                <select name="city_id" class="form-select"
-                                                                    id="city">
-                                                                    <option selected disabled>
-                                                                        Select City
-                                                                        @foreach ($allCities as $item)
-                                                                    <option value="{{ $item->id }}">
-                                                                        {{ $item->getTranslation('name', app()->getLocale()) }}
-                                                                    </option>
+                                                                <select name="city_id" class="form-select city">
+                                                                    <option disabled>Select City</option>
+                                                                    @foreach ($allCities as $item)
+                                                                        <option value="{{ $item->id }}"
+                                                                            @selected($item->id == $service->serviceProviderDetails->city_id)>
+                                                                            {{ $item->getTranslation('name', app()->getLocale()) }}
+                                                                        </option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -272,11 +288,11 @@
                                                                     class="col-form-label">Region</label>
                                                             </div>
                                                             <div class="col-lg-8">
-                                                                <select name="region_id" id="region"
-                                                                    class="form-select">
-                                                                    <option selected disabled>
-                                                                        Select Region
-
+                                                                <select name="region_id" class="form-select region">
+                                                                    <option selected
+                                                                        value="{{ $service->serviceProviderDetails->region_id }}">
+                                                                        {{ $service->serviceProviderDetails->region->name }}
+                                                                    </option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -288,6 +304,7 @@
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" type="text"
+                                                                    value="{{ $service->serviceProviderDetails->getTranslation('address', 'en') }}"
                                                                     name="address[en]">
                                                             </div>
                                                         </div>
@@ -299,6 +316,7 @@
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" type="text"
+                                                                    value="{{ $service->serviceProviderDetails->getTranslation('address', 'ar') }}"
                                                                     name="address[ar]">
                                                             </div>
                                                         </div>
@@ -310,37 +328,34 @@
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input type="tel" id="clinic_tel"
-                                                                    value="{{ old('clinicTel') }}" name="clinicTel"
-                                                                    autocomplete="tel" class="form-control"
-                                                                    placeholder="telephone 1">
+                                                                    value="{{ @$service->clinicPhones[0]['tel'] }}"
+                                                                    name="clinicTel" autocomplete="tel"
+                                                                    class="form-control" placeholder="telephone 1">
                                                                 <input type="tel" id="clinic_tel_two"
-                                                                    value="{{ old('clinicTelTwo') }}" name="clinicTelTwo"
-                                                                    autocomplete="tel" class="form-control mt-1"
-                                                                    placeholder="telephone 2">
-
+                                                                    value="{{ @$service->clinicPhones[1]['tel'] }}"
+                                                                    name="clinicTelTwo" autocomplete="tel"
+                                                                    class="form-control mt-1" placeholder="telephone 2">
                                                             </div>
-
                                                         </div>
 
                                                         <div class="row mb-3">
                                                             <div class="col-lg-3">
                                                                 <label for="defaultconfig" class="col-form-label">Booking
-                                                                    Price(EGP)</label>
+                                                                    Price (EGP)</label>
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" type="number"
-                                                                    id="booking_price" step="0.5" min="0.00"
-                                                                    name="bookingPrice" placeholder="price in LE"
-                                                                    value="{{ old('bookingPrice') }}">
+                                                                    name="bookingPrice" placeholder="price in EGP"
+                                                                    value="{{ $service->serviceProviderDetails->price }}">
                                                             </div>
                                                         </div>
 
                                                         <div class="d-flex justify-content-end">
-
                                                             <button type="submit"
                                                                 class="btn btn-primary me-2">Submit</button>
                                                         </div>
                                                     </div>
+                                                </div>
                                             </form>
                                         </div>
                                     </div>
@@ -352,4 +367,31 @@
             </div>
         </div>
     </div>
+
+    @push('plugin-scripts')
+        <script>
+            $(document).ready(function() {
+                // get a areas with axios request
+                $('.city').change(function() {
+                    var cityId = $(this).val();
+
+                    if (cityId != 'allCities') {
+                        var axiosUrl = "{{ route('website.axios.region', ':cityId') }}";
+                        axiosUrl = axiosUrl.replace(':cityId', cityId);
+
+                        axios.get(axiosUrl)
+                            .then(function(response) {
+                                var regionsHtml = response.data;
+
+                                $('.region').html(regionsHtml);
+                            })
+                            .catch(function(error) {
+                                console.error('Error fetching areas: ' + error);
+                            });
+                    }
+                });
+                // get a areas with axios request
+            });
+        </script>
+    @endpush
 @endsection

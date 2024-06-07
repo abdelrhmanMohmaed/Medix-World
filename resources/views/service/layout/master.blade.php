@@ -72,18 +72,18 @@
     <script src="{{ asset('assets/plugins/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <!-- end base js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <!-- plugin js -->
     @stack('plugin-scripts')
     <script src="https://kit.fontawesome.com/d9b4ea247c.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <!-- end plugin js -->
 
     <!-- common js -->
     <script src="{{ asset('assets/js/template.js') }}"></script>
     <!-- end common js -->
 
-    <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+    {{-- <script src="js/jquery.dataTables.min.js" type="text/javascript"></script> --}}
 
     @stack('custom-scripts')
 </body>

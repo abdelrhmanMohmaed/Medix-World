@@ -61,11 +61,11 @@
             <div class="row">
 
                 <!-- Start Section Side Filter -->
-                @include('web.pages.serviceProviders.partials.sideFilter')
+                {{-- @include('web.pages.serviceProviders.partials.sideFilter') --}}
                 <!-- End Section Side Filter -->
 
                 <!-- Start Section two -->
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <!-- Start Section One -->
                     <div class="row">
                         <div class="col-12 h-25 d-flex justify-content-between py-4 ">
@@ -144,6 +144,11 @@
                                                                     {{ $item->title->title }} {{ $item->major->name }}
                                                                 </h6>
                                                                 <br>
+
+                                                                <h6 class="mb-0">
+                                                                    {{ __('services/services.services-view') }}: {{ $item->user->view->view }}
+                                                                </h6>
+
                                                                 <h6 class="mb-0">
                                                                     <!-- Stars -->
                                                                     <li class="list-group-item">
@@ -330,25 +335,25 @@
 
     <script>
         // Start filterResults
-        function filterResults() {
-            $.ajax({
-                url: "{{ route('website.search.service-provider.filter') }}",
-                type: 'GET',
-                data: $('#filterForm').serialize(),
-                success: function(response) {
-                    // console.log(response);
-                    $('#filteredResults').empty();
-                    $('#filteredResults').html(response);
-                },
-                error: function(xhr, status, error) {
-                    alert('Something is wrong, please try again later');
-                }
-            });
-        }
+        // function filterResults() {
+        //     $.ajax({
+        //         url: "{{ route('website.search.service-provider.filter') }}",
+        //         type: 'GET',
+        //         data: $('#filterForm').serialize(),
+        //         success: function(response) {
+        //             // console.log(response);
+        //             $('#filteredResults').empty();
+        //             $('#filteredResults').html(response);
+        //         },
+        //         error: function(xhr, status, error) {
+        //             alert('Something is wrong, please try again later');
+        //         }
+        //     });
+        // }
 
-        $('input[type="checkbox"]').change(function() {
-            filterResults();
-        });
+        // $('input[type="checkbox"]').change(function() {
+        //     filterResults();
+        // });
         // End filterResults
 
         // Start to show more summaries for service 
