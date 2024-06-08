@@ -24,7 +24,6 @@ class RoleController extends Controller
         return view('admin.pages.roles.create', compact('permissions'));
     }
 
-
     public function store(RoleRequest $request)
     {
         try {
@@ -69,7 +68,7 @@ class RoleController extends Controller
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
-
+    
     public function destroy(Role $role)
     {
         try {
@@ -78,7 +77,7 @@ class RoleController extends Controller
 
             return redirect()->route('admins.roles.index')->with('success', 'role deleted successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }

@@ -27,7 +27,7 @@ class HomeController extends Controller
     }    
     public function axiosRegion($id): View
     {
-        $regions = Region::whereCityId($id)->get();
+        $regions = Region::active()->whereCityId($id)->get();
 
         return view('web.partials.partials.regions',compact('regions'));
     }
@@ -41,7 +41,7 @@ class HomeController extends Controller
     
         return view('web.pages.serviceProviders.show', compact('serviceProvider'));
     }
-        public function store(Schedule $schedule ,ServiceProviderDetails $serviceProvider, Request $request): RedirectResponse
+    public function store(Schedule $schedule ,ServiceProviderDetails $serviceProvider, Request $request): RedirectResponse
     {
         try {
             $checkBook = Book::where('schedule_id',$schedule->id)->first();
@@ -78,8 +78,20 @@ class HomeController extends Controller
         $titles = Title::active()->get();
 
         $query = ServiceProviderDetails::query()
-            ->whereHas('user', function ($q) {
-                $q->active();
+            ->whereHas('user', function ($query) {
+                $query->active();
+            })
+            ->whereHas('city', function ($query) {
+                $query->active();
+            })
+            ->whereHas('region', function ($query) {
+                $query->active();
+            })
+            ->whereHas('major', function ($query) {
+                $query->active();
+            })
+            ->whereHas('title', function ($query) {
+                $query->active();
             })
             ->approved();
 

@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 
-@section('title', __('dashboard.service_provider_index'))
+@section('title', 'Active Service Provider')
 
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/datatables-net-bs5/dataTables.bootstrap5.css') }}" rel="stylesheet" />
@@ -21,12 +21,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-end mb-5">
-
-
                         <a href="{{ route('admins.service_provider.create') }}" class="btn-sm btn-primary btn-icon-text"> <i
                                 class="fa-solid fa-plus"></i> Add New Service Provider
                         </a>
-                        <!-- <button type="button" class="btn btn-inverse-primary"></button> -->
                     </div>
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table">
@@ -61,24 +58,23 @@
                                             <div class="d-grid gap-2 d-md-flex justify-content-md-middle">
 
                                                 <a href="{{ route('admins.service_provider.show', $item->id) }}"
-                                                    class="btn-sm btn-secondary btn-icon-text"> <i
-                                                        class="fa-solid fa-eye p-1"></i>view
+                                                    class="btn-sm btn-secondary btn-icon-text">
+                                                    <i class="fa-solid fa-eye p-1"></i>view
                                                 </a>
 
                                                 <form method="POST"
                                                     action="{{ route('admins.service_provider.destroy', $item->id) }}">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-danger btn-sm btn-icon-text "
-                                                        onclick="return confirm('Are you sure to delete this service provider')"><i
-                                                            class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm btn-icon-text"
+                                                        onclick="return confirm('Are you sure to delete this service provider')">
+                                                        <i class="btn-icon-prepend fa-solid fa-trash"></i>Delete
+                                                    </button>
                                                 </form>
-
                                             </div>
                                         </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>

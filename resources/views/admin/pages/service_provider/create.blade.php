@@ -38,8 +38,8 @@
                             </li>
 
                             <!-- <li class="nav-item">
-                                    <a class="nav-link" id="clinic-tab" data-bs-toggle="tab" data-bs-target="#" role="tab" aria-controls="clinic" aria-selected="false">Schedule</a>
-                                </li> -->
+                                        <a class="nav-link" id="clinic-tab" data-bs-toggle="tab" data-bs-target="#" role="tab" aria-controls="clinic" aria-selected="false">Schedule</a>
+                                    </li> -->
 
                         </ul>
                         <form action="{{ route('admins.service_provider.store') }}" method="post"
@@ -300,7 +300,7 @@
         </div>
 
     </div>
-    
+
     </div>
 
     <script type="text/javascript">

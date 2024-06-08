@@ -5,8 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Phone;
-use App\Models\ServiceProviderDetails;
-use App\Models\User;
+use App\Models\ServiceProviderDetails; 
 use App\Models\View;
 use Illuminate\Database\Seeder;
 

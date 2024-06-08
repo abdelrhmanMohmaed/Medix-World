@@ -17,10 +17,12 @@ class MajorsController extends Controller
 
         return view('admin.pages.major.index', compact('majors'));
     }
+    
     public function create(): View
     {
         return view('admin.pages.major.create');
     }
+
     public function store(MajorRequest $request): RedirectResponse
     {
         try {
@@ -32,9 +34,9 @@ class MajorsController extends Controller
                 ],
             ]);
 
-            return redirect()->route('admins.majors.index')->with("success", "major created successfully");
+            return redirect()->route('admins.majors.index')->with("success", "Major created successfully");
         } catch (Exception $e) {
-            // dd($e->getMessage());
+
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
@@ -55,9 +57,9 @@ class MajorsController extends Controller
                 ],
             ]);
 
-            return redirect()->route('admins.majors.index')->with("success", "major updated successfully");
+            return redirect()->route('admins.majors.index')->with("success", "Major updated successfully");
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
@@ -66,19 +68,19 @@ class MajorsController extends Controller
     {
         try {
             if ($major->serviceProviders->count() > 0) {
-                return redirect()->back()->with('error','can\'t delete, there are active service providers in this major');   
+                return redirect()->back()->with('error','Can\'t delete, there are active service providers in this major');   
             }
 
             $major->delete();
 
-            return redirect()->route('admins.majors.index')->with('success', 'major deleted successfully');
+            return redirect()->route('admins.majors.index')->with('success', 'Major deleted successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
-    public function stauts(Major $major): RedirectResponse
+    public function status(Major $major): RedirectResponse
     {
         try {
             $major->update([
@@ -87,8 +89,8 @@ class MajorsController extends Controller
 
             return redirect()->route('admins.majors.index');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back(); //message
+
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 }

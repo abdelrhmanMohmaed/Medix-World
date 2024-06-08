@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Pages\{
     AdminController,
-    AdviceController,
-    BookingController,
+    AdviceController, 
     CityController,
     DashboardController,
     MajorsController,
@@ -16,8 +15,7 @@ use App\Http\Controllers\Admin\Pages\{
     TermsAndCondtionController,
     UserController,
     ContactUsController
-};
-use Spatie\Permission\Contracts\Permission;
+}; 
 
 // lang(en, ar)/admins/*
 // start Admin routes
@@ -36,87 +34,42 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('', 'index')->name('index');
         });
 
+    Route::prefix('admins')->name('admins.')->controller(AdminController::class)
+        ->group(function () {
 
-
+            Route::get('', 'index')->name('index');
+            Route::get('{user}/view', 'show')->name('show');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::get('/{user}/edit', 'edit')->name('edit');
+            Route::patch('{user}', 'update')->name('update');
+            Route::delete('{user}', 'destroy')->name('destroy');
+        });
 
     Route::prefix('cities')->name('cities.')->controller(CityController::class)
         ->group(function () {
-
-            Route::get('/', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('', 'store')->name('store');
-            Route::get('/{city}/edit', 'edit')->name('edit');
-            Route::patch('{city}', 'update')->name('update');
-            Route::delete('{city}', 'destroy')->name('destroy');
-            Route::get('{city}', 'stauts')->name('status');
-            Route::get('/{city}/regions', 'getRejions')->name('regions');
+    
+                Route::get('/', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('', 'store')->name('store');
+                Route::get('/{city}/edit', 'edit')->name('edit');
+                Route::patch('{city}', 'update')->name('update');
+                Route::delete('{city}', 'destroy')->name('destroy');
+                Route::get('{city}', 'status')->name('status');
+                Route::get('/{city}/regions', 'getRejions')->name('regions');
         });
 
     Route::prefix('regions')->name('regions.')->controller(RegionController::class)
         ->group(function () {
-
-            Route::get('', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('', 'store')->name('store');
-            Route::get('/{region}/edit', 'edit')->name('edit');
-            Route::patch('{region}', 'update')->name('update');
-            Route::delete('{region}', 'destroy')->name('destroy');
-            Route::get('{region}', 'stauts')->name('status');
+    
+                Route::get('', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('', 'store')->name('store');
+                Route::get('/{region}/edit', 'edit')->name('edit');
+                Route::patch('{region}', 'update')->name('update');
+                Route::delete('{region}', 'destroy')->name('destroy');
+                Route::get('{region}', 'status')->name('status');
         });
-
-    Route::prefix('majors')->name('majors.')->controller(MajorsController::class)
-        ->group(function () {
-
-            Route::get('', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('', 'store')->name('store');
-            Route::get('/{major}/edit', 'edit')->name('edit');
-            Route::patch('{major}', 'update')->name('update');
-            Route::delete('{major}', 'destroy')->name('destroy');
-            Route::get('{major}', 'stauts')->name('status');
-        });
-
-    Route::prefix('advices')->name('advices.')->controller(AdviceController::class)
-        ->group(function () {
-
-            Route::get('', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('', 'store')->name('store');
-            Route::get('/{advice}/edit', 'edit')->name('edit');
-            Route::patch('{advice}', 'update')->name('update');
-            Route::delete('{advice}', 'destroy')->name('destroy');
-            Route::get('{advice}', 'stauts')->name('status');
-            Route::get('{advice}/view', 'show')->name('show');
-        });
-
-
-    Route::prefix('terms')->name('terms.')->controller(TermsAndCondtionController::class)
-        ->group(function () {
-
-            Route::get('', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('', 'store')->name('store');
-            Route::get('/{term}/edit', 'edit')->name('edit');
-            Route::patch('{term}', 'update')->name('update');
-            Route::delete('{term}', 'destroy')->name('destroy');
-            Route::get('{term}', 'stauts')->name('status');
-            Route::get('{term}/view', 'show')->name('show');
-        });
-
-    Route::prefix('service_provider')->name('service_provider.')->controller(ServiceProviderController::class)
-        ->group(function () {
-
-            Route::get('/', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('', 'store')->name('store');
-            Route::patch('{service_provider}', 'update')->name('update');
-            Route::delete('{service_provider}', 'destroy')->name('destroy');
-            Route::get('{service_provider}/view', 'show')->name('show');
-            Route::get('{service_provider}/view-request', 'showRequest')->name('show_request');
-
-            Route::get('/requests/{status}', 'getRequest')->name('requests');
-        });
-
 
     Route::prefix('roles')->name('roles.')->controller(RoleController::class)
         ->group(function () {
@@ -130,16 +83,64 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('{role}/view', 'show')->name('show');
         });
 
+    Route::prefix('majors')->name('majors.')->controller(MajorsController::class)
+        ->group(function () {
+    
+                Route::get('', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('', 'store')->name('store');
+                Route::get('/{major}/edit', 'edit')->name('edit');
+                Route::patch('{major}', 'update')->name('update');
+                Route::delete('{major}', 'destroy')->name('destroy');
+                Route::get('{major}', 'status')->name('status');
+        });
 
-    Route::prefix('permissions')->name('permissions.')->controller(PermissionController::class)
+    Route::prefix('advices')->name('advices.')->controller(AdviceController::class)
         ->group(function () {
 
             Route::get('', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::post('', 'store')->name('store');
-            Route::get('/{permission}/edit', 'edit')->name('edit');
-            Route::patch('{permission}', 'update')->name('update');
-            Route::delete('{permission}', 'destroy')->name('destroy');
+            Route::get('/{advice}/edit', 'edit')->name('edit');
+            Route::patch('{advice}', 'update')->name('update');
+            Route::delete('{advice}', 'destroy')->name('destroy');
+            Route::get('{advice}', 'status')->name('status');
+            Route::get('{advice}/view', 'show')->name('show');
+        });
+
+    Route::prefix('terms')->name('terms.')->controller(TermsAndCondtionController::class)
+        ->group(function () {
+
+            Route::get('', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::get('/{term}/edit', 'edit')->name('edit');
+            Route::patch('{term}', 'update')->name('update');
+            Route::delete('{term}', 'destroy')->name('destroy');
+            Route::get('{term}', 'status')->name('status');
+            Route::get('{term}/view', 'show')->name('show');
+        });
+
+    Route::prefix('service_provider')->name('service_provider.')->controller(ServiceProviderController::class)
+        ->group(function () {
+
+            Route::get('/requests/{status}', 'getRequest')->name('requests');
+            Route::get('{service_provider}/view-request', 'showRequest')->name('show_request');
+            Route::get('{service_provider}/view', 'show')->name('show');
+            Route::patch('{service_provider}/{oldStatus?}', 'update')->name('update');
+        
+ 
+
+
+
+
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+
+
+            Route::delete('{service_provider}', 'destroy')->name('destroy');
+            
         });
 
     Route::prefix('users')->name('users.')->controller(UserController::class)
@@ -147,23 +148,12 @@ Route::middleware(['auth:admin'])->group(function () {
 
             Route::get('', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
+            Route::get('{user}/view', 'show')->name('show');
             Route::post('', 'store')->name('store');
             Route::get('/{user}/edit', 'edit')->name('edit');
             Route::patch('{user}', 'update')->name('update');
             Route::delete('{user}', 'destroy')->name('destroy');
-            Route::get('{user}/view', 'show')->name('show');
-        });
-
-    Route::prefix('admins')->name('admins.')->controller(AdminController::class)
-        ->group(function () {
-
-            Route::get('', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::post('', 'store')->name('store');
-            Route::get('/{user}/edit', 'edit')->name('edit');
-            Route::patch('{user}', 'update')->name('update');
-            Route::delete('{user}', 'destroy')->name('destroy');
-            Route::get('{user}/view', 'show')->name('show');
+            Route::get('{user}', 'status')->name('status');
         });
 
     Route::prefix('messages')->name('messages.')->controller(ContactUsController::class)
@@ -175,6 +165,23 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('{message}/view', 'show')->name('show');
         });
 
+
+
+
+
+
+
+
+    Route::prefix('permissions')->name('permissions.')->controller(PermissionController::class)
+        ->group(function () {
+
+            Route::get('', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('', 'store')->name('store');
+            Route::get('/{permission}/edit', 'edit')->name('edit');
+            Route::patch('{permission}', 'update')->name('update');
+            Route::delete('{permission}', 'destroy')->name('destroy');
+        });
 
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });

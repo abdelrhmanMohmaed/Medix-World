@@ -31,7 +31,7 @@ class AdviceController extends Controller
     public function store(AdviceRequest $request): RedirectResponse
     { 
         try {
-            
+            $fileName = 'assets/images/advices/default.png';
             if ($request->hasFile('img')) 
             {
                 $path = 'assets/images/advices/';
@@ -44,18 +44,16 @@ class AdviceController extends Controller
                     'en' => $request->input('title.en'),
                     'ar' => $request->input('title.ar'),
                 ],
-                'description' => [
-                    'title' => [
-                        'en' => $request->input('description.en'),
-                        'ar' => $request->input('description.ar'),
-                    ],
+                'description' => [ 
+                    'en' => $request->input('description.en'),
+                    'ar' => $request->input('description.ar'),
                 ],
-                'img' => ($fileName)? $fileName : 'assets/images/advices/default.png',
+                'img' => $fileName, 
             ]);
 
-            return redirect()->route('admins.advices.index')->with('success','created successfully');
+            return redirect()->route('admins.advices.index')->with('success','Advice created successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
@@ -73,6 +71,18 @@ class AdviceController extends Controller
     public function update(AdviceRequest $request, Advice $advice) : RedirectResponse
     {
         try {
+            $defaultImg = $advice->img;
+            $path = 'assets/images/advices/';
+            
+            if ($request->hasFile('img')) {
+                
+                if ($advice->img && $advice->img !== 'assets/images/advices/default.png' && file_exists(public_path($advice->img))) {
+                    unlink(public_path($advice->img));
+                }
+                
+                $defaultImg = $this->handleFileUpload($request->file('img'), $path);
+            }
+
             $advice->update([
                 'title' => [
                     'en' => $request->input("title.en"),
@@ -82,13 +92,13 @@ class AdviceController extends Controller
                     'en' => $request->input("description.en"),
                     'ar' => $request->input("description.ar"),
                 ],
-                'img' => ($request->has('img') && $request->img != null) ? $request->img : 'assets/images/advices/default.png',
+                'img' => $defaultImg,
             ]);
 
-            return redirect()->route('admins.advices.index')->with('success', 'advice updated successfully');
+            return redirect()->route('admins.advices.index')->with('success', 'Advice updated successfully');
         } catch (Exception $e) {
             // dd($e->getMessage());
-            return redirect()->back()->with('error',$e->getMessage());//message
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -97,17 +107,17 @@ class AdviceController extends Controller
         try {
             if($advice->img !=  'assets/images/advices/default.png')
             {
-            $img=File::delete($advice->img);
+                File::delete($advice->img);
             }
             $advice->delete();
-            return redirect()->route('admins.advices.index')->with('success','advice deleted successfully');
+            return redirect()->route('admins.advices.index')->with('success','Advice deleted successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
-    public function stauts(Advice $advice) : RedirectResponse 
+    public function status(Advice $advice) : RedirectResponse 
     {
         try {
             $advice->update([   
@@ -116,8 +126,8 @@ class AdviceController extends Controller
 
             return redirect()->route('admins.advices.index');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 }

@@ -1,5 +1,7 @@
 @extends('admin.layout.master')
 
+@section('title', 'Admin Dashboard')
+
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" />
 @endpush
@@ -7,7 +9,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
-            <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
+            <h4 class="mb-3 mb-md-0">Welcome to Admin Dashboard</h4>
         </div>
     </div>
 
@@ -46,9 +48,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="d-grid">
-                      <button class="btn btn-primary">Upgrade storage</button>
-                    </div> -->
             </div>
         </div>
 
@@ -65,7 +64,6 @@
                         </div>
 
                         <div class="d-flex justify-content-between align-items-baseline mb-2">
-
                             <div class="mt-5">
                                 <label class="d-flex align-items-center tx-10 text-uppercase fw-bolder"><span
                                         class="p-1 me-1 rounded-circle bg-primary"></span> Total Service Providers</label>
@@ -85,9 +83,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="d-grid">
-                      <button class="btn btn-primary">Upgrade storage</button>
-                    </div> -->
             </div>
         </div>
 
@@ -95,28 +90,34 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline mb-2">
-                        <h6 class="card-title mb-0">Bookings</h6>
-
+                        <h6 class="card-title mb-0">Requests</h6>
                     </div>
+
                     <div class="row mb-3">
-                        <div class="col-10 d-flex justify-content-center mt-4">
-                            <i class="fa-solid fa-ticket fa-beat fa-2xl" style="color: #6571ff;"></i>
+                        <div class="col-10 d-flex justify-content-center mt-4"> 
+                            <i class="fa-solid fa-folder-open fa-beat fa-2xl" style="color: #6571ff;"></i>
                         </div>
 
                         <div class="d-flex justify-content-between align-items-baseline mb-2">
-
-
+                            <div class="mt-5">
+                                <label class="d-flex align-items-center tx-10 text-uppercase fw-bolder"><span
+                                        class="p-1 me-1 rounded-circle bg-primary"></span> Total Pending Requests</label>
+                                <h5 class="fw-bolder mb-0">{{ $requestPending }}</h5>
+                            </div>
                             <div class="mt-5 d-inline">
                                 <label class="d-flex align-items-center tx-10 text-uppercase fw-bolder"><span
-                                        class="p-1 me-1 rounded-circle bg-primary"></span> Total</label>
-                                <h5 class="fw-bolder mb-0">{{ $books->count() }}</h5>
+                                        class="p-1 me-1 rounded-circle bg-success"></span> Total Approval Requests</label>
+                                <h5 class="fw-bolder mb-0">{{ $requestApproval }}</h5>
+                            </div>
+                            <div class="mt-5 d-inline">
+                                <label class="d-flex align-items-center tx-10 text-uppercase fw-bolder"><span
+                                        class="p-1 me-1 rounded-circle bg-danger"></span> Total Reject Requests
+                                    Providers</label>
+                                <h5 class="fw-bolder mb-0">{{ $requestReject }}</h5>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="d-grid">
-                      <button class="btn btn-primary">Upgrade storage</button>
-                    </div> -->
             </div>
         </div>
     </div>
