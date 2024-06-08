@@ -15,8 +15,10 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
+    protected $guard_name = "web";
+    
     protected $fillable = [
         'name', 'email', 'password', 'dateOfBirth', 'gender', 'active'
     ];

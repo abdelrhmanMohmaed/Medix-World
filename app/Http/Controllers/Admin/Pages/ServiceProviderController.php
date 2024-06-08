@@ -122,7 +122,7 @@ class ServiceProviderController extends Controller
                     'active' => 1,
                 ]);
             }
-            $user->assignRole('Service Providers','web');
+            $user->assignRole('Service Providers');
            
             DB::commit();
             return redirect()->route('admins.service_provider.index')->with('success', 'Service Provider created successfully');
