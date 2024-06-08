@@ -34,7 +34,7 @@ class UserController extends Controller
             $user = User::create([
                 'name' => $request->fullName,
                 'email' => $request->email,
-                'password' => '123456',
+                'password' => '123456789',
                 'tel' => $request->tel,
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
@@ -70,15 +70,20 @@ class UserController extends Controller
             $user->update([
                 'name' => $request->fullName,
                 'email' => $request->email,
-                'password' => '123456',
+                'password' => $user->password,
                 'tel' => $request->tel,
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
             ]);
 
-            return redirect()->route('admins.users.index')->with('success', 'user updated successfully');
+            Phone::updateOrCreate([
+                'user_id' => $user->id,
+                'tel' => $request->tel
+            ]);
+
+            return redirect()->route('admins.users.index')->with('success', 'User updated successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error', $e->getMessage()); //message
         }
     }
@@ -88,10 +93,26 @@ class UserController extends Controller
         try {
             $user->phones()->delete();
             $user->delete();
-            return redirect()->route('admins.users.index')->with('success', 'user deleted successfully');
-        } catch (Exception $e) {
-            // dd($e->getMessage());
+
+            return redirect()->route('admins.users.index')->with('success', 'User deleted successfully');
+        } catch (Exception $e) { 
+
             return redirect()->back()->with('error', $e->getMessage()); //message
+        }
+    }
+
+    public function status(User $user) : RedirectResponse 
+    { 
+        try { 
+
+            $user->update([   
+                'active' => !$user->active
+            ]);
+
+            return redirect()->route('admins.users.index')->with('success','User status update successfully');
+        } catch (Exception $e) {
+
+            return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 }

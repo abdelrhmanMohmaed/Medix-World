@@ -40,30 +40,21 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->name }}</td>
-                                        <td colspan="3">
-
-                                            </a>
+                                        <td>
                                             <a href="{{ route('admins.roles.edit', $item->id) }}"
                                                 class="btn-sm btn-primary btn-icon-text m-2 "><i
                                                     class="fa-solid fa-pen-to-square"></i> edit
                                             </a>
 
-
                                             <form method="POST" action="{{ route('admins.roles.destroy', $item->id) }}"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-danger btn-xs btn-icon-text p-1" onclick="return confirm('Are you sure to delete this role')"><i
-                                                        class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-xs btn-icon-text p-1"
+                                                    onclick="return confirm('Are you sure to delete this role')"><i
+                                                        class="btn-icon-prepend fa-solid fa-trash"></i>Delete
+                                                </button>
                                             </form>
-                                            <!-- <form method="POST" action="{{ route('admins.roles.destroy', $item->id) }}" onsubmit="return confirm('Are You sure?')">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn bg-gradient-danger btn-sm">
-                          <i class="link-arrow" data-feather="trash"></i> Delete
-                        </button>
-                      </form> -->
-
                                         </td>
                                     </tr>
                                 @endforeach

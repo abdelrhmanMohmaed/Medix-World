@@ -2,24 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Pages;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Pages\UserRequest;
-use App\Models\Advice;
+use App\Http\Controllers\Controller; 
 use App\Models\ContactUs;
-use App\Traits\UploadTrait;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
-use App\Models\Phone;
-use App\Models\User;
-use Exception;
-use Illuminate\Support\Facades\File;
-use Spatie\Permission\Models\Role;
+use Illuminate\Http\RedirectResponse; 
+use Illuminate\View\View; 
+use Exception; 
 
 class ContactUsController extends Controller
-{
-    use UploadTrait;
-
+{ 
     public function index(): View
     {
         $messages  = ContactUs::get();
@@ -27,12 +17,10 @@ class ContactUsController extends Controller
         return view('admin.pages.contact_us.index', compact('messages'));
     }
 
-
     public function show(ContactUs $message): View
     {
         return view('admin.pages.contact_us.details', compact('message'));
     }
-
 
     public function update(ContactUs $message): RedirectResponse
     {
@@ -41,9 +29,9 @@ class ContactUsController extends Controller
                 'active' => ! $message->active,
             ]);
 
-            return redirect()->route('admins.messages.index')->with('success', 'message updated successfully');
+            return redirect()->route('admins.messages.index')->with('success', 'Message updated successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error', $e->getMessage()); //message
         }
     }
@@ -52,9 +40,10 @@ class ContactUsController extends Controller
     {
         try {
             $message->delete();
-            return redirect()->route('admins.messages.index')->with('success', 'message deleted successfully');
+
+            return redirect()->route('admins.messages.index')->with('success', 'Message deleted successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error', $e->getMessage()); //message
         }
     }

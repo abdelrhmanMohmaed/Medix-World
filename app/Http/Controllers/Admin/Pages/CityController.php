@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Pages\CityRequest;
-use App\Models\City;
-use App\Models\Region;
+use App\Models\City; 
 use Exception; 
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class CityController extends Controller
@@ -28,7 +27,6 @@ class CityController extends Controller
     public function store(CityRequest $request) : RedirectResponse
     {
         try {
-
             City::create([
                 'name' => [
                     'en' => $request->input("name.en"),
@@ -69,39 +67,49 @@ class CityController extends Controller
     {
         try {
             if($city->serviceProviders->count() > 0){
-                return redirect()->back()->with('error','can\'t delete, there are active service providers in this city');   
+                return redirect()->back()->with('error','Can\'t delete, there are active service providers in this city.');   
             }
             $city->regions()->delete();
             $city->serviceProviders()->delete();
 
             $city->delete();
 
-            return redirect()->route('admins.cities.index')->with('success', 'city deleted successfully ');
+            return redirect()->route('admins.cities.index')->with('success', 'City deleted successfully.');
         } catch (Exception $e) {
             // dd($e->getMessage());
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
-    public function stauts(City $city) : RedirectResponse 
+    public function status(City $city) : RedirectResponse 
     {
+        DB::beginTransaction();
+
         try {
+            $newStatus = !$city->active;
+
             $city->update([   
-                'active' => !$city->active
+                'active' => $newStatus
+            ]);
+            
+            $city->regions()->update([   
+                'active' => $newStatus
             ]);
 
-            return redirect()->route('admins.cities.index');
+            DB::commit();
+
+            return redirect()->route('admins.cities.index')
+                            ->with('success', 'City status updated successfully.');
         } catch (Exception $e) {
-            // dd($e->getMessage());
-            return redirect()->back()->with('error',$e->getMessage());//message
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Failed to update city status.');
         }
     }
-
+    
     public function getRejions(City $city)  
     {
-       $regions = $city->regions;
+        $regions = $city->regions;
 
-       return $regions;
+        return $regions;
     }
-
 }
