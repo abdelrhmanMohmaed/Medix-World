@@ -21,9 +21,9 @@
 
 
       <div class="row mb-3">
-      <div class="col-lg-2">
-        <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.name') }}</label>
-      </div>
+        <div class="col-lg-2">
+          <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.name') }}</label>
+        </div>
         <div class="col-lg-8">
           <input type="text" class="form-control" name="name" id="name_en" value="{{ old('name') }}">
         </div>
@@ -32,18 +32,11 @@
 
 
 
-      <!-- 
-  <div class="row mb-3">
-    <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.name-permissions') }}</label>
-    <div class="col-sm-9">
-      @foreach ($permissions as $item)
-      <div class="form-check mb-2">
-        <input type="checkbox" class="form-check-input" name="permission[]" id="name_en" value="{{ $item->id }}"> {{ $item->name }}
-      </div>
-      @endforeach
-    </div> -->
-
-
+      @php
+      $mid = ceil($permissions->count() / 2);
+      $leftColumn = $permissions->slice(0, $mid);
+      $rightColumn = $permissions->slice($mid);
+      @endphp
       @php
       $mid = ceil($permissions->count() / 2);
       $leftColumn = $permissions->slice(0, $mid);
@@ -51,9 +44,9 @@
       @endphp
 
       <div class="row mb-3">
-      <div class="col-lg-2">
-        <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.name-permissions') }}</label>
-      </div>
+        <div class="col-lg-2">
+          <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.name-permissions') }}</label>
+        </div>
         <div class="col-lg-8">
           <div class="row">
             <div class="col-md-6">
@@ -77,10 +70,11 @@
       </div>
       <div class="action d-flex mt-5 justify-content-end">
         <button type="submit" class="btn btn-primary me-2">Submit</button>
-        <button class="btn btn-secondary">Cancel</button>
+        <a href="{{ route('admins.roles.index') }}" class="btn btn-secondary ">Cancel
+        </a>
       </div>
     </form>
 
   </div>
 </div>
-    @endsection
+@endsection

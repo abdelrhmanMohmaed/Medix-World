@@ -42,9 +42,11 @@
       </div>
       <div class="action d-flex mt-5 justify-content-end">
         <button type="submit" class="btn btn-primary me-2">Submit</button>
-        <button class="btn btn-secondary">Cancel</button>
+        <a href="{{ route('admins.majors.index') }}" class="btn btn-secondary ">Cancel
+        </a>
       </div>
     </form>
   </div>
 </div>
+
 @endsection

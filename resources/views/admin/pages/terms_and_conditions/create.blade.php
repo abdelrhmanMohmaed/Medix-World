@@ -5,6 +5,7 @@
 
 @push('plugin-styles')
 <link href="{{ asset('assets/plugins/simplemde/simplemde.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/plugins/simplemde/simplemde.min.css') }}" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -81,11 +82,13 @@
             </div>
             <div class="action d-flex mt-5 justify-content-end">
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
-                <button class="btn btn-secondary">Cancel</button>
+                <a href="{{ route('admins.terms.index') }}" class="btn btn-secondary ">Cancel
+                </a>
             </div>
         </form>
     </div>
 </div>
+
 @endsection
 
 

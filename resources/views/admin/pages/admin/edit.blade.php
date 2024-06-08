@@ -10,10 +10,11 @@
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route ('admins.admins.index') }}">{{ __('dashboard.admin-index')}} </a></li>
-    <li class="breadcrumb-item active" aria-current="page"> @if ( $user->id == auth()->user()->id)  Edit My Profile @else {{ __('dashboard.admin-edit')}} @endif</li>
+    <li class="breadcrumb-item active" aria-current="page"> @if ( $user->id == auth()->user()->id) Edit My Profile @else {{ __('dashboard.admin-edit')}} @endif</li>
   </ol>
 </nav>
 @include('admin.layout.flash')
+
 <div class="card">
   <div class="example m-4">
 
@@ -21,18 +22,18 @@
       @csrf
       @method('PATCH')
       <div class="row mb-3">
-      <div class="col-lg-2">
-        <label for="exampleInputadminname2" class=" col-form-label">{{ __('dashboard.name') }}</label>
-      </div>
+        <div class="col-lg-2">
+          <label for="exampleInputadminname2" class=" col-form-label">{{ __('dashboard.name') }}</label>
+        </div>
         <div class="col-lg-8">
           <input type="text" class="form-control" name="fullName" id="fullName" value="{{ $user->name }}">
 
         </div>
       </div>
       <div class="row mb-3">
-      <div class="col-lg-2">
-        <label for="exampleInputEmail2" class=" col-form-label">{{ __('dashboard.phone') }}</label>
-      </div>
+        <div class="col-lg-2">
+          <label for="exampleInputEmail2" class=" col-form-label">{{ __('dashboard.phone') }}</label>
+        </div>
         <div class="col-lg-8">
           <input type="tel" class="form-control" name="tel" id="tel" value="{{ $user->phones->first()?->tel }}">
         </div>
@@ -90,9 +91,11 @@
       <div class="action d-flex mt-5 justify-content-end">
 
         <button type="submit" class="btn btn-primary me-2">Submit</button>
-        <button class="btn btn-secondary">Cancel</button>
+        <a href="{{ route('admins.admins.index') }}" class="btn btn-secondary ">Cancel
+        </a>
       </div>
     </form>
   </div>
 </div>
+
 @endsection

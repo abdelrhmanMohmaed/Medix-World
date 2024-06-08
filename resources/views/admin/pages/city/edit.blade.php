@@ -37,14 +37,17 @@
           <span>{{ $message }}</span>
           @enderror
 
-          <!-- <input type="email" class="form-control" id="exampleInputEmail2" autocomplete="off" placeholder="Email"> -->
-        </div>
-      </div>
+              <!-- <input type="email" class="form-control" id="exampleInputEmail2" autocomplete="off" placeholder="Email"> -->
+            </div>
+          </div>
       <div class="action d-flex mt-5 justify-content-end">
-        <button type="submit" class="btn btn-primary me-2">Submit</button>
-        <button class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary me-2">Submit</button>
+            <a href="{{ route('admins.cities.index') }}" class="btn btn-secondary ">Cancel
+      </a>
       </div>
-    </form>
+        </form>
   </div>
 </div>
-    @endsection
+      </div>
+</div>
+@endsection
