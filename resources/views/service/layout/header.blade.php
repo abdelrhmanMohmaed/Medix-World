@@ -7,17 +7,17 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="wd-30 ht-30 rounded-circle" src="{{ asset(Auth::user()->serviceProviderDetails->img) }}"
+                    <img class="wd-30 ht-30 rounded-circle" src="{{ Auth::user()->serviceProviderDetails? asset(Auth::user()->serviceProviderDetails->img)  :  asset('/assets/images/others/profile.png')}}"
                         alt="profile">
                 </a>
                 <div class="dropdown-menu p-0" aria-labelledby="profileDropdown">
                     <div class="d-flex flex-column align-items-center border-bottom px-5 py-3">
                         <div class="mb-3">
                             <img class="wd-80 ht-80 rounded-circle"
-                                src="{{ asset(Auth::user()->serviceProviderDetails->img) }}" alt="">
+                                src="{{ Auth::user()->serviceProviderDetails? asset(Auth::user()->serviceProviderDetails->img)  :  asset('/assets/images/others/profile.png')}}" alt="">
                         </div>
                         <div class="text-center">
-                            <p class="tx-16 fw-bolder">{{ Auth::user()->serviceProviderDetails->name }}</p>
+                            <p class="tx-16 fw-bolder">{{ Auth::user()->serviceProviderDetails?->name }}</p>
                             <p class="tx-12 text-muted">{{ Auth::user()->email }}</p>
                         </div>
                     </div>

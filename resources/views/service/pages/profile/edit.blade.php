@@ -18,9 +18,9 @@
                     <div class="d-flex justify-content-between align-items-center position-absolute top-90 w-100 px-2 px-md-4 mt-n4"
                         style="margin-top: -4.5rem !important;">
                         <div>
-                            <img class="wd-70 rounded-circle" src="{{ asset($service->serviceProviderDetails->img) }}"
+                            <img class="wd-70 rounded-circle"src="{{ $service->serviceProviderDetails ? asset($service->serviceProviderDetails->img)  :  asset('/assets/images/others/profile.png')}}"
                                 alt="avatar">
-                            <span class="h4 ms-3 text-dark">{{ $service->serviceProviderDetails->name }}</span>
+                            <span class="h4 ms-3 text-dark">{{ $service->serviceProviderDetails?->name }}</span>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" id="defaultconfig"
                                                                     type="text" name="name[en]"
-                                                                    value="{{ $service->serviceProviderDetails->getTranslation('name', 'en') }}">
+                                                                    value="{{ $service->serviceProviderDetails?->getTranslation('name', 'en') }}">
                                                             </div>
                                                         </div>
 
@@ -83,7 +83,7 @@
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" type="text" name="name[ar]"
-                                                                    value="{{ $service->serviceProviderDetails->getTranslation('name', 'ar') }}">
+                                                                    value="{{ $service->serviceProviderDetails?->getTranslation('name', 'ar') }}">
                                                             </div>
                                                         </div>
 
@@ -200,7 +200,7 @@
                                                                     <option disabled>Select Specialization</option>
                                                                     @foreach ($allMajors as $item)
                                                                         <option value="{{ $item->id }}"
-                                                                            @selected($item->id == $service->serviceProviderDetails->major_id)>
+                                                                            @selected($item->id == $service->serviceProviderDetails?->major_id)>
                                                                             {{ $item->getTranslation('name', app()->getLocale()) }}
                                                                         </option>
                                                                     @endforeach
@@ -219,7 +219,7 @@
                                                                     <option selected disabled>Select Title</option>
                                                                     @foreach ($titles as $item)
                                                                         <option value="{{ $item->id }}"
-                                                                            @selected($item->id == $service->serviceProviderDetails->title_id)>
+                                                                            @selected($item->id == $service->serviceProviderDetails?->title_id)>
                                                                             {{ $item->getTranslation('title', app()->getLocale()) }}
                                                                         </option>
                                                                     @endforeach
@@ -246,7 +246,7 @@
                                                                     (EN)</label>
                                                             </div>
                                                             <div class="col-lg-8">
-                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="summary[en]">{{ $service->serviceProviderDetails->getTranslation('summary', 'en') }}</textarea>
+                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="summary[en]">{{ $service->serviceProviderDetails?->getTranslation('summary', 'en') }}</textarea>
                                                             </div>
                                                         </div>
 
@@ -256,7 +256,7 @@
                                                                     (AR)</label>
                                                             </div>
                                                             <div class="col-lg-8">
-                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="summary[ar]">{{ $service->serviceProviderDetails->getTranslation('summary', 'ar') }}</textarea>
+                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="summary[ar]">{{ $service->serviceProviderDetails?->getTranslation('summary', 'ar') }}</textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -274,7 +274,7 @@
                                                                     <option disabled>Select City</option>
                                                                     @foreach ($allCities as $item)
                                                                         <option value="{{ $item->id }}"
-                                                                            @selected($item->id == $service->serviceProviderDetails->city_id)>
+                                                                            @selected($item->id == $service->serviceProviderDetails?->city_id)>
                                                                             {{ $item->getTranslation('name', app()->getLocale()) }}
                                                                         </option>
                                                                     @endforeach
@@ -290,8 +290,8 @@
                                                             <div class="col-lg-8">
                                                                 <select name="region_id" class="form-select region">
                                                                     <option selected
-                                                                        value="{{ $service->serviceProviderDetails->region_id }}">
-                                                                        {{ $service->serviceProviderDetails->region->name }}
+                                                                        value="{{ $service->serviceProviderDetails?->region_id }}">
+                                                                        {{ $service->serviceProviderDetails?->region->name }}
                                                                     </option>
                                                                 </select>
                                                             </div>
@@ -304,7 +304,7 @@
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" type="text"
-                                                                    value="{{ $service->serviceProviderDetails->getTranslation('address', 'en') }}"
+                                                                    value="{{ $service->serviceProviderDetails?->getTranslation('address', 'en') }}"
                                                                     name="address[en]">
                                                             </div>
                                                         </div>
@@ -316,7 +316,7 @@
                                                             </div>
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" type="text"
-                                                                    value="{{ $service->serviceProviderDetails->getTranslation('address', 'ar') }}"
+                                                                    value="{{ $service->serviceProviderDetails?->getTranslation('address', 'ar') }}"
                                                                     name="address[ar]">
                                                             </div>
                                                         </div>
@@ -346,7 +346,7 @@
                                                             <div class="col-lg-8">
                                                                 <input class="form-control" type="number"
                                                                     name="bookingPrice" placeholder="price in EGP"
-                                                                    value="{{ $service->serviceProviderDetails->price }}">
+                                                                    value="{{ $service->serviceProviderDetails?->price }}">
                                                             </div>
                                                         </div>
 
