@@ -15,8 +15,10 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
+    protected $guard_name = "web";
+    
     protected $fillable = [
         'name', 'email', 'password', 'dateOfBirth', 'gender', 'active'
     ];
@@ -34,6 +36,11 @@ class User extends Authenticatable
         return $query->where('active', true);
     }
 
+    public function scopeInactive($query)
+    {
+        return $query->where('active', false);
+    }
+
     public function scopeUser($query)
     {
         return $query->whereHas('roles', function ($query) {
@@ -48,11 +55,21 @@ class User extends Authenticatable
         });
     }
 
+ public function scopeServiceProvider($query)
+    {
+        return $query->whereHas('roles', function ($query) {
+            $query->where('roles.name', 'Service Providers');
+        });
+    }
 
 
     public function serviceProviderDetails(): HasOne
     {
         return $this->hasOne(ServiceProviderDetails::class);
+    }
+    public function view(): HasOne
+    {
+        return $this->hasOne(View::class);
     }
     public function personalPhones(): HasMany
     {
@@ -81,6 +98,10 @@ class User extends Authenticatable
     public function review(): HasMany
     {
         return $this->hasMany(Review::class);
+    }
+    public function activeReview(): HasMany
+    {
+        return $this->hasMany(Review::class)->where('active',true);
     }
     public function clientReview(): HasMany
     {

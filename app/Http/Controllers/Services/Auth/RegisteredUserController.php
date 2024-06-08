@@ -11,6 +11,7 @@ use App\Models\Region;
 use App\Models\ServiceProviderDetails;
 use App\Models\Title;
 use App\Models\User;
+use App\Models\View as ModelsView;
 use App\Providers\RouteServiceProvider;
 use App\Traits\UploadTrait;
 use Exception;
@@ -108,6 +109,11 @@ class RegisteredUserController extends Controller
                     'active' => 1,
                 ]);
             }
+
+            ModelsView::create([
+                'user_id' => $user->id,
+                'view' => 0,
+            ]);
 
             $user->assignRole('Service Providers');
             

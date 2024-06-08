@@ -94,14 +94,17 @@
                                                     @else
                                                         {{ __('website/web.provider-female') }}
                                                     @endif
-                                                    <span
-                                                        class="h5">{{ $serviceProvider->getTranslation('name', app()->getLocale()) }}</span>
+                                                    <span class="h5">{{ $serviceProvider->name }}</span>
                                                 </span>
 
                                                 <h6 class="mb-0">
                                                     {{ $serviceProvider->title->title }} {{ $serviceProvider->major->name }}
                                                 </h6>
                                                 <br>
+                                                <h6 class="mb-0">
+                                                    {{ __('services/services.services-view') }}:
+                                                    {{ $serviceProvider->user->view->view }}
+                                                </h6>
                                                 <h6 class="mb-0">
                                                     <!-- Stars -->
                                                     <li class="list-group-item">

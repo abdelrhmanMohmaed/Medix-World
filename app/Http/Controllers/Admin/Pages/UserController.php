@@ -4,16 +4,12 @@ namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Pages\UserRequest;
-use App\Models\Advice;
 use App\Traits\UploadTrait;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use App\Models\Phone;
 use App\Models\User;
 use Exception;
-use Illuminate\Support\Facades\File;
-use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -21,7 +17,7 @@ class UserController extends Controller
 
     public function index(): View
     {
-        $users  = User::user()->get();
+        $users = User::user()->get();
 
         return view('admin.pages.user.index', compact('users'));
     }
@@ -44,7 +40,7 @@ class UserController extends Controller
                 'gender' => $request->gender,
             ]);
 
-            // $user->assignRole('User', 'web');
+            $user->assignRole('User');
 
             Phone::create([
                 'user_id' => $user->id,

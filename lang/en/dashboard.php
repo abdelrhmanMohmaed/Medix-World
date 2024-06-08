@@ -17,6 +17,7 @@ return [
     'advice-index' =>  'Advices',
     'advice-create' =>  'Create New Advice',
     'advice-edit' =>  'Update Advice',
+    'advice-view' => 'View Advice Details',
     //End Page Titles
 
 
@@ -37,11 +38,41 @@ return [
     'name-service-provider-en' => 'Service Provider Name (en)',
     'name-service-provider-ar' => 'Service Provider Name (ar)',
     'service-provider-view-request' => 'View Request',
+    'service-provider-create' => 'Create new service provider',
 
+    // Admin
+    'admin-index' => 'Admins',
+    'admin-create' => 'Create New Admin',
+    'admin-view' => 'Show Admin Details',
+    'admin-edit' => 'Edit Admin Details',
+    'role-index' => 'Roles',
+    'role-create' => 'Create New Role',
+    'name-permissions' => 'Permissions',
+    'term-index' => 'Terms and Conditions',
+    'title-en' => 'Title (EN)',
+    'title-ar' => 'Title (AR)',
+    'term-create' => 'Create new terms and condition',
+    'term-view' => 'View terms and condition',
+    'term-edit' => 'Edit terms and condition',
+
+    'user-index' => 'Patients',
+    'user-create' => 'Create New Patient',
+    'user-view' => 'View Patient Details',
+    'user-edit' => 'Edit Patient Details',
+
+'message-index'=> 'Messages',
+'subject' => 'subject',
+'send_time' => 'Send Time',
+'message-view'=> 'View Message Details',
 
 
     'submit' =>  'Submit',
     'select-city' =>  'Select City',
     'actions' =>  'Actions',
-    'status' => 'Status'
+    'status' => 'Status',
+    'name' => 'Name',
+    'phone' => 'Phone',
+    'email' => 'Email',
+    'date_of_birth' => 'Date Of Birth',
+    'gender' => 'Gender'
 ];

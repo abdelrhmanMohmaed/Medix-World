@@ -35,6 +35,7 @@
 
                 <th>{{ __('dashboard.name') }}</th>
                 <th>{{ __('dashboard.email') }}</th>
+                <th>{{ __('dashboard.status') }}</th>
 
 
                 <th>{{ __('dashboard.actions') }}</th>
@@ -48,6 +49,7 @@
 
                 <td>{{ $item->email }}</td>
 
+                <td>@if ($item->active == 1) Active @else Inactive @endif</td>
                 <td>
                   <a href="{{ route('admins.admins.show', $item->id) }}" class="btn-sm btn-secondary btn-icon-text"> <i class="fa-solid fa-eye p-1"></i>view
                   </a>

@@ -59,127 +59,13 @@
     <section id="display_providers" class="mb-5">
         <div class="container">
             <div class="row">
-                <!-- Start Section Filter One -->
-                <div class="col-md-2 pt-3">
-                    <div class="filter-box bg-white d-flex flex-column flex-shrink-0 p-3"
-                        style="position: sticky; top: 20px;">
-                        <button class="btn btn-primary filter-title">
-                            <i class="fa-solid fa-filter"></i> {{ __('website/web.provider-filter-title') }}
-                        </button>
-                        <hr>
-                        <form id="filterForm">
-                            <input type="hidden" name="major" value="{{ $major }}">
-                            <input type="hidden" name="city" value="{{ $city }}">
-                            <input type="hidden" name="area" value="{{ $area }}">
 
-
-                            <ul class="mynav nav nav-pills">
-                                <!-- Title -->
-                                <li class="sidebar-item nav-item mb-1">
-                                    <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#title" aria-expanded="true" aria-controls="title">
-                                        <i class="fa-solid fa-graduation-cap"></i>
-                                        <span class="topic">{{ __('services/services.register-services-title') }}</span>
-                                    </a>
-                                    <ul id="title" class="sidebar-dropdown list-unstyled collapse show"
-                                        data-bs-parent="#sidebar">
-                                        @foreach ($titles as $item)
-                                            <li class="sidebar-item">
-                                                <label>
-                                                    <input type="checkbox" name="title[]" value="{{ $item->id }}">
-                                                    {{ $item->title }}
-                                                </label>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-
-                                <!-- Gender -->
-                                <li class="sidebar-item nav-item mb-1">
-                                    <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#gender" aria-expanded="false" aria-controls="gender">
-                                        <i class="fa-solid fa-mars-and-venus"></i>
-                                        <span class="topic">{{ __('website/web.register-gender') }}</span>
-                                    </a>
-                                    <ul id="gender" class="sidebar-dropdown list-unstyled collapse"
-                                        data-bs-parent="#sidebar">
-                                        <li class="sidebar-item">
-                                            <label>
-                                                <input type="checkbox" name="gender[]" value="1">
-                                                {{ __('services/services.register-services-male') }}
-                                            </label>
-                                        </li>
-                                        <li class="sidebar-item">
-                                            <label>
-                                                <input type="checkbox" name="gender[]" value="2">
-                                                {{ __('services/services.register-services-female') }}
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <!-- Detection Price -->
-                                <li class="sidebar-item nav-item mb-1">
-                                    <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                                        data-bs-target="#price" aria-expanded="false" aria-controls="price">
-                                        <i class="fa-solid fa-money-bill-wave"></i>
-                                        <span
-                                            class="topic">{{ __('services/services.register-services-booking-price') }}</span>
-                                    </a>
-                                    <ul id="price" class="sidebar-dropdown list-unstyled collapse"
-                                        data-bs-parent="#sidebar">
-                                        <!-- Start Add range input for price -->
-                                        <li class="sidebar-item">
-                                            <!-- Range 1 -->
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="500-999">
-                                                500 - 999
-                                            </label>
-                                            <!-- Range 2 -->
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="1000-1499">
-                                                1000 - 1499
-                                            </label>
-                                            <!-- Range 3 -->
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="1501-1999">
-                                                1500 - 1999
-                                            </label>
-                                            <!-- Range 4 -->
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="2001-8000">
-                                                2000 - 2999
-                                            </label>
-                                            <!-- Range 5 -->
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="3000-4999">
-                                                3000 - 4999
-                                            </label>
-                                            <!-- Range 6 -->
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="5000-7999">
-                                                5000 - 7999
-                                            </label>
-                                            <!-- Range 6 -->
-                                            <label>
-                                                <input type="checkbox" name="price_range[]" value="8000-10000">
-                                                8000 - 10000
-                                            </label>
-                                        </li>
-                                        <!-- End Add range input for price -->
-                                    </ul>
-                                </li>
-                            </ul>
-                        </form>
-
-                    </div>
-                </div>
-                <!-- End Section Filter One -->
-
+                <!-- Start Section Side Filter -->
+                {{-- @include('web.pages.serviceProviders.partials.sideFilter') --}}
+                <!-- End Section Side Filter -->
 
                 <!-- Start Section two -->
-                <div class="col-md-10">
-
+                <div class="col-md-12">
                     <!-- Start Section One -->
                     <div class="row">
                         <div class="col-12 h-25 d-flex justify-content-between py-4 ">
@@ -230,22 +116,20 @@
                             <div class="row">
                                 <div class="col-12 h-25 d-flex justify-content-between">
                                     <div class="col-md-12">
-                                        <div class="card my-3 py-5">
+                                        <div class="card my-3 py-5" style="cursor:pointer">
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <div class="d-flex card-body justify-content-between">
 
-                                                        <div class="col-md-3 show-more"
-                                                            data-user-id="{{ $item->id }}">
+                                                        <div class="col-md-3 show-more" data-user-id="{{ $item->id }}">
                                                             <div class="d-flex justify-content-center align-items-center">
                                                                 <img src="{{ asset($item->img) }}" alt=""
                                                                     class="img-fluid rounded-circle"
                                                                     style="overflow: hidden; width: 150px; height: 130px;">
                                                             </div>
                                                         </div>
-                                                        
-                                                        <div class="col-md-9 show-more"
-                                                            data-user-id="{{ $item->id }}">
+
+                                                        <div class="col-md-9 show-more" data-user-id="{{ $item->id }}">
                                                             <div class="d-flex flex-column ">
                                                                 <span class="mb-0" style="color: #0070CD">
                                                                     @if ($item->user->gender == 1)
@@ -260,6 +144,11 @@
                                                                     {{ $item->title->title }} {{ $item->major->name }}
                                                                 </h6>
                                                                 <br>
+
+                                                                <h6 class="mb-0">
+                                                                    {{ __('services/services.services-view') }}: {{ $item->user->view->view }}
+                                                                </h6>
+
                                                                 <h6 class="mb-0">
                                                                     <!-- Stars -->
                                                                     <li class="list-group-item">
@@ -291,8 +180,7 @@
                                                                 </h6>
                                                                 <h6 class="mb-0 my-2">
                                                                     <i class="icon fa-solid fa-stethoscope mx-2"></i>
-                                                                    <span id="summary{{ $loop->index }}"
-                                                                        class="summary">
+                                                                    <span id="summary{{ $loop->index }}" class="summary">
                                                                         {{ substr($item->summary, 0, 30) }}
                                                                     </span>
                                                                     <a id="readMore{{ $loop->index }}" class="readBtn"
@@ -332,7 +220,7 @@
                                                 <div class="col-md-3 schedulesModel">
                                                     <div class="carousel-wrapper w-100"
                                                         style="height: 200px; overflow: hidden;">
-                                                        <div id="carouselExample-{{ $item->id  }}"
+                                                        <div id="carouselExample-{{ $item->id }}"
                                                             class="carousel slide">
                                                             <div class="carousel-inner">
                                                                 @php
@@ -343,8 +231,7 @@
                                                                 @for ($i = 0; $i < 9; $i += 3)
                                                                     <div
                                                                         class="carousel-item @if ($i === 0) active @endif">
-                                                                        <div
-                                                                            class="row text-center justify-content-center">
+                                                                        <div class="row text-center justify-content-center">
                                                                             @for ($j = 0; $j < 3; $j++)
                                                                                 @php
                                                                                     $scheduleDate = $today
@@ -396,7 +283,7 @@
                                                                 @endfor
                                                             </div>
                                                             <button class="carousel-control-prev" type="button"
-                                                                data-bs-target="#carouselExample-{{ $item->id  }}"
+                                                                data-bs-target="#carouselExample-{{ $item->id }}"
                                                                 data-bs-slide="prev"
                                                                 style="position: absolute;height: 25%;  top: 25px; left: 0; transform: translateY(-50%);">
                                                                 <span class="visually-hidden">Previous</span>
@@ -405,7 +292,7 @@
                                                                     style="height: 32px; padding-right: 10px;">
                                                             </button>
                                                             <button class="carousel-control-next" type="button"
-                                                                data-bs-target="#carouselExample-{{ $item->id  }}"
+                                                                data-bs-target="#carouselExample-{{ $item->id }}"
                                                                 data-bs-slide="next"
                                                                 style="position: absolute;height: 25%;  top: 25px; right: 0; transform: translateY(-50%);">
                                                                 <span class="visually-hidden">Next</span>
@@ -413,13 +300,11 @@
                                                                     alt="Next" width="32" height="32"
                                                                     style="height: 32px; padding-left: 10px;">
                                                             </button>
-
-
                                                         </div>
                                                     </div>
                                                     <div class="text-center">
                                                         <button class="btn btn-sm btn-primary btn-show-more"
-                                                            onclick="showMoreSchedule('{{ $item->id  }}')">{{ __('website/web.provider-read-more') }}</button>
+                                                            onclick="showMoreSchedule('{{ $item->id }}')">{{ __('website/web.provider-read-more') }}</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -436,6 +321,7 @@
                         </div>
                         <!-- Pagination -->
                     </div>
+
                 </div>
                 <!-- End Section two -->
             </div>
@@ -449,25 +335,25 @@
 
     <script>
         // Start filterResults
-        function filterResults() {
-            $.ajax({
-                url: "{{ route('website.search.service-provider.filter') }}",
-                type: 'GET',
-                data: $('#filterForm').serialize(),
-                success: function(response) {
-                    // console.log(response);
-                    $('#filteredResults').empty();
-                    $('#filteredResults').html(response);
-                },
-                error: function(xhr, status, error) {
-                    alert('Something is wrong, please try again later');
-                }
-            });
-        }
+        // function filterResults() {
+        //     $.ajax({
+        //         url: "{{ route('website.search.service-provider.filter') }}",
+        //         type: 'GET',
+        //         data: $('#filterForm').serialize(),
+        //         success: function(response) {
+        //             // console.log(response);
+        //             $('#filteredResults').empty();
+        //             $('#filteredResults').html(response);
+        //         },
+        //         error: function(xhr, status, error) {
+        //             alert('Something is wrong, please try again later');
+        //         }
+        //     });
+        // }
 
-        $('input[type="checkbox"]').change(function() {
-            filterResults();
-        });
+        // $('input[type="checkbox"]').change(function() {
+        //     filterResults();
+        // });
         // End filterResults
 
         // Start to show more summaries for service 

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Pages\{
     AdminController,
     AdviceController,
+    BookingController,
     CityController,
     DashboardController,
     MajorsController,
@@ -173,6 +174,8 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::delete('{message}', 'destroy')->name('destroy');
             Route::get('{message}/view', 'show')->name('show');
         });
+
+
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
     //End Admin routes

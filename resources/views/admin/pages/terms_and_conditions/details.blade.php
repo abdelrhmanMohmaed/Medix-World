@@ -14,65 +14,79 @@
   </ol>
 </nav>
 
-<div class="row mb-3">
-  <label for="exampleInputUsername2" class="col-sm-3 col-form-label">{{ __('dashboard.title-term-en') }}</label>
-  <div class="col-lg-8">
-    <input type="text" class="form-control" name="title[en]" id="title_en" value="{{ $term->getTranslation('title', 'en')}}" disabled>
+<div class="card">
+  <div class="example m-4">
+  <div class="d-flex justify-content-end mb-5">
 
-  </div>
-</div>
-<div class="row mb-3">
-  <label for="exampleInputEmail2" class="col-sm-3 col-form-label">{{ __('dashboard.title-term-ar') }}</label>
-  <div class="col-lg-8">
-    <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $term->getTranslation('title', 'ar')}}" disabled>
-  </div>
-</div>
 
-<div class="row mb-3">
-  <div class="col-lg-3">
-    <label for="defaultconfig" class="col-form-label">sub_Description (EN)</label>
-  </div>
-  <div class="col-lg-8">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="sub_description[en]" disabled>{{ $term->getTranslation('sub_description', 'en')}}</textarea>
-  </div>
+<a href="{{ route('admins.terms.edit', $term->id) }}" class="btn-sm btn-primary btn-icon-text m-1 "><i class="fa-solid fa-pen-to-square"></i> edit
+                </a>
+<!-- <button type="button" class="btn btn-inverse-primary"></button> -->
 </div>
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.title-en') }}</label>
+      </div>
+      <div class="col-lg-8">
+        <input type="text" class="form-control" name="title[en]" id="title_en" value="{{ $term->getTranslation('title', 'en')}}" disabled>
 
-<div class="row mb-3">
-  <div class="col-lg-3">
-    <label for="defaultconfig" class="col-form-label">sub_Description (AR)</label>
-  </div>
-  <div class="col-lg-8">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="sub_description[ar]" disabled>{{ $term->getTranslation('sub_description', 'en')}}</textarea>
-  </div>
-</div>
-
-<div class="row mb-3">
-  <div class="col-lg-3">
-    <label for="defaultconfig" class="col-form-label">Description (EN)</label>
-  </div>
-  <div class="col-lg-8">
-    <div class="card bg-light">
-      <div class="card-body">
-        {!! $term->getTranslation('description', 'en') !!}
       </div>
     </div>
-  </div>
-</div>
-
-<div class="row mb-3">
-  <div class="col-lg-3">
-    <label for="defaultconfig" class="col-form-label">Description (AR)</label>
-  </div>
-  <div class="col-lg-8">
-    <div class="card bg-light">
-      <div class="card-body">
-        {!! $term->getTranslation('description', 'ar') !!}
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="exampleInputEmail2" class="col-form-label">{{ __('dashboard.title-ar') }}</label>
+      </div>
+      <div class="col-lg-8">
+        <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $term->getTranslation('title', 'ar')}}" disabled>
       </div>
     </div>
+
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="defaultconfig" class="col-form-label">sub_Description (EN)</label>
+      </div>
+      <div class="col-lg-8">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="sub_description[en]" disabled>{{ $term->getTranslation('sub_description', 'en')}}</textarea>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="defaultconfig" class="col-form-label">sub_Description (AR)</label>
+      </div>
+      <div class="col-lg-8">
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="sub_description[ar]" disabled>{{ $term->getTranslation('sub_description', 'ar')}}</textarea>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="defaultconfig" class="col-form-label">Description (EN)</label>
+      </div>
+      <div class="col-lg-8">
+        <div class="card bg-light">
+          <div class="card-body">
+            {!! $term->getTranslation('description', 'en') !!}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-lg-2">
+        <label for="defaultconfig" class="col-form-label">Description (AR)</label>
+      </div>
+      <div class="col-lg-8">
+        <div class="card bg-light">
+          <div class="card-body">
+            {!! $term->getTranslation('description', 'ar') !!}
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
-
-
 
 @endsection
 

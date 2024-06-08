@@ -124,10 +124,12 @@
       </li>
 
 
+
       <!-- messages -->
       <li class="nav-item nav-category">Messages</li>
       <li class="nav-item {{ active_class(['pages/*']) }}">
         <a href="{{ route('admins.messages.index') }}" class="nav-link"> <i class="fa-solid fa-message"></i> <span class="link-title">Messeages </span></a>
       </li>
+
   </div>
 </nav>
