@@ -176,16 +176,6 @@ Route::middleware(['auth:admin'])->group(function () {
         });
 
 
-        Route::prefix('bookings')->name('bookings.')->controller(BookingController::class)
-        ->group(function () {
-        
-            Route::get('', 'index')->name('index');
-            Route::get('{booking}/view', 'show')->name('show'); 
-
-
-        });
-
-
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
     //End Admin routes
