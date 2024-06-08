@@ -9,6 +9,7 @@ use App\Models\Major;
 use App\Models\ServiceProviderDetails;
 use App\Models\Title;
 use App\Models\User;
+use App\Models\View;
 use App\Traits\UploadTrait;
 use Exception;
 use Illuminate\Auth\Events\Registered;
@@ -122,8 +123,18 @@ class ServiceProviderController extends Controller
                     'active' => 1,
                 ]);
             }
+
             $user->assignRole('Service Providers');
            
+
+
+            View::create([
+                'user_id' => $user->id,
+                'view' => 0,
+            ]);
+            $user->assignRole('Service Providers','web');
+            
+
             DB::commit();
             return redirect()->route('admins.service_provider.index')->with('success', 'Service Provider created successfully');
         } catch (Exception $e) {

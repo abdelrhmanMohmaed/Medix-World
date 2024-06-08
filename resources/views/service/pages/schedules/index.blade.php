@@ -1,4 +1,5 @@
 @extends('service.layout.master')
+@section('title', 'Schedule')
 
 @push('plugin-styles')
     <link href="{{ asset('assets/plugins/fullcalendar/main.min.css') }}" rel="stylesheet" />
@@ -13,24 +14,43 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-md-3 d-none d-md-block">
+                <div class="col-md-4 d-none d-md-block">
                     <div class="card">
-                        <div class="card-body  ">
+                        <div class="card-header">
+                            <strong>My Schedule</strong>
+                            <br>
+                            <small class="text-gray">If you wish to cancel an booking that has already been booked, please
+                                contact the customer or contact the Medix Service.</small>
+                        </div>
+                        <div class="card-body">
                             @forelse ($daySchedules as $item)
                                 <tr role="row">
                                     <div class="form-group">
                                         <th scope="row">{{ $loop->iteration }} - </th>
                                         <strong data-toggle="modal" style="cursor: pointer" href="#detailsModel">
-                                            {{ \Carbon\Carbon::parse($item->start_time)->format('H:i A') }}
+                                            {{ \Carbon\Carbon::parse($item->start_time)->format('H:m') }}
                                         </strong>
                                         &nbsp;-&nbsp;
                                         <strong data-toggle="modal" style="cursor: pointer" href="#detailsModel">
-                                            {{ \Carbon\Carbon::parse($item->end_time)->format('H:i A') }}
+                                            {{ \Carbon\Carbon::parse($item->end_time)->format('H:m') }}
                                         </strong>
-                                        <button class="btn btn-sm btn-danger bg-gradient-danger float-right"
-                                            data-toggle="modal" href="#deleteModel" title="delete">
-                                            Delete
-                                        </button>
+                                        @if (isset($item->book->client))
+                                            <br>
+                                            &nbsp;<strong> Booking By : </strong>
+                                            <a href="{{ route('services.patients.show', $item->book->client->id) }}">
+                                                {{ $item->book->client->name }}
+                                            </a>
+                                        @elseif (isset($item->book))
+                                            <br>
+                                            &nbsp;<strong> Booking By : </strong>{{ $item->book->name }}
+                                        @else
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a type="button" data-bs-toggle="modal" href="#deleteProject"
+                                                data-id="{{ $item->id }}" title="cancel">
+                                                <i class="fa-solid fa-trash-can text-danger fa-lg"></i>
+                                            </a>
+                                        @endif
+
                                     </div>
                                     <br>
                                 </tr>
@@ -40,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-8">
                     <div class="card">
                         <div class="card-body">
                             <div id='fullcalendar'></div>
@@ -71,12 +91,14 @@
     <!-- Start Create Model-->
     @include('service.pages.schedules.partials.models.create')
     <!-- End Create Model-->
+    <!-- Start Create Model-->
+    @include('service.pages.schedules.partials.models.delete')
+    <!-- End Create Model-->
 @endsection
-
-
 
 @push('plugin-scripts')
     <script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/fullcalendar/main.min.js') }}"></script>
 
     <script>
@@ -91,11 +113,11 @@
                 events: [
                     @foreach ($schedules as $item)
                         {
-                            title: moment('{{ $item->start_time }}').format('hh:mma') + '-' + moment(
-                                '{{ $item->end_time }}').format('hh:mma'),
+                            title: moment('{{ $item->start_time }}').format('HH:mm') + '-' + moment(
+                                '{{ $item->end_time }}').format('HH:mm'),
                             start: '{{ $item->start_time }}',
                             end: '{{ $item->end_time }}',
-                            backgroundColor: 'red',
+                            backgroundColor: '{{ $item->book ? 'green' : 'gray' }}',
                             borderColor: '#ffffff',
                             extendedProps: {
                                 department: 'BioChemistry'
@@ -107,10 +129,24 @@
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end, allDays) {
+                    var selectedDate = moment(start).format('YYYY-MM-DD');
+                    var currentTime = moment().format('HH:mm');
+                    var startDateTime = selectedDate + 'T' + currentTime;
+                    var endDateTime = selectedDate + 'T23:59';
+
+                    $('#fromDate').val(startDateTime);
+                    $('#to').val(endDateTime);
                     $('#createEventModal').modal('toggle');
                 }
             });
         });
+        $('#deleteProject').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            var modal = $(this)
+
+            modal.find('.modal-body #schedule_id').val(id);
+        })
     </script>
 @endpush
 

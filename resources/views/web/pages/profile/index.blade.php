@@ -122,7 +122,7 @@
 
             axios.get(axiosUrl)
                 .then(function(response) {
-                    console.log(response.data);
+                    // console.log(response.data);
                     var regionsHtml = response.data;
 
                     $('.specialty').html(regionsHtml);

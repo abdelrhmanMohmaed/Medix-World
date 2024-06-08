@@ -67,6 +67,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(ServiceProviderDetails::class);
     }
+    public function view(): HasOne
+    {
+        return $this->hasOne(View::class);
+    }
     public function personalPhones(): HasMany
     {
         return $this->hasMany(Phone::class)->where('type','personal');

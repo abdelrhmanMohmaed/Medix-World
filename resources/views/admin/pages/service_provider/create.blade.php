@@ -316,7 +316,7 @@
                     url: url,
 
                     success: function(data) {
-                        console.log('fhffhf');
+                        // console.log('fhffhf');
                         $("#region").find('option').remove().end()
 
                         $.each(data, function(index) {

@@ -17,9 +17,10 @@
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->description }}</td>
 
+
                     <td>
                         @if ($item->user_id == Auth::id())
-                            {{ $item->client->name }}
+                            Me
                         @else
                             <a target="__blank"
                                 href="{{ route('website.search.service-provider.show', $item->serviceProvider->serviceProviderDetails->id) }}">
@@ -28,15 +29,14 @@
                             </a>
                         @endif
                     </td>
+
                     <td>
                         <a href="{{ route('website.medicals.download', $item->id) }}">
                             <i class="icon fa-solid fa-download"></i>
                         </a>
                         &nbsp;
-                        <a type="button" data-bs-toggle="modal" href="#editFile" 
-                            data-id="{{ $item->id }}"
-                            data-title="{{ $item->title }}"
-                            data-description="{{ $item->description }}"
+                        <a type="button" data-bs-toggle="modal" href="#editFile" data-id="{{ $item->id }}"
+                            data-title="{{ $item->title }}" data-description="{{ $item->description }}"
                             title="Edit">
                             <i class="icon fa-regular fa-pen-to-square"></i>
                         </a>
