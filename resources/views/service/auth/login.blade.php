@@ -52,7 +52,7 @@
                         <label for="email"
                             class="form-label">{{ __('services/services.register-services-email-address') }}*</label>
                         <input type="email" class="form-control" id="email" name="email" required autofocus
-                            autocomplete="email">
+                            placeholder="example@domin.com" autocomplete="email">
                         @error('email')
                             <small class="text-danger">
                                 &#x2022; {{ $message }}
@@ -62,8 +62,8 @@
                     <div class="mb-3">
                         <label for="password"
                             class="form-label">{{ __('services/services.register-services-password') }}</label>
-                        <input type="password" class="form-control" id="password" name="password" required
-                            autocomplete="current-password">
+                        <input type="password" class="form-control" id="password" name="password" required placeholder="Password**"
+                            placeholder="" autocomplete="current-password">
                         @error('password')
                             <small class="text-danger">
                                 &#x2022; {{ $message }}
