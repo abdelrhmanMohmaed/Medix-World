@@ -245,9 +245,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="message" class="form-label">{{ __('website/web.message') }}</label>
-                            <textarea required name="message" id="message" cols="30" rows="10" @class(['form-control', 'is-invalid' => $errors->has('message')])>
-                                        {{ old('message') }}
-                            </textarea>
+                            <textarea required name="message" id="message" cols="30" rows="10" @class(['form-control', 'is-invalid' => $errors->has('message')])>{{ old('message') }}</textarea>
                             @error('message')
                                 <small class="text-danger">
                                     &#x2022; {{ $message }}

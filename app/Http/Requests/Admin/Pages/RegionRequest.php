@@ -23,7 +23,7 @@ class RegionRequest extends FormRequest
     {
         return [
             'city_id' => ['required','exists:cities,id'],
-            'name.*' => ['required',"unique_translation:regions,name,{$this->id}"],
+            'name.*' => ['required',"unique_translation:regions,name,{$this->region?->id}"],
         ];
     }
 }

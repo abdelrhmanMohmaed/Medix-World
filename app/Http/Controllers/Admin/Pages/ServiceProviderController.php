@@ -12,7 +12,6 @@ use App\Models\User;
 use App\Models\View;
 use App\Traits\UploadTrait;
 use Exception;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,19 +19,7 @@ class ServiceProviderController extends Controller
 {
     use UploadTrait;
 
-    public function getRequest(Request $request)
-    {
-
-        $service_provider_requests  = ServiceProviderDetails::status($request->status)->get();
-
-        return view('admin.pages.service_provider.request_index', compact('service_provider_requests'));
-    }
-
-    public function showRequest(ServiceProviderDetails $service_provider)
-    {
-        return view('admin.pages.service_provider.request_details', compact('service_provider'));
-    }
-
+    // Start status(Approval) Requests  
     public function index()
     {
         $service_providers  = ServiceProviderDetails::approved()->get();
@@ -40,17 +27,61 @@ class ServiceProviderController extends Controller
         return view('admin.pages.service_provider.index', compact('service_providers'));
     }
 
+    // Start status(Pending,Approval,Reject) Requests  
+    public function getRequest(Request $request)
+    {
+        $service_provider_requests  = ServiceProviderDetails::status($request->status)->get();
+
+        return view('admin.pages.service_provider.request_index', compact('service_provider_requests'));
+    }
+
+    // Start Show Requests  
+    public function showRequest(ServiceProviderDetails $service_provider)
+    {
+        return view('admin.pages.service_provider.request_details', compact('service_provider'));
+    }
+
+    public function show(ServiceProviderDetails $service_provider)
+    {
+        return view('admin.pages.service_provider.details', compact('service_provider'));
+    }
+
+    public function update(ServiceProviderDetails $service_provider, String $oldStatus,Request $request)
+    { 
+        try {
+            $service_provider->update(['status' => $request->status]);
+
+            return redirect()->route('admins.service_provider.requests',$oldStatus)->with('success','Request updated successfully');
+        } catch (Exception $e) {
+
+            return redirect()->back()->with('error',$e->getMessage());//message
+        }
+    }
+
+    public function destroy(ServiceProviderDetails $service_provider)
+    {
+        try {
+            $service_provider->phones?->delete();
+
+            $service_provider->delete();
+
+            return redirect()->back()->with('success','Request deleted successfully');
+        } catch (Exception $e) {
+            // dd($e->getMessage());
+            return redirect()->back()->with('error',$e->getMessage());//message
+        }
+    }
+
+
+
     public function create()
     {
         $cities = City::active()->get();
-
         $titles = Title::active()->get();
-
         $majors = Major::active()->get();
 
         return view('admin.pages.service_provider.create', compact('cities', 'titles', 'majors'));
     }
-
 
     public function store(ServiceProviderRequest $request)
     {
@@ -144,37 +175,6 @@ class ServiceProviderController extends Controller
         }
     }
 
-    public function show(ServiceProviderDetails $service_provider)
-    {
-        return view('admin.pages.service_provider.details', compact('service_provider'));
-    }
-
-    public function update(ServiceProviderDetails $service_provider, Request $request)
-    {
-        try {
-            $service_provider->update(['status' => $request->status]);
 
 
-            return redirect()->route('admins.service_provider.requests')->with('success','request updated successfully');
-        } catch (Exception $e) {
-
-            // dd($e->getMessage());
-            return redirect()->back()->with('error',$e->getMessage());//message
-        }
-    }
-
-    public function destroy(ServiceProviderDetails $service_provider)
-    {
-        // dd('ddd');
-        try {
-            $service_provider->phones?->delete();
-
-            $service_provider->delete();
-
-            return redirect()->back()->with('success','request deleted successfully');
-        } catch (Exception $e) {
-            // dd($e->getMessage());
-            return redirect()->back()->with('error',$e->getMessage());//message
-        }
-    }
 }

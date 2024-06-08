@@ -2,20 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Pages;
 
-use App\Http\Controllers\Controller;
-use App\Models\Advice;
-use App\Traits\UploadTrait;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
-use App\Http\Requests\Admin\Pages\AdviceRequest;
-use App\Models\Book;
-use Exception;
-use Illuminate\Support\Facades\File;
+use App\Http\Controllers\Controller; 
+use Illuminate\View\View; 
+use App\Models\Book; 
 
 class BookingController extends Controller
-{
-    use UploadTrait;
+{ 
     
     public function index() : View  
     {
@@ -28,6 +20,4 @@ class BookingController extends Controller
     {    
         return view('admin.pages.booking.details',compact('booking'));
     }
-
-
 }

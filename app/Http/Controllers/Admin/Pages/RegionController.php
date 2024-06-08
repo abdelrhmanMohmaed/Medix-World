@@ -8,7 +8,7 @@ use App\Models\City;
 use App\Models\Region;
 use Exception;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class RegionController extends Controller
@@ -19,12 +19,14 @@ class RegionController extends Controller
 
         return view('admin.pages.region.index',compact('regions'));
     } 
+
     public function create(): View 
     {    
         $cities  = City::get();
 
         return view('admin.pages.region.create',compact('cities'));
     }
+
     public function store(RegionRequest $request) : RedirectResponse
     {
         try {
@@ -39,7 +41,7 @@ class RegionController extends Controller
             return redirect()->route('admins.regions.index')->with('success','Region created successfully');
         } catch (Exception $e) {
 
-            return redirect()->back()->with('error',$e->getMessage());//message
+            return redirect()->back()->with('error',$e->getMessage());
         }
     }
 
@@ -64,7 +66,7 @@ class RegionController extends Controller
 
             return redirect()->route('admins.regions.index')->with('success','Region updated successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
@@ -74,31 +76,44 @@ class RegionController extends Controller
         try {
 
             if ($region->serviceProviders->count() > 0) {
-                return redirect()->back()->with('error','can\'t delete, there are active service providers in this region');   
+                return redirect()->back()->with('error','Can\'t delete, there are active service providers in this region.');   
             }
 
             $region->delete();
 
-            return redirect()->route('admins.regions.index')->with('success', 'region deleted successfully');
-            $region->delete();
-
+            return redirect()->route('admins.regions.index')->with('success', 'Region deleted successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
-    public function stauts(Region $region) : RedirectResponse 
+    public function status(Region $region) : RedirectResponse 
     {
+        DB::beginTransaction();
+
         try {
+            $newStatus = !$region->active;
+
             $region->update([   
-                'active' => !$region->active
+                'active' => $newStatus
             ]);
 
-            return redirect()->route('admins.regions.index');
+            if($newStatus == true)
+            {
+                $region->city()->update([   
+                    'active' => $newStatus
+                ]);
+            }
+
+            DB::commit();
+
+            return redirect()->route('admins.regions.index')
+                            ->with('success', 'Region status updated successfully.');
         } catch (Exception $e) {
-            dd($e->getMessage());
-            return redirect()->back();//message
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'Failed to update region status.');
         }
     }
 }

@@ -7,9 +7,9 @@ use App\Models\Advice;
 use App\Models\Book;
 use App\Models\City;
 use App\Models\Major;
+use App\Models\ServiceProviderDetails;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -22,6 +22,10 @@ class DashboardController extends Controller
         $all_service_providers = User::serviceProvider()->get();
         $active_service_providers = User::serviceProvider()->active()->get();
         $inactive_service_providers = User::serviceProvider()->inactive()->get();
+ 
+        $requestPending = ServiceProviderDetails::where('status','Pending')->count();
+        $requestReject = ServiceProviderDetails::where('status','Reject')->count(); 
+        $requestApproval = ServiceProviderDetails::where('status','Approval')->count(); 
 
         $all_majors = Major::get();
         $active_majors = Major::active()->get();
@@ -43,6 +47,7 @@ class DashboardController extends Controller
         'all_majors','active_majors','inactive_majors',
         'all_cities','active_cities','inactive_cities',
         'all_advices','active_advices','inactive_advices',
+        'requestApproval','requestPending','requestReject',
         'books'));    
     }
 }

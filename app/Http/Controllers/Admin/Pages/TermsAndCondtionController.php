@@ -6,24 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Pages\TermsRequest;
 use App\Models\TermsCondition;
 use Exception;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 class TermsAndCondtionController extends Controller
 {
     public function index()
     {
-        $terms  = TermsCondition::all();
+        $terms  = TermsCondition::get();
 
         return view('admin.pages.terms_and_conditions.index', compact('terms'));
     }
 
     public function create()
     {
-
         return view('admin.pages.terms_and_conditions.create');
     }
-
 
     public function store(TermsRequest $request)
     {
@@ -45,9 +43,9 @@ class TermsAndCondtionController extends Controller
                 ],
             ]);
 
-            return redirect()->route('admins.terms.index')->with('success', 'created successfully');
+            return redirect()->route('admins.terms.index')->with('success', 'New Terms Created successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
@@ -80,23 +78,37 @@ class TermsAndCondtionController extends Controller
                 ],
             ]);
 
-            return redirect()->route('admins.terms.index')->with('success','terms updated successfully');
+            return redirect()->route('admins.terms.index')->with('success','Terms updated successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
 
     public function destroy(TermsCondition $term)
     {
-        // dd('ddd');
         try {
 
             $term->delete();
 
-            return redirect()->route('admins.terms.index')->with('success','terms deleted successfully');
+            return redirect()->route('admins.terms.index')->with('success','Terms deleted successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+
+            return redirect()->back()->with('error',$e->getMessage());//message
+        }
+    }
+
+    public function status(TermsCondition $term) : RedirectResponse 
+    { 
+        try { 
+
+            $term->update([   
+                'active' => !$term->active
+            ]);
+
+            return redirect()->route('admins.terms.index')->with('success','Terms status update successfully');
+        } catch (Exception $e) {
+
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }

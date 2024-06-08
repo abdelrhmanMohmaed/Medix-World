@@ -42,21 +42,27 @@ class UserLoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-
+    
         $user = User::whereEmail($this->email)->role('User')->first();
-        if ($user == null || !Hash::check($this->password, $user->password) ) {
-
+    
+        if ($user == null || !Hash::check($this->password, $user->password)) {
             RateLimiter::hit($this->throttleKey());
-        
+    
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
         }
-
+    
+        if ($user->active == false) {
+            throw ValidationException::withMessages([
+                'email' => trans('Your account is not active. Please contact support.'), 
+            ]);
+        }
+    
         Auth::guard('web')->login($user);
         RateLimiter::clear($this->throttleKey());
     }
-
+    
     /**
      * Ensure the login request is not rate limited.
      *
