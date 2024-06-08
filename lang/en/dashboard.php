@@ -79,5 +79,6 @@ return [
     'role-create' => 'create new role',
     'admin-index' => 'Admins',
     'admin-edit' => 'Edit Admin' ,
-    'admin-create' => 'create new Admin'
+    'admin-create' => 'create new Admin',
+    'service-provider-view' => 'servies provider detalis'
 ];
