@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Pages\{
     AdminController,
     AdviceController,
+    BookingController,
     CityController,
     DashboardController,
     MajorsController,

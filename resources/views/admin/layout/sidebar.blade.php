@@ -122,6 +122,5 @@
       <li class="nav-item {{ active_class(['pages/*']) }}">
         <a href="{{ route('admins.advices.index') }}" class="nav-link"> <i class="fa-solid fa-window-restore"></i> <span class="link-title">Advice </span></a>
       </li>
-
   </div>
 </nav>

@@ -124,12 +124,17 @@ class ServiceProviderController extends Controller
                 ]);
             }
 
+            $user->assignRole('Service Providers');
+           
+
+
             View::create([
                 'user_id' => $user->id,
                 'view' => 0,
             ]);
             $user->assignRole('Service Providers','web');
             
+
             DB::commit();
             return redirect()->route('admins.service_provider.index')->with('success', 'Service Provider created successfully');
         } catch (Exception $e) {
