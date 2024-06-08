@@ -32,9 +32,9 @@
                     <div class="d-flex justify-content-between align-items-center position-absolute top-90 w-100 px-2 px-md-4 mt-n4"
                         style="margin-top: -4.5rem !important;">
                         <div>
-                            <img class="wd-70 rounded-circle" src="{{ asset($service->serviceProviderDetails->img) }}"
+                            <img class="wd-70 rounded-circle"src="{{ $service->serviceProviderDetails ? asset($service->serviceProviderDetails->img)  :  asset('/assets/images/others/profile.png')}}"
                                 alt="avatar">
-                            <span class="h4 ms-3 text-dark">{{ $service->serviceProviderDetails->name }}</span>
+                            <span class="h4 ms-3 text-dark">{{ $service->serviceProviderDetails?->name }}</span>
                         </div>
                         <div class="d-none d-md-block">
                             <a href="{{ route('services.profile.edit', $service->id) }}"
@@ -49,11 +49,11 @@
     </div>
     @include('admin.layout.flash')
 
-    @if ($service->serviceProviderDetails->status == 'Approval')
+    @if ($service->serviceProviderDetails?->status == 'Approval')
         <div class="spinner-grow spinner-grow-sm text-success" role="status">
         </div>
         Approved
-    @elseif($service->serviceProviderDetails->status == 'Pending')
+    @elseif($service->serviceProviderDetails?->status == 'Pending')
         <div class="spinner-grow spinner-grow-sm text-primary" role="status">
         </div>
         <label for="defaultconfig" class="col-form-label text-muted">Pending</label>
@@ -75,16 +75,16 @@
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         <h6 class="card-title mb-0">{{ __('services/services.register-services-title') }}</h6>
                     </div>
-                    <p>{{ $service->serviceProviderDetails->title->title }}</p>
+                    <p>{{ $service->serviceProviderDetails?->title->title }}</p>
                     <div class="mt-3">
                         <label
                             class="tx-11 fw-bolder mb-0 text-uppercase">{{ __('services/services.register-services-summary') }}:</label>
-                        <p class="text-muted">{{ $service->serviceProviderDetails->summary }}</p>
+                        <p class="text-muted">{{ $service->serviceProviderDetails?->summary }}</p>
                     </div>
                     <div class="mt-3">
                         <label
                             class="tx-11 fw-bolder mb-0 text-uppercase">{{ __('services/services.register-services-major') }}:</label>
-                        <p class="text-muted">{{ $service->serviceProviderDetails->major->name }}</p>
+                        <p class="text-muted">{{ $service->serviceProviderDetails?->major->name }}</p>
                     </div>
                     <div class="mt-3">
                         <label class="tx-11 fw-bolder mb-0 text-uppercase">Joined:</label>
@@ -92,8 +92,8 @@
                     </div>
                     <div class="mt-3">
                         <label class="tx-11 fw-bolder mb-0 text-uppercase">Lives:</label>
-                        <p class="text-muted">{{ $service->serviceProviderDetails->city->name }},
-                            {{ $service->serviceProviderDetails->region->name }}</p>
+                        <p class="text-muted">{{ $service->serviceProviderDetails?->city->name }},
+                            {{ $service->serviceProviderDetails?->region->name }}</p>
                     </div>
                     <div class="mt-3">
                         <label
@@ -103,7 +103,7 @@
                     <div class="mt-3">
                         <label
                             class="tx-11 fw-bolder mb-0 text-uppercase">{{ __('services/services.register-services-address') }}:</label>
-                        <p class="text-muted">{{ $service->serviceProviderDetails->address }}</p>
+                        <p class="text-muted">{{ $service->serviceProviderDetails?->address }}</p>
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                     <div class="card-body">
                         <div>
                             <label class="tx-11 fw-bolder mb-0 text-uppercase">{{ __('price') }}:</label>
-                            <p class="text-muted">{{ $service->serviceProviderDetails->price }}
+                            <p class="text-muted">{{ $service->serviceProviderDetails?->price }}
                                 {{ __('services/services.register-services-egp') }}</p>
                         </div>
                         <div class="mt-3">
@@ -173,7 +173,7 @@
                             <label
                                 class="tx-11 fw-bolder mb-0 text-uppercase">{{ __('validation.attributes.medical_association_card') }}:</label>
                             <p class="text-muted">
-                                <a href="{{ asset($service->serviceProviderDetails->medical_card) }}" download>Download
+                                <a href="{{ asset($service->serviceProviderDetails?->medical_card) }}" download>Download
                                     Medical Card</a>
                             </p>
                         </div>

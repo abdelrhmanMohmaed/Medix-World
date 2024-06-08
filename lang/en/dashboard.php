@@ -64,15 +64,20 @@ return [
 'subject' => 'subject',
 'send_time' => 'Send Time',
 'message-view'=> 'View Message Details',
-
+'name' => 'Name',
+'email' => 'Email',
+'phone' => 'Phone',
 
     'submit' =>  'Submit',
     'select-city' =>  'Select City',
     'actions' =>  'Actions',
     'status' => 'Status',
-    'name' => 'Name',
-    'phone' => 'Phone',
-    'email' => 'Email',
-    'date_of_birth' => 'Date Of Birth',
-    'gender' => 'Gender'
+    'name-role' => 'Role Name',
+    'name-permissions' => 'Permission Name',
+    'role-index' => 'Roles',
+    'role-edit' => 'Edit Role' ,
+    'role-create' => 'create new role',
+    'admin-index' => 'Admins',
+    'admin-edit' => 'Edit Admin' ,
+    'admin-create' => 'create new Admin'
 ];

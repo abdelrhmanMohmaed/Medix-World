@@ -36,16 +36,16 @@
         <div class="col-lg-8">
           <input type="text" class="form-control" name="title[en]" id="title_en" value="{{ $advice->getTranslation('title', 'en')}}">
 
-        </div>
-      </div>
-      <div class="row mb-3">
+            </div>
+          </div>
+          <div class="row mb-3">
         <div class="col-lg-2">
-          <label for="exampleInputEmail2" class="col-form-label">{{ __('dashboard.title-advice-ar') }}</label>
+              <label for="exampleInputEmail2" class="col-form-label">{{ __('dashboard.title-advice-ar') }}</label>
         </div>
-        <div class="col-lg-8">
-          <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $advice->getTranslation('title', 'ar')}}">
-        </div>
-      </div>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" name="title[ar]" id="title_ar" value="{{ $advice->getTranslation('title', 'ar')}}">
+            </div>
+          </div>
 
       <div class="row mb-3">
         <div class="col-lg-2">
@@ -67,8 +67,8 @@
 
       <div class="action d-flex mt-5 justify-content-end">
         <button type="submit" class="btn btn-primary me-2">Submit</button>
-        <button class="btn btn-secondary">Cancel</button>
-      </div>
+        <a href="{{ route('admins.advices.index') }}" class="btn btn-secondary ">Cancel
+      </a>      </div>
     </form>
   </div>
 </div>

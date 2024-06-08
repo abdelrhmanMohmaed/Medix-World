@@ -53,7 +53,7 @@
                                                 class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-danger btn-xs btn-icon-text p-1"><i
+                                                <button type="submit" class="btn btn-danger btn-xs btn-icon-text p-1" onclick="return confirm('Are you sure to delete this role')"><i
                                                         class="btn-icon-prepend fa-solid fa-trash"></i>Delete</button>
                                             </form>
                                             <!-- <form method="POST" action="{{ route('admins.roles.destroy', $item->id) }}" onsubmit="return confirm('Are You sure?')">

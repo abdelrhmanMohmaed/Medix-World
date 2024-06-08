@@ -10,7 +10,7 @@
 <nav class="page-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route ('admins.admins.index') }}">{{ __('dashboard.admin-index')}} </a></li>
-    <li class="breadcrumb-item active" aria-current="page">@if ( $user->id == auth()->user()->id)  Show My Profile @else {{ __('dashboard.admin-view')}} @endif</li>
+    <li class="breadcrumb-item active" aria-current="page">@if ( $user->id == auth()->user()->id) Show My Profile @else {{ __('dashboard.admin-view')}} @endif</li>
   </ol>
 </nav>
 
@@ -18,11 +18,11 @@
 <div class="card">
   <div class="example m-4">
     <div class="d-flex justify-content-end mb-5">
-    
-    
-    <a href="{{ route('admins.admins.edit', $user->id) }}" class="btn-sm btn-primary btn-icon-text m-1 "><i class="fa-solid fa-pen-to-square"></i> edit
-                  </a>
-    <!-- <button type="button" class="btn btn-inverse-primary"></button> -->
+
+
+      <a href="{{ route('admins.admins.edit', $user->id) }}" class="btn-sm btn-primary btn-icon-text m-1 "><i class="fa-solid fa-pen-to-square"></i> edit
+      </a>
+      <!-- <button type="button" class="btn btn-inverse-primary"></button> -->
     </div>
     <div class="row mb-3">
       <div class="col-lg-2">
@@ -74,7 +74,6 @@
         <input type="text" class="form-control" name="title[ar]" id="title_ar" value="@if ($user->active == 1) Active @else Inactive @endif" disabled>
       </div>
     </div>
-
   </div>
 </div>
-@endsection
+    @endsection

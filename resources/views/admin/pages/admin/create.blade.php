@@ -15,6 +15,7 @@
 </nav>
 @include('admin.layout.flash')
 
+
 <form class="forms-sample" action="{{ route('admins.admins.store') }}" method="post" enctype="multipart/form-data">
   @csrf
 
@@ -89,9 +90,11 @@
       <div class="action d-flex mt-5 justify-content-end">
 
         <button type="submit" class="btn btn-primary me-2">Submit</button>
-        <button class="btn btn-secondary">Cancel</button>
+        <a href="{{ route('admins.admins.index') }}" class="btn btn-secondary ">Cancel
+        </a>
       </div>
     </div>
   </div>
 </form>
+
 @endsection

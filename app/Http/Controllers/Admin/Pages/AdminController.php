@@ -45,7 +45,7 @@ class AdminController extends Controller
                 'active' => $request->active
             ]);
 // dd(Role::all());
-            // $admin->assignRole('Admin','web');
+            $admin->assignRole('Admin');
 
             Phone::create([
                 'user_id' => $admin->id,
