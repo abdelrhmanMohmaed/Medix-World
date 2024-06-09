@@ -64,3 +64,22 @@ php artisan migrate:fresh
 php artisan db:seed 
 ```
 ---
+
+
+```shell 
+# Admin
+	email: admin@admin.com
+	password: 123456789
+	url: http://127.0.0.1:8000/en/admins/login
+
+# Service Provider 
+	email: service@provider.com
+	password: 123456789
+	url: http://127.0.0.1:8000/en/services/login
+
+# Patient
+	email: user@user.com
+	password: 123456789
+	url: http://127.0.0.1:8000/en/login
+```
+---
