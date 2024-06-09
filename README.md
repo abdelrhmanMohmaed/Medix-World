@@ -5,12 +5,12 @@
 ## Features
 
 ## For Doctors
-    - **Manage Schedules and Appointments:** Easily organize and update your availability.
-    - **Patient Data Management:** Efficiently manage and update your patients' information.
-    - **Availability Toggle:** Keep your availability status up-to-date for potential patients.
-    - **Patient Profile Access:** View and manage detailed profiles for all your patients.
-    - **Medical History Updates:** Add and update patient medical histories and records.
-    - **Rate View:** See and manage ratings given by patients.
+- **Manage Schedules and Appointments:** Easily organize and update your availability.
+- **Patient Data Management:** Efficiently manage and update your patients' information.
+- **Availability Toggle:** Keep your availability status up-to-date for potential patients.
+- **Patient Profile Access:** View and manage detailed profiles for all your patients.
+- **Medical History Updates:** Add and update patient medical histories and records.
+- **Rate View:** See and manage ratings given by patients.
 
 ## For Patients
     - **Doctor Search:** Find doctors by specialty or location with advanced search filters.
