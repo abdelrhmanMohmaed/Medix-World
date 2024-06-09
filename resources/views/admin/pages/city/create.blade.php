@@ -25,7 +25,7 @@
                         <label for="exampleInputUsername2" class="col-form-label">{{ __('dashboard.name-city-en') }}</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" class="form-control" name="name[en]" id="name_en"
+                        <input required type="text" class="form-control" name="name[en]" id="name_en"
                             value="{{ old('name.en') }}">
                         @error('name.ar')
                             <span class="text-danger">{{ $message }}</span>
@@ -37,7 +37,7 @@
                         <label for="exampleInputEmail2" class="col-form-label">{{ __('dashboard.name-city-ar') }}</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" class="form-control" name="name[ar]" id="name_ar"
+                        <input required type="text" class="form-control" name="name[ar]" id="name_ar"
                             value="{{ old('name.ar') }}">
                         @error('name.ar')
                             <span class="text-danger">{{ $message }}</span>

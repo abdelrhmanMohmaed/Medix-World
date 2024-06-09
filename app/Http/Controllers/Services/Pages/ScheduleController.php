@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Services\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Services\Auth\ScheduleRequest;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -28,7 +29,7 @@ class ScheduleController extends Controller
         return view('service.pages.schedules.index',compact('schedules','daySchedules'));    
     }  
         
-    public function store(Request $request) : RedirectResponse
+    public function store(ScheduleRequest $request) : RedirectResponse
     { 
         $from = Carbon::parse($request->input('from'));
         $to = Carbon::parse($request->input('to'));

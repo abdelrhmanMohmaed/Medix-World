@@ -86,12 +86,13 @@
                     <div class="row mb-3">
                         <div class="col-lg-2">
                             <label for="password" class="col-form-label">
-                                {{ __('services/services.register-services-password') }}
+                                {{ __('services/services.register-services-confirm-password') }}
                             </label>
                         </div>
                         <div class="col-lg-8">
                             <input type="password" id="password" name="password_confirmation" required
-                                placeholder="Password" autocomplete="new-password" required class='form-control'>
+                                placeholder="{{ __('services/services.register-services-confirm-password') }}"
+                                autocomplete="new-password" required class='form-control'>
                         </div>
                     </div>
                 @endif

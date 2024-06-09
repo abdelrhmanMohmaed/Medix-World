@@ -49,10 +49,25 @@ class ServiceProviderController extends Controller
     public function update(ServiceProviderDetails $service_provider, String $oldStatus,Request $request)
     { 
         try {
+            DB::beginTransaction();
+
+            if($request->status== 'Approval')
+            {
+                $service_provider->user->update([
+                    'active' => true,
+                ]);
+            }else{
+
+                $service_provider->user->update([
+                    'active' => false,
+                ]);
+            }
             $service_provider->update(['status' => $request->status]);
 
+            DB::commit();
             return redirect()->route('admins.service_provider.requests',$oldStatus)->with('success','Request updated successfully');
         } catch (Exception $e) {
+            DB::rollBack();
 
             return redirect()->back()->with('error',$e->getMessage());//message
         }
@@ -66,8 +81,8 @@ class ServiceProviderController extends Controller
             $service_provider->delete();
 
             return redirect()->back()->with('success','Request deleted successfully');
-        } catch (Exception $e) {
-            // dd($e->getMessage());
+        } catch (Exception $e) {    
+
             return redirect()->back()->with('error',$e->getMessage());//message
         }
     }
@@ -169,7 +184,7 @@ class ServiceProviderController extends Controller
             DB::commit();
             return redirect()->route('admins.service_provider.index')->with('success', 'Service Provider created successfully');
         } catch (Exception $e) {
-            // dd($e->getMessage());
+            DB::rollBack();
 
             return redirect()->back()->with('error',$e->getMessage());//message
         }

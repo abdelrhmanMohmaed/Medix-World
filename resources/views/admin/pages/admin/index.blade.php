@@ -64,16 +64,19 @@
                                             </a>
 
                                             @if ($item->id != 1)
-                                                <form method="POST"
-                                                    action="{{ route('admins.admins.destroy', $item->id) }}"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-danger btn-xs btn-icon-text p-1"
-                                                        onclick="return confirm('Are you sure to delete this user')">
-                                                        <i class="btn-icon-prepend fa-solid fa-trash"></i>Delete
-                                                    </button>
-                                                </form>
+                                                @if ($item->id != Auth::id())
+                                                    <form method="POST"
+                                                        action="{{ route('admins.admins.destroy', $item->id) }}"
+                                                        class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit"
+                                                            class="btn btn-danger btn-xs btn-icon-text p-1"
+                                                            onclick="return confirm('Are you sure to delete this user')">
+                                                            <i class="btn-icon-prepend fa-solid fa-trash"></i>Delete
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             @endif
                                         </td>
                                     </tr>

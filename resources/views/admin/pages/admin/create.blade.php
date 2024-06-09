@@ -27,8 +27,8 @@
                         <label for="exampleInputadminname2" class="col-form-label">{{ __('dashboard.name') }}</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Ahmed Atef"
-                            value="{{ old('fullName') }}">
+                        <input required type="text" class="form-control" name="fullName" id="fullName"
+                            placeholder="Ahmed Atef" value="{{ old('fullName') }}">
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -36,8 +36,8 @@
                         <label for="exampleInputEmail2" class="col-form-label">{{ __('dashboard.phone') }}</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="tel" class="form-control" name="tel" id="tel" placeholder="+201123843996"
-                            value="{{ old('tel') }}">
+                        <input required type="tel" class="form-control" name="tel" id="tel"
+                            placeholder="+201123843996" value="{{ old('tel') }}">
                         <small>Don't forget add +2 before phone number.</small>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         <label for="defaultconfig" class="col-form-label">Email</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="email" class="form-control" name="email" placeholder="example@domain.com"
+                        <input required type="email" class="form-control" name="email" placeholder="example@domain.com"
                             value="{{ old('email') }}">
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                         <label for="defaultconfig" class="col-form-label">Date of Birth</label>
                     </div>
                     <div class="col-lg-8">
-                        <input class="form-control" type="date" id="date_of_birth" name="dateOfBirth"
+                        <input required class="form-control" type="date" id="date_of_birth" name="dateOfBirth"
                             value="{{ old('dateOfBirth') }}">
                     </div>
                 </div>
@@ -67,13 +67,13 @@
                         <label for="defaultconfig-3" class="col-form-label">Gender</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="radio" class="form-check-input" name="gender" id="radioMale" value="1"
+                        <input type="radio" class="form-check-input" name="gender" id="radioMale" value="1" required
                             @checked(old('gender') == 1)>
                         <label class="form-check-label" for="radioMale">
                             Male
                         </label>
                         <input type="radio" class="form-check-input" name="gender" id="radioFemale" value="2"
-                            @checked(old('gender') == 2)>
+                            required @checked(old('gender') == 2)>
                         <label class="form-check-label" for="radioFemale">
                             Female
                         </label>

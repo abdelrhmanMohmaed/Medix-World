@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ __('website/web.medix-title') }} | @yield('title') </title>
-
+    <link rel="icon" type="image/x-icon" href="{{asset('assets/favicon.png')}}">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <!-- Fonts Awesome -->
