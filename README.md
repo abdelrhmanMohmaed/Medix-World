@@ -13,26 +13,26 @@
 - **Rate View:** See and manage ratings given by patients.
 
 **For Patients**
-    - **Doctor Search:** Find doctors by specialty or location with advanced search filters.
-    - **Appointment Booking:** Schedule appointments with ease directly through the app.
-    - **Doctor Ratings:** View and submit ratings for doctors.
-    - **Medical History Management:** Upload and organize all your medical documents and history.
-    - **Profile Information:** Maintain a comprehensive medical profile to share with doctors.
-    - **Live Location Detection:** Get recommendations for doctors near your current location.
-    - **Online Payment:** Conveniently pay for services online through secure transactions.
+- **Doctor Search:** Find doctors by specialty or location with advanced search filters.
+- **Appointment Booking:** Schedule appointments with ease directly through the app.
+- **Doctor Ratings:** View and submit ratings for doctors.
+- **Medical History Management:** Upload and organize all your medical documents and history.
+- **Profile Information:** Maintain a comprehensive medical profile to share with doctors.
+- **Live Location Detection:** Get recommendations for doctors near your current location.
+- **Online Payment:** Conveniently pay for services online through secure transactions.
 
 **Admin Dashboard**
-    - **Approve Registrations:** Review and approve doctor registration requests.
-    - **Data Update Requests:** Approve or deny requests from doctors to update their information.
-    - **Client Activity Monitoring:** Monitor and analyze user activities within the system.
-    - **Account Management:** Activate or deactivate user accounts as needed.
-    - **Edit Terms and Conditions:** Update the system's terms and conditions as necessary.
-    - **User Action Control:** Manage and control user actions in accordance with system policies.
+- **Approve Registrations:** Review and approve doctor registration requests.
+- **Data Update Requests:** Approve or deny requests from doctors to update their information.
+- **Client Activity Monitoring:** Monitor and analyze user activities within the system.
+- **Account Management:** Activate or deactivate user accounts as needed.
+- **Edit Terms and Conditions:** Update the system's terms and conditions as necessary.
+- **User Action Control:** Manage and control user actions in accordance with system policies.
 
-- **General Features**
-    - **System Notifications:** Receive important updates and notifications.
-    - **Medical Paper Uploads:** Upload past medical papers for easy access.
-    - **Real-time Updates:** Stay informed with real-time notifications and updates.
+**General Features**
+- **System Notifications:** Receive important updates and notifications.
+- **Medical Paper Uploads:** Upload past medical papers for easy access.
+- **Real-time Updates:** Stay informed with real-time notifications and updates.
 
 ## Technologies Used:
 
