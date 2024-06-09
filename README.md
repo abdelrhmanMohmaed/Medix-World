@@ -4,22 +4,22 @@
 
 ## Features
 
-- **For Doctors**
-- **Manage Schedules and Appointments:** Easily organize and update your availability.
-- **Patient Data Management:** Efficiently manage and update your patients' information.
-- **Availability Toggle:** Keep your availability status up-to-date for potential patients.
-- **Patient Profile Access:** View and manage detailed profiles for all your patients.
-- **Medical History Updates:** Add and update patient medical histories and records.
-- **Rate View:** See and manage ratings given by patients.
+## For Doctors
+    - **Manage Schedules and Appointments:** Easily organize and update your availability.
+    - **Patient Data Management:** Efficiently manage and update your patients' information.
+    - **Availability Toggle:** Keep your availability status up-to-date for potential patients.
+    - **Patient Profile Access:** View and manage detailed profiles for all your patients.
+    - **Medical History Updates:** Add and update patient medical histories and records.
+    - **Rate View:** See and manage ratings given by patients.
 
-- **For Patients**
-- **Doctor Search:** Find doctors by specialty or location with advanced search filters.
-- **Appointment Booking:** Schedule appointments with ease directly through the app.
-- **Doctor Ratings:** View and submit ratings for doctors.
-- **Medical History Management:** Upload and organize all your medical documents and history.
-- **Profile Information:** Maintain a comprehensive medical profile to share with doctors.
-- **Live Location Detection:** Get recommendations for doctors near your current location.
-- **Online Payment:** Conveniently pay for services online through secure transactions.
+## For Patients
+    - **Doctor Search:** Find doctors by specialty or location with advanced search filters.
+    - **Appointment Booking:** Schedule appointments with ease directly through the app.
+    - **Doctor Ratings:** View and submit ratings for doctors.
+    - **Medical History Management:** Upload and organize all your medical documents and history.
+    - **Profile Information:** Maintain a comprehensive medical profile to share with doctors.
+    - **Live Location Detection:** Get recommendations for doctors near your current location.
+    - **Online Payment:** Conveniently pay for services online through secure transactions.
 
 - **Admin Dashboard**
 Approve Registrations: Review and approve doctor registration requests.
