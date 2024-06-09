@@ -73,7 +73,7 @@ class AdminController extends Controller
                 'tel' => $request->tel,
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
-                'active' => $request->active
+                'active' => $request->active ?? $user->active
             ]);
             Phone::updateOrCreate([
                 'user_id' => $user->id,

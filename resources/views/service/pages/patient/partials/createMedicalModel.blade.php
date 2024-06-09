@@ -5,9 +5,9 @@
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('website/web.profile-create-medical') }}</h1>
             </div>
-            <form method="post" action="{{ route('services.patients.store',$medicalDocument[0]['client_id']) }}" class="modal-body"
+            <form method="post" action="{{ route('services.patients.store', $client_id) }}" class="modal-body"
                 enctype="multipart/form-data">
-                @csrf 
+                @csrf
 
                 <div class="mb-3">
                     <label for="title" class="form-label">{{ __('website/web.profile-create-title') }}*</label>

@@ -164,8 +164,9 @@
                                         <label for="defaultconfig" class="col-form-label">Medical Association Card</label>
                                     </div>
                                     <div class="col-lg-8">
-                                        <a href="{{ asset($service_provider->medical_card) }}" class="form-control"><i
-                                                class="fa-solid fa-file-export p-2"></i>view</a>
+                                        <a href="{{ asset($service_provider->medical_card) }}" target="_blank" class="form-control">
+                                            <i class="fa-solid fa-file-export p-2"></i>view
+                                        </a>
                                     </div>
                                 </div>
 

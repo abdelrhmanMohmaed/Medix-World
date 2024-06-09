@@ -14,6 +14,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/favicon.png') }}">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>{{ __('services/services.register-services') }}</title>
 
@@ -62,8 +64,8 @@
                     <div class="mb-3">
                         <label for="password"
                             class="form-label">{{ __('services/services.register-services-password') }}</label>
-                        <input type="password" class="form-control" id="password" name="password" required placeholder="Password**"
-                            placeholder="" autocomplete="current-password">
+                        <input type="password" class="form-control" id="password" name="password" required
+                            placeholder="Password**" placeholder="" autocomplete="current-password">
                         @error('password')
                             <small class="text-danger">
                                 &#x2022; {{ $message }}
@@ -81,7 +83,7 @@
                     </div>
                     <div class="my-2">
                         <small>{{ __('website/web.login-have-account') }} <a
-                                href="#">{{ __('website/web.sign-up') }}</a></small>
+                                href="{{route('services.register')}}">{{ __('website/web.sign-up') }}</a></small>
                     </div>
                     <div class="d-grid">
                         <button type="submit"

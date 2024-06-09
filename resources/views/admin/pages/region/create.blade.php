@@ -26,7 +26,7 @@
                         <label for="city" class="col-form-label">{{ __('dashboard.name-city-en') }}</label>
                     </div>
                     <div class="col-sm-9">
-                        <select name="city_id" id="city" class="form-control form-select">
+                        <select required name="city_id" id="city" class="form-control form-select">
                             <option disabled selected>{{ __('dashboard.select-city') }}</option>
                             @foreach ($cities as $item)
                                 <option value="{{ $item->id }}">
@@ -43,7 +43,7 @@
                             class="col-form-label">{{ __('dashboard.name-region-en') }}</label>
                     </div>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name[en]" id="name_en" placeholder="Name (EN)"
+                        <input required type="text" class="form-control" name="name[en]" id="name_en" placeholder="Name (EN)"
                             value="{{ old('name.en') }}">
 
                     </div>
@@ -53,7 +53,7 @@
                         <label for="exampleInputEmail2" class="col-form-label">{{ __('dashboard.name-region-ar') }}</label>
                     </div>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name[ar]" id="name_ar" placeholder="Name (AR)"
+                        <input required type="text" class="form-control" name="name[ar]" id="name_ar" placeholder="Name (AR)"
                             value="{{ old('name.ar') }}">
                     </div>
                 </div>

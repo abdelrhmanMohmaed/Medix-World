@@ -44,7 +44,7 @@
                         <label for="name_en" class="col-form-label">{{ __('dashboard.name-region-en') }}</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" class="form-control" name="name[en]" id="name_en"
+                        <input required type="text" class="form-control" name="name[en]" id="name_en"
                             value="{{ $region->getTranslation('name', 'en') }}">
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         <label for="name_ar" class="col-form-label">{{ __('dashboard.name-region-ar') }}</label>
                     </div>
                     <div class="col-lg-8">
-                        <input type="text" class="form-control" name="name[ar]" id="name_ar"
+                        <input required type="text" class="form-control" name="name[ar]" id="name_ar"
                             value="{{ $region->getTranslation('name', 'ar') }}">
                     </div>
                 </div>
