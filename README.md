@@ -4,7 +4,7 @@
 
 ## Features
 
-## For Doctors
+For Doctors
 - **Manage Schedules and Appointments:** Easily organize and update your availability.
 - **Patient Data Management:** Efficiently manage and update your patients' information.
 - **Availability Toggle:** Keep your availability status up-to-date for potential patients.
