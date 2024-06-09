@@ -24,11 +24,11 @@ class PatientController extends Controller
     
     public function show($client_id) : View 
     {        
-        $medicalDocument = MedicalDocument::where('client_id',$client_id)
+        $medicalDocument = MedicalDocument::with('client')->where('client_id',$client_id)
         ->where('major_id',Auth::user()->serviceProviderDetails->major_id)
         ->get();
 
-        return view('service.pages.patient.show',compact('medicalDocument'));
+        return view('service.pages.patient.show',compact('medicalDocument','client_id'));
     }  
 
     public function store(Request $request, $client_id)
