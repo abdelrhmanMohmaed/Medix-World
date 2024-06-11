@@ -26,7 +26,23 @@
             <h4 class="mb-3 mb-md-0">Welcome to Dashboard</h4>
         </div>
     </div>
-
+    @if (Auth::user()->serviceProviderDetails?->status == 'Approval')
+        <div class="spinner-grow spinner-grow-sm text-success" role="status">
+        </div>
+        Approved
+    @elseif(Auth::user()->serviceProviderDetails?->status == 'Pending')
+        <div class="spinner-grow spinner-grow-sm text-primary" role="status">
+        </div>
+        <label for="defaultconfig" class="col-form-label text-muted">Pending</label>
+    @else
+        <div class="spinner-grow spinner-grow-sm text-danger" role="status">
+        </div>
+        <label for="defaultconfig" class="col-form-label text-muted">Reject</label>
+        <br>
+        <small class="ms-3  text-muted">Send a message to the service provider to know what's wrong with your data or check
+            your
+            mail.</small>
+    @endif
     <!-- First row -->
     <div class="row">
         <!-- Start SCHEDULES -->

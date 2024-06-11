@@ -18,13 +18,6 @@
 @endsection
 
 @section('main')
-    @php
-        $dir = 'ltr';
-        if (str_replace('_', '-', app()->getLocale()) == 'ar') {
-            $dir = 'rtl';
-        }
-    @endphp
-
     <!-- Start Search Navbar -->
     @include('web.partials.navbarSearch')
     <!-- End Search Navbar -->

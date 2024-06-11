@@ -35,6 +35,7 @@ class RegisteredUserController extends Controller
                 'password' => $request->password,
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
+                'active' => true
             ]); 
             $user->assignRole('User');
 
