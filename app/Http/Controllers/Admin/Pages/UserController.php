@@ -38,6 +38,7 @@ class UserController extends Controller
                 'tel' => $request->tel,
                 'dateOfBirth' => $request->dateOfBirth,
                 'gender' => $request->gender,
+                'active' => true
             ]);
 
             $user->assignRole('User');

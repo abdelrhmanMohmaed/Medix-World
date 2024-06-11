@@ -87,8 +87,6 @@ class ServiceProviderController extends Controller
         }
     }
 
-
-
     public function create()
     {
         $cities = City::active()->get();
@@ -112,12 +110,13 @@ class ServiceProviderController extends Controller
             $user = User::create([
                 'name' => $request->input("name.en"),
                 'email' => $request->input("email"),
-                'password' => '123456',
+                'password' => '123456789',
                 'dateOfBirth' => $request->input("dateOfBirth"),
                 'gender' => $request->input("gender"),
+                'active' => true
             ]);
             // dd($user);
-            $service_provider = $user->serviceProviderDetails()->create([
+            $user->serviceProviderDetails()->create([
                 'city_id' => $request->input("city_id"),
                 'region_id' => $request->input("region_id"),
                 'title_id' => $request->input("title_id"),
@@ -171,15 +170,11 @@ class ServiceProviderController extends Controller
             }
 
             $user->assignRole('Service Providers');
-           
-
 
             View::create([
                 'user_id' => $user->id,
                 'view' => 0,
             ]);
-            $user->assignRole('Service Providers','web');
-            
 
             DB::commit();
             return redirect()->route('admins.service_provider.index')->with('success', 'Service Provider created successfully');
